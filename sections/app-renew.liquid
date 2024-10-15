@@ -1,0 +1,43 @@
+<div style="background-color: {{ section.settings.background_color }}">
+  <div style="max-width: {{ section.settings.max_width }}px !important; margin: 0 auto !important; padding: 0 1rem !important;">
+    {%- for block in section.blocks -%}
+      {% render block %}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Apps (renewed)",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+      {
+        "type": "range",
+        "id": "max_width",
+        "min": 1000,
+        "max": 2000,
+        "step": 100,
+        "unit": "px",
+        "default": 1000,
+        "label": "Section max width"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "default": "#FFF",
+        "label": "Background color"
+      }
+    ],
+    "blocks": [
+    {
+      "type": "@app"
+    }
+    ],
+    "presets": [
+      {
+        "name": "Apps (renewed)"
+      }
+    ]
+  }
+{% endschema %}

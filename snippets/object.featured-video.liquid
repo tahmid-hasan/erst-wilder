@@ -1,0 +1,31 @@
+{% comment %}
+  Video Snippet
+    Renders video and play button
+
+    Params:
+      - poster: Link to an image
+      - videoMp4: Link to mp4 video
+      - videoWebm: Link to webm video
+      - attributes: String list of attributes to use on video
+      - class: A string to be used as an additional class
+
+  Version:
+    1.0.0 - 2021/10/10
+{% endcomment %}
+
+{%- if videoMp4 != blank or videoWebm != blank -%}
+  <div class="o-featured-video {{ class }}" data-featured-video>
+    {%- render 'object.html5-video' with {
+      imageUrl: poster,
+      videoUrlMp4:videoMp4,
+      videoUrlWebm:videoWebm,
+      attributes: attributes
+    } -%}
+
+    {%- render 'object.icon' with {
+      icon:'play',
+      class:'o-featured-video__play is-visible'
+      attributes: 'data-video-play'
+    } -%}
+  </div>
+{%- endif -%}

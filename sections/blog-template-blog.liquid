@@ -1,0 +1,227 @@
+{%- comment -%}
+  Blog Template
+
+  Version:
+    1.0.0 - 2020/09/15
+{%- endcomment -%}
+
+{{ 'sections.blog.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign blogTitle = blog.metafields.accentuate.blog_title
+  assign blogDesc = blog.metafields.accentuate.blog_desciption
+  assign tagTitle = blog.metafields.accentuate.tags_title
+  assign hideFilters = section.settings.hide-filters
+  assign categoryBlocks = section.blocks | where: 'type', 'blog-filter'
+
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+-%}
+
+<section class="c-blog-template {% if hideFilters %}has-no-filters{% endif %}">
+  <div class="c-blog-template__container">
+
+    {%- comment -%} Blog Template Heading{%- endcomment -%}
+    <div class="c-blog-template__heading">
+      <h1 class="c-blog-template__title">{{- blogTitle | escape -}}</h1>
+      <p class="c-blog-template__description">{{- blogDesc | escape -}}</p>
+    </div>
+
+    {%- if blog.articles.size > 0 -%}
+      {%- paginate blog.articles by 11 -%}
+
+        {%- comment -%}Wrapper for first raw with featured articles and categories{%- endcomment -%}
+        <div class="c-blog-template__articles-featured">
+          {%- comment -%}Blog Template Categories{%- endcomment -%}
+
+          <div class="c-blog-template__categories">
+            <p class="c-blog-template__categories-title">{{- tagTitle | escape -}}</p>
+            <a
+              href="{{- blog.url -}}"
+              class="c-blog-template__categories-list
+              {% unless request.path contains 'tagged' %}is-selected{% endunless %}"
+            >
+              <h4 class="c-blog-template__categories-list-label">
+                {{- 'articles.article.all_categories' | t -}}
+              </h4>
+            </a>
+
+            {%- for categoryBlock in categoryBlocks -%}
+              {%- liquid
+                assign filterTitle = ''
+                assign filterUrl = ''
+                assign filterSelected = false
+                assign filterTag = ''
+                assign blockCategoryName = categoryBlock.settings.title | handleize
+
+                for blogTag in blog.all_tags
+                  assign filterTag = blogTag
+                  assign tagArray = blogTag | split: '_'
+                  assign tagName = tagArray.last
+                  assign tagHandle = tagName | handleize
+                  assign categoryName = tagArray.first | downcase
+
+                  if tagHandle == blockCategoryName
+                    assign filterTitle = tagName | escape
+                      break
+                  endif
+                endfor
+
+                unless filterTitle != blank and categoryName == 'category'
+                  continue
+                endunless
+
+                if current_tags contains filterTag
+                  assign filterUrl = blog.url
+                  assign filterSelected = true
+                else
+                  if request.path contains '/tagged/'
+                    assign greyed = true
+                  endif
+
+                  assign tagHandle = filterTag | handleize
+                  assign filterUrl = blog.url | append: '/tagged/' | append: tagHandle
+                endif
+              -%}
+
+              <a
+                href="{{- filterUrl -}}"
+                class="c-blog-template__categories-list
+                {% if filterSelected -%}
+                  is-selected
+                {%- endif -%}"
+              >
+                <h4 class="c-blog-template__categories-list-label o-heading--4">
+                  {{- filterTitle -}}
+                </h4>
+              </a>
+            {%-endfor-%}
+          </div>
+
+          {%- comment -%} Article List{%- endcomment -%}
+          {%- assign article1 = blog.articles[0] -%}
+          {%- if article1 -%}
+            <div class="c-blog-template__article-featured">
+              {%- render 'object.article-thumbnail' with {
+                class: 'c-blog-template__article is-featured'
+                thumbnailArticle: article1,
+                isFeatured: true
+              } -%}
+            </div>
+          {%- endif -%}
+
+          {%- assign article2 = blog.articles[1] -%}
+          {%- if article2 -%}
+            <div class="c-blog-template__article-small">
+              {%- render 'object.article-thumbnail' with {
+                class: 'c-blog-template__article is-small'
+                thumbnailArticle: article2,
+              } -%}
+            </div>
+          {%- endif -%}
+        </div>
+
+        <div class="c-blog-template__articles-wrapper">
+          {%- for blogArticle in blog.articles offset: 2 -%}
+            <div class="c-blog-template__article-normal">
+              {%- render 'object.article-thumbnail' with {
+                thumbnailArticle: blogArticle,
+                class: 'c-blog-template__article1 is-normal'
+              } -%}
+            </div>
+          {%- endfor -%}
+        </div>
+
+        {%- comment -%} Pagination {%- endcomment -%}
+        {%- include 'object.pagination' -%}
+
+      {%- endpaginate -%}
+    {%- endif -%}
+  </div>
+</section>
+
+{%- comment -%} Bottom Wave {%- endcomment -%}
+{%- if bottomWave != "0" -%}
+  {%- render 'object.wave' with {
+    waveNumber:bottomWave
+    color1: bottomColor1
+    color2: bottomColor2,
+    isFlipped: isFlippedBottom
+  } -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Blog Listing Template",
+  "class": "c-section c-section__blog-template",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "hide-filters",
+      "label": "Hide Filters",
+      "default": false,
+      "info": "Check this to hide the all of the blog category filters"
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "blog-filter",
+      "name": "Blog Filter",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Article Category",
+          "info": "Article Category. Please ensure category names align with article tags (eg if tag is Category_Interviews, then this will be Interviews)"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

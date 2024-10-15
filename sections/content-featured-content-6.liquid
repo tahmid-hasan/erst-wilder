@@ -1,0 +1,250 @@
+{%- comment -%}
+  Featured Content 6
+    Section to show content with some images, content and a cta
+
+  Version:
+    1.0.0 - 2021/10/19
+{%- endcomment -%}
+
+{{ 'sections.featured-content-6.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%} Assign variables {%- endcomment -%}
+{%- liquid  
+  assign image1 = section.settings.image
+  assign image2 = section.settings.image-2
+  assign title = section.settings.title | escape
+  assign content = section.settings.content
+  assign ctaLabel = section.settings.cta-label | escape
+  assign ctaUrl = section.settings.cta-url 
+
+  assign topWave = section.settings.top-wave
+  assign topColor1 = section.settings.top-color-1
+  assign topColor2 = section.settings.top-color-2
+  assign isFlippedTop = section.settings.flip-top-wave
+
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+-%}
+
+{%- if image1 != blank and title != blank -%}
+  
+{%- comment -%} Top Wave {%- endcomment -%}
+  {%- if topWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:topWave
+      color1: topColor1
+      color2: topColor2,
+      isFlipped: isFlippedTop
+    } -%}
+  {%- endif -%} 
+ 
+  <section class="c-featured-content-6">
+    <div class="c-featured-content-6__outer">
+      <div class="c-featured-content-6__inner">
+
+        {%- comment -%} Images/Illustration Wrapper {%- endcomment -%}
+        <div class="c-featured-content-6__image-wrapper {% if image2 == blank %}has-1-image{% endif %}">
+          {%- comment -%} Image 1 {%- endcomment -%}
+          <div class="c-featured-content-6__image-1-container o-responsive-image-container">
+            {%- render 'tool.picture' with {
+              image: image1,
+              class: "c-featured-content-6__image-1 o-responsive-image",
+              width: 603,
+              imageSizes:'180,240,400'
+              sizes: '375,500,750',
+              lazy:true
+            } -%}
+          </div>
+          {%- comment -%} Image 2 {%- endcomment -%}
+          <div class="c-featured-content-6__image-2-container o-responsive-image-container">
+            {%- render 'tool.picture' with {
+              image: image2,
+              class: "c-featured-content-6__image-2 o-responsive-image",
+              width: 603,
+              imageSizes:'180,240,400'
+              sizes: '375,500,750'
+              lazy:true
+            } -%}
+          </div>
+        </div>  
+        {%- comment -%} Content Container {%- endcomment -%}
+        <div class="c-featured-content-6__content-container">
+  
+          {%- comment -%} Title{%- endcomment -%}
+          <h3 class="c-featured-content-6__title">
+            {{- title -}}
+          </h3>
+
+          {%- comment -%} Content {%- endcomment -%}
+          {%- if content != blank -%}
+            <div class="c-featured-content-6__content o-paragraph featured__content">
+              {{- content -}}
+            </div>
+          {%- endif -%}
+
+          {%- comment -%} Call to action {%- endcomment -%}
+          {%- if ctaLabel != blank and ctaUrl != blank -%}
+            <div class="c-featured-content-6__cta-container">
+              <a
+                href="{{- ctaUrl -}}"
+                class="c-featured-content-6__cta-btn o-link"
+              >
+                {{- ctaLabel -}}
+              </a>
+            </div>
+          {%- endif -%}
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+  {%- comment -%} Bottom Wave {%- endcomment -%}
+  {%- if bottomWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:bottomWave
+      color1: bottomColor1
+      color2: bottomColor2,
+      isFlipped: isFlippedBottom
+    } -%}
+  {%- endif -%}
+
+{%- endif -%}
+
+
+{% schema %}
+{
+  "name": "Featured Content 6",
+  "class": "c-section c-section__featured-content-6",
+  "presets": [
+    {
+      "category": "Content",
+      "name":"Featured Content 6"
+    }
+  ],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image 1",
+      "info": "Dimensions: 920px X 1206px"
+    },
+    {
+      "type": "image_picker",
+      "id": "image-2",
+      "label": "Image 2",
+      "info": "Dimensions: 920px X 1206px"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "text",
+      "id": "cta-label",
+      "label": "CTA Label"
+    },
+    {
+      "type": "url",
+      "id": "cta-url",
+      "label": "CTA Url"
+    },
+    {
+      "type": "header",
+      "content": "Top Wave"
+    },
+    {
+      "type": "select",
+      "id": "top-wave",
+      "label": "Top Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "top-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "top-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-top-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

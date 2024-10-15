@@ -1,0 +1,54 @@
+{%- comment -%}
+  Video Tool
+    Tool to create a HTML5 video element with optional poster attribute.
+    Supports a SRC path to a mp4 video from theme settings or Accentuate MF.
+
+    Params: {
+      src:string|AccentuateString
+      class?:string
+      controls?:boolean = false
+      loop?:boolean = true
+      poster?:Image|string
+      posterWidth?:number = 1000
+    }
+
+  Version
+    1.0.0 - 2022/04/15
+{%- endcomment -%}
+
+{%- liquid
+  assign posterWidth = posterWidth | default: 1000
+  assign posterWidth = posterWidth | append: 'x'
+  assign loop = loop | default: true
+  assign controls = controls | default: false
+
+  if src.first.src != blank
+    assign src = src.first.src
+  endif
+
+  if poster.first.src != blank and poster.first.cloudinary_src != blank
+    assign poster = poster.first.cloudinary_src
+
+  elsif poster contains "//cdn.shopify"
+    assign poster = poster
+
+  elsif poster != blank
+    assign poster = poster | img_url: posterWidth
+  endif
+-%}
+
+{% if src != blank and src contains '.mp4' -%}
+  <video
+    {% unless autoplay == false %}autoplay="autoplay"{% endunless %}
+    playsinline
+    {% if loop == true %}loop{% endif %}
+    {% if controls == true %}controls{% endif %}
+    onclick="this.paused ? this.play() : this.pause()"
+    {% if autoplay == false %}title="{{ 'general.controls.video_play_title' | t }}"{% endif %}
+    muted="muted"
+    class="{{ class }}"
+    {% if poster != blank %}poster="{{ poster }}"{% endif -%}
+  >
+    <source src="{{ src }}" type="video/mp4">
+  </video>
+{%- endif -%}

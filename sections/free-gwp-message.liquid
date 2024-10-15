@@ -1,0 +1,9 @@
+{%- assign message = shop.metafields.globals.gwp_message | escape -%}
+
+{%- if message != blank -%}
+  <div class="c-gwp-message" data-gwp-message>
+    <p class="c-gwp-message__msg">
+      {{- message -}}
+    </p>
+  </div>
+{%- endif -%}

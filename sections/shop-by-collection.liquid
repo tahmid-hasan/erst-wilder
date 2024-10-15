@@ -1,0 +1,73 @@
+{{ 'sections.page.css' | asset_url | stylesheet_tag }}
+
+<section class="c-generic">
+  <div class="c-generic__content o-wysiwyg shop-by-wide">
+    {% if section.settings.top_heading != blank %}<h1>{{ section.settings.top_heading }}</h1>{% endif %}
+    {% if section.settings.intro_paragraph != blank %}<p class="text-center">{{ section.settings.intro_paragraph }}</p>{% endif %}
+    
+    <div class="shop-by-container">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'collection_block' %}
+            <div class="shop-by-image">
+              <a class="shop-by-image-link" href="/collections/{{ block.settings.link_to }}"> 
+                {% if block.settings.block_image == blank %}
+                    {{ 'product-1' | placeholder_svg_tag }}
+                {%  else %}
+                <img class="one-quarter-shop-by-image" src="{{ block.settings.block_image | img_url: 'master' }}" /> 
+                  {%  endif %}
+             </a>
+            <div class="shop-by-text-link">
+              <a class="shop-by-image-link" href="/collections/{{ block.settings.link_to }}">{{ block.settings.block_title }}</a>
+            </div>
+          </div>
+        {% endcase %}
+    {% endfor %}
+  </div>    
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Shop By Listing",
+    "settings": [
+      {
+        "type":"text",
+        "id":"top_heading",
+        "default": "Heading",
+        "label":"Top Heading"
+      },
+      {
+        "type":"text",
+        "id":"intro_paragraph",
+        "default": "Paragraph",
+        "label":"Intro paragraph text"
+      }
+    ],
+    "blocks": [
+      {
+        "type":"collection_block",
+        "name": "Collection Block",
+        "settings": [
+          {
+            "type":"text",
+            "id":"block_title",
+            "default": "Collection Title Here",
+            "label":"Title"
+          },
+          {
+            "type": "image_picker",
+            "id": "block_image",
+            "label": "Image",
+            "info": "Dimensions: 500px square"
+          },
+          {
+            "type": "collection",
+            "id": "link_to",
+            "label": "Collection to link to"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,216 @@
+{{ 'sections.donations-featured.css' | asset_url | stylesheet_tag }}
+
+{%- liquid 
+  assign title =  section.settings.title | escape 
+  assign image =  section.settings.image 
+  assign paragraph = section.settings.paragraph | newline_to_br
+  assign linkText = section.settings.link-text | escape 
+  assign linkUrl = section.settings.link-url 
+
+  assign topWave = section.settings.top-wave
+  assign topColor1 = section.settings.top-color-1
+  assign topColor2 = section.settings.top-color-2
+  assign isFlippedTop = section.settings.flip-top-wave
+
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+-%}
+
+
+{%- if image != blank and title != blank -%}
+
+  {%- comment -%} Top Wave {%- endcomment -%}
+  {%- if topWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:topWave
+      color1: topColor1
+      color2: topColor2,
+      isFlipped: isFlippedTop
+    } -%}       
+  {%- endif -%}
+
+  <div class="c-donations-featured">
+    <div class="c-donations-featured__outer">
+      
+      {%- comment -%} Inner {%- endcomment -%}
+      <div class="c-donations-featured__inner">
+        
+        {%- comment -%} Featured {%- endcomment -%}
+        <div class="c-donations-featured__image-svg-wrapper">
+
+          {%- comment -%} Image {%- endcomment -%}
+          <div class="c-donations-featured__image-wrapper">
+            <div class="c-donations-featured__image-container o-responsive-image-container">
+              {%- render 'tool.picture' with {
+                image:image,
+                class: 'c-donations-featured__image o-responsive-image',
+                width:860,
+                imageSizes: '284,375,562,825',
+                sizes:'375,500,750,1100'
+              } -%}
+            </div>
+          </div>        
+
+          {%- comment -%} Background Blob {%- endcomment -%}
+          {%- render 'svg.pink-blob-outline'-%}
+        </div>
+
+
+        {%- comment -%} Text Content {%- endcomment -%}
+        <div class="c-donations-featured__content">
+
+          {%- comment -%} Title {%- endcomment -%}
+          <h4 class="c-donations-featured__title">{{- title -}}</h4>
+
+          {%- comment -%} Paragraph {%- endcomment -%}
+          {%- if paragraph != blank -%}
+            <p class="c-donations-featured__paragraph o-paragraph">{{- paragraph -}}</p>
+          {%- endif -%}
+
+          {%- comment -%} CTA {%- endcomment -%}
+          {%- if linkText != blank and linkUrl != blank -%}
+            <a href="{{- linkUrl -}}" class="o-link c-donations-featured__link">{{- linkText -}}</a>
+          {%- endif -%}
+        </div>
+      
+      </div>
+    </div>
+   
+  </div>
+
+  {%- comment -%} Bottom Wave {%- endcomment -%}
+  {%- if bottomWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:bottomWave
+      color1: bottomColor1
+      color2: bottomColor2,
+      isFlipped: isFlippedBottom
+    } -%}
+  {%- endif -%}    
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Featured Content",
+  "class": "c-section c-section__donations-featured",
+  "settings": [  
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Featured Image",
+      "info":"1720px X 1156px"
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph",
+      "label": "Paragraph"
+    },
+    {
+      "type": "text",
+      "id": "link-text",
+      "label": "Link Text",
+      "default": "Suggest a Charity"
+    },
+    {
+      "type": "url",
+      "id": "link-url",
+      "label": "Link URL"
+    },
+    {
+      "type": "header",
+      "content": "Top Wave"
+    },
+    {
+      "type": "select",
+      "id": "top-wave",
+      "label": "Top Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "top-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "top-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-top-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

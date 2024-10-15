@@ -1,0 +1,75 @@
+
+{{ 'sections.product-template.css' | asset_url | stylesheet_tag }}
+{{ 'sections.product-template.js' | asset_url | script_tag }}
+
+{% liquid
+  assign wishlist = 'product.main.wishlist' | t | escape
+  assign addToWishlist = section.settings.add_to_wishlist | default: wishlist
+-%}
+
+<div class="c-product" data-product-template>
+  <div class="c-product__inner">
+    <div class="c-product__main">
+
+      {%- comment -%} Title {%- endcomment -%}
+      <h1 class="c-product__title o-heading--2">
+        {{- product.title | escape -}}
+      </h1>
+
+      {%- render 'product-image-carousel' -%}
+
+      {%- render 'object.product-pricing' with {
+        class: 'c-product__pricing'
+        price: product.price,
+        comparePrice: product.compare_at_price
+      } -%}
+
+      <div class="c-product__purchase-wrapper">
+        {%- render 'object.quantity-selector' with {
+          quantity: product.first_available_variant.quantity,
+          min: 1,
+          max: 10
+          item: product.first_available_variant
+        } -%}
+      </div>
+
+      <div class="c-product__payment-options">
+        <p class="c-product__payment-options-label">
+          {{ 'product.main.pay_later' | t }}
+        </p>
+      </div>
+
+      <div class="c-product__wishlist" data-wishlist>
+        {%- render 'svg.heart' with {
+          class: 'c-product__wishlist-icon'
+          attributes:'data-wishlist-icon'
+        } -%}
+        <p class="c-product__wishlist-label">
+          {{- addToWishlist | escape -}}
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product Gift Card",
+  "class": "c-section c-section__product-gift-card",
+  "settings": [
+   {
+      "type": "text",
+      "id": "add_to_wishlist",
+      "label": "Wishlist Label",
+      "default": "Add to Wishlist"
+    }
+  ],
+  "presets": [
+    {
+      "category": "Product",
+      "name":"Product Gift Card"
+    }
+  ]
+}
+{% endschema %}

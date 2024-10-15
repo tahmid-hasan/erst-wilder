@@ -1,0 +1,33 @@
+{
+  "sections": {
+    "page-template-page": {
+      "type": "page-template-page",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "16523244642885ec4b": {
+      "type": "content-heading-double-cta",
+      "settings": {
+        "title": "Have an amazing idea for an Erstwilder design? Drop it into our suggestion box.",
+        "subtitle": "Some of our best ideas for designs and collections have come from you, our amazing community. And all of your ideas are shared directly with out creative team. So if you're sitting on the next brilliant design or collection concept and want to see it brought to life, click the link below and tell us what's on your mind. And just so it's totally transparent, by submitting your suggestion you agree to be added to our email database - we're assuming if you're taking the time to give us your idea you probably want to hear about what's coming up next!",
+        "cta-label-1": "Submit your suggestion >",
+        "cta-link-1": "https:\/\/www.erstwilder.com\/submit-a-design",
+        "cta-label-2": "Login",
+        "cta-link-2": "",
+        "top-wave": "0",
+        "top-color-1": "",
+        "top-color-2": "",
+        "flip-top-wave": false,
+        "bottom-wave": "2",
+        "bottom-color-1": "#f8f3ec",
+        "bottom-color-2": "#f4e9d2",
+        "flip-bottom-wave": false
+      }
+    }
+  },
+  "order": [
+    "page-template-page",
+    "16523244642885ec4b"
+  ]
+}

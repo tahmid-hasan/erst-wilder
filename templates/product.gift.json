@@ -1,0 +1,36 @@
+{
+  "sections": {
+    "template-gift-card": {
+      "type": "template-gift-card",
+      "settings": {
+      }
+    },
+    "product-details-gift": {
+      "type": "product-details-gift",
+      "settings": {
+      }
+    },
+    "instagram-feed-cta": {
+      "type": "instagram-feed-cta",
+      "settings": {
+        "title": "Join us on our Instagram",
+        "preheading": "Socials",
+        "cta-label": "@erstwilder",
+        "ig-link": "https:\/\/www.instagram.com\/erstwilder",
+        "instagram-script": ""
+      }
+    },
+    "product-recently-viewed": {
+      "type": "product-recently-viewed",
+      "settings": {
+        "title": "Did these catch your eye?"
+      }
+    }
+  },
+  "order": [
+    "template-gift-card",
+    "product-details-gift",
+    "instagram-feed-cta",
+    "product-recently-viewed"
+  ]
+}

@@ -1,0 +1,188 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Process Creative",
+    "theme_version": "2.0.0",
+    "theme_author": "Process Creative",
+    "theme_documentation_url": "https:\/\/processcreative.com.au",
+    "theme_support_url": "https:\/\/processcreative.com.au",
+    "theme_packaged_with": "@process-creative\/slate-tools@2.1.36"
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon image",
+        "info": "Will be scaled down to 32 x 32px"
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "text",
+        "id": "social_link_facebook",
+        "label": "Facebook link"
+      },
+      {
+        "type": "text",
+        "id": "count_facebook",
+        "label": "Facebook Followers Count"
+      },
+      {
+        "type": "text",
+        "id": "social_link_instagram",
+        "label": "Instagram link"
+      },
+      {
+        "type": "text",
+        "id": "count_instagram",
+        "label": "Instagram Followers Count"
+      },
+      {
+        "type": "text",
+        "id": "social_link_tiktok",
+        "label": "TikTok link"
+      },
+      {
+        "type": "text",
+        "id": "count_tiktok",
+        "label": "TikTok Ticks Count"
+      },
+      {
+        "type": "text",
+        "id": "social_link_pinterest",
+        "label": "Pinterest link"
+      },
+      {
+        "type": "text",
+        "id": "count_pinterest",
+        "label": "Pinterest Followers Count"
+      }
+    ]
+  },
+  {
+    "name": "Extras",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "cart_enable_notes",
+        "label": "Enable Cart Notes?",
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "Payment Option Information",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Payment Icon 1"
+      },
+      {
+        "type": "text",
+        "id": "payment-name-1",
+        "label": "Payment Name"
+      },
+      {
+        "type": "textarea",
+        "id": "payment-logo-1",
+        "label": "Payment Logo",
+        "info": "Paste svg code here."
+      },
+      {
+        "type": "richtext",
+        "id": "payment-content-1",
+        "label": "Payment Content",
+        "info": "Content will be used in modal"
+      },
+      {
+        "type": "header",
+        "content": "Payment Icon 2"
+      },
+      {
+        "type": "text",
+        "id": "payment-name-2",
+        "label": "Payment Name"
+      },
+      {
+        "type": "textarea",
+        "id": "payment-logo-2",
+        "label": "Payment Logo",
+        "info": "Paste svg code here."
+      },
+      {
+        "type": "richtext",
+        "id": "payment-content-2",
+        "label": "Payment Content",
+        "info": "Content will be used in modal"
+      },
+      {
+        "type": "header",
+        "content": "Payment Icon 3"
+      },
+      {
+        "type": "text",
+        "id": "payment-name-3",
+        "label": "Payment Name"
+      },
+      {
+        "type": "textarea",
+        "id": "payment-logo-3",
+        "label": "Payment Logo",
+        "info": "Paste svg code here."
+      },
+      {
+        "type": "richtext",
+        "id": "payment-content-3",
+        "label": "Payment Content",
+        "info": "Content will be used in modal"
+      },
+      {
+        "type": "header",
+        "content": "Payment Icon 4"
+      },
+      {
+        "type": "text",
+        "id": "payment-name-4",
+        "label": "Payment Name"
+      },
+      {
+        "type": "textarea",
+        "id": "payment-logo-4",
+        "label": "Payment Logo",
+        "info": "Paste svg code here."
+      },
+      {
+        "type": "richtext",
+        "id": "payment-content-4",
+        "label": "Payment Content",
+        "info": "Content will be used in modal"
+      },
+      {
+        "type": "header",
+        "content": "Payment Icon 5"
+      },
+      {
+        "type": "text",
+        "id": "payment-name-5",
+        "label": "Payment Name"
+      },
+      {
+        "type": "textarea",
+        "id": "payment-logo-5",
+        "label": "Payment Logo",
+        "info": "Paste svg code here."
+      },
+      {
+        "type": "richtext",
+        "id": "payment-content-5",
+        "label": "Payment Content",
+        "info": "Content will be used in modal"
+      }
+    ]
+  }
+]

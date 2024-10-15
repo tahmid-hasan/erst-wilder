@@ -1,0 +1,232 @@
+{%- comment -%}
+  Featured products carousel
+    Section to show products for a selected collection in a carousel
+
+  Version:
+    1.0.0 - 2021/09/21
+{%- endcomment -%}
+
+{{ 'sections.products-carousel.css' | asset_url | stylesheet_tag }}
+{{ 'sections.products-carousel.js' | asset_url | script_tag }}
+
+{%- comment -%} Assign variables {%- endcomment -%}
+{%- liquid
+  assign title = section.settings.title | escape
+  assign ctaLabel = section.settings.cta-label | escape
+  assign ctaUrl = section.settings.cta-url
+  assign featuredCollection = section.settings.featured-collection
+
+  assign topWave = section.settings.top-wave
+  assign topColor1 = section.settings.top-color-1
+  assign topColor2 = section.settings.top-color-2
+  assign isFlippedTop = section.settings.flip-top-wave
+
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+-%}
+
+{%- if featuredCollection.products.size > 0 -%}
+
+  {%- comment -%} Top Wave {%- endcomment -%}
+  {%- if topWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:topWave
+      color1: topColor1
+      color2: topColor2,
+      isFlipped: isFlippedTop
+    } -%}
+  {%- endif -%}
+
+  <section class="c-products-carousel" data-products-carousel-section>
+    <div class="c-products-carousel__inner">
+      {%- comment -%} Title {%- endcomment -%}
+      {%- if title != blank -%}
+        <h2 class="c-products-carousel__title o-heading--2">
+          {{- title -}}
+        </h2>
+
+        {%- comment -%} CTA {%- endcomment -%}
+        {%- if ctaLabel != blank and ctaUrl != blank -%}
+          <div class="c-products-carousel__cta-container">
+            <a href="{{- ctaUrl -}}" class="c-products-carousel__cta o-link">
+              {{- ctaLabel -}}
+            </a>
+          </div>
+        {%- endif -%}
+
+        {%- comment -%} Carousel {%- endcomment -%}
+        <div class="c-products-carousel__carousel-container">
+          <div class="c-products-carousel__carousel" data-products-carousel>
+            {%- for featuredProduct in featuredCollection.products limit: 8 -%}
+              <div class="c-products-carousel__slide" data-products-carousel-slide>
+                {%- render 'object.product-thumbnail' with {
+                  class: 'c-products-carousel__thumbnail',
+                  thumbnailProduct: featuredProduct
+                } -%}
+              </div>
+            {%- endfor -%}
+          </div>
+
+          {%- comment -%} Navigation {%- endcomment -%}
+          {%- if featuredCollection.products.size > 1 -%}
+            <div class="c-products-carousel__navigation" data-carousel-navigation>
+              <button
+                data-carousel-previous
+                class="c-products-carousel__button is-previous"
+              >
+                {%- render 'icon.chevron-left' with {
+                  class: 'c-products-carousel__icon'
+                } -%}
+              </button>
+
+              <button
+                data-carousel-next
+                class="c-products-carousel__button is-next"
+              >
+                {%- render 'icon.chevron-right' with {
+                  class: 'c-products-carousel__icon'
+                } -%}
+              </button>
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </section>
+
+  {%- comment -%} Bottom Wave {%- endcomment -%}
+  {%- if bottomWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:bottomWave
+      color1: bottomColor1
+      color2: bottomColor2,
+      isFlipped: isFlippedBottom
+    } -%}
+  {%- endif -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Featured Products",
+  "class": "c-section c-section__featured-products-carousel",
+  "presets": [
+    {
+      "category": "Carousel",
+      "name":"Featured Products Carousel"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "cta-label",
+      "label": "CTA Label"
+    },
+    {
+      "type": "url",
+      "id": "cta-url",
+      "label": "CTA Url"
+    },
+    {
+      "type": "collection",
+      "id": "featured-collection",
+      "label": "Featured Collection",
+      "info": "This is the collection of products you want to display in the carousel. Will be capped at 8 products."
+    },
+    {
+      "type": "header",
+      "content": "Top Wave"
+    },
+    {
+      "type": "select",
+      "id": "top-wave",
+      "label": "Top Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "top-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "top-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-top-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

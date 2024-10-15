@@ -1,0 +1,47 @@
+{% if customer %} 
+<div class="points-balance-show">
+  <span id="smile-points-balance"></span>  <a id ="smile-redeem-link" href="/pages/rewards"><u></u></a>
+   </div>
+  {% endif %}
+  
+<script language="javascript">
+function initialiseCustomerPointsBalance() {
+  window.SmileUI.customerReady().then(function (customer) {
+    if (!customer || typeof customer.points_balance !== 'number') {
+      return;
+    }    var pointsBalanceElement = document.querySelector('#smile-points-balance');
+    if (!pointsBalanceElement) {
+      return;
+    }    if (customer.points_balance > 0) {
+      pointsBalanceElement.textContent = 'You have ' + customer.points_balance + ' points';
+    }
+  });
+}if (window.SmileUI) {
+  initialiseCustomerPointsBalance();
+} else {
+  document.addEventListener('smile-ui-loaded', initialiseCustomerPointsBalance);
+}
+
+  
+</script>
+
+<script>
+
+  function initialiseCustomerPointsBalance() {
+  window.SmileUI.customerReady().then(function (customer) {
+    if (!customer || typeof customer.points_balance !== 'number') {
+      return;
+    }    var pointsBalanceElement = document.querySelector('#smile-redeem-link');
+    if (!pointsBalanceElement) {
+      return;
+    }    if (customer.points_balance > 0) {
+      pointsBalanceElement.textContent = '.  Redeem >';
+    }
+  });
+}if (window.SmileUI) {
+  initialiseCustomerPointsBalance();
+} else {
+  document.addEventListener('smile-ui-loaded', initialiseCustomerPointsBalance);
+}
+  
+</script>

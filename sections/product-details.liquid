@@ -1,0 +1,454 @@
+
+{{ 'sections.product-details.js' | asset_url | script_tag }}
+{{ 'sections.product-details.css' | asset_url | stylesheet_tag }}
+
+{% liquid 
+  assign topWave = section.settings.top-wave
+  assign topColor1 = section.settings.top-color-1
+  assign topColor2 = section.settings.top-color-2
+  assign isFlippedTop = section.settings.flip-top-wave
+
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+
+  assign mf = product.metafields.details 
+  assign dimensions = mf['dimensions'] | escape
+  assign charityColor = mf['charity_badge_colour'] | default: '#EDB381' | escape
+  assign charityIcon = mf['charity_icon'] 
+  assign charityHeading = mf['charity_heading'] | escape
+  assign charityDescription = mf['charity_description']  | escape
+  assign story = mf['story'] | newline_to_br
+  assign care = mf['care'] | newline_to_br
+  assign image1 = mf["image-one"] | img_url | replace: '//', ''
+  assign image2 = mf["image-two"] | img_url | replace: '//', ''
+  assign storyLabel = 'product.details.design_story' | t | escape
+  assign careLabel = 'product.details.care' | t | escape
+  assign returnsLabel = 'product.details.returns' | t | escape
+  assign shippingLabel = 'product.details.shipping' | t | escape
+  assign shipping = section.settings.shipping-info
+  assign returns = section.settings.returns-info
+  assign hideBlob1 = mf['hide_blob_1']
+  if hideBlob1 == null
+    assign hideBlob1 = true
+  endif
+  assign blob1TitleOverride = mf['blob_1_title_override'] | escape
+  assign blob1DescOverride = mf['blob_1_description_override'] | escape
+
+  if blob1TitleOverride != blank 
+    assign blob1Title = blob1TitleOverride
+  else 
+    assign blob1Title = section.settings.blob-one-heading | escape
+  endif
+
+
+  if blob1DescOverride != blank 
+    assign blob1Desc = blob1DescOverride
+  else 
+    assign blob1Desc = section.settings.blob-one-desc | escape
+  endif
+-%}
+
+{%- assign tabsCount = 0 -%}
+{% if story != blank %}{%- assign tabsCount = tabsCount | plus: 1 -%}{% endif %}
+{% if returns != blank %}{%- assign tabsCount = tabsCount | plus: 1 -%}{% endif %}
+{% if shipping != blank %}{%- assign tabsCount = tabsCount | plus: 1 -%}{% endif %}
+{% if care != blank %}{%- assign tabsCount = tabsCount | plus: 1 -%}{% endif %}
+
+
+{%- comment -%} Top Wave {%- endcomment -%}
+{%- if topWave != "0" -%}
+  {%- render 'object.wave' with {
+    waveNumber:topWave
+    color1: topColor1
+    color2: topColor2,
+    isFlipped: isFlippedTop
+  } -%}
+{%- endif -%}
+
+<div class="c-product-details" data-product-details>
+  <div class="c-product-details__outer">   
+    <div class="c-product-details__inner">
+
+      {%- comment -%} Blobs and featured Images -- Mobile & Tablet {%- endcomment -%}
+      {%- if 
+        mf["image-one"] != blank or 
+        mf["image-two"] != blank or 
+        charityHeading != blank or 
+        charityDescription != blank 
+      -%}
+        <div class="c-product-details__blob-image-wrapper">
+
+          <div class="c-product-details__featured-blob-wrapper">
+            {%- assign isBlobOnePresent = false -%}
+            {%- comment -%} Pick & Mix Blob {%- endcomment -%}
+            {%- if blob1Title != blank and hideBlob1 != true -%}
+              {% assign isBlobOnePresent = true %}
+              <div class="c-product-details__featured-blob-one">
+                {%- render 'svg.pick-and-mix-blob' -%}
+
+                <div class="c-product-details__blob-one-content">
+                  <h6 class="c-product-details__blob-one-heading">
+                    {{- blob1Title | escape -}}
+                  </h6>
+                  <p class="c-product-details__blob-one-description">
+                    {{- blob1Desc | escape -}}
+                  </p>
+                </div>
+              </div>  
+
+            {%- endif -%}
+
+            {%- comment -%} Charity Blob {%- endcomment -%}
+            {%- if charityHeading != blank or charityDescription != blank -%}
+
+                <div class="c-product-details__featured-blob-two {% if isBlobOnePresent == false %}no-blob-one{% endif %}">
+                  {%- render 'svg.charity-blob' with {
+                    fill: charityColor
+                  } -%}
+
+                  <div class="c-product-details__blob-two-content">
+
+                    {%- if charityIcon != blank -%}
+                      <div class="c-product-details__blob-two-icon">
+                        {{charityIcon}}
+                      </div>
+                    {%- endif -%}
+
+                    {%- if charityHeading != blank -%}
+                      <h6 class="c-product-details__blob-two-heading">
+                        {{charityHeading}}
+                      </h6>
+                    {%- endif -%}
+                    
+                    {%- if charityDescription != blank -%}
+                      <p class="c-product-details__blob-two-description">
+                        {{charityDescription}}
+                      </p>
+                    {%- endif -%}
+                  </div>
+                </div>
+
+            {%- endif -%}
+          </div>
+
+          {%- comment -%} Featured Images {%- endcomment -%}
+          {%- if mf["image-one"] != blank or mf["image-two"] != blank -%}
+            <div class="c-product-details__featured-image-wrapper">
+
+              {%- if mf["image-one"] != blank -%}
+                <div class="c-product-details__featured-image-wrapper-one">
+                  <div class="c-product-details__featured-image-container-one o-responsive-image-container">
+                    {%- render 'tool.picture' with {
+                      image: image1,
+                      width: 292,
+                      sizes: '375,500',
+                      imageSizes:'158,200'
+                      lazy: true,
+                      class:'o-responsive-image'
+                    } -%}
+                  </div>
+                </div>
+              {%- endif -%}
+            
+              {%- if mf["image-two"] != blank -%} 
+                <div class="c-product-details__featured-image-wrapper-two">
+                  <div class="c-product-details__featured-image-container-two o-responsive-image-container">
+                    {%- render 'tool.picture' with {
+                      image: image2,
+                      width: 369,
+                      sizes: '375,500',
+                      imageSizes:'188,250'
+                      lazy: true,
+                      class:'o-responsive-image'
+                    } -%}
+                  </div>
+                </div>
+              {%- endif -%}
+
+              {%- comment -%} Bird Icon {%- endcomment -%}
+              {%- render 'object.icon' with {
+                icon:'dove'
+                class:'c-product-details__featured-image-icon'
+              } -%}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      {%- comment -%} Featured Images and Blobs Desktop{%- endcomment -%}
+      {%- comment -%} Left Blob and Image{%- endcomment -%}
+      {%- if blob1Title != blank or blob1Desc != blank or mf["image-one"] != blank -%}
+        <div class="c-product-details__left-image-blob-wrapper {% if mf["image-one"] == blank -%} has-no-image{% endif %}" >
+
+          {%- comment -%} Pick & Mix Blob {%- endcomment -%}
+          {%- if blob1Title != blank and hideBlob1 != true  -%}
+            <div class="c-product-details__featured-blob-one">
+              {%- render 'svg.pick-and-mix-blob' -%}
+
+              <div class="c-product-details__blob-one-content">
+                {%- if blob1Title != blank -%}
+                  <h6 class="c-product-details__blob-one-heading">
+                    {{- blob1Title | escape -}}
+                  </h6>
+                {%- endif -%}
+               
+                {%- if blob1Desc != blank -%}
+                  <p class="c-product-details__blob-one-description">
+                    {{- blob1Desc | escape -}}
+                  </p>
+                {%- endif -%}
+                
+              </div>
+            </div>  
+          {%- endif -%}
+
+          {%- comment -%} Featured Image One Desktop {%- endcomment -%}
+          {%- if mf["image-one"] != blank -%}
+            <div class="c-product-details__featured-image-wrapper-one">
+              <div class="c-product-details__featured-image-container-one o-responsive-image-container">
+                {%- render 'tool.picture' with {
+                  image: image1,
+                  width: 292,
+                  sizes: '375,500',
+                  imageSizes:'158,200'
+                  lazy: true,
+                  class:'o-responsive-image'
+                } -%}
+              </div>
+            
+            </div>
+          {%- endif -%}
+
+
+        </div> 
+      {%- endif -%}
+
+      {%- comment -%} Right Image and Bird {%- endcomment -%}
+      {%- if  mf["image-two"] != blank  -%}
+        <div class="c-product-details__right-image-wrapper">
+          <div class="c-product-details__featured-image-wrapper-two">
+            <div class="c-product-details__featured-image-container-two o-responsive-image-container">
+              {%- render 'tool.picture' with {
+                image: image2,
+                width: 369,
+                sizes: '375,500',
+                imageSizes:'188,250'
+                lazy: true,
+                class:'o-responsive-image'
+              } -%}
+            </div>
+          </div>
+          {%- comment -%} Bird Icon {%- endcomment -%}
+          {%- render 'object.icon' with {
+            icon:'dove',
+            class:'c-product-details__featured-image-icon'
+          } -%}
+        </div>
+      {%- endif -%}
+      
+      {%- comment -%} Product Description {%- endcomment -%}
+      {%- if product.description != blank -%}
+        <div class="c-product-details__description o-paragraph">
+          {{- product.description -}}
+        </div>      
+      {%- endif -%}
+
+      {%- comment -%} Product Dimension {%- endcomment -%}
+      {%- if dimensions != blank -%}
+        <p class="c-product-details__dimensions o-paragraph--2">
+          {{dimensions}}
+        </p>      
+      {%- endif -%}
+
+      {%- comment -%} Product Accordions {%- endcomment -%}
+      <div class="c-product-details__accordions has-{{tabsCount}}-tabs" data-accordion-container data-tabs-count="{{tabsCount}}">
+
+        {%- comment -%} Design Story {%- endcomment -%}
+        {%- if story != blank -%}
+          {%- render 'object.accordion-slide' with {
+            label: storyLabel,
+            content: story
+            open:true,
+            iconColor:'#E4987F'
+          } -%}
+        {%- endif -%}
+
+        {%- comment -%} Shipping {%- endcomment -%}
+        {%- if shipping != blank -%}
+          {%- render 'object.accordion-slide' with {
+            label: shippingLabel,
+            content: shipping,
+            iconColor:'#E4987F'
+          } -%}
+        {%- endif -%} 
+
+        {%- comment -%} Returns {%- endcomment -%}
+        {%- if returns != blank -%}
+          {%- render 'object.accordion-slide' with {
+            label: returnsLabel,
+            content: returns,
+            iconColor:'#E4987F'
+          } -%}
+        {%- endif -%}
+
+
+        {%- comment -%} Care {%- endcomment -%}
+        {%- if care != blank -%}
+          {%- render 'object.accordion-slide' with {
+            label: careLabel,
+            content: care,
+            iconColor:'#E4987F'
+          } -%}
+        {%- endif -%}
+
+        {%- comment -%} Active Tab Blob{%- endcomment -%}
+        {%- render 'svg.active-tab-blob' with {
+          class:'c-product-details__tab-blob'
+        } -%}
+        
+      </div>    
+    </div>
+
+  </div>
+</div>
+
+
+{%- comment -%} Bottom Wave {%- endcomment -%}
+{%- if bottomWave != "0" -%}
+  {%- render 'object.wave' with {
+    waveNumber:bottomWave
+    color1: bottomColor1
+    color2: bottomColor2,
+    isFlipped: isFlippedBottom
+  } -%}
+{%- endif -%}
+
+
+{% schema %}
+{
+  "name": "Product Details",
+  "class": "c-section c-section__product-details",
+  "settings": [
+    {
+      "type": "text",
+      "id": "blob-one-heading",
+      "label": "Blob One Heading",
+      "default": "Pick & Mix"
+    },
+    {
+      "type": "text",
+      "id": "blob-one-desc",
+      "label": "Blob One description",
+      "default": "Buy more & save"
+    },
+    {
+      "type": "richtext",
+      "id": "shipping-info",
+      "label": "Shipping Info",
+      "info":"Shipping info will be used across all products"
+    },
+    {
+      "type": "richtext",
+      "id": "returns-info",
+      "label": "Returns Info",
+      "info":"Returns info will be used across all products"
+    },
+    {
+      "type": "header",
+      "content": "Top Wave"
+    },
+    {
+      "type": "select",
+      "id": "top-wave",
+      "label": "Top Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "top-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "top-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-top-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    } 
+  ],
+  "presets": [
+    {
+      "category": "Content",
+      "name":"Product Details"
+    }
+  ]
+}
+{% endschema %}

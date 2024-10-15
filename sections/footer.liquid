@@ -1,0 +1,212 @@
+{%- comment -%}
+  Footer
+
+  Version:
+    1.0.0 - 2021/08/24
+{%- endcomment -%}
+
+{{ 'sections.footer.css' | asset_url | stylesheet_tag }}
+{{ 'sections.footer.js' | asset_url | script_tag }}
+
+{%- comment -%} Assign variables {%- endcomment -%}
+{%- liquid
+  assign brandMessage = section.settings.brand-message | escape
+  assign subscriptionTitle = section.settings.subscription-title | escape
+  assign subscriptionSubtitle = section.settings.subscription-subtitle | escape
+  assign socialsArray = 'Facebook,Instagram,TikTok,Pinterest' | split: ','
+  assign menu = linklists[section.settings.menu]
+  assign featureText = section.settings.feature-text
+
+-%}
+
+<footer class="c-footer" data-footer>
+
+  <div class="c-footer__inner">
+    {%- comment -%} Brand Messaging {%- endcomment -%}
+    {%- if brandMessage != blank -%}
+      <div class="c-footer__brand-container">
+        <p class="c-footer__brand-message o-heading--3">
+          {{- brandMessage -}}
+        </p>
+
+        <img
+          src="{{ 'svg.mobile-bird-and-trail.svg' | asset_url }}"
+          alt=""
+          width="314"
+          height="84"
+          class="c-footer__brand-image is-mobile"
+        />
+
+        <img
+          src="{{ 'svg.desktop-bird-and-trail.svg' | asset_url }}"
+          alt=""
+          width="665"
+          height="116"
+          class="c-footer__brand-image is-desktop"
+        />
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} Columns {%- endcomment -%}
+    <div class="c-footer__columns">
+      {%- comment -%} Subscribe (with socials) {%- endcomment -%}
+      <div class="c-footer__subscribe-socials">
+        <div class="c-footer__subscribe">
+          {%- if subscriptionTitle != blank -%}
+            <p class="c-footer__subscribe-title o-heading--4">
+              {{- subscriptionTitle -}}
+            </p>
+          {%- endif -%}
+
+          {%- if subscriptionSubtitle -%}
+            <p class="c-footer__subscribe-subtitle">
+              {{- subscriptionSubtitle -}}
+            </p>
+          {%- endif -%}
+
+          {%- comment -%} Form {%- endcomment -%}
+          {%- render 'form.newsletter' with {
+            class: 'c-footer__form'
+          } -%}
+        </div>
+
+        {%- comment -%} Socials {%- endcomment -%}
+        {%- if socialsArray.size > 0 -%}
+          <div class="c-footer__socials">
+            {%- for socialName in socialsArray -%}
+              {%- assign socialNameLc = socialName | downcase -%}
+              {%- assign socialHandle = 'social_link_' | append: socialNameLc -%}
+              {%- assign socialLink = settings[socialHandle] -%}
+              {%- assign socialCountHandle = 'count_' | append: socialNameLc -%}
+              {%- assign socialCount = settings[socialCountHandle] -%}
+              {%- unless socialLink != blank -%}{%- continue -%}{%- endunless -%}
+
+              <a
+                href="{{- socialLink -}}"
+                class="c-footer__social-link is-{{- socialNameLc -}}"
+                title="{{- socialName -}}"
+                target="_blank"
+              >
+                <span class="c-footer__social_item">
+                  {%- render 'object.icon' with {
+                    icon: socialNameLc,
+                    class: 'c-footer__social-icon',
+                    title: socialName,
+                    alt: socialName | append: ' ' | append: 'Icon'
+                  } -%}
+                  {% if socialCount %}
+                    <span class="count">{{ socialCount }}</span>
+                  {% endif %}
+                </span>
+              </a>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Menu {%- endcomment -%}
+      {%- if menu.links.size > 0 -%}
+        <div class="c-footer__menu" data-accordion-container>
+          {%- for link in menu.links -%}
+            <details
+              class="c-footer__menu-column"
+              data-accordion-slide
+            >
+              <summary class="c-footer__heading o-heading--6" data-accordion-title>
+                {{- link.title | escape -}}
+              </summary>
+
+              {%- comment -%} Submenu {%- endcomment -%}
+              {%- if link.links.size > 0 -%}
+                <ul class="c-footer__links" data-accordion-content>
+                  {%- for sublink in link.links -%}
+                    <li class="c-footer__menu-item">
+                      <a
+                        href="{{- sublink.url -}}"
+                        class="c-footer__menu-link o-paragraph"
+                      >
+                        {{- sublink.title | escape -}}
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </details>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="footer-currency"
+      x-data="CurrencySwitcher"
+      style="--icon-select: url({{ 'icon-chevron-down.svg' | asset_url }})">
+      <div class="o-heading--6">Country/region</div>
+      {%- render 'object.currency-switcher' with {
+        class: 'c-navigation-mobile__currency'
+      } -%}
+    </div>
+
+    {%- comment -%} Feature Text - SEO description, custodians of the land and lgbtqia+ statement{%- endcomment -%}
+    {%- if featureText != blank -%}
+      <div class="c-footer__feature-text">
+        <div class="o-paragraph--2">
+          {{- featureText -}}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- comment -%} Copyright & Process attribution {%- endcomment -%}
+  <div class="c-footer__bottom">
+    <p class="c-footer__copyright">
+      {%- assign date = 'now' | date: "%Y" -%}
+      {{- 'general.footer.store_name_html' | t: date: date -}}
+    </p>
+
+        {%  comment %}
+    <a
+      href="https://processcreative.com.au"
+      target="_blank"
+      class="c-footer__process o-paragraph"
+    >
+      Site by Process
+    </a>
+    {%  endcomment %}
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "class": "c-section c-section__footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "brand-message",
+      "label": "Brand Message",
+      "info": "Keep to a short 8 - 10 word sentance"
+    },
+    {
+      "type": "text",
+      "id": "subscription-title",
+      "label": "Subscription Title"
+    },
+    {
+      "type": "text",
+      "id": "subscription-subtitle",
+      "label": "Subscription Subtitle"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "info": "Limit menu to three top level links with submenus as per design"
+    },
+    {
+      "type": "richtext",
+      "id": "feature-text",
+      "label": "Feature text"
+    }
+  ]
+}
+{% endschema %}

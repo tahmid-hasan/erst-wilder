@@ -1,0 +1,29 @@
+{%- comment -%}
+  Cart Products
+    Fetchable resource to get the products for the items in the cart.
+
+  Version:
+    1.0.0 - 2022/01/07
+{%- endcomment -%}
+{%- liquid
+  layout none
+  assign dumpedProducts = ''
+  assign strProducts = ''
+
+  for item in cart.items
+    if dumpedProducts contains item.product.handle
+      continue
+    endif
+
+    capture strProducts
+      echo strProducts
+      if strProducts != blank
+        echo ','
+      endif
+      echo item.product | json
+    endcapture
+    assign dumpedProducts = dumpedProducts | append: ',' | append: item.product.handle
+  endfor
+-%}
+
+[ {{ strProducts }} ]

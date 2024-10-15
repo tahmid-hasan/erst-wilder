@@ -1,0 +1,52 @@
+{% comment %}
+  HTML5 Video
+    Snippet to display a html5 video
+    - Allows for autoplay to be enabled
+
+    Params:
+      - imageUrl: Image url to use as poster
+      - videoUrlMp4: String to use as url
+      - videoUrlWebm: String to use as webm url
+      - attributes: String list of attributes to use on video
+      - class: String to use as additional class
+
+  Version:
+    1.0.0 - 2020/11/04
+{% endcomment %}
+
+{%- liquid
+  if attributes == blank
+    assign attributes = 'muted loop playsinline preload="metadata"'
+  endif
+-%}
+
+{%- if videoUrlMp4 != blank or videoUrlWebm  != blank -%}
+  <div
+    class="o-html5-video {{ class }}"
+    data-video-container
+  >
+    <div class="o-html5-video__video-container">
+      {% if media %}
+        {{ media | video_tag }}
+      {% else %}
+        <video
+          {% if imageUrl != blank %}poster="{{- imageUrl -}}"{% endif %}
+          class="o-html5-video__video"
+          {{ attributes }}
+          data-video
+        >
+          {%- if videoUrlMp4 != blank -%}
+            <source src="{{- videoUrlMp4 -}}" type="video/mp4">
+          {%- endif -%}
+          {%- if videoUrlWebm != blank -%}
+            <source src="{{- videoUrlWebm -}}" type="video/webm">
+          {%- endif -%}
+          <p>
+            Your browser doesn't support HTML5 video.
+            Here is a link to the video instead: {{- videoUrlMp4 -}}.
+          </p>
+        </video>
+      {% endif %}
+    </div>
+  </div>
+{%- endif -%}

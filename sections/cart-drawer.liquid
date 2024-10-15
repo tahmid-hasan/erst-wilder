@@ -1,0 +1,62 @@
+{%- comment -%}
+  Cart Drawer
+    Section used as a shell to render the cart drawer contents. Uses the section
+    rendering API to render the cart-drawer--inner section inside itself.
+    This is triggered with the "bundled section rendering" when the
+    ON_CART_UPDATE event is triggered and on page load.
+
+  Version:
+    1.0.0 - 2021/12/20
+{%- endcomment -%}
+
+{%- unless template.name == 'cart' -%}
+  {{ 'sections.cart-drawer.css' | asset_url | stylesheet_tag }}
+  {{ 'sections.cart-drawer.js' | asset_url | script_tag }}
+{%- endunless -%}
+
+{%- comment -%} Cart Drawer Shell {%- endcomment -%}
+<div class="c-cart-drawer" data-cart-container>
+</div>
+
+{%- comment -%} Background Element {%- endcomment -%}
+<div class="c-cart-drawer__background" data-cart-drawer-toggle>
+</div>
+
+<script type="application/json" data-cart-drawer-data>
+  {
+    "settings": {{ section.settings | json }},
+    "products": {
+      {{ section.settings.upsellProduct | json }}: {%- render 'json.product' with { jsonProduct: section.settings.upsellProduct } -%}
+    }
+  }
+</script>
+
+{% schema %}
+  {
+    "name": "Cart Drawer",
+    "class": "c-section c-section__cart-drawer",
+    "settings": [
+      {
+        "type": "product",
+        "label": "Upsell Product",
+        "id": "upsellProduct"
+      },
+      {
+        "type": "number",
+        "label": "Upsell Product Minimum spend",
+        "id": "upsellMinSpend",
+        "info": "The minimum dollar value required for the customer to spend in order to be upsold this product"
+      },
+      {
+        "type": "text",
+        "id": "upsellMessage",
+        "label": "Upsell Product Message"
+      },
+      {
+        "type": "url",
+        "id": "upsellMessageUrl",
+        "label": "Upsell Product URL"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,333 @@
+{%- comment -%}
+  Promotion
+    Section to show promotion with some content, images and a cta
+
+  Version:
+    1.0.0 - 2021/10/18
+{%- endcomment -%}
+
+{{ 'sections.promotion.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%} Assign variables {%- endcomment -%}
+{%- liquid
+  assign preTitle = section.settings.pre-title | escape
+  assign title = section.settings.title | escape
+  assign imagePrimary = section.settings.image
+  assign imageSecondary1 = section.settings.image-secondary-1
+  assign imageSecondary2 = section.settings.image-secondary-2
+  assign ctaLabel = section.settings.cta-label | escape
+  assign ctaUrl = section.settings.cta-url
+
+  assign topWave = section.settings.top-wave
+  assign topColor1 = section.settings.top-color-1
+  assign topColor2 = section.settings.top-color-2
+  assign isFlippedTop = section.settings.flip-top-wave
+
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+-%}
+
+{%- if
+  title != blank and
+  imagePrimary != blank and
+  imageSecondary1 != blank and
+  imageSecondary2 != blank
+-%}
+
+  {%- comment -%} Top Wave {%- endcomment -%}
+  {%- if topWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:topWave
+      color1: topColor1
+      color2: topColor2,
+      isFlipped: isFlippedTop
+    } -%}       
+  {%- endif -%}
+
+  <section class="c-promotion">
+    <div class="c-promotion__inner">
+      {%- comment -%} Pre Title {%- endcomment -%}
+      {%- if preTitle != blank -%}
+        <p class="c-promotion__pretitle o-heading--6">
+          {{- preTitle -}}
+        </p>
+      {%- endif -%}
+
+      {%- comment -%} Title {%- endcomment -%}
+      <h2 class="c-promotion__title">
+        {{- title -}}
+      </h2>
+
+      {%- comment -%}
+        Feature
+        - Featured area to display the images, illustration and call to action button
+      {%- endcomment -%}
+      <div class="c-promotion__feature">
+        {%- comment -%} Images {%- endcomment -%}
+        <div class="c-promotion__images">
+          {%- comment -%} Illustration 1 {%- endcomment -%}
+          <div class="c-promotion__illustration-1-wrapper">
+            <div class="c-promotion__illustration-1-container o-responsive-image-container">
+              <img
+                src="{{- 'svg.shape-2.svg' | asset_url -}}"
+                alt=""
+                class="c-promotion__illustration-1 o-responsive-image"
+                width="750"
+                height="450"
+                lazy="true"
+              >
+            </div>
+          </div>
+
+          {%- comment -%} Primary Image {%- endcomment -%}
+          <div class="c-promotion__image-primary-wrapper">
+            <a 
+              href="{%- if ctaUrl != blank -%}{{ctaUrl}}{%- else -%}javascript:;{%- endif -%}"
+              class="
+                c-promotion__image-primary-container 
+                o-responsive-image-container
+                {% if ctaUrl == blank %}
+                  no-pointer
+                {% endif %}"              
+            >
+              {%- render 'tool.picture' with {
+                image: imagePrimary,
+                class: 'c-promotion__image-primary o-responsive-image',
+                width: 560,
+                imageSizes: '182,360',
+                sizes: '375,550',
+                lazy: true
+              } -%}
+            </a>
+          </div>
+
+          {%- comment -%} Secondary Image 1 {%- endcomment -%}
+          <div class="c-promotion__image-secondary1-wrapper">
+            {%- comment -%} Illustration 2 {%- endcomment -%}
+            <div class="c-promotion__illustration-2-wrapper">
+              <div class="c-promotion__illustration-2-container o-responsive-image-container">
+                <img
+                  src="{{- 'svg.flower-2.svg' | asset_url -}}"
+                  alt=""
+                  class="c-promotion__illustration-2 o-responsive-image"
+                  width="179"
+                  height="136"
+                  lazy="true"
+                >
+              </div>
+            </div>
+
+            <a
+              href="{%- if ctaUrl != blank -%}{{ctaUrl}}{%- else -%}javascript:;{%- endif -%}"
+              class="
+                c-promotion__image-secondary1-container 
+                o-responsive-image-container
+                {% if ctaUrl == blank %}
+                  no-pointer
+                {% endif %}
+                "
+            >
+              {%- render 'tool.picture' with {
+                image: imageSecondary1,
+                class: 'c-promotion__image-secondary1 o-responsive-image',
+                width: 410,
+                imageSizes: '115,360',
+                sizes: '375,290',
+                lazy: true
+              } -%}
+            </a>
+          </div>
+
+          {%- comment -%} Secondary Image 2 {%- endcomment -%}
+          <div class="c-promotion__image-secondary2-wrapper">
+            <a 
+              href="{%- if ctaUrl != blank -%}{{ctaUrl}}{%- else -%}javascript:;{%- endif -%}"
+              class="
+                c-promotion__image-secondary2-container 
+                o-responsive-image-container
+                {% if ctaUrl == blank %}
+                  no-pointer
+                {% endif %}"
+            >
+              {%- render 'tool.picture' with {
+                image: imageSecondary2,
+                class: 'c-promotion__image-secondary2 o-responsive-image',
+                width: 410,
+                imageSizes: '115,360',
+                sizes: '375,290',
+                lazy: true
+              } -%}
+            </a>
+          </div>
+        </div>
+
+        {%- comment -%} Call to action {%- endcomment -%}
+        {%- if ctaLabel != blank and ctaUrl != blank -%}
+          <div class="c-promotion__cta-container">
+            {%- comment -%} CTA {%- endcomment -%}
+            <a
+              href="{{- ctaUrl -}}"
+              class="c-promotion__cta-btn o-btn is-alternative"
+            >
+              {{- ctaLabel -}}
+            </a>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} Bottom Wave {%- endcomment -%}
+  {%- if bottomWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:bottomWave
+      color1: bottomColor1
+      color2: bottomColor2,
+      isFlipped: isFlippedBottom
+    } -%}
+  {%- endif -%}   
+
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Promotion",
+  "class": "c-section c-section__promotion",
+  "presets": [
+    {
+      "category": "Content",
+      "name":"Promotion"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "pre-title",
+      "label": "Pre Title"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Primary Image",
+      "info": "Dimensions: 1120px X 1552px. This is the middle image."
+    },
+    {
+      "type": "image_picker",
+      "id": "image-secondary-1",
+      "label": "Secondary Image 1",
+      "info": "Dimensions: 818px X 1030px. This is the left image."
+    },
+    {
+      "type": "image_picker",
+      "id": "image-secondary-2",
+      "label": "Secondary Image 2",
+      "info": "Dimensions: 820px X 848px. This is the right image."
+    },
+    {
+      "type": "text",
+      "id": "cta-label",
+      "label": "CTA Label"
+    },
+    {
+      "type": "url",
+      "id": "cta-url",
+      "label": "CTA Url"
+    },
+    {
+      "type": "header",
+      "content": "Top Wave"
+    },
+    {
+      "type": "select",
+      "id": "top-wave",
+      "label": "Top Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "top-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "top-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-top-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

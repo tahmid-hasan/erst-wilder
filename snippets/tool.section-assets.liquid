@@ -1,0 +1,49 @@
+{%- comment -%}
+Section Assets Tool
+Tool to lazily load scripts and styles for sections.
+
+Parameters:
+scripts - CSV Array of script filenames (within assets dir) to include.
+styles - CSV Array of style filenames (within assets dir) to include.
+
+Version:
+1.0.0 - 210726
+{%- endcomment -%}
+{%- liquid 
+  assign files = files | split: ','
+-%}
+
+{%- if arrStyles.size > 0 -%}
+<noscript>
+  {%- for style in files -%}
+  {% assign fileName = 'sections.' | append: style | append: '.css' %}
+  {{- fileName | asset_url | stylesheet_tag -}}
+  {%- endfor -%}
+</noscript>
+{%- endif -%}
+
+<script type="application/json" data-section-assets>
+  {
+    "scripts": {
+      {%- liquid
+        for script in files
+          if script == 'ScriptCollectionDrop'
+            continue
+          endif
+          assign fileName = 'sections.' | append: script | append: '.js'
+          echo fileName | json | append: ':'
+          echo fileName | asset_url | json
+        endfor
+      -%}
+    },
+    "styles": {
+      {%- liquid
+        for style in files
+          assign fileName = 'sections.' | append: style | append: '.css'
+          echo fileName | json | append: ':'
+          echo fileName | asset_url | json
+        endfor
+      -%}
+    }
+  }
+</script>

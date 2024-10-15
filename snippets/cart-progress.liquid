@@ -1,0 +1,64 @@
+{%- comment -%}
+  Cart notes
+
+  Params:
+   minSpend: number to be met for free shipping
+   countryCode: string indicating the country code this progress bar should
+   appear for. If no code is provided it will be assumed this if for international
+   customers
+  Version:
+    1.0.0 - 2021/12/20
+{%- endcomment -%}
+
+{%- liquid
+  assign subtotal = cart.items_subtotal_price | divided_by: 100.0 | plus: 0.0
+  assign spendProgress = 100
+  assign remaining = 0
+  assign shippingLabel = 'general.cart.progress_complete' | t | escape
+  assign minimumSpend = minSpend | plus: 0.0
+  assign countryCode = countryCode | default: 'international'
+
+  if minimumSpend > subtotal
+    assign spendProgress = subtotal | divided_by: minimumSpend | times: 100
+    assign remaining = minimumSpend |  minus: subtotal
+  endif
+
+  if remaining > 0
+    assign formattedMoney = remaining | times: 100 | money_without_trailing_zeros
+    capture formattedMoneyHtml
+      echo '<span data-currency data-money="'
+      echo remaining | times: 100
+      echo '">'
+      echo remaining | money 
+      echo '</span>'
+    endcapture
+    assign shippingLabel = 'general.cart.remaining' | t | replace: '%remaining%', formattedMoneyHtml 
+  endif
+-%}
+
+{%- comment -%}
+ 'is-filled' class added by JS when section is loaded
+{%- endcomment -%}
+
+{%- if minSpend -%}
+  <div
+    class="c-cart-progress"
+    data-cart-progress
+    data-country-code="{{- countryCode -}}"
+  >
+    {%- comment -%} Progress Label {%- endcomment -%}
+    <p class="c-cart-progress__label o-paragraph--2" data-progress-remaining>
+      {{- shippingLabel -}}
+    </p>
+    {%- comment -%} Progress Bar {%- endcomment -%}
+    <span class="c-cart-progress__progress-bar">
+      {%- comment -%} Progress Fill {%- endcomment -%}
+      <span
+        class="c-cart-progress__progress-fill"
+        data-cart-progress-fill data-minimum-spend="{{- minimumSpend -}}"
+        style="width:{{spendProgress}}%;"
+      ></span>
+    </span>
+  </div>
+
+{%- endif -%}

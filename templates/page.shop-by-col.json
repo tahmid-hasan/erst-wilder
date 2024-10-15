@@ -1,0 +1,236 @@
+{
+  "sections": {
+    "shop-by-collection": {
+      "type": "shop-by-collection",
+      "blocks": {
+        "collection_block_LeMULL": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Australiana 2024",
+            "block_image": "shopify:\/\/shop_images\/AUSTRALIANA_SHOP_BY_COLLECTION.jpg",
+            "link_to": "australiana-2024"
+          }
+        },
+        "collection_block_RMCdGW": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Best of Halloween",
+            "block_image": "shopify:\/\/shop_images\/BEST_OF_HALLOWEEN_COLLECTION_ICON_a20962e0-33d6-434b-802f-3ffc9a83c2dc.jpg",
+            "link_to": "best-of-halloween"
+          }
+        },
+        "collection_block_E84UE9": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Arts & Crafts",
+            "block_image": "shopify:\/\/shop_images\/ARTS_CRAFTS_SHOP_BY_COLLECTION.jpg",
+            "link_to": "arts-crafts"
+          }
+        },
+        "f4a84ec6-853d-40cf-adb8-882250e41e54": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Fleur Harris",
+            "block_image": "shopify:\/\/shop_images\/FLEUR_HARRIS_COLLECTION_ICON_1d230a12-d14a-44a1-9943-16a95a21159e.jpg",
+            "link_to": "erstwilder-x-fleur-harris"
+          }
+        },
+        "collection_block_wQTy8X": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Pete Cromer",
+            "block_image": "shopify:\/\/shop_images\/PETE_CROMER_FAIRY_TALES_COLLECTION_ICON_1635a7c1-e517-482d-b9fc-d8506e3fbbd0.jpg",
+            "link_to": "erstwilder-x-pete-cromer"
+          }
+        },
+        "c7efc44c-cceb-43a4-840b-e44abfada2c4": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Atomic Abode",
+            "block_image": "shopify:\/\/shop_images\/ATOMIC_ABODE_COLLECTION_ICON_155378f3-00d8-4273-a0c9-de309ba99dfe.jpg",
+            "link_to": "atomic-abode"
+          }
+        },
+        "collection_block_DxUMEB": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Lauren Rogers",
+            "block_image": "shopify:\/\/shop_images\/LAUREN_ROGERS_COLLECTION_ICON_43ff7eac-d3b1-4567-adfa-a9b0b853b070.jpg",
+            "link_to": "erstwilder-x-lauren-rogers"
+          }
+        },
+        "collection_block_HQhzUA": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Frida Kahlo",
+            "block_image": "shopify:\/\/shop_images\/FRIDA_KAHLO_SHOP_BY_COLLECTION.jpg",
+            "link_to": "erstwilder-x-frida-kahlo"
+          }
+        },
+        "2bcd67b3-7dc9-4a86-8862-73503bdb931b": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Fan Favourites",
+            "block_image": "shopify:\/\/shop_images\/FAN_FAVES_2024_COLLECTION_ICON_255f3a52-ddef-4dc3-ae1f-b7d936e9d979.jpg",
+            "link_to": "fan-favourites-1"
+          }
+        },
+        "85b9a34c-af7f-496b-b39d-a36338bd4c3f": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Strawberry Shortcake",
+            "block_image": "shopify:\/\/shop_images\/STRAWBERRY_SHORTCAKE_COLLECTION_ICON_b05fb756-5955-4e57-9191-339708713f2d.jpg",
+            "link_to": "erstwilder-x-strawberry-shortcake"
+          }
+        },
+        "131f93bb-b95a-4bb3-aa5e-35b4ec01c531": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Erstwildest Dreams",
+            "block_image": "shopify:\/\/shop_images\/ERSTWILDEST_DREAMS_COLLECTION_ICON_5b35e1aa-75ee-455d-81ef-83a751f3f53c.jpg",
+            "link_to": "erstwildest-dreams"
+          }
+        },
+        "26100480-6869-4ab9-a065-4973aaa16db5": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Untamed Elegance",
+            "block_image": "shopify:\/\/shop_images\/UNTAMED_ELEGANCE_COLLECTION_ICON_1cd41ac0-24e4-49ad-b56f-c8d6808ab5c0.jpg",
+            "link_to": "untamed-elegance"
+          }
+        },
+        "3e15a607-c77c-42ce-aebc-78c7651dd5d5": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Clare Youngs",
+            "block_image": "shopify:\/\/shop_images\/CLARE_YOUNGS_COLLECTION_ICON_bb2dae12-cc41-4405-a870-34ab565cbe04.jpg",
+            "link_to": "clare-youngs"
+          }
+        },
+        "97794cc9-27b9-4aed-9c80-3dd42304ddfc": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Love Everlasting",
+            "block_image": "shopify:\/\/shop_images\/LOVE_EVERLASTING_COLLECTION_ICON_26bf7580-bec4-4680-b325-552337470532.jpg",
+            "link_to": "love-everlasting"
+          }
+        },
+        "91ed5c08-c8ed-4506-bfad-798c6be5b12e": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Che Bello!",
+            "block_image": "shopify:\/\/shop_images\/CHE_BELLO_COLLECTION_ICON_46ab7eba-46ff-4e79-8f90-ba37553fa8ca.jpg",
+            "link_to": "che-bello"
+          }
+        },
+        "collection_block_akpcX9": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Kasey Rainbow",
+            "block_image": "shopify:\/\/shop_images\/KASEY_RAINBOW_COLLECTION_ICON_1fce5ca7-4758-4ac1-9fcd-559878018f5c.jpg",
+            "link_to": "kasey-rainbow"
+          }
+        },
+        "collection_block_UUnFQd": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Vintage Kitchen",
+            "block_image": "shopify:\/\/shop_images\/VINTAGE_KITCHEN_SHOP_BY_COLLECTION_7d009e85-9ab3-4745-9794-18aaa1f9a077.jpg",
+            "link_to": "vintage-kitchen"
+          }
+        },
+        "collection_block_MicKRy": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Terry Runyan",
+            "block_image": "shopify:\/\/shop_images\/TERRY_RUNYAN_HALLOWEEN_COLLECTION_ICON_e862474c-73bd-45fc-b8f9-482382a66d08.jpg",
+            "link_to": "terry-runyan"
+          }
+        },
+        "7f393d8d-ef20-4c86-9b67-4a8ba62564d7": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Jocelyn Proust",
+            "block_image": "shopify:\/\/shop_images\/JOCELYN_PROUST_3.0_COLLECTION_ICON_1535f321-8cf1-405a-b6da-cf1119478d96.jpg",
+            "link_to": "erstwilder-x-jocelyn-proust-designs"
+          }
+        },
+        "b5edf0ac-58e0-4ee9-8b72-a05e1d5ed6eb": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Iris Apfel",
+            "block_image": "shopify:\/\/shop_images\/IRIS_APFEL_COLLECTION_ICON_0c596e48-4036-4c7a-a00b-dc01c461f0bd.jpg",
+            "link_to": "iris-apfel"
+          }
+        },
+        "91f7588f-422d-4ce9-b247-5dffccea4f88": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Pride & Joy",
+            "block_image": "shopify:\/\/shop_images\/PRIDE_JOY_83e8dda5-5d01-4b8a-bc62-4497acc0f930.jpg",
+            "link_to": "pride-joy"
+          }
+        },
+        "186e7d8a-55a4-48e0-bca9-2043e61ed820": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Remembrance",
+            "block_image": "shopify:\/\/shop_images\/REMEMBRANCE_aa419984-097d-4b8c-8807-c25bad107ca5.jpg",
+            "link_to": "remembrance"
+          }
+        }
+      },
+      "block_order": [
+        "collection_block_LeMULL",
+        "collection_block_RMCdGW",
+        "collection_block_E84UE9",
+        "f4a84ec6-853d-40cf-adb8-882250e41e54",
+        "collection_block_wQTy8X",
+        "c7efc44c-cceb-43a4-840b-e44abfada2c4",
+        "collection_block_DxUMEB",
+        "collection_block_HQhzUA",
+        "2bcd67b3-7dc9-4a86-8862-73503bdb931b",
+        "85b9a34c-af7f-496b-b39d-a36338bd4c3f",
+        "131f93bb-b95a-4bb3-aa5e-35b4ec01c531",
+        "26100480-6869-4ab9-a065-4973aaa16db5",
+        "3e15a607-c77c-42ce-aebc-78c7651dd5d5",
+        "97794cc9-27b9-4aed-9c80-3dd42304ddfc",
+        "91ed5c08-c8ed-4506-bfad-798c6be5b12e",
+        "collection_block_akpcX9",
+        "collection_block_UUnFQd",
+        "collection_block_MicKRy",
+        "7f393d8d-ef20-4c86-9b67-4a8ba62564d7",
+        "b5edf0ac-58e0-4ee9-8b72-a05e1d5ed6eb",
+        "91f7588f-422d-4ce9-b247-5dffccea4f88",
+        "186e7d8a-55a4-48e0-bca9-2043e61ed820"
+      ],
+      "settings": {
+        "top_heading": "Shop By Collection",
+        "intro_paragraph": "Explore some of our most recent collections and find the perfect accessories to match your style, enable self-expression, and turn heads! This page is updated with each new release, so featured collections will change over time. Can’t find what you’re looking for? Try shopping by theme."
+      }
+    },
+    "1662517923d874cc9d": {
+      "type": "anyone-content-heading-double-cta",
+      "settings": {
+        "title": "Shop all available designs",
+        "subtitle": "Shop everything all together, or explore all Erstwilder designs by theme.",
+        "cta-label-1": "Shop All Designs",
+        "cta-link-1": "shopify:\/\/collections\/all",
+        "cta-label-2": "Shop By Theme",
+        "cta-link-2": "shopify:\/\/pages\/shop-by-theme",
+        "top-wave": "0",
+        "top-color-1": "",
+        "top-color-2": "",
+        "flip-top-wave": false,
+        "bottom-wave": "0",
+        "bottom-color-1": "",
+        "bottom-color-2": "",
+        "flip-bottom-wave": false
+      }
+    }
+  },
+  "order": [
+    "shop-by-collection",
+    "1662517923d874cc9d"
+  ]
+}

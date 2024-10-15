@@ -1,0 +1,220 @@
+
+{{ 'sections.recommended-products.css' | asset_url | stylesheet_tag }}
+{{ 'sections.recommended-products.js' | asset_url | script_tag }}
+
+{%- liquid 
+  assign title = section.settings.title | escape
+  assign preheading = section.settings.preheading | escape
+
+  assign topWave = section.settings.top-wave
+  assign topColor1 = section.settings.top-color-1
+  assign topColor2 = section.settings.top-color-2
+  assign isFlippedTop = section.settings.flip-top-wave
+
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+-%}
+
+{%- comment -%} Top Wave {%- endcomment -%}
+{%- if topWave != "0" -%}
+  {%- render 'object.wave' with {
+    waveNumber:topWave
+    color1: topColor1
+    color2: topColor2,
+    isFlipped: isFlippedTop
+  } -%}
+{%- endif -%}
+
+<div class="c-recommended-products-carousel is-visible u-visually-hidden" data-recommended-products data-product-id="{{product.id}}">
+
+  <div class="c-recommended-products-carousel__outer">   
+
+    <div class="c-recommended-products-carousel__inner">
+      
+      {%- if preheading != blank -%}
+        <p class="c-recommended-products-carousel__preheading">
+          {{- preheading -}}
+        </p>
+      {%- endif -%}
+
+      {%- if title != blank -%}
+        <h3 class="c-recommended-products-carousel__title o-heading--3">
+          {{- title -}}
+        </h3>
+      {%- endif -%}
+
+      {% comment %}
+      <div class="c-recommended-products-carousel__carousel" data-recommended-products-carousel></div>
+      {% endcomment %}
+
+      {% liquid 
+        assign related_tag = '' 
+        for tag in product.tags
+          if tag contains 'related_' or tag contains 'related-'
+            assign related_tag = tag
+            break
+          endif
+        endfor
+      %}
+      <div class="c-recommended-products-carousel__carousel" 
+        x-data
+        x-init="$dispatch('load-related-products', {related_tag: '{{ related_tag }}'})"
+        data-limit="{{ section.settings.limit }}"
+        data-current_product="{{ product.handle }}"
+        data-related-products>
+      </div>
+
+      <div class="c-recommended-products-carousel__nav" data-recommended-products-carousel-nav>
+        <span class="c-recommended-products-carousel__nav-arrow" data-carousel-previous>
+          {%- render 'object.icon' with {
+            icon:'chevron-left-orange',
+            class: 'c-recommended-products-carousel__arrow-icon'
+          } -%}
+        </span>
+        <span class="c-recommended-products-carousel__nav-arrow" data-carousel-next>
+          {%- render 'object.icon' with {
+            icon:'chevron-right-orange',
+            class: 'c-recommended-products-carousel__arrow-icon'
+          } -%}
+        </span>
+        
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+{%- comment -%} Bottom Wave {%- endcomment -%}
+{%- if bottomWave != "0" -%}
+  {%- render 'object.wave' with {
+    waveNumber:bottomWave
+    color1: bottomColor1
+    color2: bottomColor2,
+    isFlipped: isFlippedBottom
+  } -%}
+{%- endif -%}
+
+
+{% schema %}
+{
+  "name": "Recommended Products",
+  "class": "c-section c-section__recommended-products-carousel",
+  "settings": [
+   {
+      "type": "text",
+      "id": "preheading",
+      "label": "Preheading",
+      "default": "More from the collection"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Get all matchy matchy"
+    },
+    {
+      "type": "number",
+      "id": "limit",
+      "label": "Limit Number of Products",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Top Wave"
+    },
+    {
+      "type": "select",
+      "id": "top-wave",
+      "label": "Top Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "top-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "top-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-top-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "category": "Recommended Products",
+      "name":"Recommended Products"
+    }
+  ]
+}
+{% endschema %}

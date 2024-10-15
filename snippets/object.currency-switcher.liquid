@@ -1,0 +1,31 @@
+{% comment %}
+  Currency Switcher
+    Generates a currency switcher object
+
+    Params:
+      - class: A string to be used as the objects class
+
+  Version:
+    1.0.0 - 2021/06/07
+{% endcomment %}
+
+{%- assign supported_codes ='AUD,USD,EUR,GBP,CAD,CNY,JPY' | split: ',' -%}
+{%- assign currency_symbols ='$,$,€,£,$,¥,¥' | split: ',' -%}
+
+<div class="{{ class }} has-js" data-region-select>
+  <div data-region-select-currency-container>
+    {%- form 'currency', data-region-select-currency:'' -%}
+      <select
+        name="currency" title="{{'general.currency.select_currency' | t }}"
+        data-currency-selector class="{{ class -}}-select o-paragraph"
+      >
+        {%- for currency in supported_codes -%}
+          <option
+            value="{{ currency | escape }}"
+            {% if currency == shop.currency %}selected="true"{% endif %}
+          >{{ currency_symbols[forloop.index0] }} {{ currency | escape }}</option>
+        {%- endfor -%}
+      </select>
+    {%- endform -%}
+  </div>
+</div>

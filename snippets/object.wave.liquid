@@ -1,0 +1,29 @@
+{%- comment -%}
+  Params:
+  - Wave # - integer (1,2, or 3) which determines which wave to render
+  - isFlipped = boolean to flip vertically
+  - color1 - string with color value
+  - color2 - string with color value
+
+{%- endcomment -%}
+
+{%- if waveNumber == "1" -%}
+  {%- render 'svg.wave-1' with {
+    color1: color1,
+    color2: color2,
+    isFlipped: isFlipped
+  } -%}
+
+{% elsif waveNumber == "2" %}
+  {%- render 'svg.wave-1' with {
+    color1: color1,
+    color2: color2,
+    isFlipped: isFlipped
+  } -%} 
+{% elsif waveNumber == "3" %}
+  {%- render 'svg.wave-3' with {
+    color1: color1,
+    color2: color2,
+    isFlipped: isFlipped
+  } -%} 
+{%- endif -%}

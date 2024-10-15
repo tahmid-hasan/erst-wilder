@@ -1,0 +1,49 @@
+{%- comment -%}
+  Search
+    Simple search form used in the header navigation.
+
+    Params:
+    - class: String that can be passed to be used as a class
+  Version:
+    1.0.0 - 2021/12/09
+{%- endcomment -%}
+
+<div
+  class="c-search-form {{ class }}"
+  data-search-form
+>
+  <form
+    class="c-search-form__form"
+    action="/search"
+    method="get"
+    role="search"
+  >
+    {%- comment -%} Only Search for Products {%- endcomment -%}
+    <input type="hidden" name="type" value="product">
+
+    <input
+      type="text"
+      class="c-search-form__input o-input"
+      id="search_text"
+      name="q"
+      value="{{ search.terms | escape }}"
+      aria-label="{{- 'general.search.placeholder' | t -}}"
+      placeholder="{{- 'general.search.placeholder' | t -}}"
+      autocomplete="off"
+      required
+      data-search-input
+    >
+
+    <button type="submit" class="c-search-form__btn">
+      <span class="u-visually-hidden">
+        {{- 'general.search.btn_label' | t -}}
+      </span>
+    </button>
+
+    <button class="c-search-form__close is-desktop" data-search-toggle>
+      <span class="u-visually-hidden">
+        {{- 'general.search.close_label' | t -}}
+      </span>
+    </button>
+  </form>
+</div>

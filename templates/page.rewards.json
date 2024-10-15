@@ -1,0 +1,356 @@
+{
+  "sections": {
+    "banners-hero-double-cta": {
+      "type": "banners-hero-double-cta",
+      "settings": {
+        "mobile-image": "shopify:\/\/shop_images\/ELEMENT_SYSTEMS-5-21.jpg",
+        "image": "shopify:\/\/shop_images\/ELEMENT_SYSTEMS-2-24.jpg",
+        "pretitle": "Rewards",
+        "title": "Join the Club!",
+        "subtitle": "And get rewarded",
+        "cta-label-1": "Sign up",
+        "cta-link-1": "\/account\/login",
+        "cta-label-2": "Login",
+        "cta-link-2": "\/account\/login",
+        "banner_bottom_text": "",
+        "hero--bottom-text-bg-color": "",
+        "hero--bottom-text-color": ""
+      }
+    },
+    "content-featured-content-8": {
+      "type": "content-featured-content-8",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/REWARDS_IMAGE_01.jpg",
+        "title": "About Our Rewards",
+        "content": "<p>When you shop on here you won’t just be adding a little joy to your life, you’ll also be rewarded! With the Erstwilder Rewards Club you’ll receive points for every dollar you spend, which you can redeem for discounts on future purchases. And, if you want even more points there are plenty of ways to do that too, without spending a cent!<\/p>",
+        "emphasis": "2000 points = $10 off!",
+        "top-wave": "0",
+        "top-color-1": "",
+        "top-color-2": "",
+        "flip-top-wave": false,
+        "bottom-wave": "1",
+        "bottom-color-1": "#e4987f",
+        "bottom-color-2": "#f8f3ec",
+        "flip-bottom-wave": false
+      }
+    },
+    "content-icon-blocks": {
+      "type": "content-icon-blocks",
+      "blocks": {
+        "c7214b1b-708d-4965-8733-85c3ebd1e69f": {
+          "type": "icon-block",
+          "settings": {
+            "svg-code": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 54 52\"><path d=\"M45.75 39.7H16.74l-1.38-6.52h28.2c2.34 0 4.4-1.66 4.88-3.96l3.77-17.86c.04-.18 0-.36-.12-.5s-.29-.22-.47-.22H10.6L9.64 6.1C9.16 3.81 7.1 2.14 4.76 2.14H2.37c-.33 0-.6.27-.6.6s.27.6.6.6h2.39c1.78 0 3.34 1.26 3.71 3.01l7.12 33.69c-2.01.73-3.36 2.63-3.36 4.76 0 2.8 2.28 5.08 5.08 5.08s5.08-2.28 5.08-5.08c0-1.51-.66-2.91-1.83-3.88H42.5a5.002 5.002 0 0 0-1.83 3.88c0 2.8 2.28 5.08 5.08 5.08s5.08-2.28 5.08-5.08-2.28-5.08-5.08-5.08Zm5.14-27.87-3.62 17.14a3.817 3.817 0 0 1-3.71 3.01H15.11l-4.26-20.15h40.04Zm-5.14 36.84c-2.14 0-3.88-1.74-3.88-3.88s1.74-3.88 3.88-3.88 3.88 1.74 3.88 3.88-1.74 3.88-3.88 3.88Zm-28.44 0c-2.14 0-3.88-1.74-3.88-3.88s1.74-3.88 3.88-3.88 3.88 1.74 3.88 3.88-1.74 3.88-3.88 3.88Z\"><\/path><\/svg>",
+            "title": "Shop & Earn",
+            "line-2": "You'll receive 10 points for every $1 spent when purchasing your favourite things. Once you've accumulated enough points you can use them to purchase discount codes for future orders."
+          }
+        },
+        "a3284c86-000f-42d5-af61-2c5da12a4e39": {
+          "type": "icon-block",
+          "settings": {
+            "svg-code": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 54 52\"><path d=\"M27 2.56C14.07 2.56 3.56 13.07 3.56 26c0 6.3 2.48 12.22 6.99 16.7.05.04.26.23.26.23.42.41.86.8 1.31 1.17.11.09.46.36.46.36.44.34.88.67 1.34.98.14.1.29.19.44.28l.11.07c.45.29.91.56 1.38.82.16.09.33.17.49.25l.1.05c.48.24.97.48 1.46.69.14.06.29.12.43.17l.13.05c.53.21 1.07.4 1.61.57l.45.13c.65.19 1.24.33 1.81.45l.3.06c.71.13 1.37.23 2.01.29h.15a21.17 21.17 0 0 0 4.4.01h.15c.64-.08 1.3-.17 2.01-.31l.3-.05c.57-.12 1.16-.26 1.81-.45l.45-.13c.55-.17 1.09-.36 1.62-.57 0 0 .42-.16.55-.22.5-.21.99-.44 1.47-.69 0 0 .44-.22.59-.3.47-.26.93-.53 1.38-.82l.13-.08c.14-.09.29-.18.42-.27.46-.31.91-.64 1.34-.98 0 0 .35-.27.46-.36.45-.37.89-.77 1.31-1.17l.11-.1s.1-.08.16-.16c4.5-4.45 6.97-10.36 6.97-16.66 0-12.93-10.51-23.44-23.44-23.44Zm-2.04 45.69-.16-.11c-.58-.06-1.18-.14-1.84-.27l-.33-.06c-.56-.11-1.11-.25-1.65-.4 0 0-.36-.1-.48-.14a23.13 23.13 0 0 1-2.04-.74c-.45-.19-.89-.39-1.33-.61-.2-.1-.41-.21-.61-.31-.42-.23-.83-.47-1.24-.72-.19-.12-.38-.24-.57-.37-.41-.27-.81-.56-1.2-.86-.16-.13-.33-.25-.49-.38-.4-.33-.79-.67-1.17-1.03l-.18-.17c1.86-6.94 8.16-11.79 15.35-11.79s13.5 4.84 15.35 11.79l-.18.17c-.38.36-.77.7-1.18 1.03-.16.13-.32.26-.48.38-.39.3-.8.59-1.21.87-.19.12-.38.25-.57.37-.41.26-.82.5-1.25.72-.2.11-.4.21-.6.31-.44.22-.88.42-1.33.61-.16.07-.32.13-.57.22-.49.19-.98.36-1.48.51l-.47.13c-.54.15-1.09.29-1.65.4l-.33.06c-.66.12-1.26.21-1.84.27v.1l-.17-.09c-.72.06-1.38.1-2.03.1s-1.31-.03-2.03-.1v.1Zm11.07-28.2c0 4.98-4.05 9.04-9.04 9.04s-9.04-4.05-9.04-9.04 4.05-9.04 9.04-9.04 9.04 4.05 9.04 9.04Zm1.2 0c0-5.64-4.59-10.23-10.23-10.23s-10.24 4.59-10.24 10.23c0 4.15 2.56 7.92 6.41 9.48a17.032 17.032 0 0 0-12.48 11.58 22.135 22.135 0 0 1-5.93-15.1C4.76 13.74 14.74 3.76 27 3.76S49.24 13.74 49.24 26c0 5.61-2.11 10.97-5.93 15.1a17.067 17.067 0 0 0-12.48-11.58c3.85-1.56 6.41-5.33 6.41-9.48Z\"><\/path><\/svg>",
+            "title": "Sign Up Bonus",
+            "line-2": "We’ll get you started with 1,500 reward points (worth $7.50 AUD) when you create your account on ERSTWILDER.COM. If you already have an account, you'll find that you already have these points!"
+          }
+        },
+        "ef4740d9-b9d1-4f4e-a721-80822c0cc94c": {
+          "type": "icon-block",
+          "settings": {
+            "svg-code": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 54 52\"><path d=\"M50.14 6.65H3.86C2.23 6.65.91 7.98.91 9.6v32.8c0 1.63 1.33 2.95 2.95 2.95h46.28c1.63 0 2.95-1.33 2.95-2.95V9.6c0-1.63-1.33-2.95-2.95-2.95ZM27 30.46 3.18 7.99c.22-.1.46-.15.69-.15h46.27c.23 0 .46.05.69.15L27 30.46ZM20.52 26 2.3 43.18c-.13-.25-.19-.51-.19-.78V9.6c0-.27.07-.53.19-.78L20.52 26Zm.87.83 5.19 4.89c.11.11.26.16.41.16s.3-.06.41-.16l5.19-4.89 18.22 17.18c-.22.1-.46.15-.69.15H3.86c-.23 0-.46-.05-.69-.15L21.4 26.83ZM33.47 26 51.7 8.82c.13.25.19.51.19.78v32.8c0 .27-.07.53-.19.78L33.48 26Z\"><\/path><\/svg>",
+            "title": "Bonus Points Events",
+            "line-2": "Sign up for the latest e-news from us over at Erstwilder and you'll be notified of special 'bonus points events' where you’ll have the opportunity to earn double or even triple points for your orders!"
+          }
+        },
+        "fac97e41-8322-4879-a620-eb1da4390ad4": {
+          "type": "icon-block",
+          "settings": {
+            "svg-code": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 54 52\"><path d=\"M33.49 13.77h4.65c1.07 0 1.94-.87 1.94-1.94V4.5c0-1.07-.87-1.94-1.94-1.94h-6.35c-6.03 0-10.94 4.91-10.94 10.94v6.84h-4.99c-1.07 0-1.94.87-1.94 1.94v7.34c0 1.07.87 1.94 1.94 1.94h4.99v15.96c0 1.07.87 1.94 1.94 1.94h7.34c1.07 0 1.94-.87 1.94-1.94V31.56h3.88c.89 0 1.66-.6 1.88-1.47l1.83-7.34c.15-.58.02-1.19-.35-1.66s-.93-.74-1.53-.74h-5.7v-5.14c0-.79.64-1.43 1.43-1.43Zm2.45 16.58h-4.48c-.33 0-.6.27-.6.6v16.56c0 .41-.33.74-.74.74h-7.34c-.41 0-.74-.33-.74-.74V30.95c0-.33-.27-.6-.6-.6h-5.59c-.41 0-.74-.33-.74-.74v-7.34c0-.41.33-.74.74-.74h5.59c.33 0 .6-.27.6-.6v-7.44c0-5.37 4.37-9.74 9.74-9.74h6.35c.41 0 .74.33.74.74v7.34c0 .41-.33.74-.74.74h-4.65c-1.45 0-2.63 1.18-2.63 2.63v5.74c0 .33.27.6.6.6h6.3a.725.725 0 0 1 .71.91l-1.83 7.34c-.08.33-.38.56-.71.56Z\"><\/path><\/svg>",
+            "title": "Get Social on Facebook",
+            "line-2": "Are you a social (media) butterfly? You'll earn 200 points for liking our Facebook Page and 100 points for sharing our Facebook Page. Find out how, via the rewards pop up!"
+          }
+        },
+        "228f3fb8-ac6b-48c0-b635-5ce64b6cf34b": {
+          "type": "icon-block",
+          "settings": {
+            "svg-code": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 54 52\"><path d=\"M37.43 4.56H16.57C10.5 4.56 5.56 9.5 5.56 15.57v20.86c0 6.07 4.94 11.01 11.01 11.01h20.86c6.07 0 11.01-4.94 11.01-11.01V15.57c0-6.07-4.94-11.01-11.01-11.01Zm0 41.68H16.57c-5.41 0-9.81-4.4-9.81-9.81V15.57c0-5.41 4.4-9.81 9.81-9.81h20.86c5.41 0 9.81 4.4 9.81 9.81v20.86c0 5.41-4.4 9.81-9.81 9.81Z\"><\/path><path d=\"M27 15.15c-5.98 0-10.85 4.87-10.85 10.85S21.02 36.85 27 36.85 37.85 31.98 37.85 26 32.98 15.15 27 15.15Zm0 20.5c-5.32 0-9.65-4.33-9.65-9.65s4.33-9.65 9.65-9.65 9.65 4.33 9.65 9.65-4.33 9.65-9.65 9.65ZM39.53 10.89a2.88 2.88 0 1 0 .001 5.761 2.88 2.88 0 0 0-.001-5.761Zm0 4.56c-.93 0-1.68-.75-1.68-1.68s.75-1.68 1.68-1.68 1.68.75 1.68 1.68-.75 1.68-1.68 1.68Z\"><\/path><\/svg>",
+            "title": "Follow us on Instagram",
+            "line-2": "Are you doing it for the gram? You'll earn 200 points for following us on Instagram. Find out how, via the rewards pop up!"
+          }
+        },
+        "b6195b57-6044-4817-9a79-e960dc689702": {
+          "type": "icon-block",
+          "settings": {
+            "svg-code": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 54 52\"><path d=\"M27 5.3c-10.54 0-19.12 8.58-19.12 19.12 0 5.74 2.55 11.12 6.97 14.68-.56 3.52-5.38 6.31-5.43 6.33-.22.13-.34.38-.29.64.05.25.26.45.51.48.12.01 1.25.15 2.82.15 2.85 0 8.01-.46 10.67-3.57 1.3.27 2.6.41 3.86.41 10.54 0 19.12-8.58 19.12-19.12S37.54 5.3 27 5.3Zm0 37.03c-1.29 0-2.62-.15-4.06-.47-.19 0-.4.12-.53.25-2.21 2.93-7.21 3.37-9.99 3.37-.32 0-.62 0-.9-.01 1.64-1.21 4.17-3.52 4.55-6.4a.575.575 0 0 0-.21-.63c-4.31-3.43-6.79-8.54-6.79-14.03 0-9.88 8.04-17.92 17.92-17.92s17.92 8.04 17.92 17.92-8.04 17.92-17.92 17.92Z\"><\/path><path d=\"M33.54 17.68c-.21-.03-.43-.05-.65-.05-1.69 0-3.72.97-5.59 2.67-1.98-2.33-4.23-3.61-6.34-3.61-.36 0-.71.04-1.05.12-1.66.37-2.85 1.61-3.26 3.4-.36 1.58-.79 7.31 8.86 14.96.11.08.24.13.37.13s.26-.04.37-.12c.66-.51 1.44-1.06 2.28-1.64 4.71-3.32 11.17-7.86 8.31-13.22-.79-1.53-1.9-2.42-3.29-2.64Zm-5.71 14.88c-.7.49-1.35.95-1.94 1.39-6.94-5.62-8.72-10.64-8.07-13.46.3-1.32 1.16-2.23 2.35-2.5.26-.06.53-.09.8-.09 1.86 0 3.98 1.33 5.81 3.66.11.13.26.22.48.23.15 0 .3-.06.42-.17 1.78-1.77 3.68-2.78 5.21-2.78.17 0 .33.01.48.04.99.16 1.8.83 2.41 2.01 2.36 4.42-3.59 8.61-7.94 11.68Z\"><\/path><\/svg>",
+            "title": "Spread the Love",
+            "line-2": "Spread the love by referring your friends with your personal referral link and you’ll both be rewarded! For each first order placed via your link they’ll get $10 off, and you’ll get 1,500 points (worth $7.50 AUD)."
+          }
+        },
+        "37dfee39-58b1-42aa-b23c-cba2efe65b6c": {
+          "type": "icon-block",
+          "settings": {
+            "svg-code": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 54 52\"><path d=\"M49.1 24.36a3.791 3.791 0 0 0 .97-3.91 3.791 3.791 0 0 0-3.08-2.6L36.9 16.39c-.85-.12-1.59-.66-1.97-1.43l-4.51-9.14c-.65-1.31-1.96-2.13-3.42-2.13s-2.77.81-3.42 2.13l-4.51 9.14c-.38.77-1.12 1.31-1.97 1.43L7.01 17.85a3.791 3.791 0 0 0-3.08 2.6c-.45 1.39-.08 2.89.97 3.91l7.3 7.12c.62.6.9 1.46.75 2.31l-1.72 10.05c-.25 1.44.33 2.87 1.52 3.73a3.812 3.812 0 0 0 4.02.29l9.02-4.74c.37-.2.79-.3 1.22-.3s.84.1 1.22.3l9.02 4.74a3.812 3.812 0 0 0 4.02-.29 3.794 3.794 0 0 0 1.52-3.73l-1.72-10.05c-.15-.85.13-1.71.75-2.31l7.3-7.12Zm-9.23 9.63 1.72 10.05c.17 1-.22 1.96-1.04 2.56-.46.33-.99.51-1.53.51-.42 0-.83-.1-1.22-.31l-9.02-4.74a3.773 3.773 0 0 0-3.54 0l-9.02 4.74c-.39.21-.8.31-1.22.31-.54 0-1.07-.18-1.53-.51-.82-.6-1.21-1.55-1.04-2.56l1.72-10.05c.21-1.24-.2-2.5-1.1-3.38l-7.3-7.12a2.55 2.55 0 0 1-.66-2.68c.31-.97 1.1-1.63 2.11-1.78l10.09-1.46c1.24-.18 2.32-.96 2.87-2.09l4.51-9.14c.45-.91 1.33-1.46 2.34-1.46s1.89.55 2.34 1.46l4.51 9.14a3.799 3.799 0 0 0 2.87 2.09l10.09 1.46c1.01.15 1.8.81 2.11 1.78.31.97.07 1.97-.66 2.68l-7.3 7.12c-.9.88-1.31 2.14-1.1 3.38Z\"><\/path><\/svg>",
+            "title": "Leave a Review",
+            "line-2": "If you love us, let us know about it! Here at Erstwilder, no good deed goes unrewarded, so leave us a review and you'll go in the draw to win a $50 gift voucher in our monthly competition."
+          }
+        },
+        "44b07318-5b27-4f64-b1e2-a91ac60d03f2": {
+          "type": "icon-block",
+          "settings": {
+            "svg-code": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 54 52\"><path d=\"M45.11 16.59h-7.87a6.897 6.897 0 0 0 3.07-5.75c0-3.83-3.12-6.95-6.95-6.95-2.77 0-5.24 1.62-6.35 4.14a6.934 6.934 0 0 0-6.35-4.14c-3.83 0-6.95 3.12-6.95 6.95 0 2.33 1.14 4.45 3.07 5.75H8.91c-2 0-3.63 1.63-3.63 3.63v3.53c0 2 1.63 3.63 3.63 3.63h.13v17.1c0 2 1.63 3.63 3.63 3.63h28.7c2 0 3.63-1.63 3.63-3.63v-17.1h.13c2 0 3.63-1.63 3.63-3.63v-3.53c0-2-1.63-3.63-3.63-3.63ZM10.22 27.38H26.4v19.54H12.65c-1.34 0-2.43-1.09-2.43-2.43V27.38Zm-1.33-9.59H26.4v8.39H8.89c-1.34 0-2.43-1.09-2.43-2.43v-3.53c0-1.34 1.09-2.43 2.43-2.43ZM20.65 5.08c3.17 0 5.75 2.58 5.75 5.75v5.75h-5.75c-3.17 0-5.75-2.58-5.75-5.75s2.58-5.75 5.75-5.75Zm24.47 21.1H27.6v-8.39h17.51c1.34 0 2.43 1.09 2.43 2.43v3.53c0 1.34-1.09 2.43-2.43 2.43Zm-3.76 20.74H27.61V27.38h16.18v17.1c0 1.34-1.09 2.43-2.43 2.43ZM33.35 5.08c3.17 0 5.75 2.58 5.75 5.75s-2.58 5.75-5.75 5.75H27.6v-5.75c0-3.17 2.58-5.75 5.75-5.75Z\"><\/path><\/svg>",
+            "title": "Happy Birthday",
+            "line-2": "What? It’s your birthday month?! Okay then, here’s another 1,000 points (worth $5.00 AUD), from us to you! Make sure to check the T&C's for eligibility criteria and how to claim these."
+          }
+        }
+      },
+      "block_order": [
+        "c7214b1b-708d-4965-8733-85c3ebd1e69f",
+        "a3284c86-000f-42d5-af61-2c5da12a4e39",
+        "ef4740d9-b9d1-4f4e-a721-80822c0cc94c",
+        "fac97e41-8322-4879-a620-eb1da4390ad4",
+        "228f3fb8-ac6b-48c0-b635-5ce64b6cf34b",
+        "b6195b57-6044-4817-9a79-e960dc689702",
+        "37dfee39-58b1-42aa-b23c-cba2efe65b6c",
+        "44b07318-5b27-4f64-b1e2-a91ac60d03f2"
+      ],
+      "settings": {
+        "title": "How to Earn",
+        "top-wave": "0",
+        "top-color-1": "",
+        "top-color-2": "",
+        "flip-top-wave": false,
+        "bottom-wave": "2",
+        "bottom-color-1": "#f8f3ec",
+        "bottom-color-2": "#f4e9d2",
+        "flip-bottom-wave": false
+      }
+    },
+    "content-heading-double-cta": {
+      "type": "content-heading-double-cta",
+      "settings": {
+        "title": "Become an Erstwilder member today!",
+        "subtitle": "Join the community and earn!",
+        "cta-label-1": "Sign up",
+        "cta-link-1": "https:\/\/www.erstwilder.com\/account\/login",
+        "cta-label-2": "Login",
+        "cta-link-2": "https:\/\/www.erstwilder.com\/account\/login",
+        "top-wave": "0",
+        "top-color-1": "",
+        "top-color-2": "",
+        "flip-top-wave": false,
+        "bottom-wave": "3",
+        "bottom-color-1": "#f4e9d2",
+        "bottom-color-2": "#f8f3ec",
+        "flip-bottom-wave": false
+      }
+    },
+    "banners-hero-rewards": {
+      "type": "banners-hero-rewards",
+      "settings": {
+        "next-reward-placeholder": "Finding your next reward...",
+        "current-points-placeholder": "Just our way of showing appreciation",
+        "image": "shopify:\/\/shop_images\/NEW_WEBSITE_REWARDS_LOGGED_IN_2_HEADER_01_5a79bc06-3a87-4242-b7cd-9127e2ca3a89.png",
+        "image-2": "shopify:\/\/shop_images\/NEW_WEBSITE_REWARDS_LOGGED_IN_HEADER_02.jpg",
+        "image-3": "shopify:\/\/shop_images\/NEW_WEBSITE_REWARDS_LOGGED_IN_2_HEADER_03.jpg",
+        "title": "Rewards",
+        "content": "<p>Welcome to your rewards home! Above you'll see your current points balance as well as the next reward you're building toward. For more info, as well as to claim rewards and see your past rewards activity, scroll on!<\/p>",
+        "wave": true
+      }
+    },
+    "rewards-details": {
+      "type": "rewards-details",
+      "blocks": {
+        "0d7d8c48-a0ab-44aa-8776-c6560916818a": {
+          "type": "icon-block",
+          "settings": {
+            "svg-code": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 54 52\"><path d=\"M45.75 39.7H16.74l-1.38-6.52h28.2c2.34 0 4.4-1.66 4.88-3.96l3.77-17.86c.04-.18 0-.36-.12-.5s-.29-.22-.47-.22H10.6L9.64 6.1C9.16 3.81 7.1 2.14 4.76 2.14H2.37c-.33 0-.6.27-.6.6s.27.6.6.6h2.39c1.78 0 3.34 1.26 3.71 3.01l7.12 33.69c-2.01.73-3.36 2.63-3.36 4.76 0 2.8 2.28 5.08 5.08 5.08s5.08-2.28 5.08-5.08c0-1.51-.66-2.91-1.83-3.88H42.5a5.002 5.002 0 0 0-1.83 3.88c0 2.8 2.28 5.08 5.08 5.08s5.08-2.28 5.08-5.08-2.28-5.08-5.08-5.08Zm5.14-27.87-3.62 17.14a3.817 3.817 0 0 1-3.71 3.01H15.11l-4.26-20.15h40.04Zm-5.14 36.84c-2.14 0-3.88-1.74-3.88-3.88s1.74-3.88 3.88-3.88 3.88 1.74 3.88 3.88-1.74 3.88-3.88 3.88Zm-28.44 0c-2.14 0-3.88-1.74-3.88-3.88s1.74-3.88 3.88-3.88 3.88 1.74 3.88 3.88-1.74 3.88-3.88 3.88Z\"><\/path><\/svg>",
+            "title": "Shop & Earn",
+            "line-2": "You'll receive 10 points for every $1 spent when purchasing your favourite things. Once you've accumulated enough points you can use them to purchase discount codes for future orders."
+          }
+        },
+        "3ddbf8b7-418a-418f-ae4b-c6a36c438240": {
+          "type": "icon-block",
+          "settings": {
+            "svg-code": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 54 52\"><path d=\"M27 2.56C14.07 2.56 3.56 13.07 3.56 26c0 6.3 2.48 12.22 6.99 16.7.05.04.26.23.26.23.42.41.86.8 1.31 1.17.11.09.46.36.46.36.44.34.88.67 1.34.98.14.1.29.19.44.28l.11.07c.45.29.91.56 1.38.82.16.09.33.17.49.25l.1.05c.48.24.97.48 1.46.69.14.06.29.12.43.17l.13.05c.53.21 1.07.4 1.61.57l.45.13c.65.19 1.24.33 1.81.45l.3.06c.71.13 1.37.23 2.01.29h.15a21.17 21.17 0 0 0 4.4.01h.15c.64-.08 1.3-.17 2.01-.31l.3-.05c.57-.12 1.16-.26 1.81-.45l.45-.13c.55-.17 1.09-.36 1.62-.57 0 0 .42-.16.55-.22.5-.21.99-.44 1.47-.69 0 0 .44-.22.59-.3.47-.26.93-.53 1.38-.82l.13-.08c.14-.09.29-.18.42-.27.46-.31.91-.64 1.34-.98 0 0 .35-.27.46-.36.45-.37.89-.77 1.31-1.17l.11-.1s.1-.08.16-.16c4.5-4.45 6.97-10.36 6.97-16.66 0-12.93-10.51-23.44-23.44-23.44Zm-2.04 45.69-.16-.11c-.58-.06-1.18-.14-1.84-.27l-.33-.06c-.56-.11-1.11-.25-1.65-.4 0 0-.36-.1-.48-.14a23.13 23.13 0 0 1-2.04-.74c-.45-.19-.89-.39-1.33-.61-.2-.1-.41-.21-.61-.31-.42-.23-.83-.47-1.24-.72-.19-.12-.38-.24-.57-.37-.41-.27-.81-.56-1.2-.86-.16-.13-.33-.25-.49-.38-.4-.33-.79-.67-1.17-1.03l-.18-.17c1.86-6.94 8.16-11.79 15.35-11.79s13.5 4.84 15.35 11.79l-.18.17c-.38.36-.77.7-1.18 1.03-.16.13-.32.26-.48.38-.39.3-.8.59-1.21.87-.19.12-.38.25-.57.37-.41.26-.82.5-1.25.72-.2.11-.4.21-.6.31-.44.22-.88.42-1.33.61-.16.07-.32.13-.57.22-.49.19-.98.36-1.48.51l-.47.13c-.54.15-1.09.29-1.65.4l-.33.06c-.66.12-1.26.21-1.84.27v.1l-.17-.09c-.72.06-1.38.1-2.03.1s-1.31-.03-2.03-.1v.1Zm11.07-28.2c0 4.98-4.05 9.04-9.04 9.04s-9.04-4.05-9.04-9.04 4.05-9.04 9.04-9.04 9.04 4.05 9.04 9.04Zm1.2 0c0-5.64-4.59-10.23-10.23-10.23s-10.24 4.59-10.24 10.23c0 4.15 2.56 7.92 6.41 9.48a17.032 17.032 0 0 0-12.48 11.58 22.135 22.135 0 0 1-5.93-15.1C4.76 13.74 14.74 3.76 27 3.76S49.24 13.74 49.24 26c0 5.61-2.11 10.97-5.93 15.1a17.067 17.067 0 0 0-12.48-11.58c3.85-1.56 6.41-5.33 6.41-9.48Z\"><\/path><\/svg>",
+            "title": "Sign Up Bonus",
+            "line-2": "We’ll get you started with 1,500 reward points (worth $7.50 AUD) when you create your account on ERSTWILDER.COM. If you already have an account, you'll find that you already have these points!"
+          }
+        },
+        "ed1a2361-2262-4844-935a-ee0c4f49e094": {
+          "type": "icon-block",
+          "settings": {
+            "svg-code": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 54 52\"><path d=\"M50.14 6.65H3.86C2.23 6.65.91 7.98.91 9.6v32.8c0 1.63 1.33 2.95 2.95 2.95h46.28c1.63 0 2.95-1.33 2.95-2.95V9.6c0-1.63-1.33-2.95-2.95-2.95ZM27 30.46 3.18 7.99c.22-.1.46-.15.69-.15h46.27c.23 0 .46.05.69.15L27 30.46ZM20.52 26 2.3 43.18c-.13-.25-.19-.51-.19-.78V9.6c0-.27.07-.53.19-.78L20.52 26Zm.87.83 5.19 4.89c.11.11.26.16.41.16s.3-.06.41-.16l5.19-4.89 18.22 17.18c-.22.1-.46.15-.69.15H3.86c-.23 0-.46-.05-.69-.15L21.4 26.83ZM33.47 26 51.7 8.82c.13.25.19.51.19.78v32.8c0 .27-.07.53-.19.78L33.48 26Z\"><\/path><\/svg>",
+            "title": "Bonus Points Events",
+            "line-2": "Sign up for the latest e-news from us over at Erstwilder and you'll be notified of special 'bonus points events' where you’ll have the opportunity to earn double or even triple points for your orders!"
+          }
+        },
+        "dea0de0c-4d87-4e17-b3db-6aa1cde39b12": {
+          "type": "icon-block",
+          "settings": {
+            "svg-code": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 54 52\"><path d=\"M33.49 13.77h4.65c1.07 0 1.94-.87 1.94-1.94V4.5c0-1.07-.87-1.94-1.94-1.94h-6.35c-6.03 0-10.94 4.91-10.94 10.94v6.84h-4.99c-1.07 0-1.94.87-1.94 1.94v7.34c0 1.07.87 1.94 1.94 1.94h4.99v15.96c0 1.07.87 1.94 1.94 1.94h7.34c1.07 0 1.94-.87 1.94-1.94V31.56h3.88c.89 0 1.66-.6 1.88-1.47l1.83-7.34c.15-.58.02-1.19-.35-1.66s-.93-.74-1.53-.74h-5.7v-5.14c0-.79.64-1.43 1.43-1.43Zm2.45 16.58h-4.48c-.33 0-.6.27-.6.6v16.56c0 .41-.33.74-.74.74h-7.34c-.41 0-.74-.33-.74-.74V30.95c0-.33-.27-.6-.6-.6h-5.59c-.41 0-.74-.33-.74-.74v-7.34c0-.41.33-.74.74-.74h5.59c.33 0 .6-.27.6-.6v-7.44c0-5.37 4.37-9.74 9.74-9.74h6.35c.41 0 .74.33.74.74v7.34c0 .41-.33.74-.74.74h-4.65c-1.45 0-2.63 1.18-2.63 2.63v5.74c0 .33.27.6.6.6h6.3a.725.725 0 0 1 .71.91l-1.83 7.34c-.08.33-.38.56-.71.56Z\"><\/path><\/svg>",
+            "title": "Get Social on Facebook",
+            "line-2": "Are you a social (media) butterfly? You'll earn 200 points for liking our Facebook Page and 100 points for sharing our Facebook Page. Find out how, via the rewards pop up!"
+          }
+        },
+        "b38bd977-a749-4ed3-a557-c1b418f1aa77": {
+          "type": "icon-block",
+          "settings": {
+            "svg-code": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 54 52\"><path d=\"M37.43 4.56H16.57C10.5 4.56 5.56 9.5 5.56 15.57v20.86c0 6.07 4.94 11.01 11.01 11.01h20.86c6.07 0 11.01-4.94 11.01-11.01V15.57c0-6.07-4.94-11.01-11.01-11.01Zm0 41.68H16.57c-5.41 0-9.81-4.4-9.81-9.81V15.57c0-5.41 4.4-9.81 9.81-9.81h20.86c5.41 0 9.81 4.4 9.81 9.81v20.86c0 5.41-4.4 9.81-9.81 9.81Z\"><\/path><path d=\"M27 15.15c-5.98 0-10.85 4.87-10.85 10.85S21.02 36.85 27 36.85 37.85 31.98 37.85 26 32.98 15.15 27 15.15Zm0 20.5c-5.32 0-9.65-4.33-9.65-9.65s4.33-9.65 9.65-9.65 9.65 4.33 9.65 9.65-4.33 9.65-9.65 9.65ZM39.53 10.89a2.88 2.88 0 1 0 .001 5.761 2.88 2.88 0 0 0-.001-5.761Zm0 4.56c-.93 0-1.68-.75-1.68-1.68s.75-1.68 1.68-1.68 1.68.75 1.68 1.68-.75 1.68-1.68 1.68Z\"><\/path><\/svg>",
+            "title": "Follow us on Instagram",
+            "line-2": "Are you doing it for the gram? You'll earn 200 points for following us on Instagram. Find out how, via the rewards pop up!"
+          }
+        },
+        "aa9bbd81-bea1-4f97-82a1-84e98ebe6be2": {
+          "type": "icon-block",
+          "settings": {
+            "svg-code": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 54 52\"><path d=\"M27 5.3c-10.54 0-19.12 8.58-19.12 19.12 0 5.74 2.55 11.12 6.97 14.68-.56 3.52-5.38 6.31-5.43 6.33-.22.13-.34.38-.29.64.05.25.26.45.51.48.12.01 1.25.15 2.82.15 2.85 0 8.01-.46 10.67-3.57 1.3.27 2.6.41 3.86.41 10.54 0 19.12-8.58 19.12-19.12S37.54 5.3 27 5.3Zm0 37.03c-1.29 0-2.62-.15-4.06-.47-.19 0-.4.12-.53.25-2.21 2.93-7.21 3.37-9.99 3.37-.32 0-.62 0-.9-.01 1.64-1.21 4.17-3.52 4.55-6.4a.575.575 0 0 0-.21-.63c-4.31-3.43-6.79-8.54-6.79-14.03 0-9.88 8.04-17.92 17.92-17.92s17.92 8.04 17.92 17.92-8.04 17.92-17.92 17.92Z\"><\/path><path d=\"M33.54 17.68c-.21-.03-.43-.05-.65-.05-1.69 0-3.72.97-5.59 2.67-1.98-2.33-4.23-3.61-6.34-3.61-.36 0-.71.04-1.05.12-1.66.37-2.85 1.61-3.26 3.4-.36 1.58-.79 7.31 8.86 14.96.11.08.24.13.37.13s.26-.04.37-.12c.66-.51 1.44-1.06 2.28-1.64 4.71-3.32 11.17-7.86 8.31-13.22-.79-1.53-1.9-2.42-3.29-2.64Zm-5.71 14.88c-.7.49-1.35.95-1.94 1.39-6.94-5.62-8.72-10.64-8.07-13.46.3-1.32 1.16-2.23 2.35-2.5.26-.06.53-.09.8-.09 1.86 0 3.98 1.33 5.81 3.66.11.13.26.22.48.23.15 0 .3-.06.42-.17 1.78-1.77 3.68-2.78 5.21-2.78.17 0 .33.01.48.04.99.16 1.8.83 2.41 2.01 2.36 4.42-3.59 8.61-7.94 11.68Z\"><\/path><\/svg>",
+            "title": "Spread the Love",
+            "line-2": "Spread the love by referring your friends with your personal referral link and you’ll both be rewarded! For each first order placed via your link they’ll get $10 off, and you’ll get 1,500 points (worth $7.50 AUD)."
+          }
+        },
+        "993baa4c-bd6f-4499-b0a4-d0bb1b77f21c": {
+          "type": "icon-block",
+          "settings": {
+            "svg-code": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 54 52\"><path d=\"M49.1 24.36a3.791 3.791 0 0 0 .97-3.91 3.791 3.791 0 0 0-3.08-2.6L36.9 16.39c-.85-.12-1.59-.66-1.97-1.43l-4.51-9.14c-.65-1.31-1.96-2.13-3.42-2.13s-2.77.81-3.42 2.13l-4.51 9.14c-.38.77-1.12 1.31-1.97 1.43L7.01 17.85a3.791 3.791 0 0 0-3.08 2.6c-.45 1.39-.08 2.89.97 3.91l7.3 7.12c.62.6.9 1.46.75 2.31l-1.72 10.05c-.25 1.44.33 2.87 1.52 3.73a3.812 3.812 0 0 0 4.02.29l9.02-4.74c.37-.2.79-.3 1.22-.3s.84.1 1.22.3l9.02 4.74a3.812 3.812 0 0 0 4.02-.29 3.794 3.794 0 0 0 1.52-3.73l-1.72-10.05c-.15-.85.13-1.71.75-2.31l7.3-7.12Zm-9.23 9.63 1.72 10.05c.17 1-.22 1.96-1.04 2.56-.46.33-.99.51-1.53.51-.42 0-.83-.1-1.22-.31l-9.02-4.74a3.773 3.773 0 0 0-3.54 0l-9.02 4.74c-.39.21-.8.31-1.22.31-.54 0-1.07-.18-1.53-.51-.82-.6-1.21-1.55-1.04-2.56l1.72-10.05c.21-1.24-.2-2.5-1.1-3.38l-7.3-7.12a2.55 2.55 0 0 1-.66-2.68c.31-.97 1.1-1.63 2.11-1.78l10.09-1.46c1.24-.18 2.32-.96 2.87-2.09l4.51-9.14c.45-.91 1.33-1.46 2.34-1.46s1.89.55 2.34 1.46l4.51 9.14a3.799 3.799 0 0 0 2.87 2.09l10.09 1.46c1.01.15 1.8.81 2.11 1.78.31.97.07 1.97-.66 2.68l-7.3 7.12c-.9.88-1.31 2.14-1.1 3.38Z\"><\/path><\/svg>",
+            "title": "Leave a Review",
+            "line-2": "If you love us, let us know about it! Here at Erstwilder, no good deed goes unrewarded, so leave us a review and you'll go in the draw to win a $50 gift voucher in our monthly competition."
+          }
+        },
+        "2fca802e-8274-4d1f-9ada-8b96dca9292d": {
+          "type": "icon-block",
+          "settings": {
+            "svg-code": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 54 52\"><path d=\"M45.11 16.59h-7.87a6.897 6.897 0 0 0 3.07-5.75c0-3.83-3.12-6.95-6.95-6.95-2.77 0-5.24 1.62-6.35 4.14a6.934 6.934 0 0 0-6.35-4.14c-3.83 0-6.95 3.12-6.95 6.95 0 2.33 1.14 4.45 3.07 5.75H8.91c-2 0-3.63 1.63-3.63 3.63v3.53c0 2 1.63 3.63 3.63 3.63h.13v17.1c0 2 1.63 3.63 3.63 3.63h28.7c2 0 3.63-1.63 3.63-3.63v-17.1h.13c2 0 3.63-1.63 3.63-3.63v-3.53c0-2-1.63-3.63-3.63-3.63ZM10.22 27.38H26.4v19.54H12.65c-1.34 0-2.43-1.09-2.43-2.43V27.38Zm-1.33-9.59H26.4v8.39H8.89c-1.34 0-2.43-1.09-2.43-2.43v-3.53c0-1.34 1.09-2.43 2.43-2.43ZM20.65 5.08c3.17 0 5.75 2.58 5.75 5.75v5.75h-5.75c-3.17 0-5.75-2.58-5.75-5.75s2.58-5.75 5.75-5.75Zm24.47 21.1H27.6v-8.39h17.51c1.34 0 2.43 1.09 2.43 2.43v3.53c0 1.34-1.09 2.43-2.43 2.43Zm-3.76 20.74H27.61V27.38h16.18v17.1c0 1.34-1.09 2.43-2.43 2.43ZM33.35 5.08c3.17 0 5.75 2.58 5.75 5.75s-2.58 5.75-5.75 5.75H27.6v-5.75c0-3.17 2.58-5.75 5.75-5.75Z\"><\/path><\/svg>",
+            "title": "Happy Birthday",
+            "line-2": "What? It’s your birthday month?! Okay then, here’s another 1,000 points (worth $5.00 AUD), from us to you! Make sure to check the T&C's for eligibility criteria and how to claim these."
+          }
+        }
+      },
+      "block_order": [
+        "0d7d8c48-a0ab-44aa-8776-c6560916818a",
+        "3ddbf8b7-418a-418f-ae4b-c6a36c438240",
+        "ed1a2361-2262-4844-935a-ee0c4f49e094",
+        "dea0de0c-4d87-4e17-b3db-6aa1cde39b12",
+        "b38bd977-a749-4ed3-a557-c1b418f1aa77",
+        "aa9bbd81-bea1-4f97-82a1-84e98ebe6be2",
+        "993baa4c-bd6f-4499-b0a4-d0bb1b77f21c",
+        "2fca802e-8274-4d1f-9ada-8b96dca9292d"
+      ],
+      "settings": {
+        "tab-1-label": "How to Earn",
+        "tab-2-label": "Rewards",
+        "tab-2-subtitle": "Apply your coupon when it's time to checkout. Claimed a coupon and had a change of heart? Please email hello@erstwilder.com and we'll return the points for you.",
+        "tab-3-label": "Activity",
+        "tab-4-label": "Help",
+        "tab-4-content": "How do I join the rewards club?\n\nIf you've already created a store account then congratulations, you’re already enrolled! If not, simply create your store account and you’ll start earning rewards right away, with 1,500 bonus points just for signing up (because it feels good to give a little 😉).\n\nHow do I redeem points?\n\nClick or select the REWARDS tab right here to reveal the rewards you're able claim. Click on the one you want and just like magic it's yours! You'll be able to copy the discount code that appears for use at checkout. Alternatively you can click or select the ERSTWILDER REWARDS icon (if you’re on a computer or laptop) or the stars icon at the bottom left of the screen if you you’re visiting on mobile. A pop up will appear and this is your rewards ‘home-base’. From here you’ll be able to view your rewards points total, redeem rewards with your points, browse any rewards you’ve redeemed but not yet used, check out all the ways to earn points, and all the rewards we have on offer, see how many friends referrals have been completed, and grab your personalised link which you can share on social, via email, sms, or anywhere else, to get more of those rewarding referrals!\n\nI claimed a reward by accident, can I get my points back?\n\nOf course! Simply email the team at hello@erstwilder.com and we'll assist with cancelling the reward and setting your points balance right.\n\nI forgot to apply my rewards discount at checkout. What do I do now?\n\nFirstly, don't worry! We can help here. You can either use the code on your next purchase, or simply email the team at hello@erstwilder.com with your order number and the discount code you were intending on using. We'll be able to manually adjust your points balance and refund you the discount amount you intended to claim.\n\nI redeemed a rewards code but can't find it!\n\nWith our program, nothing is lost! Any rewards your have claimed but not yet redeemed with have their discount codes visible in your rewards account so take a look there. Still having trouble? Email the team at hello@erstwilder.com"
+      }
+    },
+    "content-full-image-banner": {
+      "type": "content-full-image-banner",
+      "settings": {
+        "title": "",
+        "mobile-image": "shopify:\/\/shop_images\/NEW_WEBSITE_REWARDS_LOGGED_IN_BANNER_MOBILE.jpg",
+        "image": "shopify:\/\/shop_images\/NEW_WEBSITE_REWARDS_LOGGED_IN_BANNER_DESKTOP.jpg",
+        "top-wave": "2",
+        "top-color-1": "rgba(0,0,0,0)",
+        "top-color-2": "#f8f3ec",
+        "flip-top-wave": true,
+        "bottom-wave": "2",
+        "bottom-color-1": "rgba(0,0,0,0)",
+        "bottom-color-2": "#f4e9d2",
+        "flip-bottom-wave": false
+      }
+    },
+    "content-faq-accordions": {
+      "type": "content-faq-accordions",
+      "blocks": {
+        "ff9df7af-77df-483f-acf1-e0fb1f98411f": {
+          "type": "faq",
+          "settings": {
+            "title": "How do I join the rewards club?",
+            "answer": "If you've already created a store account then congratulations, you’re already enrolled! \n\nIf not, simply create your store account (URL below) and you’ll start earning rewards right away, with 1,500 bonus points just for signing up (because it feels good to give a little 😉).\n\nhttps:\/\/www.erstwilder.com\/account\/register"
+          }
+        },
+        "e449b0ec-c1d7-4e18-bd61-1b96a4716bcd": {
+          "type": "faq",
+          "settings": {
+            "title": "How do I check my balance and redeem points?",
+            "answer": "First, make sure you’re logged in to your Erstwilder account.\n\nThen, click or select the ERSTWILDER REWARDS icon (if you’re on a computer or laptop) or the stars icon at the bottom left of the screen if you you’re visiting on mobile. A pop up will appear and this is your rewards ‘home-base’.\n\nFrom here you’ll be able to view your rewards points total, redeem rewards with your points, browse any rewards you’ve redeemed but not yet used, check out all the ways to earn points, and all the rewards we have on offer, see how many friends referrals have been completed, and grab your personalised link which you can share on social, via email, sms, or anywhere else, to get more of those rewarding referrals!"
+          }
+        },
+        "f18ee0a6-2d07-47b8-9f10-7627143afbad": {
+          "type": "faq",
+          "settings": {
+            "title": "I claimed a reward by accident, can I get my points back?",
+            "answer": "Of course! Simply email the team at hello@erstwilder.com and we'll assist with cancelling the reward and setting your points balance right."
+          }
+        },
+        "acb001bf-3a4f-46cc-8b2d-41167fcca78b": {
+          "type": "faq",
+          "settings": {
+            "title": "I forgot to apply my rewards discount at checkout. What do I do now?",
+            "answer": "Firstly, don't worry! We can help here. \n\nYou can either use the code on your next purchase, or simply email the team at hello@erstwilder.com with your order number and the discount code you were intending on using. \n\nWe'll be able to manually adjust your points balance and refund you the discount amount you intended to claim."
+          }
+        },
+        "2a82dea1-0441-42ff-8487-9b860ec898ab": {
+          "type": "faq",
+          "settings": {
+            "title": "I redeemed a rewards code but can't find it!",
+            "answer": "With our program, nothing is lost! \n\nAny rewards your have claimed but not yet redeemed with have their discount codes visible in your rewards account so take a look there.\n\nStill having trouble? Email the team at hello@erstwilder.com"
+          }
+        },
+        "152bee9a-3859-4312-9534-dca7eb1bb944": {
+          "type": "faq",
+          "settings": {
+            "title": "Will I earn reward points when purchasing or redeeming Gift Cards?",
+            "answer": "No, Erstwilder Gift Cards are not included in the Erstwilder rewards program."
+          }
+        },
+        "f5c256a4-0847-4a4e-9884-cf5f360170a5": {
+          "type": "faq",
+          "settings": {
+            "title": "Can I have multiple accounts or rewards accounts?",
+            "answer": "You are permitted to have one site account, linking one rewards account, per customer. We have worked hard to create a generous rewards program and, as a small business, it’s important that only one account is held by each customer to ensure rewards and discount codes are issued fairly and enable us to continue running our reward program ongoing. \n\nWhere our system flags suspicious account activity, site and rewards accounts may be deactivated. We appreciate your understanding."
+          }
+        },
+        "64b40702-6b1b-4894-801e-dc9da23245ac": {
+          "type": "faq",
+          "disabled": true,
+          "settings": {
+            "title": "",
+            "answer": ""
+          }
+        }
+      },
+      "block_order": [
+        "ff9df7af-77df-483f-acf1-e0fb1f98411f",
+        "e449b0ec-c1d7-4e18-bd61-1b96a4716bcd",
+        "f18ee0a6-2d07-47b8-9f10-7627143afbad",
+        "acb001bf-3a4f-46cc-8b2d-41167fcca78b",
+        "2a82dea1-0441-42ff-8487-9b860ec898ab",
+        "152bee9a-3859-4312-9534-dca7eb1bb944",
+        "f5c256a4-0847-4a4e-9884-cf5f360170a5",
+        "64b40702-6b1b-4894-801e-dc9da23245ac"
+      ],
+      "settings": {
+        "title": "Have Questions?",
+        "top-wave": "0",
+        "top-color-1": "",
+        "top-color-2": "",
+        "flip-top-wave": false,
+        "bottom-wave": "0",
+        "bottom-color-1": "#f8f3ec",
+        "bottom-color-2": "#f4e9d2",
+        "flip-bottom-wave": false
+      }
+    }
+  },
+  "order": [
+    "banners-hero-double-cta",
+    "content-featured-content-8",
+    "content-icon-blocks",
+    "content-heading-double-cta",
+    "banners-hero-rewards",
+    "rewards-details",
+    "content-full-image-banner",
+    "content-faq-accordions"
+  ]
+}

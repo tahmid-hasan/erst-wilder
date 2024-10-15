@@ -1,0 +1,116 @@
+{% comment %}
+  Product thumbnail add to cart button
+    Renders an add to cart button
+
+    Params:
+      - thumbnailProduct: A product object to be used for the thumbnail
+      - thumbnailVariant: A variant object to be used for the thumbnail
+      - class: A string to be used as an additional class
+
+  Version:
+    1.0.0 - 2021/10/10
+{% endcomment %}
+
+
+{%- comment -%}
+  Button - ATC or View
+  Only products with a default/single variant get quick atc functionality.
+  Products with multiple variant will only link through to the product page.
+{%- endcomment -%}
+
+{%- comment -%} Get the btn colour from the product smart tag {%- endcomment -%}
+{%- liquid
+  assign btnColourClass = ''
+  for tag in thumbnailProduct.tags
+    assign lcTag = tag | downcase
+    unless lcTag contains 'thumbnail-colour'
+      continue
+    endunless
+
+    assign colour = lcTag | split: '_' | last | escape
+    break;
+  endfor
+
+  assign colour = colour | default: 'peach'
+  assign btnColourClass = 'is-colour-' | append: colour
+
+  for item in cart.items
+    if item.id == thumbnailVariant.id
+      assign inCart = true
+    endif
+  endfor
+-%}
+
+
+{%- if
+  thumbnailProduct.has_only_default_variant or
+  thumbnailProduct.variants.size <= 1
+-%}
+  {%- form 'product', thumbnailProduct , class: 'o-product-thumbanil__form' -%}
+    {%- comment -%} Variant Selector {%- endcomment -%}
+    {%- render 'object.variant-selector' with {
+      selectorVariant: thumbnailVariant, selectorProduct: thumbnailProduct,
+      class: 'o-product-thumbnail__variants-selector no-js'
+    } -%}
+
+    {%- comment -%} Add To Cart {%- endcomment -%}
+    <div class="o-product-thumbnail__button-wrapper {{ class }}">
+      <button
+        type="submit"
+        title="{{- thumbnailProduct.title | escape -}}"
+        class="o-product-thumbnail__button o-btn is-secondary {{ btnColourClass }}  {% if inCart %}is-added{% endif %}
+        {% if thumbnailVariant.available != true %}is-disabled{% endif %}"
+          data-product-thumbnail-add-btn
+        {% unless thumbnailVariant.available -%}
+          disabled="disabled"
+        {%- endunless -%}
+      >
+        {%- if class contains 'is-mobile' -%}
+          {%- render 'svg.btn-shape-1' with {
+            class: 'o-product-thumbnail__button-shape o-btn__shape is-mobile'
+          } -%}
+        {%- elsif class contains 'is-desktop' -%}
+          {%- render 'svg.btn-shape-2' with {
+            class: 'o-product-thumbnail__button-shape o-btn__shape is-desktop'
+          } -%}
+        {%- endif -%}
+
+        <span
+          class="o-product-thumbnail__button-label o-btn__label"
+          data-product-thumbnail-add-btn-label
+        >
+          {%- if inCart -%}
+            {{- 'products.product.added_to_cart' | t -}}        
+          {%- elsif thumbnailVariant.available -%}
+            {{- 'products.product.add_to_cart' | t -}}
+          {%- else -%}
+            {{- 'products.product.sold_out' | t -}}
+          {%- endif -%}
+        </span>
+      </button>
+    </div>
+  {%- endform -%}
+{%- else -%}
+  <div class="o-product-thumbnail__button-wrapper {{ class }}">
+    <a
+      href="{{- thumbnailProduct.url -}}"
+      title="{{- thumbnailProduct.title | escape -}}"
+      class="o-product-thumbnail__button o-btn is-secondary"
+    >
+      
+      {%- if class contains 'is-mobile' -%}
+        {%- render 'svg.btn-shape-1' with {
+          class: 'o-product-thumbnail__button-shape o-btn__shape is-mobile'
+        } -%}
+      {%- elsif class contains 'is-desktop' -%}
+        {%- render 'svg.btn-shape-2' with {
+          class: 'o-product-thumbnail__button-shape o-btn__shape is-desktop'
+        } -%}
+      {%- endif -%}
+
+      <span class="o-product-thumbnail__button-label o-btn__label">
+        {{- 'products.product.view_product' | t -}}
+      </span>
+    </a>
+  </div>
+{%- endif -%}

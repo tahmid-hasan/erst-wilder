@@ -1,0 +1,203 @@
+
+{{ 'sections.collection-video.css' | asset_url | stylesheet_tag }}
+{{ 'sections.collection-video.js' | asset_url | script_tag }}
+
+{%- liquid 
+  assign collection = product.collections[0]
+  assign collections = collection.metafields.collections
+  assign products = product.metafields.products 
+
+  assign collectionPoster = collections.poster | first 
+  assign collectionVideoMp4 = collections.video_mp4 | first 
+  assign collectionVideoWebM = collections.video_webm | first
+
+  assign productPoster = products.poster | first 
+  assign productVideoMp4 = products.video_mp4 | first 
+  assign productVideoWebM = products.video_webm | first
+
+  assign topWave = section.settings.top-wave
+  assign topColor1 = section.settings.top-color-1
+  assign topColor2 = section.settings.top-color-2
+  assign isFlippedTop = section.settings.flip-top-wave
+
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+
+  if productVideoMp4 != blank or productVideoWebM != blank
+    assign productVideo = true
+  endif 
+
+  if productVideo == true and productPoster != blank
+    assign poster = productPoster.src 
+    assign videoMp4 = productVideoMp4.src  
+    assign videoWebm = productVideoWebM.src
+  else
+    assign poster = collectionPoster.src  
+    assign videoMp4 = collectionVideoMp4.src  
+    assign videoWebm = collectionVideoWebM.src  
+  endif 
+
+-%}
+
+
+
+{%- if poster != blank -%}
+
+  {%- comment -%} Top Wave {%- endcomment -%}
+  {%- if topWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:topWave
+      color1: topColor1
+      color2: topColor2,
+      isFlipped: isFlippedTop
+    } -%}
+  {%- endif -%}
+
+  <div class="c-collection-video" data-featured-video-container>
+    <div class="c-collection-video__inner">
+
+      {%- comment -%} Title {%- endcomment -%}
+      {%- if section.settings.title != blank -%}
+        <h2 class="c-collection-video__title">
+          {{- section.settings.title | escape -}}
+        </h2>      
+      {%- endif -%}
+
+      {%- render 'object.featured-video' with {
+        poster: poster,
+        videoMp4:videoMp4,
+        videoWebm:videoWebm,
+        class:'c-collection-video__video-wrapper'
+      } -%}
+
+    </div>
+  </div>
+
+  {%- comment -%} Bottom Wave {%- endcomment -%}
+  {%- if bottomWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:bottomWave
+      color1: bottomColor1
+      color2: bottomColor2,
+      isFlipped: isFlippedBottom
+    } -%}
+  {%- endif -%}  
+{%- endif -%}
+
+
+
+
+{% schema %}
+{
+  "name": "Collection Video",
+  "class": "c-section c-section__collection-video",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Collection videos can be added in the collection's Accentuate metafields. Alternatively, videos can be added to the product's Accentuate metafields to replace the collection video"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "A bit more about this collection"
+    },
+    {
+      "type": "header",
+      "content": "Top Wave"
+    },
+    {
+      "type": "select",
+      "id": "top-wave",
+      "label": "Top Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "top-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "top-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-top-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "category": "Media",
+      "name":"Collection Video"
+    }
+  ]
+}
+{% endschema %}

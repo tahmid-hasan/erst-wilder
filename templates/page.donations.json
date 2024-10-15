@@ -1,0 +1,499 @@
+{
+  "sections": {
+    "donations-hero": {
+      "type": "donations-hero",
+      "settings": {
+        "title": "Erstwilder Cares!",
+        "text": "At Erstwilder we have a clear mission - to spark joy in the world. Erstwilder isn’t a brand that plants a flag in the ground and says: ‘we’re about this cause’. Rather, we work to provide assistance and spark joy amongst a wide range of wonderful charities and causes close to our hearts, and that of our community.\n\nWe also acknowledge that for some, what’s needed to bring joy to their lives is not accessories (or at least not only accessories!), but real support, be it emotional, financial or through advocacy. \n\nThere are many experiencing hardships, challenges, discrimination and inequality who need a helping hand and for their voices to be amplified.",
+        "heading": "Total donated",
+        "total-label": "Total donated",
+        "total": "$134,555",
+        "bottom-wave": "1",
+        "color-1": "#f8f3ec",
+        "color-2": "#ffffff",
+        "flip-bottom-wave": false
+      }
+    },
+    "donations-types": {
+      "type": "donations-types",
+      "blocks": {
+        "2ef5b72d-8058-466e-b84e-9ce6d431d9a0": {
+          "type": "donation_type",
+          "settings": {
+            "title": "Indigenous Issues",
+            "icon": "<svg id=\"Layer_1\" data-name=\"Layer 1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 65 65\"><defs><style>.cls-1{fill:#fff}<\/style><\/defs><path class=\"cls-1\" d=\"M64.47 34.13c0-2.64-.39-5.61-2.49-7.66 0-.15-.1-.34-.15-.54-.18-.75-.39-1.6-1.08-1.82a1 1 0 0 0-.6 0 12.12 12.12 0 0 1-.71-2 4.42 4.42 0 0 0-.76-1.82 8.85 8.85 0 0 0-2.57-1.6c-.2-.09-.39-.17-.57-.27a12.3 12.3 0 0 1-.86-4.12c-.27-2.5-.52-4.86-2.28-5.07a3.37 3.37 0 0 0-.55 0h-.11C51.06 7 50.21 4.2 49.92 3.05a.64.64 0 0 0-.49-.46.62.62 0 0 0-.62.24c-1.88 2.49-2.25 5.55-2.56 8-.21 1.72-.4 3.33-1.08 3.6-1 .36-3.47-1.17-7.47-4.58a6.9 6.9 0 0 1 .86-1.38 9.15 9.15 0 0 0 1-1.56 2.1 2.1 0 0 0 0-2.11c-.56-.88-2.04-.8-3.3-.66a6.48 6.48 0 0 1-1.29 0c-.2 0-.64-.22-1.06-.38-1.65-.64-3.36-1.3-4-.31-.4.63.22 1.15.52 1.4a3.08 3.08 0 0 1 .26.24h-.34a2.92 2.92 0 0 0-2.05.32 9.55 9.55 0 0 0-1.95 2.38c-.16.25-.31.49-.47.72a.62.62 0 0 0-.06.64 4.28 4.28 0 0 1 .34.91A1.69 1.69 0 0 1 25 9.55l-.22-.22c-1.27-1.3-2-1.92-2.71-1.67a6.77 6.77 0 0 0-3.81 2.9c-.18.25-.21.57-.27 1.51v.4c-.82-.44-1.38-.57-1.79-.23s-.28 1.07-.08 1.66v.1c-.61-.5-1.24-1-1.83-.62a1.74 1.74 0 0 0-.52 2.1c.65 2.66-1.62 3.69-5.45 5.06-2.24.8-4.55 1.62-5.79 3.16a.81.81 0 0 1-.33.1 1.3 1.3 0 0 0-1.2.78.42.42 0 0 0 0 .16 9.9 9.9 0 0 0 .65 6 2.86 2.86 0 0 0 .28.45C1.43 31 1 31 .69 31.3a.74.74 0 0 0-.12.83 1 1 0 0 0 .1.17 25.26 25.26 0 0 1 5.49 11.5c0 .12 0 .18-.29.44a1.16 1.16 0 0 0-.3 1.64c1.47 2 4.07 1.72 5.12 1.51a3.51 3.51 0 0 0 1.94-1.51c.3-.38.64-.8.87-.83.61-.08 1.16-.12 1.78-.17s1.46-.1 2.46-.22a4.13 4.13 0 0 0 2.31-1.47 5.48 5.48 0 0 1 2.28-1.63c2.67-.85 7.64-2 10.86-.33A5.59 5.59 0 0 1 36 44.74a.89.89 0 0 0 .08.17.64.64 0 0 0 .48.28c.4 0 .57-.1 2.22-1.79l.21-.21c-.18.72-.26 1.22 0 1.57a.7.7 0 0 0 .58.27 6.64 6.64 0 0 1 .74 2.23c.39 1.73.83 3.7 2.34 3.35a1.42 1.42 0 0 1 1.62.52c.8.74 1.89 1.75 5.24 1.41.13 0 .41.39.54.57.28.36.71.92 1.29.92a1 1 0 0 0 .45-.12.62.62 0 0 0 .22-.17c1.06-1.33 2.53-1.55 4-1.76a13.72 13.72 0 0 0 1.36-.24.63.63 0 0 0 .48-.51c.42-2.63 1.75-4.68 3.16-6.86 1.82-2.87 3.75-5.84 3.46-10.24Zm-4.09-8.7ZM2.21 25h.16a1.85 1.85 0 0 0 1-.39l.1-.11c1-1.29 3.17-2.07 5.27-2.82C12.11 20.47 16 19.1 15 15.14a2.66 2.66 0 0 1-.1-.55c.14.1.31.24.43.34.63.51 1.27 1.05 1.86.62s.39-1.36.16-2c.19.1.43.23.75.42a.7.7 0 0 0 .66 0c.44-.23.47-.73.54-1.83 0-.33.06-.83 0-.85a5.55 5.55 0 0 1 3.1-2.43 7.6 7.6 0 0 1 1.5 1.33l.25.25c.65.63 2 1.2 2.76.63.56-.4.62-1.13.2-2.15.1-.16.2-.32.31-.48a8.05 8.05 0 0 1 1.68-2.08 3.31 3.31 0 0 1 1.16 0c.76.06 1.49.11 1.82-.47S32 4.7 31.8 4.47l-.09-.11a17 17 0 0 1 1.74.64 10.5 10.5 0 0 0 1.26.43 6.07 6.07 0 0 0 1.65 0c.69 0 2-.15 2.19.15.05.07.07.33-.16.87a8.34 8.34 0 0 1-.85 1.33 4.78 4.78 0 0 0-1.16 2.33.62.62 0 0 0 .21.5c5.7 4.88 7.73 5.54 9 5s1.6-2.33 1.88-4.61a18 18 0 0 1 1.57-6.25c.46 1.6 1.12 3.77 1.52 5.07.23.77 1 .71 1.34.69a1.61 1.61 0 0 1 .31 0c.76.09 1 2.23 1.17 3.95s.39 3.65 1.14 4.81a.59.59 0 0 0 .24.23l.78.37a7.35 7.35 0 0 1 2.2 1.34 6.73 6.73 0 0 1 .45 1.29 7.35 7.35 0 0 0 1.3 2.89l.08.05H43.35a10.26 10.26 0 0 0-20.48 0H2.16c.02-.14.03-.28.05-.44Zm39.91 1a9 9 0 1 1-9-9 9 9 0 0 1 9 9.06ZM59.9 43.69a19.62 19.62 0 0 0-3.27 6.91l-.86.14a7 7 0 0 0-4.48 1.9l-.24-.3c-.35-.45-.81-1.06-1.52-1.06h-.13c-2.8.28-3.58-.44-4.27-1.08a2.63 2.63 0 0 0-2.76-.82c-.32-.15-.67-1.68-.84-2.41-.32-1.42-.62-2.77-1.41-3.11 0-.23.12-.51.17-.71.23-.92.38-1.52.07-1.92a.81.81 0 0 0-.57-.29c-.34 0-.51.13-1.91 1.57l-1 1a6.69 6.69 0 0 0-3.11-3.41c-3.44-1.8-8.33-.86-11.82.25a6.79 6.79 0 0 0-2.8 1.94c-.57.59-1 1.05-1.56 1.11-1 .11-1.72.17-2.4.22s-1.22.09-1.85.17a2.79 2.79 0 0 0-1.7 1.3c-.37.47-.76 1-1.2 1-.79.16-2.71.39-3.78-.92l.08-.08a1.68 1.68 0 0 0 .66-1.57 26.63 26.63 0 0 0-4.86-11 1.19 1.19 0 0 0 .88-.08.94.94 0 0 0 .35-.44 1.54 1.54 0 0 0-.53-1.24 4.25 4.25 0 0 1-.46-.64 7.71 7.71 0 0 1-.71-3.45h20.8a10.26 10.26 0 0 0 20.48 0h17.38c.05.15.09.29.14.4a.9.9 0 0 0 .14.2c1.86 1.74 2.16 4.45 2.2 6.87.27 4.05-1.47 6.72-3.31 9.55ZM52.69 56.21a7.06 7.06 0 0 1-.93.25A4.26 4.26 0 0 1 50.7 56a3.85 3.85 0 0 0-1.7-.62 1 1 0 0 0-.82.46c-.31.51 0 1.11.25 1.74a3.53 3.53 0 0 1 .41 1.28c.32 2.85 1.39 3.51 2.22 3.56h.1c1.33 0 2.66-1.62 3.19-3.9v-.07c.14-1.27.13-1.86-.3-2.21a1.35 1.35 0 0 0-1.36-.03Zm.4 2.06c-.43 1.84-1.43 2.92-2 2.89-.38 0-.85-.78-1-2.37a4.45 4.45 0 0 0-.52-1.73c0-.09-.09-.19-.13-.3.22.1.48.24.67.34a3.83 3.83 0 0 0 1.73.62 7.49 7.49 0 0 0 1.23-.31h.08a8.39 8.39 0 0 1-.06.86Z\"><\/path><\/svg>"
+          }
+        },
+        "a41dfdc7-23a6-4e06-976e-f97fa6a284bf": {
+          "type": "donation_type",
+          "settings": {
+            "title": "Women's Health",
+            "icon": "<svg id=\"Layer_1\" data-name=\"Layer 1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 65 65\"><defs><style>.cls-1{fill:#fff}<\/style><\/defs><path class=\"cls-1\" d=\"M53.61 28.06a28.57 28.57 0 0 0-5.32-11.32c-2.66-3.8-4.76-6.8-2.91-13.79a.68.68 0 0 0-.11-.57.67.67 0 0 0-.52-.25h-24.5a.67.67 0 0 0-.52.25.68.68 0 0 0-.11.57c1.85 7-.25 10-2.91 13.79a28.57 28.57 0 0 0-5.32 11.32C8.72 40.6 14.3 61.51 14.54 62.39a.64.64 0 0 0 .63.48h34.66a.64.64 0 0 0 .63-.48c.24-.88 5.82-21.79 3.15-34.33Zm-4.28 33.51H33.15V41.76L38 38.08a.65.65 0 0 0 .12-.91.64.64 0 0 0-.91-.12l-4.71 3.56-4.69-3.56a.64.64 0 0 0-.91.12.65.65 0 0 0 .12.91l4.83 3.68v19.81H15.67c-.83-3.24-5.39-22-3-33.24a27.38 27.38 0 0 1 5.11-10.84c2.64-3.77 4.93-7 3.3-14.06h22.84c-1.63 7 .66 10.29 3.3 14.06a27.38 27.38 0 0 1 5.11 10.84c2.39 11.21-2.17 29.99-3 33.24Z\"><\/path><path class=\"cls-1\" d=\"M38.56 17.18c-2.45-.14-4.78 1.94-6 3.27C30 18 27.1 17 24.8 17.76a4.37 4.37 0 0 0-2.94 3.79c-.19 1.63 0 7.44 10.48 14.08a.64.64 0 0 0 .35.1.63.63 0 0 0 .45-.18c.61-.57 1.33-1.21 2.1-1.88 4.38-3.83 10.38-9.08 6.92-14.18a4.54 4.54 0 0 0-3.6-2.31Zm-4.18 15.51c-.63.55-1.23 1.08-1.76 1.57-7.49-4.87-9.81-9.66-9.46-12.55A3.08 3.08 0 0 1 25.21 19a3.51 3.51 0 0 1 1.17-.18c1.52 0 3.59.79 5.78 3a.61.61 0 0 0 .49.19.63.63 0 0 0 .48-.23c1.37-1.68 3.54-3.43 5.36-3.34a3.39 3.39 0 0 1 2.59 1.74c2.81 4.18-2.68 8.99-6.7 12.51Z\"><\/path><\/svg>"
+          }
+        },
+        "7d964259-2398-49c1-b4a8-4ec989ea5fc0": {
+          "type": "donation_type",
+          "settings": {
+            "title": "Mental Health",
+            "icon": "<svg id=\"Layer_1\" data-name=\"Layer 1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 65 65\"><defs><style>.cls-1{fill:#fff}<\/style><\/defs><path class=\"cls-1\" d=\"M52.93 43.4a16.17 16.17 0 0 1 1.73-4.51 27.37 27.37 0 0 0 3.36-14c0-11.1-7.79-22.35-22.68-22.35-14.66 0-22.57 11.86-22.57 23 0 1.59-1.65 4.05-3.09 6.23S7 35.86 7 37.22c0 2.51 3.39 3.66 4.76 4l.08 9.67A4.49 4.49 0 0 0 16 55.33l10.25.61.75 3.11a4.47 4.47 0 0 0 4.32 3.38 4.74 4.74 0 0 0 1.23-.17l18.87-5.34a4.47 4.47 0 0 0 2.91-6c-1.23-3.04-1.72-5.63-1.4-7.52Zm.14 10.6a3.11 3.11 0 0 1-2 1.65L32.21 61a3.14 3.14 0 0 1-3.92-2.27l-.9-3.57a.64.64 0 0 0-.6-.49L16.07 54a3.18 3.18 0 0 1-3-3.13L13 40.72a.66.66 0 0 0-.52-.64c-1.1-.22-4.23-1.24-4.23-2.86 0-1 1.26-2.86 2.47-4.69 1.63-2.44 3.31-5 3.31-7 0-10.52 7.45-21.7 21.27-21.7 14 0 21.37 10.59 21.37 21A26 26 0 0 1 53.5 38.3a17.21 17.21 0 0 0-1.86 4.88c-.37 2.16.14 4.93 1.5 8.22a3.21 3.21 0 0 1-.07 2.6Z\"><\/path><path class=\"cls-1\" d=\"M44.17 15.66c-2.35-.39-5.36.92-8.14 3.48-3-3.58-6.57-5.3-9.61-4.62a5.48 5.48 0 0 0-4.16 4.35c-.46 2-1 9.46 11.52 19.4a.66.66 0 0 0 .81 0c.86-.66 1.88-1.38 3-2.14 6.09-4.31 14.46-10.2 10.78-17.13a5.72 5.72 0 0 0-4.2-3.34Zm-7.36 19.4c-.94.66-1.83 1.28-2.61 1.87-9.16-7.39-11.53-14-10.66-17.77a4.18 4.18 0 0 1 3.16-3.36 4.83 4.83 0 0 1 1.08-.12c2.46 0 5.25 1.73 7.68 4.82a.63.63 0 0 0 .47.25.65.65 0 0 0 .5-.18C39.05 18 41.88 16.62 44 17a4.5 4.5 0 0 1 3.24 2.69c3.12 5.83-4.71 11.31-10.43 15.37Z\"><\/path><\/svg>"
+          }
+        },
+        "4e010a84-128a-4ecd-8ec5-e88260083f37": {
+          "type": "donation_type",
+          "settings": {
+            "title": "Animal Welfare",
+            "icon": "<svg id=\"Layer_1\" data-name=\"Layer 1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 65 65\"><defs><style>.cls-1{fill:#fff}<\/style><\/defs><path class=\"cls-1\" d=\"M60.47 9.49C57.27 5.63 53.59 3.8 49.61 4c-5.68.33-12.09 5.11-17.24 12.83-8.92-7.1-18.17-9.5-24.86-6.38C3.1 12.5.55 16.71.5 22 .46 26.91 3 44.22 37.15 60.92a.72.72 0 0 0 .29.06.65.65 0 0 0 .49-.23c1.7-2 3.75-4.25 5.93-6.62C55.81 41.08 72.18 23.21 60.47 9.49ZM42.91 53.25c-2 2.24-4 4.36-5.64 6.29C11 46.58 1.7 31.68 1.79 22c0-4.77 2.33-8.56 6.26-10.39a13.62 13.62 0 0 1 5.84-1.23c5.49 0 11.93 2.74 18.22 7.92a.62.62 0 0 0 .51.14.66.66 0 0 0 .44-.28c5-7.72 11.21-12.52 16.62-12.85 3.57-.19 6.87 1.47 9.8 5 10.98 12.86-4.95 30.25-16.57 42.94Z\"><\/path><path class=\"cls-1\" d=\"M33.43 33.29c-5.9.77-9.35 4.75-10.15 8.35-.56 2.54.19 4.75 2 5.91a5.23 5.23 0 0 0 2.77 1 5.58 5.58 0 0 0 3.4-1.6A7.16 7.16 0 0 1 35 45.11a7 7 0 0 1 3.86.82c1.85.8 3.76 1.62 6.13-1 1.46-1.59 1.61-3.91.42-6.22-1.72-3.23-6.08-6.18-11.98-5.42ZM44 44.1c-1.75 1.9-2.91 1.4-4.67.65a8.33 8.33 0 0 0-4.54-.92 8.3 8.3 0 0 0-4.16 2.06c-1.5 1.18-2.5 2-4.67.57-1.34-.86-1.88-2.55-1.44-4.54.7-3.16 3.78-6.66 9.06-7.35s9.15 1.9 10.64 4.77c.96 1.81.87 3.58-.22 4.76ZM32.64 31.4a3.27 3.27 0 0 0 .54 0 4.31 4.31 0 0 0 3-1.94 5.46 5.46 0 0 0 .83-3.75 4.92 4.92 0 0 0-5.21-4.5 4.3 4.3 0 0 0-3 1.95 5.51 5.51 0 0 0-.8 3.7 5 5 0 0 0 4.64 4.54Zm-2.77-7.56A3 3 0 0 1 32 22.45h.37a3.68 3.68 0 0 1 3.39 3.41 4.13 4.13 0 0 1-.62 2.86A3.07 3.07 0 0 1 33 30.08a3.59 3.59 0 0 1-3.77-3.38 4.19 4.19 0 0 1 .64-2.86ZM43.44 24.08a3.92 3.92 0 0 0-4.17 3.65 4 4 0 0 0 3.16 4.56h.41a3.52 3.52 0 0 0 2.36-.93 4.44 4.44 0 0 0 1.4-2.75 3.93 3.93 0 0 0-3.16-4.53Zm1.88 4.4a3.16 3.16 0 0 1-1 1.94 2.25 2.25 0 0 1-1.75.59 2.67 2.67 0 0 1-2-3.12A2.72 2.72 0 0 1 43 25.34h.25a2.66 2.66 0 0 1 2.07 3.14ZM24.47 34.64a4 4 0 0 0 1.88-5.22 3.94 3.94 0 0 0-5-2.46 4 4 0 0 0-1.88 5.22 4.41 4.41 0 0 0 2.06 2.29 3.7 3.7 0 0 0 1.66.41 3.35 3.35 0 0 0 1.28-.24Zm-2.32-1.32a3 3 0 0 1-1.45-1.62 2.65 2.65 0 0 1 1.16-3.54 2.65 2.65 0 0 1 3.29 1.74A2.65 2.65 0 0 1 24 33.44a2.21 2.21 0 0 1-1.85-.12Z\"><\/path><\/svg>"
+          }
+        },
+        "625bf607-12b7-4335-aa87-93c7907c806f": {
+          "type": "donation_type",
+          "settings": {
+            "title": "LGBTQIA+ Issues",
+            "icon": "<svg data-name=\"Layer 1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 65 65\"><path d=\"M64.36 53a19.92 19.92 0 0 1-1.48-2.36c-.41-.76-.82-1.58-1.2-2.44s-.88-2.06-1.28-3.18-.71-2.07-1-3.17-.63-2.3-.89-3.47-.53-2.51-.76-3.86c-.19-1.16-.36-2.39-.51-3.64-.14-1.13-.25-2.31-.34-3.53-.08-1.05-.14-2.13-.18-3.25s-.07-2.19-.07-3.34c0-.78.09-2.89.16-4.59 0-.89.08-1.68.09-2.11a.64.64 0 0 0-.2-.49.62.62 0 0 0-.5-.16c-.1 0-9.47 1-24-3.9C24.29 6.83 13.37 8.38 9.67 9A4.5 4.5 0 0 0 10 6.94a4.63 4.63 0 0 0-1.7-3.2 4.75 4.75 0 0 0-7.78 4A4.67 4.67 0 0 0 2.3 11l7.27 48.45a3.38 3.38 0 0 0 1.34 2.24 3.42 3.42 0 0 0 2 .67 4.55 4.55 0 0 0 .52 0h.21a3.4 3.4 0 0 0 2.87-3.87l-1.11-7.55c2.49-.35 12.7-1.57 17.88 1.42a35 35 0 0 0 17.61 5.12 24.66 24.66 0 0 0 13.42-3.6.63.63 0 0 0 .05-.88Zm-4.27-4.85-.52.18-.55.17-.54.16-.64.17-.57.14-.7.16-.6.12-.77.13-.63.1-.82.1-.66.07-.87.07H48.15l-1-.1-.81-.1c-.33 0-.66-.11-1-.17l-.84-.15-1-.24-.86-.21c-.35-.1-.72-.22-1.08-.34l-.86-.27c-.38-.13-.76-.29-1.14-.44l-.84-.33c-.43-.18-.86-.39-1.29-.59-.25-.12-.49-.22-.74-.35-.68-.34-1.36-.71-2-1.12a14.28 14.28 0 0 0-1.41-.71l-.41-.18c-.4-.16-.82-.32-1.25-.46l-.33-.11c-.54-.17-1.1-.32-1.67-.46l-.33-.07c-.49-.11-1-.21-1.49-.29l-.46-.03a41.9 41.9 0 0 0-3.72-.42h-.34l-1.72-.09H14.17l-.87-5.7h.4l.77-.05h8.45l.9.07h.58l.88.1.59.07.86.13.59.09.83.16.58.12.81.2c.18.05.37.09.54.15s.54.16.8.25l.49.16c.28.1.55.22.83.34l.37.15c.38.18.75.37 1.1.58.69.41 1.38.78 2.06 1.13l.67.32c.46.22.92.44 1.37.64l.76.31 1.25.48.75.27c.43.14.85.27 1.28.39.21.06.43.13.65.18.54.15 1.08.27 1.61.38l.26.06c.61.12 1.22.22 1.81.3l.56.06 1.22.11H50.18c.75 0 1.49 0 2.2-.09h.36c.72-.07 1.43-.16 2.11-.27h.12c.67-.11 1.3-.25 1.92-.4l.24-.06c.43-.11.86-.22 1.26-.35.28.91.57 1.79.87 2.63s.68 1.8 1 2.64Zm-3.88-14-.46.08-.49.08-.54.07-.48.06-.61.06H48.6l-.63-.05-.82-.08-.69-.09-.84-.11-.76-.13L44 34l-.83-.17-.86-.19-.91-.22-.86-.22-1-.29-.83-.25-1.15-.38-.82-.28-1.4-.52-.6-.22-2.1-.85c-.52-.22-1.06-.42-1.62-.61l-.46-.15-1.37-.4-.38-.1c-.58-.14-1.17-.27-1.77-.38l-.35-.07q-.75-.13-1.53-.24l-.43-.07c-1.25-.16-2.51-.28-3.74-.35h-.31c-.57 0-1.13-.06-1.69-.07h-6.06l-.87.05H12l-1-6.25 1-.06h8.75l.8.07.67.06.78.16.72.09.72.1.76.12.68.12.79.16.63.14c.28.06.55.14.82.21s.38.09.56.15.6.18.89.28l.45.14c.43.15.86.31 1.27.49.92.39 1.81.74 2.69 1.07l.67.25c.77.29 1.53.55 2.27.79l.28.1c.82.26 1.62.49 2.41.71l.53.14c.67.17 1.32.33 2 .47l.35.08c.74.16 1.45.29 2.15.4.12 0 .24 0 .36.06l1.75.24h.34c.65.06 1.28.12 1.88.15h3.45l1.35-.1h.26l.93-.11.39-.06h.29c.08 1 .17 2 .28 2.89s.27 2.1.43 3.1Zm-.85-12.7c0 .91 0 1.81.06 2.68s.09 1.84.15 2.72h-.18l-.48.08-.47.06-.55.06H48.5l-.78-.06-.65-.06-.8-.09-.71-.1-.83-.13H44l-.84-.16-.83-.18-.87-.19-.89-.23-.88-.23-1-.3-.85-.25-1.12-.37-.82-.28-1.3-.48-.71-.26c-.68-.27-1.38-.55-2.09-.85a16.41 16.41 0 0 0-1.62-.61l-.48-.16-1.31-.38-.44-.11c-.58-.15-1.16-.27-1.75-.39l-.36-.06q-.73-.14-1.47-.24l-.56-.08-1.45-.17h-.38c-.59-.05-1.18-.1-1.77-.13h-.53l-1.28-.06h-7.57l-.77-5.11A48.51 48.51 0 0 1 32.9 17C44 20.48 51 21.88 55.36 21.5ZM58 41.63l-.27.09-.5.14-.6.15-.56.14-.62.13-.6.11-.65.11-.63.09-.68.08-.67.07H47.86l-.86-.06-.73-.08-.87-.14-.73-.12-.92-.2-.68-.14-1-.27-.71-.21c-.34-.11-.7-.23-1.05-.36l-.68-.23-1.13-.47-.63-.26c-.42-.19-.86-.41-1.29-.62l-.51-.25c-.6-.31-1.21-.65-1.83-1a14.1 14.1 0 0 0-1.4-.71l-.44-.19c-.38-.15-.76-.3-1.16-.43l-.44-.15q-.81-.26-1.65-.45h-.18c-.52-.12-1-.22-1.58-.31l-.52-.09c-.46-.07-.92-.14-1.39-.19l-.45-.06a53.5 53.5 0 0 0-1.82-.16h-.29l-1.56-.08h-2.32c-1.06 0-2.09 0-3.06.07h-.31c-.37 0-.74 0-1.09.06h-1.49l-.39-2.53-.57-3.78H12.55l.86-.05H20.02l.92.05h.47l.9.07h.5l.88.1.53.06.86.12.53.08.84.14.55.1.81.18.54.12.82.22.49.13.85.27.42.14c.41.15.82.3 1.21.47.88.37 1.73.71 2.57 1l.72.27c.64.23 1.26.45 1.87.65l.62.2c.78.25 1.53.47 2.27.67l.48.12 1.73.42.66.14c.56.12 1.11.22 1.64.31l.41.07c.65.11 1.27.19 1.88.26l.55.05c.44 0 .88.08 1.3.11h4.23c.39 0 .76-.05 1.13-.09h.3c.45 0 .87-.11 1.27-.18l.38-.06.43-.08c.2 1.14.42 2.24.66 3.28s.48 2 .76 2.96Zm-26.18-30.9c12.62 4.3 21.26 4.18 23.76 4 0 .4 0 .88-.06 1.39-.06 1.4-.13 3.08-.15 4.09-4.19.4-11.06-1-22.09-4.4a49.68 49.68 0 0 0-23.4-1.68l-.57-3.76c2.85-.51 14.48-2.37 22.51.36Zm-17 49.46a2.16 2.16 0 0 1-1.4.85h-.22a2.16 2.16 0 0 1-2.44-1.8L3.51 10.6a.61.61 0 0 0-.26-.43 3.37 3.37 0 0 1-1.47-2.52A3.46 3.46 0 0 1 5 3.92h.31a3.53 3.53 0 0 1 2.24.8 3.43 3.43 0 0 1 .57 4.66.64.64 0 0 0-.12.26.61.61 0 0 0-.1.36l.8 5 .93 6.28 1.16 7.54.72 4.69 3.76 25.09a2.16 2.16 0 0 1-.4 1.59Zm19-8.92C31 49.58 26.75 49.12 23 49.12a55.34 55.34 0 0 0-7.72.57l-.9-5.86h8.31l.76.05h.62l.77.07.6.06.79.1.57.08.79.13.55.1.78.16.52.12.78.2.47.13.77.26.42.15c.27.1.53.21.79.33l.32.14a9.14 9.14 0 0 1 1 .54c.73.43 1.45.82 2.17 1.18l.7.33c.48.23 1 .46 1.44.66.28.12.55.22.82.32.43.17.86.34 1.28.49l.86.27 1.19.36.86.21 1.14.26.85.15 1.09.17.83.1 1.05.1h4.25l.83-.07.73-.08.79-.11.69-.1.75-.14.64-.13.71-.17.58-.14.67-.19.51-.15c.23-.06.44-.13.65-.2l.43-.15.26-.08c.32.69.66 1.35 1 2 .5.91.92 1.56 1.2 2-2.43 1.37-13.52 6.9-29.05-2.07Z\" style=\"fill:#fff\"><\/path><\/svg>"
+          }
+        },
+        "0e7630f6-fe54-47a3-97d4-531f0e252a28": {
+          "type": "donation_type",
+          "settings": {
+            "title": "Food Insecurity",
+            "icon": "<svg id=\"Layer_1\" data-name=\"Layer 1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 65 65\"><defs><style>.cls-1{fill:#fff}<\/style><\/defs><path class=\"cls-1\" d=\"M32.5 1.85A30.65 30.65 0 1 0 63.15 32.5 30.69 30.69 0 0 0 32.5 1.85Zm0 60A29.35 29.35 0 1 1 61.85 32.5 29.39 29.39 0 0 1 32.5 61.85Z\"><\/path><path class=\"cls-1\" d=\"M48.59 21.78a5.34 5.34 0 0 0 0-.69c0-2.58-1-9.95-5.62-9.95-1.9 0-3.23 1.35-4.11 3.14a19.37 19.37 0 0 0-11.32-.48v-.36a2.31 2.31 0 0 0-4-1.59 2.28 2.28 0 0 0-3.29 0 2.31 2.31 0 0 0-4 1.59V21a5.52 5.52 0 0 0 .06.81 19.26 19.26 0 0 0 2.9 24.84L19.15 51a2.83 2.83 0 1 0 5.65 0v-.78a18.83 18.83 0 0 0 15.46 0v.79a2.83 2.83 0 1 0 5.65 0l-.17-4.35a19.27 19.27 0 0 0 2.91-24.83Zm-29.2 23.08a18 18 0 0 1-2.48-21.43v.05a5.67 5.67 0 0 0 .5.86c.07.1.15.18.23.28a6.14 6.14 0 0 0 .42.47c.1.1.2.2.31.29l.49.37.32.21a6.46 6.46 0 0 0 .84.4h.05v1.17Zm3.67 7.24a1.55 1.55 0 0 1-2.17 0 1.52 1.52 0 0 1-.44-1.1l1-25.08a.66.66 0 0 0-.5-.66 4.38 4.38 0 0 1-.64-.22l-.19-.04a4.34 4.34 0 0 1-.43-.23 1.09 1.09 0 0 1-.17-.13 3.37 3.37 0 0 1-.37-.29l-.15-.19c-.11-.11-.21-.22-.31-.34l-.14-.18c-.08-.12-.16-.24-.23-.37a1.76 1.76 0 0 1-.14-.23c-.05-.1-.09-.21-.13-.31a4.91 4.91 0 0 1-.3-.94 4.58 4.58 0 0 1-.08-.83v-7.52a1 1 0 0 1 2 0v5.08a.66.66 0 0 0 .66.65.65.65 0 0 0 .65-.65v-5.08a1 1 0 1 1 2 0v5.08a.66.66 0 0 0 1.31 0v-5.08a1 1 0 0 1 2 0v7.65A4.31 4.31 0 0 1 23 25.27a.66.66 0 0 0-.5.66l.91 23.27.09 1.8a1.52 1.52 0 0 1-.44 1.1Zm17.22-3.34a18 18 0 0 1-15.56 0l-.87-22.38a5.59 5.59 0 0 0 3.74-5.29v-6a18.07 18.07 0 0 1 10.81.34 17.59 17.59 0 0 0-1 5.62 5.59 5.59 0 0 0 3.74 5.28Zm3.83 3.34a1.55 1.55 0 0 1-2.17 0 1.52 1.52 0 0 1-.44-1.1l1-25.09a.66.66 0 0 0-.5-.66 4.31 4.31 0 0 1-3.27-4.17v-.5a19 19 0 0 1 .48-3.24.14.14 0 0 0 0-.06c.05-.2.1-.4.16-.59l.15-.48.06-.19c.08-.23.17-.47.27-.69.67-1.61 1.69-2.89 3.16-2.89 3 0 4.32 5.63 4.32 8.65a4.21 4.21 0 0 1-.23 1.38 1.67 1.67 0 0 0-.08.2c-.06.14-.12.28-.19.41l-.13.23-.22.33-.18.22-.25.27-.22.2a3.5 3.5 0 0 1-.3.24l-.23.16-.38.2a1.51 1.51 0 0 1-.22.11 4.38 4.38 0 0 1-.64.22.66.66 0 0 0-.5.66l1 25.08a1.52 1.52 0 0 1-.45 1.1Zm1.72-26.16.24-.16a5.13 5.13 0 0 0 .6-.44l.22-.2a6.42 6.42 0 0 0 .56-.61 1.71 1.71 0 0 1 .11-.14 6.45 6.45 0 0 0 .52-.87v-.05a18 18 0 0 1-2.5 21.39l-.68-18.49a5.58 5.58 0 0 0 .93-.43Z\"><\/path><\/svg>"
+          }
+        },
+        "ecac42f2-5ca6-435e-bd8c-8aa6464454b2": {
+          "type": "donation_type",
+          "settings": {
+            "title": "Cancer Research",
+            "icon": "<svg data-name=\"Layer 1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 65 65\"><path d=\"M53.75 55.15c-.06-.09-6.19-9.51-12.88-20.16 4.13-6.31 7.75-12.34 9.53-16.37v-.16a.69.69 0 0 0 0-.35c-.17-.45-4.51-11.11-8.15-14.65-1.82-1.76-17.68-1.76-19.5 0-3.64 3.52-8 14.2-8.16 14.65a.82.82 0 0 0 0 .35v.16c1.57 3.56 4.78 9.07 9.53 16.36-6.7 10.68-12.78 20-12.88 20.17a.66.66 0 0 0 .16.89l9.36 6.7a.68.68 0 0 0 .38.12.65.65 0 0 0 .53-.27c.44-.59 5.22-7.09 10.83-15.19 5.8 8.36 10.77 15.13 10.82 15.19a.65.65 0 0 0 .53.27.68.68 0 0 0 .38-.12L53.59 56a.66.66 0 0 0 .16-.85ZM23.66 4.4c.66-.64 4.75-1 8.84-1s8.18.32 8.84 1c2.62 2.53 5.77 9.35 7.15 12.53l-.38-.18-.85-.38a38.25 38.25 0 0 0-9.69-2.68h-.09a35.6 35.6 0 0 0-10 0h-.1a38.71 38.71 0 0 0-9.68 2.68l-.85.38-.38.18c1.42-3.18 4.53-10 7.19-12.53Zm8.84 17c-1.5-2.4-2.76-4.6-3.88-6.54a34.32 34.32 0 0 1 7.76 0c-1.17 2.03-2.49 4.25-3.88 6.56Zm-16.45-2.77.45-.24c.27-.14.57-.29.94-.46l.81-.36a36.55 36.55 0 0 1 9-2.52c1.27 2.21 2.79 4.77 4.52 7.63-2.19 3.61-4.54 7.4-6.84 11.08a136.56 136.56 0 0 1-8.88-15.13ZM21 61.3l-8.33-6c1.39-2.14 6.86-10.58 12.76-20 4.36-6.94 9-14.42 12.33-20.28a36.55 36.55 0 0 1 9 2.52l.81.36c.37.17.67.32.92.45l.47.26C43.62 30.16 24 57.21 21 61.3Zm23 0a895.48 895.48 0 0 1-10.69-15c2.23-3.23 4.56-6.67 6.79-10.07 5.67 9 10.87 17.06 12.23 19.15Z\" style=\"fill:#fff\"><\/path><\/svg>"
+          }
+        }
+      },
+      "block_order": [
+        "2ef5b72d-8058-466e-b84e-9ce6d431d9a0",
+        "a41dfdc7-23a6-4e06-976e-f97fa6a284bf",
+        "7d964259-2398-49c1-b4a8-4ec989ea5fc0",
+        "4e010a84-128a-4ecd-8ec5-e88260083f37",
+        "625bf607-12b7-4335-aa87-93c7907c806f",
+        "0e7630f6-fe54-47a3-97d4-531f0e252a28",
+        "ecac42f2-5ca6-435e-bd8c-8aa6464454b2"
+      ],
+      "settings": {
+        "title": "We have and continue to proudly support organisations working across.....",
+        "top-wave": "0",
+        "top-color-1": "#ffffff",
+        "top-color-2": "#f8f3ec",
+        "flip-top-wave": false,
+        "bottom-wave": "3",
+        "bottom-color-1": "#f4e9d2",
+        "bottom-color-2": "#ffffff",
+        "flip-bottom-wave": true
+      }
+    },
+    "donations-message": {
+      "type": "donations-message",
+      "settings": {
+        "message": "<p>We’re committed to giving back. More than <strong>1% of annual sales<\/strong> from Erstwilder.com is donated to our charity partners<\/p>",
+        "top-wave": "0",
+        "top-color-1": "#f4e9d2",
+        "top-color-2": "#ffffff",
+        "flip-top-wave": false,
+        "bottom-wave": "1",
+        "bottom-color-1": "#f8f3ec",
+        "bottom-color-2": "#f4e9d2",
+        "flip-bottom-wave": true
+      }
+    },
+    "donations-charities-carousel": {
+      "type": "donations-charities-carousel",
+      "blocks": {
+        "baa19c24-2bc9-44e3-82df-1149c19f6649": {
+          "type": "charity",
+          "settings": {
+            "icon-png": "shopify:\/\/shop_images\/RSL_LOGO.png",
+            "icon-color": "#00629c",
+            "title": "ANZAC & Poppy Appeal",
+            "total": "$64,099",
+            "description": ""
+          }
+        },
+        "fbcb01f1-f4c0-410c-ab49-278dc6ba56d8": {
+          "type": "charity",
+          "settings": {
+            "icon-png": "shopify:\/\/shop_images\/minus_18_2.png",
+            "icon-color": "#6a5095",
+            "title": "Minus18",
+            "total": "$49,829",
+            "description": ""
+          }
+        },
+        "c280e37d-31cd-4e96-81a7-a10bcf8586f5": {
+          "type": "charity",
+          "settings": {
+            "icon-png": "shopify:\/\/shop_images\/WiresLOGO1_GREEN_TRNSP__67402_1_1_171x_2x_c8c29cb9-09ed-42a6-8b5a-1833fbd714f6.png",
+            "icon-color": "#94d60b",
+            "title": "Wires Wildlife Rescue",
+            "total": "$40,861",
+            "description": ""
+          }
+        },
+        "dace76cf-5318-499b-aeea-e3dd74926b82": {
+          "type": "charity",
+          "settings": {
+            "icon-png": "shopify:\/\/shop_images\/UNHCR_LOGO.png",
+            "icon-color": "#0072c3",
+            "title": "Australia for UNHCR",
+            "total": "$37,171",
+            "description": ""
+          }
+        },
+        "b0ab4fe0-7ff0-4259-8dfb-b0ac83bb6963": {
+          "type": "charity",
+          "settings": {
+            "icon-png": "shopify:\/\/shop_images\/LogoFoodbankAus_1_171x_2x_2.png",
+            "icon-color": "#671f75",
+            "title": "Food Bank Australia",
+            "total": "$23,424",
+            "description": ""
+          }
+        },
+        "48b19d78-3707-454d-9c2c-392461ac269a": {
+          "type": "charity",
+          "settings": {
+            "icon-png": "shopify:\/\/shop_images\/DIYDG_LOGO.png",
+            "icon-color": "#35b729",
+            "title": "Deadly Inspiring Youth Doing Good",
+            "total": "$17,626",
+            "description": ""
+          }
+        },
+        "ad61b696-4c2c-43c2-8f30-2481241e888b": {
+          "type": "charity",
+          "settings": {
+            "icon-png": "shopify:\/\/shop_images\/head_space.png",
+            "icon-color": "#7ac043",
+            "title": "Headspace",
+            "total": "$9,318",
+            "description": ""
+          }
+        },
+        "56213aa9-f4ed-4f8d-ac9c-e2c808f5fc3e": {
+          "type": "charity",
+          "settings": {
+            "icon-png": "shopify:\/\/shop_images\/ENDOMETRIOSIS_AUSTRALIA_LOGO_ceba34ad-83f3-4c46-96ee-31c26323b867.png",
+            "icon-color": "#ffe513",
+            "title": "Endometriosis Australia",
+            "total": "$6,742",
+            "description": ""
+          }
+        },
+        "84447f47-b767-4407-b056-f0cfad1e373f": {
+          "type": "charity",
+          "settings": {
+            "icon-png": "shopify:\/\/shop_images\/AWF_LOGO.png",
+            "icon-color": "#e87204",
+            "title": "African Wildlife Foundation",
+            "total": "$6,566",
+            "description": ""
+          }
+        },
+        "9491e896-6342-4326-b57a-3b4547b8b890": {
+          "type": "charity",
+          "settings": {
+            "icon-png": "shopify:\/\/shop_images\/RSPCA_VICTORIA_LOGO_a38893d6-1a4d-4f7d-9dcf-22b30c54c605.png",
+            "icon-color": "#0093d0",
+            "title": "RSPCA Victoria",
+            "total": "$5,700",
+            "description": ""
+          }
+        },
+        "a7086dac-e10f-4e7d-a1b1-42319faf60b0": {
+          "type": "charity",
+          "settings": {
+            "icon-png": "shopify:\/\/shop_images\/WILDERNESS_SOCIETY_LOGO.png",
+            "icon-color": "#1eae4a",
+            "title": "Wilderness Society",
+            "total": "$4,000",
+            "description": ""
+          }
+        },
+        "255cb040-b9ca-49d2-bde7-ad7505f1e330": {
+          "type": "charity",
+          "settings": {
+            "icon-png": "shopify:\/\/shop_images\/RED_DUST_LOGO_fb209159-7992-4c68-813e-1ce4716bacd1.png",
+            "icon-color": "#a21d22",
+            "title": "Red Dust",
+            "total": "$3,272",
+            "description": ""
+          }
+        }
+      },
+      "block_order": [
+        "baa19c24-2bc9-44e3-82df-1149c19f6649",
+        "fbcb01f1-f4c0-410c-ab49-278dc6ba56d8",
+        "c280e37d-31cd-4e96-81a7-a10bcf8586f5",
+        "dace76cf-5318-499b-aeea-e3dd74926b82",
+        "b0ab4fe0-7ff0-4259-8dfb-b0ac83bb6963",
+        "48b19d78-3707-454d-9c2c-392461ac269a",
+        "ad61b696-4c2c-43c2-8f30-2481241e888b",
+        "56213aa9-f4ed-4f8d-ac9c-e2c808f5fc3e",
+        "84447f47-b767-4407-b056-f0cfad1e373f",
+        "9491e896-6342-4326-b57a-3b4547b8b890",
+        "a7086dac-e10f-4e7d-a1b1-42319faf60b0",
+        "255cb040-b9ca-49d2-bde7-ad7505f1e330"
+      ],
+      "settings": {
+        "title": "A Few Charities We’ve Supported",
+        "top-wave": "0",
+        "top-color-1": "#f8f3ec",
+        "top-color-2": "#ffffff",
+        "flip-top-wave": false,
+        "bottom-wave": "3",
+        "bottom-color-1": "#f8f3ec",
+        "bottom-color-2": "#fcecdf",
+        "flip-bottom-wave": false
+      }
+    },
+    "donations-charities-tiles": {
+      "type": "donations-charities-tiles",
+      "blocks": {
+        "daebda2f-5b20-4c3e-aeb6-5255bd46c766": {
+          "type": "charity",
+          "settings": {
+            "title": "Indigenous Literacy Foundation",
+            "total": "$6,000",
+            "description": "Dedicated to addressing the educational disadvantages faced by Indigenous Australian children and young people by providing access to books and literacy programs."
+          }
+        },
+        "d91f2c15-5957-435c-97c4-afffaef9101f": {
+          "type": "charity",
+          "settings": {
+            "title": "Frocktober",
+            "total": "$5,326",
+            "description": "Frocktober is Australia's most fashionable fundraiser, created by the Ovarian Cancer Research Foundation to raise awareness and funds for life-saving research projects."
+          }
+        },
+        "9a99de46-6690-4563-adf2-d0f5f0932103": {
+          "type": "charity",
+          "settings": {
+            "title": "OzHarvest Australia",
+            "total": "$3,450",
+            "description": "OzHarvest is Australia's leading food rescue organisation. At their core, they save surplus food & deliver to charities that help people in need."
+          }
+        },
+        "e493b57a-46ee-46c7-9f49-d95164e1573b": {
+          "type": "charity",
+          "settings": {
+            "title": "The Butterfly Foundation",
+            "total": "$2,484",
+            "description": "The Butterfly Foundation is the national charity in Australia supporting people affected by body image issues and eating disorders, as well as the families, friends, and communities who support them."
+          }
+        },
+        "a7699669-2169-45d4-9c9b-ec9e4c546bf2": {
+          "type": "charity",
+          "settings": {
+            "title": "Victorian Bushfire Appeal",
+            "total": "$2,413",
+            "description": "In response to the 2019-2020 Victorian bushfires, the Victorian Government partnered with Bendigo Bank to create the Victorian Bushfire Appeal from which 100% of donated funds went directly to impacted communities."
+          }
+        },
+        "5456cc86-a910-40bb-9176-25b635b6a288": {
+          "type": "charity",
+          "settings": {
+            "title": "Wildlife Victoria",
+            "total": "$2,413",
+            "description": "A helping hand for wildlife in need, Wildlife Victoria has provided the community with a Wildlife Emergency Response for over 30 years while also delivering education and advocacy activities."
+          }
+        },
+        "8a83208c-acbe-4741-ad02-a87bd5ef768f": {
+          "type": "charity",
+          "settings": {
+            "title": "Port Macquarie Koala Hospital",
+            "total": "$2,245",
+            "description": "The Koala Hospital is far more than a wildlife rehabilitation facility featuring exhibit enclosures, a treatment clinic, intensive care units, and rehabilitation yards, welcoming thousands of visitors each year."
+          }
+        },
+        "5b9b49e1-c3e9-47e3-8689-239f857e178c": {
+          "type": "charity",
+          "settings": {
+            "title": "Humpty Dumpty Foundation",
+            "total": "$2,224",
+            "description": "Humpty Dumpty Foundation, together with their generous supporters, provides Australian hospitals and health services with the right equipment, in the right place, at the right time."
+          }
+        },
+        "e1b2f2d4-a24d-4fc1-bd40-29cfff292437": {
+          "type": "charity",
+          "settings": {
+            "title": "Polished Man",
+            "total": "$2,075",
+            "description": "Polished man aims to end domestic violence against children by encouraging people to paint a finger nail blue to spark conversation and inspire donations which allow for trauma prevention and recovery."
+          }
+        },
+        "8c4d5aa2-800d-47e2-b314-7d47699b39ee": {
+          "type": "charity",
+          "settings": {
+            "title": "Share the Dignity",
+            "total": "$2,142",
+            "description": "Making a difference in the lives of Australian women experiencing homelessness, fleeing domestic violence, or doing it tough through, in part, the distribution of period products to anyone who menstruates and is in need of support."
+          }
+        },
+        "26e3fc5b-b33c-49b5-a5fa-1a8ab05f23c5": {
+          "type": "charity",
+          "settings": {
+            "title": "The Children's Book Council of Australia",
+            "total": "$1,820",
+            "description": "A volunteer-run, not-for-profit dedicated to celebrating and advocating for the transformational power of stories since 1945. They lead a number of wonderful initiatives, notably Children’s Book Week® and the CBCA Book of the Year Awards."
+          }
+        },
+        "a6ae31d6-eb1b-478a-a623-ea044975ace2": {
+          "type": "charity",
+          "settings": {
+            "title": "Australian Red Cross",
+            "total": "$1,800",
+            "description": "A leading humanitarian organization, the Australia Red Cross are there to help people find shelter, support and their loved ones whenever and wherever disaster strikes."
+          }
+        },
+        "6ce3aca8-9492-442d-bf93-939e8ad26f10": {
+          "type": "charity",
+          "settings": {
+            "title": "Make a Wish Australia",
+            "total": "$1,049",
+            "description": "Make-A-Wish Australia delivers life-changing, inspirational wishes for children with life-threatening and critical illnesses. They’re on a mission to continue doing just that for every eligible child."
+          }
+        },
+        "02439c4a-aa5a-400d-b0c2-9710c48f2bf6": {
+          "type": "charity",
+          "settings": {
+            "title": "Jeans for Genes",
+            "total": "$758",
+            "description": "1 in 20 children worldwide are born with a birth defect or genetic disease. Children’s Medical Research Institute are dedicated to advancing the treatment and prevention of childhood diseases, so every child has the opportunity for a healthy start to life."
+          }
+        },
+        "54a5d582-9ca2-469a-b160-5aab7798fb47": {
+          "type": "charity",
+          "settings": {
+            "title": "Friends of the Earth Australia",
+            "total": "$691",
+            "description": "Friends of the Earth Australia is a federation of independent local groups working for a socially equitable and environmentally sustainable future."
+          }
+        },
+        "31ffbec3-e068-45b0-ac50-522318ffe738": {
+          "type": "charity",
+          "settings": {
+            "title": "Cat Protection Society of NSW",
+            "total": "$575",
+            "description": "The Cat Protection Society actively seeks loving and responsible homes for cats in need, improvement in quality of life for cats through community education, and lobbying to improve cat welfare."
+          }
+        },
+        "0763bef6-0af4-4c28-b994-e4e7ea99a8ae": {
+          "type": "charity",
+          "settings": {
+            "title": "Newborn Intensive Care Foundation",
+            "total": "$510",
+            "description": "Helping to give all babies a fighting chance at leading healthy, normal lives, 100% of general donations go to fund critical medical equipment, research and nurse education."
+          }
+        },
+        "2dc61c21-34cb-4f5c-b3f7-398ae63203b3": {
+          "type": "charity",
+          "settings": {
+            "title": "Charity Auctions",
+            "total": "$1,850",
+            "description": "This amount represents the total donations to various charities over time through special auctions on Erstwilder's social media channels."
+          }
+        },
+        "6c490812-ca4c-444c-92d7-36ce91ba68f3": {
+          "type": "charity",
+          "disabled": true,
+          "settings": {
+            "title": "[T]Newborn Intensive Care Foundation",
+            "total": "$510",
+            "description": "Helping to give all babies a fighting chance at leading healthy, normal lives, 100% of general donations go to fund critical medical equipment, research and nurse education."
+          }
+        },
+        "f71fc89f-fe68-4691-be2e-c4de2a2612c1": {
+          "type": "charity",
+          "disabled": true,
+          "settings": {
+            "title": "[T]Newborn Intensive Care Foundation",
+            "total": "$510",
+            "description": "Helping to give all babies a fighting chance at leading healthy, normal lives, 100% of general donations go to fund critical medical equipment, research and nurse education."
+          }
+        }
+      },
+      "block_order": [
+        "daebda2f-5b20-4c3e-aeb6-5255bd46c766",
+        "d91f2c15-5957-435c-97c4-afffaef9101f",
+        "9a99de46-6690-4563-adf2-d0f5f0932103",
+        "e493b57a-46ee-46c7-9f49-d95164e1573b",
+        "a7699669-2169-45d4-9c9b-ec9e4c546bf2",
+        "5456cc86-a910-40bb-9176-25b635b6a288",
+        "8a83208c-acbe-4741-ad02-a87bd5ef768f",
+        "5b9b49e1-c3e9-47e3-8689-239f857e178c",
+        "e1b2f2d4-a24d-4fc1-bd40-29cfff292437",
+        "8c4d5aa2-800d-47e2-b314-7d47699b39ee",
+        "26e3fc5b-b33c-49b5-a5fa-1a8ab05f23c5",
+        "a6ae31d6-eb1b-478a-a623-ea044975ace2",
+        "6ce3aca8-9492-442d-bf93-939e8ad26f10",
+        "02439c4a-aa5a-400d-b0c2-9710c48f2bf6",
+        "54a5d582-9ca2-469a-b160-5aab7798fb47",
+        "31ffbec3-e068-45b0-ac50-522318ffe738",
+        "0763bef6-0af4-4c28-b994-e4e7ea99a8ae",
+        "2dc61c21-34cb-4f5c-b3f7-398ae63203b3",
+        "6c490812-ca4c-444c-92d7-36ce91ba68f3",
+        "f71fc89f-fe68-4691-be2e-c4de2a2612c1"
+      ],
+      "settings": {
+        "title": "And Many More",
+        "top-wave": "0",
+        "top-color-1": "",
+        "top-color-2": "",
+        "flip-top-wave": false,
+        "bottom-wave": "0",
+        "bottom-color-1": "#ffffff",
+        "bottom-color-2": "#fcecdf",
+        "flip-bottom-wave": true
+      }
+    },
+    "donations-featured": {
+      "type": "donations-featured",
+      "disabled": true,
+      "settings": {
+        "title": "Current Charity Deep Dive",
+        "image": "shopify:\/\/shop_images\/DONATIONS_CHARITY_DEEP_DIVE.jpg",
+        "paragraph": "We will always be transparent about how much we’re donating, and who we’re supporting. This, the Erstwilder Cares page, provides a full breakdown of donations by charity so that you can see exactly what we have achieved together. \n\nFinally, as a label who deeply values its community, we will also welcome any suggestions you may have regarding charities you believe Erstwilder should get behind in future. \n\nThank you for supporting us and in doing so allowing us to support others in need. \n\nLet's keep making a difference, together.",
+        "link-text": "Shop for a good cause",
+        "link-url": "shopify:\/\/collections\/new",
+        "top-wave": "0",
+        "top-color-1": "",
+        "top-color-2": "",
+        "flip-top-wave": false,
+        "bottom-wave": "1",
+        "bottom-color-1": "#ffffff",
+        "bottom-color-2": "#f8f3ec",
+        "flip-bottom-wave": false
+      }
+    },
+    "donations-charity-form": {
+      "type": "donations-charity-form",
+      "settings": {
+        "subheading": "Think you know of a charity we'd like to support?",
+        "title": "Tell us below!",
+        "top-wave": "1",
+        "top-color-1": "#f8f3ec",
+        "top-color-2": "#f8f3ec",
+        "flip-top-wave": false,
+        "bottom-wave": "1",
+        "bottom-color-1": "#f8f3ec",
+        "bottom-color-2": "#f4e9d2",
+        "flip-bottom-wave": false
+      }
+    }
+  },
+  "order": [
+    "donations-hero",
+    "donations-types",
+    "donations-message",
+    "donations-charities-carousel",
+    "donations-charities-tiles",
+    "donations-featured",
+    "donations-charity-form"
+  ]
+}

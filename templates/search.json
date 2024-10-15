@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "template-search": {
+      "type": "template-search",
+      "settings": {
+        "title": "Joyful wearable art is just a search away!",
+        "subtitle": ""
+      }
+    }
+  },
+  "order": [
+    "template-search"
+  ]
+}

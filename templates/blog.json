@@ -1,0 +1,111 @@
+{
+  "sections": {
+    "blog-template-blog": {
+      "type": "blog-template-blog",
+      "blocks": {
+        "cb41782f-330f-4136-81d9-660dbe4ffbe3": {
+          "type": "blog-filter",
+          "settings": {
+            "title": "Collection Reveals"
+          }
+        },
+        "blog_filter_6XdBTf": {
+          "type": "blog-filter",
+          "settings": {
+            "title": "Launch Tips"
+          }
+        },
+        "bf80ada3-15d7-4f08-b57f-efa42c26e28e": {
+          "type": "blog-filter",
+          "settings": {
+            "title": "Charity"
+          }
+        },
+        "e4253173-65fe-48cf-8458-d8eb50aed7e2": {
+          "type": "blog-filter",
+          "settings": {
+            "title": "Interviews"
+          }
+        },
+        "0a32dfdb-bdb0-4124-a4a5-9084e70dfd6c": {
+          "type": "blog-filter",
+          "settings": {
+            "title": "Offers"
+          }
+        },
+        "2c4c001d-66ed-418f-b3f2-f7a6b3bad6e4": {
+          "type": "blog-filter",
+          "settings": {
+            "title": "Competitions"
+          }
+        },
+        "b951ad98-592b-431a-b666-f524cfd6d8aa": {
+          "type": "blog-filter",
+          "disabled": true,
+          "settings": {
+            "title": "Events"
+          }
+        },
+        "blog_filter_gP6PFm": {
+          "type": "blog-filter",
+          "disabled": true,
+          "settings": {
+            "title": "Helpful Info"
+          }
+        }
+      },
+      "block_order": [
+        "cb41782f-330f-4136-81d9-660dbe4ffbe3",
+        "blog_filter_6XdBTf",
+        "bf80ada3-15d7-4f08-b57f-efa42c26e28e",
+        "e4253173-65fe-48cf-8458-d8eb50aed7e2",
+        "0a32dfdb-bdb0-4124-a4a5-9084e70dfd6c",
+        "2c4c001d-66ed-418f-b3f2-f7a6b3bad6e4",
+        "b951ad98-592b-431a-b666-f524cfd6d8aa",
+        "blog_filter_gP6PFm"
+      ],
+      "settings": {
+        "hide-filters": false,
+        "bottom-wave": "0",
+        "bottom-color-1": "",
+        "bottom-color-2": "",
+        "flip-bottom-wave": false
+      }
+    },
+    "163574488172a1e5f4": {
+      "type": "newsletter",
+      "settings": {
+        "title": "Don't miss a thing",
+        "subtitle": "Stay up to date on our latest news and events.",
+        "top-wave": "0",
+        "top-color-1": "",
+        "top-color-2": "",
+        "flip-top-wave": false,
+        "bottom-wave": "0",
+        "bottom-color-1": "",
+        "bottom-color-2": "",
+        "flip-bottom-wave": false
+      }
+    },
+    "instagram-feed": {
+      "type": "instagram-feed",
+      "settings": {
+        "title": "Instagram",
+        "ig-handle": "@erstwilder",
+        "top-wave": "0",
+        "top-color-1": "",
+        "top-color-2": "",
+        "flip-top-wave": false,
+        "bottom-wave": "2",
+        "bottom-color-1": "#f8f3ec",
+        "bottom-color-2": "#f4e9d2",
+        "flip-bottom-wave": false
+      }
+    }
+  },
+  "order": [
+    "blog-template-blog",
+    "163574488172a1e5f4",
+    "instagram-feed"
+  ]
+}

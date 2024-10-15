@@ -1,0 +1,41 @@
+{% comment %}
+  Stockists Store Locations
+    Snippet to loop through store locations in metafields
+    and display store info, excluding Australia
+
+  Version:
+    1.0.0 - 2021/11/25
+{% endcomment %}
+
+{%- liquid   
+  assign mf = page.metafields.stockists
+  assign stateNames = mf.states | uniq
+  assign addresses = mf.address_and_links 
+  assign countryNames = mf.country | uniq 
+  assign countries = mf.country 
+-%}
+
+{%- comment -%} Capture remaining stores {%- endcomment -%}
+{%- for countryName in countryNames -%}
+  {%- if countryName == 'Australia' -%}{%- continue -%}{%- endif -%}
+
+  {%- assign innerCounter = 0 -%}
+  {%- assign countryHandle = countryName | handleize -%}
+
+  <div class="c-stockists__country-wrapper" data-stockists-country-wrapper data-country-handle={{countryHandle}}>
+    <div class="c-stockists__country-wrapper-inner">
+      {%- for country in countries -%}
+
+        {%- if country == countryName and country != 'Australia' -%}
+          <div class="c-stockists__store-info">
+            {{- addresses[innerCounter] -}}
+          </div>
+        {%- endif -%}
+
+        {%- assign innerCounter = innerCounter | plus: 1 -%}
+      {%- endfor -%}
+    </div>
+  </div>
+
+{%- endfor -%}
+

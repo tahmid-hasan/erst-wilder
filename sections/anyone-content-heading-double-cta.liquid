@@ -1,0 +1,226 @@
+{%- comment -%}
+  Heading & Double CTA
+    Section to show a heading and 2 CTAs
+    Displays to ANYONE, logged in or not. 
+
+  Version:
+    1.0.0 - 2022/07/05
+{%- endcomment -%}
+
+  {{ 'sections.heading-double-cta.css' | asset_url | stylesheet_tag }}
+
+  {%- comment -%} Assign variables {%- endcomment -%}
+  {%- liquid
+    assign title = section.settings.title | escape
+    assign subtitle = section.settings.subtitle | escape
+    assign ctaLabel1 = section.settings.cta-label-1 | escape
+    assign ctaLink1 = section.settings.cta-link-1 
+    assign ctaLabel2 = section.settings.cta-label-2 | escape
+    assign ctaLink2 = section.settings.cta-link-2
+
+    assign topWave = section.settings.top-wave
+    assign topColor1 = section.settings.top-color-1
+    assign topColor2 = section.settings.top-color-2
+    assign isFlippedTop = section.settings.flip-top-wave
+    
+    assign bottomWave = section.settings.bottom-wave
+    assign bottomColor1 = section.settings.bottom-color-1
+    assign bottomColor2 = section.settings.bottom-color-2
+    assign isFlippedBottom = section.settings.flip-bottom-wave
+  -%}
+
+  
+  {%- if title != blank -%}
+
+    {%- comment -%} Top Wave {%- endcomment -%}
+    {%- if topWave != "0" -%}
+      {%- render 'object.wave' with {
+        waveNumber:topWave
+        color1: topColor1
+        color2: topColor2,
+        isFlipped: isFlippedTop
+      } -%}
+    {%- endif -%}   
+
+    <div class="c-heading-double-cta">
+      <div class="c-heading-double-cta__inner">
+        
+        {%- comment -%} Title {%- endcomment -%}
+        <h3 class="c-heading-double-cta__title">
+          {{- title -}}
+        </h3>
+
+        {%- if subtitle != blank -%}
+        {%- comment -%} Subtitle {%- endcomment -%}
+          <p class="c-heading-double-cta__subtitle o-paragraph--2">
+            {{- subtitle -}}
+          </p>
+        {%- endif -%}
+
+        {%- comment -%} CTAs {%- endcomment -%}
+        {%- if ctaLabel1 != blank or ctaLabel2 != blank -%}
+          <div class="c-heading-double-cta__cta-wrapper">
+            {%- if ctaLabel1 != blank and ctaLink1 != blank -%}
+            <a href="{{ctaLink1}}" class="o-btn c-heading-double-cta__cta-btn">
+              {{- ctaLabel1 -}}
+            </a>
+            {%- endif -%}
+            {%- if ctaLabel2 != blank and ctaLink2 != blank -%}
+            <a href="{{ctaLink2}}" class="o-btn c-heading-double-cta__cta-btn is-alternative">
+              {{- ctaLabel2 -}}
+            </a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+    </div>
+
+    {%- comment -%} Bottom Wave {%- endcomment -%}
+    {%- if bottomWave != "0" -%}
+      {%- render 'object.wave' with {
+        waveNumber:bottomWave
+        color1: bottomColor1
+        color2: bottomColor2,
+        isFlipped: isFlippedBottom
+      } -%}
+    {%- endif -%}
+  {%- endif -%}
+
+
+{% schema %}
+{
+  "name": "Anyone - Double CTAs",
+  "class": "c-section c-section__heading-double-cta",
+  "presets": [
+    {
+      "category": "Content",
+      "name": "Anyone - Heading and Double CTA"
+    }
+  ],
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Displays to ANYONE, logged in or not. "
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Become an Erstwilder member today!"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Join the community and earn!"
+    },
+    {
+      "type": "text",
+      "id": "cta-label-1",
+      "label": "CTA 1 Label",
+      "default":"Sign up"
+    },
+    {
+      "type": "url",
+      "id": "cta-link-1",
+      "label": "CTA 1 Url"
+    },
+    {
+      "type": "text",
+      "id": "cta-label-2",
+      "label": "CTA 2 Label",
+      "default":"Login"
+    },
+    {
+      "type": "url",
+      "id": "cta-link-2",
+      "label": "CTA 2 Url"
+    },
+    {
+      "type": "select",
+      "id": "top-wave",
+      "label": "Top Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "top-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "top-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-top-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

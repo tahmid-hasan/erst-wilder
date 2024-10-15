@@ -1,0 +1,258 @@
+
+{% comment %}
+  Stockists Page
+
+    Displays title, subtitle, content and store locations
+
+  Version:
+    1.0.0 - 2021/11/25
+{% endcomment %}
+
+{{ 'sections.stockists.css' | asset_url | stylesheet_tag }}
+{{ 'sections.stockists.js' | asset_url | script_tag }}
+
+{%- liquid
+  assign title = section.settings.title | default: page.title | escape
+  assign subtitle = section.settings.subtitle | escape
+  assign content = section.settings.content
+  assign storeLabel = section.settings.store-label | escape
+  assign onlineLabel = section.settings.online-label | escape
+
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+
+  assign mf = page.metafields.stockists
+  assign mfo = page.metafields.online-stockists
+
+  assign countryNames = mf.country | uniq
+  assign stateNames = mf.states | uniq
+
+  assign countries = mf.country
+  assign states = mf.states
+  assign addresses = mf.address_and_links
+
+  assign onlineCountryNames = mfo.country | uniq
+
+  assign onlineCountries = mfo.country
+  assign onlineAddresses = mfo.description
+ -%}
+
+{%- if countries.size > 0 or onlineCountries.size > 0 -%}
+
+  <div class="c-stockists" data-stockists>
+    <div class="c-stockists__outer">
+      <div class="c-stockists__inner">
+
+        {%- comment -%} Title {%- endcomment -%}
+        <h1 class="o-heading--6 c-stockists__title">
+          {{- title -}}
+        </h1>
+
+        {%- comment -%} Subtitle {%- endcomment -%}
+        {%- if subtitle != blank -%}
+          <h2 class="c-stockists__subtitle o-heading--1">
+            {{- subtitle -}}
+          </h2>
+        {%- endif -%}
+
+        {%- comment -%} Content {%- endcomment -%}
+        {%- if content != blank -%}
+          <div class="c-stockists__content">
+            {{- content -}}
+          </div>
+        {%- endif -%}
+
+        {%- comment -%} Tabs {%- endcomment -%}
+        {%- if
+          countries.size > 0 and
+          onlineCountries.size > 0 and
+          storeLabel != blank and
+          onlineLabel != blank
+        -%}
+
+          <div class="c-stockists__tabs">
+
+            {%- comment -%} In Store Tab {%- endcomment -%}
+            <button
+              class="c-stockists__tab is-active"
+              data-stockists-tab
+              data-stockists-tab-store
+            >
+              {{- storeLabel -}}
+            </button>
+
+            {%- comment -%} Online Tab {%- endcomment -%}
+            <button
+              class="c-stockists__tab"
+              data-stockists-tab
+              data-stockists-tab-online
+            >
+              {{- onlineLabel -}}
+            </button>
+
+            {%- comment -%} Active Tab Blob {%- endcomment -%}
+            {%- render 'svg.active-tab-blob' with {
+              class:'c-stockists__tab-blob'
+            } -%}
+
+          </div>
+        {%- endif -%}
+
+        {%- comment -%} Main Wrapper {%- endcomment -%}
+        <div class="c-stockists__main-wrapper">
+
+          {%- comment -%} In Store Locations {%- endcomment -%}
+          {%- if countries.size > 0 -%}
+            <div
+              class="c-stockists__store-wrapper is-visible"
+              data-stockists-store-wrapper
+            >
+
+              {%- comment -%} In Store Countries {%- endcomment -%}
+              <div class="c-stockists__countries-categories-wrapper">
+                <div
+                  class="c-stockists__countries-categories"
+                  data-stockists-countries-categories
+                >
+                  {%- render 'stockists.store-country-categories' -%}
+                </div>
+              </div>
+
+              {%- comment -%} Country Wrappers {%- endcomment -%}
+              <div class="c-stockists__countries-wrappers">
+
+                {%- comment -%} Australia Accordions {%- endcomment -%}
+                {%- render 'stockists.store-location-accordion' -%}
+
+                {%- comment -%} Remaining Countries {%- endcomment -%}
+                {%- render 'stockists.store-location-grids' -%}
+
+              </div>
+            </div>
+          {%- endif -%}
+
+          {%- comment -%} Online Locations {%- endcomment -%}
+          {%- if onlineCountries.size > 0 -%}
+            <div
+              class="c-stockists__online-wrapper"
+              data-stockists-online-wrapper
+            >
+
+              {%- comment -%} Online Countries {%- endcomment -%}
+              <div class="c-stockists__countries-categories">
+                {%- render 'stockists.online-country-categories' -%}
+              </div>
+
+              {%- comment -%} Online Country Wrappers {%- endcomment -%}
+              <div class="c-stockists__countries-wrappers">
+                {%- render 'stockists.online-store-location-grids' -%}
+              </div>
+
+            </div>
+          {%- endif -%}
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%} Bottom Wave {%- endcomment -%}
+  {%- if bottomWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:bottomWave
+      color1: bottomColor1
+      color2: bottomColor2,
+      isFlipped: isFlippedBottom
+    } -%}
+  {%- endif -%}  
+
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Stockists",
+  "class": "c-section c-section__stockists",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Stores can be added in metafields by going to Admin > Pages > Stockists > More Actions > Custom Fields"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Where to find us"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content",
+      "default": "<p>Searching for a stockist near you? Check out our list of recommended Erstwilder retailers. Note that stores may have lots, or not, so feel free to email us at hello@erstwilder.com if you need helping finding a particular design in a store near you.</p>"
+    },
+    {
+      "type": "text",
+      "id": "store-label",
+      "label": "Physical Stockists Label",
+      "default": "In Store"
+    },
+    {
+      "type": "text",
+      "id": "online-label",
+      "label": "Online Stockists Label",
+      "default": "Online"
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

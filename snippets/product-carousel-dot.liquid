@@ -1,0 +1,23 @@
+{%- comment -%}
+  Product Image Carousel Dot
+    - Generates a PDP image carousel dot with SVG blob mask
+
+  Params:
+    - image: source of the image
+    - index: number coming from the forloop index in which the snippet was rendered
+
+  Version:
+    1.0.0 - 2021/11/01
+{%- endcomment -%}
+
+<button class="c-product-carousel-dot" data-carousel-dot data-index="{{- index -}}">
+  <div class="c-product-carousel-dot__image-container o-responsive-image-container">
+    {%- render 'tool.picture' with {
+      image: image,
+      class: 'c-product-carousel-dot__image o-responsive-image',
+      width: 75,
+      imageSizes: '60',
+      sizes: '1100'
+    } -%}
+  </div>
+</button>

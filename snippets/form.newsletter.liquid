@@ -1,0 +1,56 @@
+{%- comment -%}
+  Newsletter Form
+  - Displays the newsletter signup form
+
+  Params:
+   - class: A string to be used as an additional class
+   - subtitle: A string used as the form subtitle
+
+  Version:
+    1.0.0 - 2020/09/21
+{%- endcomment -%}
+
+<div class="c-newsletter-form klaviyo-newsletter-form"
+  x-init="$nextTick(() => { $dispatch('klaviyo-form-Um3f8U-init') })">
+  <div class="klaviyo-form-Um3f8U"></div>
+</div>
+
+<!--
+{%- assign formClass = 'c-newsletter-form ' | append: class -%}
+
+{%- form 'customer', class: formClass -%}
+  {%- if form.posted_successfully? -%}
+    {%- comment -%} Success Messaging {%- endcomment -%}
+    <p class="c-newsletter-form__success">
+      {{- 'general.newsletter_form.success_message' | t -}}
+    </p>
+  {%- else -%}
+    {%- comment -%} Subtitle {%- endcomment -%}
+    {%- if subtitle != blank -%}
+      <p class="c-newsletter-form__subtitle">
+        {{- subtitle -}}
+      </p>
+    {%- endif -%}
+
+    {%- comment -%} Form {%- endcomment -%}
+    <div class="c-newsletter-form__input-container">
+      <input
+        type="email"
+        placeholder="{{- 'general.newsletter_form.email_placeholder' | t -}}"
+        class="c-newsletter-form__input o-input is-secondary"
+        name="contact[email]"
+        required
+      />
+
+      <input type="hidden" name="contact[tags]" value="newsletter" />
+      <input type="hidden" name="customer[accepts_marketing]" value="" />
+
+      <button type="submit" class="c-newsletter-form__btn">
+        <span class="c-newsletter-form__btn-label u-visually-hidden">
+          {{- 'general.newsletter_form.button_label' | t -}}
+        </span>
+      </button>
+    </div>
+  {%- endif -%}
+{%- endform -%}
+-->

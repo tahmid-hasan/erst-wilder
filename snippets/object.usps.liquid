@@ -1,0 +1,77 @@
+{%- comment -%}
+  USP's
+  - A snippet to render the layout/styling for the standard usps
+
+  Parameters:
+    class - A string used as an additional class
+    preTitle - A string used for the pre title
+    title - A string used for the title
+    ctaLabel - A string used for the cta link contents
+    ctaUrl - A string used for the cta url
+    uspBlocks - An array of blocks used to generate the usp icons. It's expected
+    that the blocks will have the following fields: svg-code(textarea),
+    title(text), line-2(text)
+
+  Version:
+    1.0.0 - 2021/10/15
+{%- endcomment -%}
+
+<div class="o-usps {{ class }}">
+  {%- comment -%} Pre title {%- endcomment -%}
+  {%- if preTitle != blank -%}
+    <p class="o-usps__pretitle">
+      {{- preTitle -}}
+    </p>
+  {%- endif -%}
+
+  {%- comment -%} Title {%- endcomment -%}
+  {%- if title != blank -%}
+    <h2 class="o-usps__title o-heading--3">
+      {{- title -}}
+    </h2>
+  {%- endif -%}
+
+  {%- comment -%} CTA {%- endcomment -%}
+  {%- if ctaLabel != blank and ctaUrl != blank -%}
+    <div class="o-usps__cta-container">
+      <a href="{{- ctaUrl -}}" class="o-usps__cta o-link">
+        {{- ctaLabel -}}
+      </a>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} USP's {%- endcomment -%}
+  {%- if uspBlocks.size > 0 -%}
+    <div class="o-usps__usps">
+      {%- for uspItem in uspBlocks -%}
+        {%- liquid
+          assign inlineSvg = uspItem.settings.svg-code | replace: '<svg', '<svg class="o-usps__icon" '
+          assign line1 = uspItem.settings.title | escape
+          assign line2 = uspItem.settings.line-2 | escape
+        -%}
+        {%- unless inlineSvg != blank or line1 != blank -%}
+          {%- continue -%}
+        {%- endunless -%}
+
+        {%- comment -%} USP {%- endcomment -%}
+        <div class="o-usps__usp">
+          <div class="o-usps__icon-container">
+            {{- inlineSvg -}}
+          </div>
+
+          <div class="o-usps__content">
+            <p class="o-usps__line-1 o-heading--6">
+              {{- line1 -}}
+            </p>
+
+            {%- if line2 != blank -%}
+              <p class="o-usps__line-2">
+                {{- line2 -}}
+              </p>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</div>

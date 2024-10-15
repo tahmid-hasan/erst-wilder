@@ -1,0 +1,111 @@
+{%- comment -%}
+  Mobile Navigation
+    - Displays navigation that is used for mobile only. Navigation is broken
+    up into three seperate menus to match design.
+
+  Params:
+    - menu1: a linklist object to be used as the first menu
+    - menu2: a linklist object to be used as the second menu
+    - menu3: a linklist object to be used as the third menu
+    - class: a string to be used as an additional class
+
+  Version:
+    1.0.0 - 2021/08/22
+{%- endcomment -%}
+
+{%- if menu1.links.size > 0 -%}
+  <nav class="c-navigation-mobile {{ class }}" data-navigation-mobile>
+    <div class="c-navigation-mobile__inner" data-navigation-mobile-inner>
+      <div class="c-navigation-mobile__container">
+        <div class="c-navigation-mobile__overflow" data-navigation-mobile-overflow>
+          {%- comment -%} Search Form {%- endcomment -%}
+          {%- render 'object.search-form' with {
+            class: 'c-navigation-mobile__search-form'
+          } -%}
+
+          {%- comment -%} Menus {%- endcomment -%}
+          <div class="c-navigation-mobile-menu-groups">
+            {%- comment -%} Menu 1 {%- endcomment -%}
+            <div class="c-navigation-mobile__menu-group">
+              <ul class="c-navigation-mobile__lvl1 is-menu-1">
+                {%- for link in menu1.links -%}
+                  {%- comment -%} Is there a submenu? {%- endcomment -%}
+                  {%- liquid
+                    assign hasSubmenu = false
+                    if link.links.size > 0
+                      assign hasSubmenu = true
+                    endif
+                  -%}
+                  <li class="c-navigation-mobile__lvl1-item {% if hasSubmenu %}has-submenu{% endif %}"
+                  {% if hasSubmenu %}data-mobile-submenu-container{% endif %}>
+                    <a href="{{- link.url | escape -}}" title="{{- link.title | escape -}}"
+                      class="c-navigation-mobile__lvl1-title-link"
+                      {% if hasSubmenu %}data-mobile-submenu-toggle{% endif %}>
+                      <span class="c-navigation-mobile__lvl1-link-label o-heading--6">
+                        {{- link.title | escape -}}
+                      </span>
+                    </a>
+
+                    {%- comment -%} Submenu {%- endcomment -%}
+                    {%- if hasSubmenu -%}
+                      {%- render 'header.navigation-mobile--submenu-lvl2' with {
+                        parentLink: link
+                      } -%}
+                    {%- endif -%}
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+
+            {%- comment -%} Menu 2 {%- endcomment -%}
+            {%- if menu2.links.size > 0 -%}
+              <div class="c-navigation-mobile__menu-group">
+                <ul class="c-navigation-mobile__lvl1 is-menu-2">
+                  {%- for link in menu2.links -%}
+                    <li class="c-navigation-mobile__lvl1-item">
+                      <a href="{{- link.url | escape -}}" title="{{- link.title | escape -}}"
+                        class="c-navigation-mobile__lvl1-text-link o-paragraph--2">
+                        {{- link.title | escape -}}
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            {%- endif -%}
+
+            {%- comment -%} Menu 3 {%- endcomment -%}
+            {%- if menu3.links.size > 0 -%}
+              <div class="c-navigation-mobile__menu-group">
+                <ul class="c-navigation-mobile__lvl1 is-menu-3">
+
+                  {%- comment -%} Multi Currency Selector {%- endcomment -%}
+                  <li class="c-navigation-mobile__lvl1-item is-currency">
+                    {%- render 'object.currency-switcher' with {
+                      class: 'c-navigation-mobile__currency'
+                    } -%}
+                    {%- render 'icon.chevron-left' with {
+                      class: 'c-navigation-mobile__currency-icon'
+                    }-%}
+                  </li>
+                  {%- for link in menu3.links -%}
+                    <li class="c-navigation-mobile__lvl1-item">
+                      <a href="{{- link.url | escape -}}" title="{{- link.title | escape -}}"
+                        class="c-navigation-mobile__lvl1-text-link o-paragraph--2">
+                        {{- link.title | escape -}}
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {%- comment -%} Curve {%- endcomment -%}
+    {%- render 'svg.header-curve-mobile' with {
+      class: 'c-navigation-mobile__curve'
+    } -%}
+  </nav>
+{%- endif -%}

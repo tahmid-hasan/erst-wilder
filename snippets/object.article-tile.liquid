@@ -1,0 +1,81 @@
+{%- comment -%}
+  Article Tile
+    - Displays an article tile for use in the article next component
+
+  Params:
+    - superHeading: String used for the super heading
+    - articleObject: An article object used for the tile information
+
+  Version:
+    1.0.0 - 2021/09/10
+{%- endcomment -%}
+
+{%- liquid
+  assign description = articleObject.excerpt_or_content | strip_html | truncatewords: 20
+  assign articleTags = articleObject.tags
+  assign articleWords = articleObject.content | strip_html | strip_newlines | downcase | replace: 'and','' | replace: 'the','' | split:' '
+  assign minToRead = articleWords | size | divided_by: 180 | ceil
+  assign readTimePostfix = 'articles.article.read_time_postfix' | t | prepend: ''
+-%}
+
+<a href="{{- articleObject.url -}}" class="o-article-tile">
+  <div class="o-article-tile__wrapper">
+    <div class="o-article-tile__inner">
+      {%- comment -%} Image {%- endcomment -%}
+      <div class="o-article-tile__image-wrapper">
+        <div class="o-article-tile__image-container o-responsive-image-container">
+          {%- render 'tool.picture' with {
+            image: articleObject.image,
+            width: 860,
+            sizes: '375,550,750',
+            imageSizes: '336,510,710',
+            class: 'o-article-tile__image o-responsive-image',
+            lazy: true
+          } -%}
+        </div>
+      </div>
+
+      {%- comment -%} Content {%- endcomment -%}
+      <div class="o-article-tile__content">
+        {%- comment -%} Super Heading {%- endcomment -%}
+        {%- if superHeading != blank -%}
+          <p class="o-article-tile__super-heading">
+            {{- superHeading | escape -}}
+          </p>
+        {%- endif -%}
+
+        {%- comment -%} Title {%- endcomment -%}
+        <h2 class="o-article-tile__title o-heading--3">
+          {{- articleObject.title | escape -}}
+        </h2>
+
+        {%- comment -%} Tag and Time To Read {%- endcomment -%}
+        <p class="o-article-tile__article-info o-paragraph-2">
+          {%- for articleTag in articleTags -%}
+            {%- assign lcTag = articleTag | downcase -%}
+            {%- unless lcTag contains 'category_' -%}{%- continue -%}{%- endunless -%}
+            {%- assign categoryTag = articleTag | split: '_' | last -%}
+            {%- unless categoryTag != blank -%}{%- continue -%}{%- endunless -%}
+
+            <span class="o-article-tile__info-tag">
+              {{- categoryTag -}},
+            </span>
+          {%- endfor -%}
+
+          {%- if minToRead != blank and minToRead > 0 -%}
+            <span class="o-article-tile__info-read-time">
+              {{- minToRead | append: readTimePostfix | escape -}}
+            </span>
+          {%- endif -%}
+        </p>
+
+        {%- comment -%} Description {%- endcomment -%}
+        {% if description != blank %}
+          <p class="o-article-tile__description">
+            {{- description -}}
+          </p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</a>

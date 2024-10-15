@@ -1,0 +1,35 @@
+{% style %}
+{% for block in section.blocks %}
+  .c-header a[title="{{ block.settings.title }}"] {
+    color: {{ block.settings.color }};
+  }
+{% endfor %}
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Featured Menu Links",
+  "settings": [
+    
+  ],
+  "blocks": [
+    {
+      "type": "featured-link",
+      "name": "Featured Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Link Title",
+          "info": "Enter title exactly as its used in navigation menu. Case sensitive"
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Color"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

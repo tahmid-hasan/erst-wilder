@@ -1,0 +1,197 @@
+{%- comment -%}
+  Collection template
+    Section to show the collection page (done as one section since it's parts
+    won't work as individual sections). Includes: The filter banner, products
+    loop, pagination & seo content.
+
+  Version:
+    1.0.0 - 2021/11/10
+{%- endcomment -%}
+
+{{ 'sections.collection.css' | asset_url | stylesheet_tag }}
+{{ 'sections.collection.js' | asset_url | script_tag }}
+
+{%- liquid 
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+  assign collectionHandles = section.settings.collections | escape | split: ','
+-%}
+
+{%- capture languageKeys -%}
+  collections.collection.product_count;
+  collections.collection.filter_colour;
+  collections.collection.filter_shape;
+  collections.collection.filter_style;
+  collections.collection.filter_availability;
+  collections.collection.filter_product;
+  collections.collection.sort_label;
+  collections.collection.reset;
+{%- endcapture -%}
+
+{%- capture filterClass -%}
+  c-collection__filter-banner
+  {%- for collectionHandle in collectionHandles -%}
+    {% if collectionHandle == collection.handle %}
+      is-filters-hidden
+    {% endif %}
+  {%- endfor -%}
+{%- endcapture -%}
+
+{%- render 'tool.language-strings' with { keys: languageKeys } -%}
+
+{%- capture perPage -%}
+  {%- render 'tool.collection-per-page' -%}
+{%- endcapture -%}
+
+<section
+  class="c-collection"
+  data-collection-template
+  data-collection-handle="{{- collection.handle | escape -}}"
+  data-collection-per-page="{{- perPage -}}"
+>
+  {%- comment -%} Supply Data to the AjaxCollection {%- endcomment -%}
+  <script type="application/json" data-collection-json>
+    {%- render 'json.collection' with { collection: collection } -%}
+  </script>
+
+  {% paginate collection.products by perPage %}
+    {%- comment -%} Filter Banner {%- endcomment -%}
+    {%- render 'collection.filter-banner' with {
+      class: filterClass
+    } -%}
+
+    {%- comment -%} Product Loop {%- endcomment -%}
+    <div class="c-collection__loop" data-collection-template-products>
+      {%- comment -%} Products loop {%- endcomment -%}
+      {%- for productObject in collection.products -%}
+        {%- render 'object.product-thumbnail' with {
+          class: 'c-collection__thumbnail',
+          thumbnailProduct: productObject
+        } -%}
+      {%- endfor -%}
+
+      {%- comment -%} Content Blocks {%- endcomment -%}
+      {%- render 'collection.content-blocks' with {
+        class: 'c-collection__content-block'
+      } -%}
+
+      {%- comment -%} No Results Message {%- endcomment -%}
+      <p class="c-collection__no-results" data-collection-no-results>
+        {{- 'collections.collection.no_results' | t -}}
+      </p>
+    </div>
+
+    {%- comment -%} Pagination {%- endcomment -%}
+    {%- render 'collection.pagination' with {
+      class: 'c-collection__pagination',
+      paginate: paginate
+    } -%}
+  {% endpaginate %}
+
+</section>
+
+{%- comment -%} Bottom Wave {%- endcomment -%}
+{%- if bottomWave != "0" -%}
+  {%- render 'object.wave' with {
+    waveNumber:bottomWave
+    color1: bottomColor1
+    color2: bottomColor2,
+    isFlipped: isFlippedBottom
+  } -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Collection Template",
+  "class": "c-section c-section__collection-template",
+  "settings": [
+    {
+      "type": "text",
+      "id": "collections",
+      "label": "Collections to hide filters",
+      "info": "List the collection handles you want to hide filters on in a comma seperated list. e.g. collection-1,collection-2,collection-3. Leave this blank to display filters on every collection."
+    },
+    {
+      "type": "paragraph",
+      "content": "Content blocks are set via blocks. Blocks will need to match up to their corresponding collections."
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "content-block",
+      "name": "Content Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "collections",
+          "label": "Collections",
+          "info": "List the collection handles you want this block to display for in a comma seperated list. e.g. collection-1,collection-2,collection-3. Leave this blank to display content block on every collection."
+        },
+        {
+          "type": "range",
+          "id": "position",
+          "label": "Block Position",
+          "min": 0,
+          "max": 48,
+          "default": 5,
+          "info": "The number of products that this collection block will appear after. Set to 0 to show the block at the end of the product listing."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Dimensions: 1422px X 1840px"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Content",
+          "info": "Keep to 4 - 6 words. More than that will cause words to flow outside shape."
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

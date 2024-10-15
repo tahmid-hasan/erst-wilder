@@ -1,0 +1,54 @@
+{% comment %}
+  404 Page Template
+
+  Version:
+    1.0.0 - 2021/09/28
+{% endcomment %}
+
+{{ 'sections.404.css' | asset_url | stylesheet_tag }}
+
+{%- assign title = section.settings.title | escape -%}
+{%- assign description = section.settings.description | escape -%}
+
+{%- if title != blank  -%}
+  <section class="c-404">
+    <div class="c-404__header">
+      <h1 class="c-404__title">
+        {{- title -}}
+      </h1>
+
+      {%- if description != blank -%}
+        <p class="c-404__description o-heading--5">
+          {{- description -}}
+        </p>
+      {%- endif -%}
+    </div>
+  </section>
+{%- endif -%}
+
+{%- comment -%} Add collections list from Home Page later {%- endcomment -%}
+
+{% schema %}
+{
+  "name": "404 Page",
+  "class": "c-section c-section__404",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Page Title",
+      "default": "Oops, I think you might have gotten lost."
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Page Description",
+      "default": "Maybe one of these collections will help you get back on track."
+    }
+  ]
+}
+{% endschema %}

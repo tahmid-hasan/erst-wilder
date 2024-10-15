@@ -1,0 +1,189 @@
+{% comment %}
+  Contact Page Template with Form
+
+  Version
+    1.0.0-2021/09/02
+{% endcomment %}
+
+{{ 'sections.contact.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%} Assign variables {%- endcomment -%}
+{%- liquid
+  assign title = section.settings.title | escape
+  assign subtitle = section.settings.subtitle | default: page.title | escape
+  assign ctaLabel = section.settings.cta-label | escape
+  assign ctaUrl = section.settings.cta-url
+  assign textBlocks = section.blocks | where: 'type', 'text'
+  assign sectionBlocks = section.blocks | where: 'type', 'dropdown-option'
+
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+-%}
+
+
+<div class="c-contact" data-contact>
+  
+  {%- if title != blank-%}
+    <h1 class="c-contact__heading o-heading--6">{{- title  -}}</h1>
+  {%- endif-%}
+
+  {%- if subtitle != blank -%}
+    <h2 class="c-contact__subtitle o-heading--1">{{- subtitle -}}</h2>
+  {%- endif-%}
+
+  {% comment%} FAQ section {% endcomment %}
+  {% if ctaLabel != blank and ctaUrl != blank %}
+    <div class="c-contact__faq">
+      <a class="c-contact__faq-link " href="{{- ctaUrl -}}">
+        {{- ctaLabel -}}
+      </a>
+    </div>
+  {% endif %}
+
+  {%- comment -%} Contact Form {%- endcomment -%}  
+  {%- render 'form.contact' with {
+    selectBlocks: sectionBlocks
+  } -%}
+
+  {%- comment -%} Text Blocks {%- endcomment -%}
+  {%- if textBlocks.size > 0 -%}
+    <section class="c-contact__text-blocks">
+      {%- for textBlock in textBlocks -%}
+        {%- liquid
+          assign blockTitle = textBlock.settings.title | escape
+          assign blockContent = textBlock.settings.text-block-content
+        -%}
+
+        {%- if blockTitle != blank and blockContent != blank -%}        
+          <div class="c-contact__text-blocks-wrapper">
+            <h4 class="c-contact__text-blocks-heading o-heading--4">
+              {{- blockTitle -}}
+            </h4>
+            <div class="c-contact__text-blocks-text o-paragraph o-wysiwyg">
+              {{- blockContent -}}
+            </div>
+          </div>
+        {%- endif -%}
+
+      {%- endfor -%}
+    </section>
+  {%- endif -%}
+
+</div>
+
+{%- comment -%} Bottom Wave {%- endcomment -%}
+{%- if bottomWave != "0" -%}
+  {%- render 'object.wave' with {
+    waveNumber:bottomWave
+    color1: bottomColor1
+    color2: bottomColor2,
+    isFlipped: isFlippedBottom
+  } -%}
+{%- endif -%}    
+
+{% schema %}
+{
+  "name": "Contact",
+  "class": "c-section c-section__contact-template",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Contact"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "We’re here to talk"
+    },
+    {
+      "type": "text",
+      "id": "cta-label",
+      "label": "CTA Heading",
+      "default": "Check out our FAQs"
+    },
+    {
+      "type": "url",
+      "id": "cta-url",
+      "label": "URL"
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Text Blocks",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Text Block Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text-block-content",
+          "label": "Text Block Content"
+        }
+      ]
+    },
+    {
+    "type": "dropdown-option",
+    "name": "Dropdown Option",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Option"
+      }
+    ]
+    }
+  ]
+}
+{% endschema %}

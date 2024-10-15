@@ -1,0 +1,266 @@
+{
+  "sections": {
+    "collection-template-collection": {
+      "type": "collection-template-collection",
+      "blocks": {
+        "723816c5-940a-49dd-b4e7-2a7892ccef98": {
+          "type": "content-block",
+          "disabled": true,
+          "settings": {
+            "collections": "new,books",
+            "position": 4,
+            "image": "shopify:\/\/shop_images\/HIGHLIGHT-GWP_8dbe9755-52fd-412a-bcd3-c9477441e645.jpg",
+            "title": "BONUS gift with orders $140+ AUD!"
+          }
+        },
+        "6800e647-a149-47b5-8d60-105f15db2cfc": {
+          "type": "content-block",
+          "settings": {
+            "collections": "terry-runyan",
+            "position": 12,
+            "image": "shopify:\/\/shop_images\/TERRY_RUNYAN_HIGHLIGHT-9.jpg",
+            "title": "Wearable art bursting with character!"
+          }
+        },
+        "bb33ba54-340c-4202-a21d-5b192eecda61": {
+          "type": "content-block",
+          "settings": {
+            "collections": "iris-apfel",
+            "position": 10,
+            "image": "shopify:\/\/shop_images\/IRIS_APFEL_HOVER-1.jpg",
+            "title": "A celebration of an icon and inspiration"
+          }
+        },
+        "a5aa64cc-815a-4e7e-8a2f-0a1f861ed073": {
+          "type": "content-block",
+          "settings": {
+            "collections": "cosy-things",
+            "position": 4,
+            "image": "shopify:\/\/shop_images\/COSY_THINGS_HIGHLIGHT-1.jpg",
+            "title": "Allow us to spin you a yarn!"
+          }
+        },
+        "15377fbd-2d31-4593-a7cd-6cdeefeaa0ea": {
+          "type": "content-block",
+          "settings": {
+            "collections": "mission-to-the-moon",
+            "position": 4,
+            "image": "shopify:\/\/shop_images\/MISSION_TO_THE_MOON_HIGHLIGHT-2.jpg",
+            "title": "Space travel, the Erstwildian way!"
+          }
+        },
+        "ac538ba1-f90b-436a-8960-f528c67b7641": {
+          "type": "content-block",
+          "settings": {
+            "collections": "a-year-in-bloom",
+            "position": 4,
+            "image": "shopify:\/\/shop_images\/A_YEAR_IN_BLOOM_HIGHLIGHT-4.jpg",
+            "title": "Everlasting blooms for your resin garden!"
+          }
+        },
+        "aab47db7-6ac8-4325-9c1b-1f9f78fbcbd2": {
+          "type": "content-block",
+          "settings": {
+            "collections": "origami",
+            "position": 4,
+            "image": "shopify:\/\/shop_images\/ORIGAMI__HIGHLIGHT-4.jpg",
+            "title": "A celebration of the creative art of paper folding!"
+          }
+        },
+        "5486d0bf-92d7-45f7-a917-ea2689062ad4": {
+          "type": "content-block",
+          "settings": {
+            "collections": "heirloom-crystal",
+            "position": 4,
+            "image": "shopify:\/\/shop_images\/CRYSTAL_HIGHLIGHT-2.jpg",
+            "title": "Keepsake designs limited to just 200 each worldwide"
+          }
+        },
+        "bb9f5e1e-4284-4ff5-ab98-ee3d84dfbd84": {
+          "type": "content-block",
+          "disabled": true,
+          "settings": {
+            "collections": "my-little-pony",
+            "position": 4,
+            "image": "shopify:\/\/shop_images\/MLP_HIGHLIGHT-1.jpg",
+            "title": "Warm and fuzzies are guaranteed!"
+          }
+        },
+        "1c954322-23b5-4e28-b033-04e1e8b213b8": {
+          "type": "content-block",
+          "settings": {
+            "collections": "la-belle-epoque",
+            "position": 4,
+            "image": "shopify:\/\/shop_images\/LA_BELLE_EPOQUE_HIGHLIGHT-4.jpg",
+            "title": "Wearable art inspired by Europe's Golden Age"
+          }
+        },
+        "b3fa9054-2b1b-4af8-af5e-404adff3be30": {
+          "type": "content-block",
+          "settings": {
+            "collections": "pysanky",
+            "position": 4,
+            "image": "shopify:\/\/shop_images\/PYSANKY_HIGHLIGHT-2.jpg",
+            "title": "Inspired by the Ukrainian art form of Pysanky"
+          }
+        },
+        "e90991ca-c52c-4278-831a-6eb852bc8305": {
+          "type": "content-block",
+          "settings": {
+            "collections": "botanical-fruit",
+            "position": 4,
+            "image": "shopify:\/\/shop_images\/BOTANICAL_FRUIT_HIGHLIGHT-5.jpg",
+            "title": "Wearable art almost good enough to eat!"
+          }
+        },
+        "26c00824-7c58-48c1-9f10-2ad0b0458d37": {
+          "type": "content-block",
+          "settings": {
+            "collections": "vintage-kitchen",
+            "position": 16,
+            "image": "shopify:\/\/shop_images\/VINTAGE_KITCHEN_HIGHLIGHT-1.jpg",
+            "title": "Step right into our vintage kitchen!"
+          }
+        },
+        "37d8f8ce-65f7-4565-89f0-e0c6df23b93b": {
+          "type": "content-block",
+          "disabled": true,
+          "settings": {
+            "collections": "erstwilder-x-miffy",
+            "position": 4,
+            "image": "shopify:\/\/shop_images\/HIGHLIGHT-5.jpg",
+            "title": "Accessorise with miffy!"
+          }
+        },
+        "10653782-4644-48c1-a353-f60b535aa6ca": {
+          "type": "content-block",
+          "disabled": true,
+          "settings": {
+            "collections": "all",
+            "position": 4,
+            "image": "shopify:\/\/shop_images\/HIGHLIGHT-1.jpg",
+            "title": "Limited Run, Wearable Art"
+          }
+        },
+        "c6a26072-4e8c-40f4-b9ed-d972ee4d35ae": {
+          "type": "content-block",
+          "disabled": true,
+          "settings": {
+            "collections": "christmas-1,modern-holiday",
+            "position": 4,
+            "image": "shopify:\/\/shop_images\/MODERN_HOLIDAY_HIGHLIGHT-6.jpg",
+            "title": "Happy Holidays!"
+          }
+        },
+        "2ff08c8f-0a7b-4f9f-8938-00a03b7b2c81": {
+          "type": "content-block",
+          "settings": {
+            "collections": "melanie-hava",
+            "position": 4,
+            "image": "shopify:\/\/shop_images\/MELANIE_HAVA_2.jpg",
+            "title": "Celebrating the Art of Melanie Hava"
+          }
+        },
+        "4de02ad3-bc5c-4381-b074-3bfe3b37731f": {
+          "type": "content-block",
+          "settings": {
+            "collections": "egyptian-revival",
+            "position": 4,
+            "image": "shopify:\/\/shop_images\/EG8B48_1.jpg",
+            "title": "Egyptian Revival meets the Art Deco Movement"
+          }
+        },
+        "df9f90a3-6ea0-4392-b199-ec31ecaf60c1": {
+          "type": "content-block",
+          "settings": {
+            "collections": "hair-clips",
+            "position": 4,
+            "image": "shopify:\/\/shop_images\/CLARE_YOUNGS_HIGHLIGHT-1.jpg",
+            "title": "Wearable art hair adornments"
+          }
+        },
+        "50a4a362-15d5-4eb0-964b-81b08f234c05": {
+          "type": "content-block",
+          "settings": {
+            "collections": "remembrance",
+            "position": 12,
+            "image": "shopify:\/\/shop_images\/REMEMBRANCE_UPDATE_HIGHLIGHT-5.jpg",
+            "title": "$2 from every sale donated to RSL Victoria"
+          }
+        },
+        "eb5b2a53-aef2-434a-80ff-3ce80f0e4e73": {
+          "type": "content-block",
+          "settings": {
+            "collections": "pride-joy",
+            "position": 4,
+            "image": "shopify:\/\/shop_images\/PRIDE_MONTH_SPOTLIGHT__COLLECTION_PROMO_v2.jpg",
+            "title": "$2 from every design sold donated to Minus18"
+          }
+        },
+        "dca05cff-a104-4984-aeb4-48bb0a0f314d": {
+          "type": "content-block",
+          "settings": {
+            "collections": "erstwilder-essentials",
+            "position": 4,
+            "image": "shopify:\/\/shop_images\/TEST_PICK_MIX_PROMO_ESSENTIALS_13d1068e-781d-41eb-b9c6-f6248c26c7b8.jpg",
+            "title": "Pick & Mix! Shop your favourites and save more the more you buy"
+          }
+        },
+        "3c5efd3e-8549-4f5b-8655-76ac116b9ce0": {
+          "type": "content-block",
+          "settings": {
+            "collections": "erstwilder-pins",
+            "position": 4,
+            "image": "shopify:\/\/shop_images\/TEST_PICK_MIX_PROMO_ENAMEL_PINS_1417133f-d709-481a-a400-450792078d93.jpg",
+            "title": "Pick & Mix! Shop your favourites and save more the more you buy"
+          }
+        },
+        "94b0b6a1-c85e-4b95-934d-606774c682a5": {
+          "type": "content-block",
+          "settings": {
+            "collections": "scarves",
+            "position": 4,
+            "image": "shopify:\/\/shop_images\/TEST_PICK_MIX_PROMO_SCARVES_c4562ba0-07f2-4829-b7bd-f66e120cf0d6.jpg",
+            "title": "Pick & Mix! Shop your favourites and save more the more you buy"
+          }
+        }
+      },
+      "block_order": [
+        "723816c5-940a-49dd-b4e7-2a7892ccef98",
+        "6800e647-a149-47b5-8d60-105f15db2cfc",
+        "bb33ba54-340c-4202-a21d-5b192eecda61",
+        "a5aa64cc-815a-4e7e-8a2f-0a1f861ed073",
+        "15377fbd-2d31-4593-a7cd-6cdeefeaa0ea",
+        "ac538ba1-f90b-436a-8960-f528c67b7641",
+        "aab47db7-6ac8-4325-9c1b-1f9f78fbcbd2",
+        "5486d0bf-92d7-45f7-a917-ea2689062ad4",
+        "bb9f5e1e-4284-4ff5-ab98-ee3d84dfbd84",
+        "1c954322-23b5-4e28-b033-04e1e8b213b8",
+        "b3fa9054-2b1b-4af8-af5e-404adff3be30",
+        "e90991ca-c52c-4278-831a-6eb852bc8305",
+        "26c00824-7c58-48c1-9f10-2ad0b0458d37",
+        "37d8f8ce-65f7-4565-89f0-e0c6df23b93b",
+        "10653782-4644-48c1-a353-f60b535aa6ca",
+        "c6a26072-4e8c-40f4-b9ed-d972ee4d35ae",
+        "2ff08c8f-0a7b-4f9f-8938-00a03b7b2c81",
+        "4de02ad3-bc5c-4381-b074-3bfe3b37731f",
+        "df9f90a3-6ea0-4392-b199-ec31ecaf60c1",
+        "50a4a362-15d5-4eb0-964b-81b08f234c05",
+        "eb5b2a53-aef2-434a-80ff-3ce80f0e4e73",
+        "dca05cff-a104-4984-aeb4-48bb0a0f314d",
+        "3c5efd3e-8549-4f5b-8655-76ac116b9ce0",
+        "94b0b6a1-c85e-4b95-934d-606774c682a5"
+      ],
+      "settings": {
+        "collections": "lucky-dips,components",
+        "bottom-wave": "2",
+        "bottom-color-1": "#ffffff",
+        "bottom-color-2": "#f4e9d2",
+        "flip-bottom-wave": false
+      }
+    }
+  },
+  "order": [
+    "collection-template-collection"
+  ]
+}

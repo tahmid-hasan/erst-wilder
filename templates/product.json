@@ -1,0 +1,199 @@
+{
+  "sections": {
+    "template-product": {
+      "type": "template-product",
+      "settings": {
+        "show_rewards_points_earned": true,
+        "add_to_wishlist": "Add to Wishlist",
+        "show_quantity_selector": false,
+        "bottom-wave": "3",
+        "bottom-color-1": "#ffffff",
+        "bottom-color-2": "#f8f3ec",
+        "flip-bottom-wave": false
+      }
+    },
+    "product-details": {
+      "type": "product-details",
+      "custom_css": [
+        ".c-product-details__outer {padding-bottom: 0px;}"
+      ],
+      "settings": {
+        "blob-one-heading": "Pick & Mix",
+        "blob-one-desc": "Buy more & save",
+        "shipping-info": "<p><strong>Shipping within Australia<br\/><\/strong>FREE Express shipping for all orders over $80<br\/>$7.95 flat rate Express shipping for all other orders under $80<br\/><br\/><strong>Shipping to the USA<br\/><\/strong>Free DHL E-Commerce shipping for orders over $120 (AUD)<br\/>$9.95 (AUD) flat rate DHL E-commerce shipping for orders under $120 (AUD)<br\/>$14.95 (AUD) flat rate DHL Express Shipping optional<br\/><br\/><strong>Shipping Internationally (Excluding the USA)<br\/><\/strong>FREE international shipping for all orders over $120 (AUD)<br\/>Flat rate $9.95 (AUD) international shipping for all orders under $120 (AUD)<br\/>$14.95 (AUD) DHL Express shipping optional<br\/><br\/>Please note: Not all bag designs are available for shipping to all International regions. Berets will only ship to Australian addresses. You will be notified at checkout if you are unable to complete an order due to shipping constraints. In these instances, please contact your local stockists to find out about availability and to order. <br\/><br\/>For further information please visit the <a href=\"\/pages\/faq\" target=\"_blank\" title=\"Sidebar - FAQ\"><strong>Shipping FAQs<\/strong><\/a>.<\/p>",
+        "returns-info": "<p>We want you to love your Erstwilder purchases and know that having super easy returns is part of why you shop with us, which is why we offer a 60-day return policy for all purchases on erstwilder.com that meet the criteria below:<br\/><br\/>Items must be returned within 60 days of purchase together with proof of purchase.<br\/>Items must be in their original condition with accompanying gift boxes, story cards and swing tags.<br\/>Lucky Dips, Perfectly Imperfect and Gift Cards cannot be returned.<br\/>No refunds on Embroidery Patterns.<br\/>Earrings are not able to be returned for hygiene reasons.<br\/>For each order, a maximum of three items can be returned.<br\/><br\/>For the full policy and further details on how to return items, please visit the <br\/><a href=\"\/pages\/faq\" target=\"_blank\" title=\"Sidebar - FAQ\"><strong>Returns FAQs<\/strong><\/a><\/p>",
+        "top-wave": "0",
+        "top-color-1": "",
+        "top-color-2": "",
+        "flip-top-wave": false,
+        "bottom-wave": "0",
+        "bottom-color-1": "#ffffff",
+        "bottom-color-2": "#f8f3ec",
+        "flip-bottom-wave": true
+      }
+    },
+    "product-recently-viewed": {
+      "type": "product-recently-viewed",
+      "settings": {
+        "title": "Did these catch your eye?",
+        "top-wave": "1",
+        "top-color-1": "#ffffff",
+        "top-color-2": "#f8f3ec",
+        "flip-top-wave": true,
+        "bottom-wave": "0",
+        "bottom-color-1": "#ffffff",
+        "bottom-color-2": "#f4e9d2",
+        "flip-bottom-wave": false
+      }
+    },
+    "product-recommended-carousel": {
+      "type": "product-recommended-carousel",
+      "settings": {
+        "preheading": "Complete the look!",
+        "title": "You might also love...",
+        "limit": 4,
+        "top-wave": "0",
+        "top-color-1": "",
+        "top-color-2": "",
+        "flip-top-wave": false,
+        "bottom-wave": "0",
+        "bottom-color-1": "#ffffff",
+        "bottom-color-2": "#fcecdf",
+        "flip-bottom-wave": false
+      }
+    },
+    "product-collection-video": {
+      "type": "product-collection-video",
+      "settings": {
+        "title": "A bit more about this collection",
+        "top-wave": "1",
+        "top-color-1": "#ffffff",
+        "top-color-2": "#f8f3ec",
+        "flip-top-wave": false,
+        "bottom-wave": "0",
+        "bottom-color-1": "#f8f3ec",
+        "bottom-color-2": "#fcecdf",
+        "flip-bottom-wave": false
+      }
+    },
+    "7ad1e2c0-90b5-4580-b5d4-268ca99a5d31": {
+      "type": "carousels-assistants-carousel",
+      "blocks": {
+        "f0f06c3e-7959-4e84-b0ee-c42585f3c70c": {
+          "type": "assistant",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Icon_demo.png",
+            "title": "Indigenous Issues",
+            "bio": ""
+          }
+        },
+        "695ca162-74f6-4e5a-b2f0-4278187d8ba3": {
+          "type": "assistant",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Icon_demo.png",
+            "title": "Women's Health",
+            "bio": ""
+          }
+        },
+        "8212bfec-b73a-43eb-bfcf-7ece247cec94": {
+          "type": "assistant",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Icon_demo.png",
+            "title": "Mental Health",
+            "bio": ""
+          }
+        },
+        "a2283243-1594-4677-afcb-b627b387f205": {
+          "type": "assistant",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Icon_demo.png",
+            "title": "Animal Welfare",
+            "bio": ""
+          }
+        }
+      },
+      "block_order": [
+        "f0f06c3e-7959-4e84-b0ee-c42585f3c70c",
+        "695ca162-74f6-4e5a-b2f0-4278187d8ba3",
+        "8212bfec-b73a-43eb-bfcf-7ece247cec94",
+        "a2283243-1594-4677-afcb-b627b387f205"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Erstwilder Cares",
+        "subtitle": "We have a clear mission - to spark joy in the world.  As part of this crucial mission, we proudly support organisations such as:",
+        "top-wave": "0",
+        "top-color-1": "#f4e9d2",
+        "top-color-2": "#f8f3ec",
+        "flip-top-wave": false,
+        "bottom-wave": "1",
+        "bottom-color-1": "#f8f3ec",
+        "bottom-color-2": "#f4e9d2",
+        "flip-bottom-wave": false
+      }
+    },
+    "2a576835-e738-4e8e-b95b-cd5d137a65fa": {
+      "type": "anyone-content-heading-double-cta",
+      "disabled": true,
+      "settings": {
+        "title": "We’re committed to giving back.",
+        "subtitle": "We donate over 1% of annual sales from to our charity partners.",
+        "cta-label-1": "Read More About Erstwilder Cares >",
+        "cta-link-1": "shopify:\/\/pages\/donations",
+        "cta-label-2": "",
+        "cta-link-2": "",
+        "top-wave": "0",
+        "top-color-1": "",
+        "top-color-2": "",
+        "flip-top-wave": false,
+        "bottom-wave": "1",
+        "bottom-color-1": "#f4e9d2",
+        "bottom-color-2": "#fcecdf",
+        "flip-bottom-wave": false
+      }
+    },
+    "judge-reviews": {
+      "type": "judge-reviews",
+      "settings": {
+        "title": "Loved by Erstwildians",
+        "top-wave": "0",
+        "top-color-1": "#fcecdf",
+        "top-color-2": "#f8f3ec",
+        "flip-top-wave": false,
+        "bottom-wave": "1",
+        "bottom-color-1": "#fcecdf",
+        "bottom-color-2": "#f8f3ec",
+        "flip-bottom-wave": true
+      }
+    },
+    "instagram-feed-cta": {
+      "type": "instagram-feed-cta",
+      "settings": {
+        "title": "Join us on our Instagram",
+        "preheading": "",
+        "cta-label": "@erstwilder",
+        "ig-link": "https:\/\/www.instagram.com\/erstwilder",
+        "instagram-script": "",
+        "top-wave": "0",
+        "top-color-1": "",
+        "top-color-2": "",
+        "flip-top-wave": false,
+        "bottom-wave": "0",
+        "bottom-color-1": "#fcecdf",
+        "bottom-color-2": "#ffffff",
+        "flip-bottom-wave": false
+      }
+    }
+  },
+  "order": [
+    "template-product",
+    "product-details",
+    "product-recently-viewed",
+    "product-recommended-carousel",
+    "product-collection-video",
+    "7ad1e2c0-90b5-4580-b5d4-268ca99a5d31",
+    "2a576835-e738-4e8e-b95b-cd5d137a65fa",
+    "judge-reviews",
+    "instagram-feed-cta"
+  ]
+}

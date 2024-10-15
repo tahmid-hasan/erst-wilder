@@ -1,0 +1,335 @@
+{%- comment -%}
+  Hero banner
+    Section to display hero banner with split sections
+    - Half the banner shows a featured product, the other half shows a featured
+    image
+
+  Version:
+    1.0.0 - 2021/09/05
+{%- endcomment -%}
+
+{{ 'sections.hero-split.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%} Initial variables needed to check section {%- endcomment -%}
+{%- assign featuredProduct = section.settings.featured-product -%}
+{%- assign featuredCollection = section.settings.featured-collection -%}
+{%- assign imageDesktop = section.settings.desktop-image -%}
+
+{%- if featuredProduct != blank or featuredCollection != blank -%}
+  
+  {%- if imageDesktop != blank -%}
+    {%- comment -%} Assign variables {%- endcomment -%}
+    {%- liquid
+      assign linkTo = section.settings.link-type 
+      assign imageMobile = section.settings.mobile-image
+      assign featuredImage = section.settings.featured-image
+      assign title = section.settings.title | escape
+      assign subtitle = section.settings.subtitle
+      assign ctaLabel = section.settings.cta-label | escape
+      assign clickableImage = section.settings.clickable-image
+      
+      if linkTo == 'collection'
+        assign featuredUrl = featuredCollection.url
+      elsif linkTo == 'product'
+        assign featuredUrl = featuredProduct.url
+      endif
+
+      if featuredImage == blank and featuredProduct != blank
+        assign featuredImage = featuredProduct.image
+      endif
+    -%}
+
+    {% capture style_vars %}
+      --hero--bottom-text-bg-color: {{ section.settings.hero--bottom-text-bg-color }};
+      --hero--bottom-text-color: {{ section.settings.hero--bottom-text-color }};
+    {% endcapture %}
+  
+    <section class="c-hero-split is-split"
+      style="{{ style_vars }}">
+      <div class="c-hero-split__inner">
+        {%- comment -%} Columns {%- endcomment -%}
+        <div class="c-hero-split__columns image-{{ section.settings.image_position }}">
+          {%- comment -%} Banner Image {%- endcomment -%}
+          <div class="c-hero-split__image-wrapper">
+            <a 
+              href="{%- if featuredUrl != blank and clickableImage == true -%}{{featuredUrl}}{%- else -%}javascript:;{%- endif -%}"
+              class="o-responsive-image-container c-hero-split__image-container
+                {% if featuredUrl == blank or clickableImage == false %}
+                    no-pointer
+                {% endif %}"
+              >
+              {%- comment -%} Desktop Image {%- endcomment -%}
+              {%- capture pictureClass -%}
+                c-hero-split__image
+                o-responsive-image
+                is-desktop
+                {% if imageMobile != blank %}has-mobile{%- endif -%}
+              {%- endcapture -%}
+
+              {%- render 'tool.picture' with {
+                image: imageDesktop,
+                class: pictureClass,
+                width: 1280,
+                sizes: '320,375,500,750,1100,1650,2000',
+                imageSizes: '320,375,500,750,800,1080,1160'
+              } -%}
+
+              {%- comment -%} Mobile Image {%- endcomment -%}
+              {%- if imageMobile != blank -%}
+                {%- assign pictureClass = 'c-hero-split__image o-responsive-image is-mobile' -%}
+
+                {%- render 'tool.picture' with {
+                  image: imageMobile,
+                  class: pictureClass,
+                  width: 750,
+                  sizes: '320,375,500'
+                } -%}
+              {%- endif -%}
+            </a>
+
+            {%- comment -%} Call to action {%- endcomment -%}
+            {%- if ctaLabel != blank -%}
+              <div class="c-hero-split__cta-wrapper">
+                <a
+                  href="{{- featuredUrl -}}"
+                  class="c-hero-split__cta"
+                >
+                  {%- render 'svg.shape-1' with {
+                    fill: section.settings.cta-background,
+                    class: "c-hero-split__cta-bg"
+                  } -%}
+                  <span class="c-hero-split__cta-label">
+                    {{- ctaLabel -}}
+                  </span>
+                </a>
+              </div>
+            {%- endif -%}            
+          </div>
+
+          {%- comment -%} Featured Product {%- endcomment -%}
+          <div class="c-hero-split__featured-container">
+            {%- comment -%} Image {%- endcomment -%}
+            <div class="c-hero-split__featured-image-wrapper">
+              <a
+                href="{%- if featuredUrl != blank and clickableImage == true -%}{{featuredUrl}}{%- else -%}javascript:;{%- endif -%}"
+                class="c-hero-split__featured-image-container o-responsive-image-container
+                {% if featuredUrl == blank or clickableImage == false %}
+                  no-pointer
+                {% endif %}"
+              >
+                {%- render 'tool.picture' with {
+                  image: featuredImage,
+                  class: 'c-hero-split__featured-image o-responsive-image',
+                  width: 587,
+                  sizes: '375,500,750',
+                  imageSizes: '248,375,485'
+                } -%}
+              </a>
+            </div>
+
+            {%- comment -%} Title {%- endcomment -%}
+            {%- if title != blank -%}
+              <h2 class="c-hero-split__featured-title o-heading--3">
+                {{- title -}}
+              </h2>
+            {%- endif -%}
+
+            {%- comment -%} Subtitle {%- endcomment -%}
+            {%- if subtitle != blank -%}
+              <p class="c-hero-split__featured-subtitle">
+                {{- subtitle -}}
+              </p>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+
+      {% if section.settings.banner_bottom_text != blank %}
+      <div class="hero--bottom-text">
+        {{ section.settings.banner_bottom_text }}
+      </div>
+      {% endif %}  
+    </section>
+  {%- endif -%}
+{%- endif -%}
+{% schema %}
+{
+  "name": "Hero Banner - Split",
+  "class": "c-section c-section__hero-split",
+  "presets": [
+    {
+      "category": "Banners",
+      "name": "Hero Banner - Split"
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Banner Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "clickable-image",
+      "label": "Clickable Images",
+      "default": true,
+      "info": "Check this box to have the entire desktop/mobile image and featured image click to the CTA url"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile-image",
+      "label": "Mobile Image",
+      "info": "Dimensions: 750px X 480px"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop-image",
+      "label": "Desktop Image",
+      "info": "Dimensions: 2560px X 2356px"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "info": "Controls Image position (Desktop only)",
+      "label": "Image Position",
+      "options": [
+        {
+          "label": "Left",
+          "value": "left"
+        },
+        {
+          "label": "Right",
+          "value": "right"
+        }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "header",
+      "content": "Featured Product Information"
+    },
+    {
+      "type": "select",
+      "id": "link-type",
+      "label": "Link To",
+      "options": [
+        {
+          "value": "collection",
+          "label": "Collection"
+        },
+         {
+          "value": "product",
+          "label": "Product"
+        }
+      ]
+    },
+    {
+      "type": "product",
+      "id": "featured-product",
+      "label": "Featured Product",
+      "info": "Select a product to feature in banner. URL will be used and featured image will be used as a fallback."
+    },
+    {
+      "type": "collection",
+      "id": "featured-collection",
+      "label": "Featured Collection",
+      "info": "Select collection to link in CTA"
+    },
+    {
+      "type": "image_picker",
+      "id": "featured-image",
+      "label": "Featured Image",
+      "info": "Dimensions: 1174px X 1174px. If no image is provided, we will use the selected products featured image as a fallback."
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Section Title"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur reiciendis porro ipsum </p>"
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "text",
+      "id": "cta-label",
+      "label": "CTA Label",
+      "default": "Shop now",
+      "info": "Keep to 3 words max. Anymore then this will spill outside the cta shape."
+    },
+    {
+      "type": "select",
+      "id": "cta-background",
+      "label": "Button background colour",
+      "options": [
+        {
+          "value": "#6299b8",
+          "label": "Blue"
+        },
+        {
+          "value": "#6b0e19",
+          "label": "Brown"
+        },
+        {
+          "value": "#2a584d",
+          "label": "Dark Green"
+        },
+        {
+          "value": "#dd6d62",
+          "label": "Dark Peach"
+        },
+        {
+          "value": "#88AA92",
+          "label": "Green"
+        },
+        {
+          "value": "#be7a8f",
+          "label": "Mauve"
+        },
+        {
+          "value": "#243c59",
+          "label": "Navy"
+        },
+        {
+          "value": "#da8356",
+          "label": "Orange"
+        },
+        {
+          "value": "#f6a898",
+          "label": "Peach"
+        },
+        {
+          "value": "#FDCF5E",
+          "label": "Yellow (default)"
+        }
+      ],
+      "default": "#FDCF5E"
+    },
+    {
+      "type": "header",
+      "content": "Banner Bottom Text"
+    },
+    {
+      "type": "richtext",
+      "id": "banner_bottom_text",
+      "label": "Bottom Text"
+    },
+    {
+      "type": "color",
+      "label": "Background Color",
+      "id": "hero--bottom-text-bg-color"
+    },
+    {
+      "type": "color",
+      "label": "Text Color",
+      "id": "hero--bottom-text-color"
+    }
+  ]
+}
+{% endschema %}

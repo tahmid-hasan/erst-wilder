@@ -1,0 +1,133 @@
+{%- comment -%}
+  Search Results Template
+
+  Version:
+    1.0.0 - 2021/12/02 
+{%- endcomment -%}
+
+{{ 'sections.search.css' | asset_url | stylesheet_tag }}
+{{ 'sections.search.js' | asset_url | script_tag }}
+
+{% assign title = section.settings.title | escape %}
+{% assign subtitle = section.settings.subtitle | escape %}
+
+<section class="c-search-results">
+
+  {%- comment -%} No Search Performed {%- endcomment -%}
+  {%- if search.performed  == false -%}
+    {%- comment -%} Title {%- endcomment -%}
+    {%- if title != blank -%}
+      <h1 class="c-search-results__title">{{- title -}}</h1>
+    {%- endif -%}
+    
+    {%- comment -%} Subtitle {%- endcomment -%}
+    {%- if subtitle != blank -%}
+      <p class="c-search-results__subtitle o-heading--6">{{- subtitle -}}</p>
+    {%- endif -%}
+
+    <div id="searchresults" class="c-search-results__search-container">
+      <form action="/search" method="get">
+        <p>
+          <input type="text" name="q" value="" id="result-q" placeholder="{{- 'search.placeholder' | t | escape }}" class="c-search-results__search-input o-input is-primary"> 
+          <input type="submit" value="Search" class="c-search-results__search-btn o-btn"></p>
+      </form>
+    
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} Search Performed {%- endcomment -%}
+  {%- paginate search.results by 24 -%}
+
+    {%- if search.performed -%}
+
+      {%- if search.results_count == 0 -%}
+        {%- assign resultsClass = "c-search-results__outer no-results" -%}
+        {%- assign noResults = true -%}
+        
+      {%- else -%}
+        {%- assign resultsClass = "c-search-results__outer no-results" -%}
+        {%- assign noResults = true -%}
+
+        {%- for item in search.results -%}
+          {%- if item.object_type == 'product' -%}
+            {%- assign resultsClass = "c-search-results__outer" -%}
+            {%- assign noResults = false -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}  
+
+      <div class="{{- resultsClass -}}">
+        <div class="c-search-results__inner">
+                  
+          {%- comment -%} Heading and No Results Message {%- endcomment -%}
+          <div class="c-search-results__heading">
+            <h1 class="c-search-results__no-results">
+              {{- 'search.no_results_html' | t -}}
+              <span class="c-search-results__search-term">'{{ search.terms }}'</span>          
+            </h1>    
+            <p class="c-search-results__no-results o-heading--6 c-search-results__no-results--subtitle">
+              {{- 'search.try_different' | t -}}
+            </p>  
+               
+            <h1 class="o-heading__inner c-search-results__heading-inner">
+              {{- 'search.results_for_html' | t: terms: search.terms -}}
+            </h1>
+          </div>
+ 
+    {%- endif -%}  
+      
+        {%- comment -%} Search Results {%- endcomment -%}
+        <ul class="c-search-results__container">
+
+          {%- for item in search.results -%}
+
+            {%- if item.object_type != 'product' -%}
+              {%- continue -%}
+            {%- endif -%}
+
+              <li class="c-search-results__item">
+                {%- render 'object.product-thumbnail' with {
+                  class: 'c-search-results__product-card',
+                  thumbnailProduct: item
+                } -%}
+              </li>  
+
+          {%- endfor -%}
+
+        </ul>
+      </div>
+    </div>
+
+    {%- comment -%} Pagination {%- endcomment -%}
+    {%- if paginate.pages > 1 -%}
+      <div class="c-search-results__pagination">
+        {%- render 'object.pagination' with {
+          paginate: paginate
+        } -%}
+      </div>
+    {%- endif -%}
+    
+  {%- endpaginate -%}
+</section>
+
+
+{% schema %}
+  {
+    "name": "Search Results",
+    "class": "c-section__search-results",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Search our products",
+        "info":"Title and subtitle will only be displayed if no search has been performed"
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,90 @@
+{%- comment -%}
+  Logos
+    Section to feature logos with a title
+
+  Version:
+    1.0.0 - 2021/10/20
+{%- endcomment -%}
+
+{%- comment -%} Section assets {%- endcomment -%}
+{{ 'sections.logos.css' | asset_url | stylesheet_tag }}
+{{ 'sections.logos.js' | asset_url | script_tag }}
+
+{%- comment -%} Assign variables {%- endcomment -%}
+{%- liquid
+  assign title = section.settings.title | escape
+  assign logoBlocks = section.blocks | where: 'type', 'logo-block'
+-%}
+
+{%- if logoBlocks.size > 0 -%}
+  <section class="c-logos">
+    <div class="c-logos__inner">
+      <div class="c-logos__wrapper" data-logos-wrapper>
+        {%- comment -%} Title {%- endcomment -%}
+        {%- if title != blank -%}
+          <h2 class="c-logos__title o-heading--3">
+            {{- title -}}
+          </h2>
+        {%- endif -%}
+
+        {%- comment -%} Logos {%- endcomment -%}
+        <div class="c-logos__container" data-logos-scroller>
+          <div class="c-logos__overflow">
+            {%- for logoItem in logoBlocks -%}
+              {%- assign logo = logoItem.settings.image | img_url: '250x250' -%}
+              {%- unless logo != blank -%}{%- continue -%}{%- endunless -%}
+
+              <div class="c-logos__logo-item">
+                <img
+                  src="{{- logo -}}" alt="{{- logoItem.title | escape -}}"
+                  class="c-logos__logo" lazy="true"
+                  width="250"
+                >
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Logos",
+  "class": "c-section c-section__logos",
+  "presets": [
+    {
+      "category": "Media",
+      "name":"Logos"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo-block",
+      "name": "Logo Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Logo Name",
+          "info": "Used to help with block identification. Also used as logo alternative image text."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Logo",
+          "info": "Dimensions: max height - 54px, can be variable width. Should ideally be in a png format with a transparent background to work well with design."
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

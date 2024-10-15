@@ -1,0 +1,333 @@
+{%- comment -%}
+  Team Member Carousel
+  - Carousel of Team Members
+
+  Version:
+    1.0.0 - 2021/11/18
+{%- endcomment -%}
+
+{{ 'sections.team-carousel.css' | asset_url | stylesheet_tag }}
+{{ 'sections.team-carousel.js' | asset_url | script_tag }}
+
+{%- liquid 
+  assign memberBlocks = section.blocks | where: 'type', 'team-member'
+  assign title = section.settings.title | escape
+  assign subtitle = section.settings.subtitle | escape
+
+  assign topWave = section.settings.top-wave
+  assign topColor1 = section.settings.top-color-1
+  assign topColor2 = section.settings.top-color-2
+  assign isFlippedTop = section.settings.flip-top-wave
+
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+-%}
+
+{%- if memberBlocks.size > 0 -%}
+
+  {%- comment -%} Top Wave {%- endcomment -%}
+  {%- if topWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:topWave
+      color1: topColor1
+      color2: topColor2,
+      isFlipped: isFlippedTop
+    } -%}
+  {%- endif -%}  
+
+  <div class="c-team-carousel" data-team-carousel-container>
+    <div class="c-team-carousel__inner">
+      
+      {%- comment -%} Title {%- endcomment -%}
+      {%- if title != blank -%}
+        <h2 class="c-team-carousel__title">
+          {{- title -}}
+        </h2>
+      {%- endif -%}
+      
+      {%- comment -%} Subtitle {%- endcomment -%}
+      {%- if subtitle != blank -%}
+        <p class="c-team-carousel__subheading o-heading--6">
+          {{- subtitle -}}
+        </p>
+      {%- endif -%}
+
+      {%- comment -%} Slider/Nav Container {%- endcomment -%}
+      <div class="c-team-carousel__slider-container">
+
+       {%- comment -%} Slider {%- endcomment -%}
+        <div class="c-team-carousel__slider" data-team-carousel>
+          {%- for member in memberBlocks -%}
+            
+            {%- liquid 
+              assign image = member.settings.image
+              assign name = member.settings.title | escape
+              assign role = member.settings.role | escape
+              assign subtitle = member.settings.subtitle | escape
+              assign years = member.settings.years | escape
+              assign pronouns = member.settings.pronouns | escape
+              assign bio = member.settings.bio | escape | newline_to_br
+            -%}
+
+            {%- if image != blank and name != blank  -%}
+
+              {%- comment -%} Slide {%- endcomment -%}
+              <div class="c-team-carousel__slide" data-carousel-thumbnail>
+
+                <div class="c-team-carousel__slide-inner">
+
+                  {%- comment -%} Image {%- endcomment -%}
+                  <div class="c-team-carousel__image-container o-responsive-image-container">
+                    {%- render 'tool.picture' with {
+                      image: image,
+                      class:'c-team-carousel__image o-responsive-image',
+                      width: 410,
+                      imageSizes: '249,363',
+                      sizes: '375,550',
+                      lazy: true
+                    } -%}
+                  </div>
+
+                  {%- comment -%} Slide Content{%- endcomment -%}
+                  <div class="c-team-carousel__slide-content">
+                  
+                    {%- comment -%} Name {%- endcomment -%}
+                    <p class="c-team-carousel__name o-heading--3">
+                      {{- name -}}
+                    </p>
+
+                    {%- comment -%} Subtitle {%- endcomment -%}
+                    {%- if subtitle != blank -%}
+                      <p class="c-team-carousel__subtitle">
+                        {{- subtitle -}}
+                      </p>
+                    {%- endif -%}
+
+                    {%- comment -%} Details {%- endcomment -%}
+                    {%- if role != blank or years != blank or pronouns != blank -%}
+                      <div class="c-team-carousel__member-details">
+
+                        {%- comment -%} Role {%- endcomment -%}
+                        {%- if role != blank -%}
+                          <span class="c-team-carousel__role">
+                            {{- role -}}
+                          </span>
+                        {%- endif -%}
+
+                        {%- if years != blank -%}
+                          <span class="c-team-carousel__years">
+                            {{- years -}}
+                          </span>
+                        {%- endif -%}
+
+                        {%- if pronouns != blank -%}
+                          <span class="c-team-carousel__pronouns">
+                            {{- pronouns -}}
+                          </span>
+                        {%- endif -%}                
+
+                      </div>
+                    {%- endif -%}
+
+                    {%- comment -%} Bio {%- endcomment -%}
+                    {%- if bio != blank -%}
+                      <p class="c-team-carousel__bio">
+                        {{- bio -}}
+                      </p>
+                    {%- endif -%}
+                  </div>
+                </div>  
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        {%- comment -%} Navigation {%- endcomment -%}
+        <div class="c-team-carousel__nav" data-team-carousel-nav>
+          <span class="c-team-carousel__nav-arrow" data-carousel-previous>
+            {%- render 'object.icon' with {
+              icon:'chevron-left'
+            } -%}
+          </span>
+          <span class="c-team-carousel__nav-arrow" data-carousel-next>
+            {%- render 'object.icon' with {
+              icon:'chevron-right'
+            } -%}
+          </span>        
+        </div>
+      </div>  
+    </div>
+  </div>
+
+  {%- comment -%} Bottom Wave {%- endcomment -%}
+  {%- if bottomWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:bottomWave
+      color1: bottomColor1
+      color2: bottomColor2,
+      isFlipped: isFlippedBottom
+    } -%}
+  {%- endif -%}  
+
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Team Members Carousel",
+  "class": "c-section c-section__team-carousel",
+  "presets": [
+    {
+      "category": "Carousel",
+      "name":"Team Members Carousel"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default":"The Erstwilder Team"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default":"Your designers, marketers, customer care and operation people."
+    },
+    {
+      "type": "header",
+      "content": "Top Wave"
+    },
+    {
+      "type": "select",
+      "id": "top-wave",
+      "label": "Top Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "top-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "top-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-top-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "team-member",
+      "name": "Team Member",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Team Member Photo",
+          "info":"Dimensions: 820px X 880px"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Name"
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Role"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle"
+        },
+        {
+          "type": "text",
+          "id": "years",
+          "label": "Years at Erstwilder"
+        },
+        {
+          "type": "text",
+          "id": "pronouns",
+          "label": "Pronouns"
+        },
+        {
+          "type": "textarea",
+          "id": "bio",
+          "label": "Bio"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

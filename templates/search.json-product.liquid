@@ -1,0 +1,22 @@
+{% comment %}
+  Recently Viewed Search Template
+    Simple JSON Styled Search Template for fetching recently-viewed products and dumping the HTML.
+
+  Dependencies:
+    snippets/product-grid-item.liquid - Your product thumbnail Liquid, you can replace this.
+
+  Version:
+    2.0.0 - 2019/05/06
+{% endcomment %}
+
+{% layout none %}
+[
+  {%-for item in search.results-%}
+    {%- unless item.object_type == 'product' -%}
+      {% continue %}
+    {%- endunless -%}
+
+    {%- include 'json.product' with { jsonProduct: item } -%}
+    {%- unless forloop.last -%},{%- endunless -%}
+  {%-endfor-%}
+]

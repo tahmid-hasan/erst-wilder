@@ -1,0 +1,72 @@
+{%- comment -%}
+  Testimonial item
+    Displays a testimonial item. Includes: content, author, cta label, cta url
+    and a flag image
+
+    Params:
+    - class: String that can be passed to be used as a class
+    - content: String used for testimonial content
+    - author: String used as author of testimonial
+    - ctaLabel: String used as cta label
+    - ctaUrl: String used as cta url
+    - flagImage: String used as flag image src
+  Version:
+    1.0.0 - 2021/10/21
+{%- endcomment -%}
+
+{%- if content != blank and author != blank -%}
+  <div class="o-testimonial-item {{ class }}" style="{{ style_vars }}">
+    <div class="o-testimonial-item__inner">
+      <div class="o-testimonial-item__container">
+        {%- comment -%} Content {%- endcomment -%}
+        <p class="o-testimonial-item__content">
+          {{- content -}}
+        </p>
+
+        {%- comment -%} Author {%- endcomment -%}
+        <p class="o-testimonial-item__author">
+          {{- author -}}
+        </p>
+
+        {%- comment -%} CTA (mobile) {%- endcomment -%}
+        {%- if ctaLabel != blank and ctaUrl != blank -%}
+          <div class="o-testimonial-item__cta-container is-mobile">
+            <a
+              href="{{- ctaUrl -}}"
+              class="o-testimonial-item__cta o-link"
+            >
+              {{- ctaLabel -}}
+            </a>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} CTA (desktop) {%- endcomment -%}
+      {%- if ctaLabel != blank and ctaUrl != blank -%}
+        <a href="{{- ctaUrl -}}" class="o-testimonial-item__cta-container is-desktop">
+          <span
+            class="o-testimonial-item__cta o-link"
+          >
+            {{- ctaLabel -}}
+          </span>
+        </a>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} Flag {%- endcomment -%}
+    {%- if flagImage -%}
+      <div class="o-testimonial-item__flag-wrapper">
+        <div class="o-testimonial-item__flag-container o-responsive-image-container">
+          {%- render 'tool.picture' with {
+            image: flagImage,
+            class: 'o-testimonial-item__flag-image o-responsive-image',
+            width: 75,
+            imageSizes: '60',
+            sizes: '1100',
+            lazy: true
+          } -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+{%- endif -%}

@@ -1,0 +1,179 @@
+
+{{ 'sections.recently-viewed.css' | asset_url | stylesheet_tag }}
+{{ 'sections.recently-viewed-products.js' | asset_url | script_tag }}
+
+{%- liquid 
+  assign title = section.settings.title | escape
+
+  assign topWave = section.settings.top-wave
+  assign topColor1 = section.settings.top-color-1
+  assign topColor2 = section.settings.top-color-2
+  assign isFlippedTop = section.settings.flip-top-wave
+
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+-%}
+
+
+
+<div class="c-recently-viewed" data-recently-viewed-products data-recently-viewed-new-product={{product.id}}>
+  {%- comment -%} Top Wave {%- endcomment -%}
+  {%- if topWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:topWave
+      color1: topColor1
+      color2: topColor2,
+      isFlipped: isFlippedTop
+    } -%}
+  {%- endif -%}
+  <div class="c-recently-viewed__inner">
+    {%- if title != blank -%}
+      <h3 class="c-recently-viewed__title">
+        {{- title -}}
+      </h3>
+    {%- endif -%}
+
+    <div class="c-recently-viewed__carousel" data-recently-viewed-carousel></div>
+
+    <div class="c-recently-viewed__nav" data-recently-viewed-nav>
+      <span class="c-recently-viewed__nav-arrow" data-carousel-previous>
+        {%- render 'object.icon' with {
+          icon:'chevron-left-orange'
+        } -%}
+      </span>
+      <span class="c-recently-viewed__nav-arrow" data-carousel-next>
+        {%- render 'object.icon' with {
+          icon:'chevron-right-orange'
+        } -%}
+      </span>
+      
+    </div>
+  </div>
+  {%- comment -%} Bottom Wave {%- endcomment -%}
+  {%- if bottomWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:bottomWave
+      color1: bottomColor1
+      color2: bottomColor2,
+      isFlipped: isFlippedBottom
+    } -%}
+  {%- endif -%}
+</div>
+
+
+
+
+{% schema %}
+{
+  "name": "Recently Viewed Products",
+  "class": "c-section c-section__recently-viewed",
+  "presets": [
+    {
+      "category": "Featured",
+      "name":"Recently Viewed Products"
+    }
+  ],
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Please note this section will not be visible until the user has viewed at least two product pages. If the section above has a bottom wave, consider removing it and adding a top wave to this section"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Did these catch your eye?"
+    },
+    {
+      "type": "header",
+      "content": "Top Wave"
+    },
+    {
+      "type": "select",
+      "id": "top-wave",
+      "label": "Top Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "top-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "top-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-top-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

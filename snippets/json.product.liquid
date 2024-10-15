@@ -1,0 +1,76 @@
+{%- comment -%}
+  Product JSON
+    Generates some product data in a nice JSON format.
+
+  Parameters:
+    jsonProduct - Product to dump json for
+
+  Dependencies:
+    snippets/json.product.liquid
+
+  Version:
+    2.0.1 - 2021/10/09
+{%- endcomment -%}
+{
+  "id": {{- jsonProduct.id | json -}},
+  "available": {{- jsonProduct.available | json -}},
+  "handle": {{- jsonProduct.handle | json -}},
+  "title": {{- jsonProduct.title | json -}},
+  "type": {{- jsonProduct.type | json -}},
+  "price": {{ jsonProduct.price | json }},
+  "vendor": {{- jsonProduct.vendor | json -}},
+  "tags": {{- jsonProduct.tags | json -}},
+  "options": {{- jsonProduct.options | json -}},
+  "collections": {{- jsonProduct.collections | map: 'handle' | json -}},
+  "options_with_values": {
+    {%- for option in jsonProduct.options_with_values -%}
+      "option{{ option.position }}": {
+        "name": {{ option.name | json }},
+        "position": {{ option.position | json }},
+        "selected": {{ option.selected_value | json }},
+        "values": [
+          {%- for value in option.values -%}
+            {{ value | json }}
+            {%- unless forloop.last -%},{%- endunless -%}
+          {%- endfor -%}
+        ]
+      }{%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+  },
+  "image": {{- jsonProduct.featured_image | json -}},
+  "featured_image": {{- jsonProduct.featured_image | json -}},
+  "url": {{- jsonProduct.url | json -}},
+  "first_available_variant": {{- jsonProduct.first_available_variant | json -}},
+  "selected_or_first_available_variant": {{ jsonProduct.selected_or_first_available_variant | json }},
+  "published_at": "{{- jsonProduct.published_at -}}",
+  "variants": [
+    {%- for variant in jsonProduct.variants -%}
+      {%- render 'json.variant' with { variant: variant } -%}
+      {%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+  ]
+  {%- if dumpImages -%}
+    , "images": [
+      {%- for image in jsonProduct.images -%}
+        {
+          "id": {{ image.id | json }},
+          "src": {{ image.src | json }},
+          "alt": {{ image.alt | json }}
+        }
+        {%- unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ],
+     "media": [
+      {%- for media in jsonProduct.media -%}
+        {
+          "id": {{ media.id | json }},
+          "alt": {{ media.alt | json }},
+          "media_type":{{ media.media_type | json }},
+          "image_src": {{ media.src.preview_image.src | json }},
+          "video_src":{{ media.sources[1].url | json }}
+        }
+        {%- unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ]
+  {%- endif -%}
+}

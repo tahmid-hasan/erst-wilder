@@ -1,0 +1,348 @@
+{% liquid
+  assign videoUrlMp4_mob = 'ERSTWILDERXCAREBEARS-LAUNCH-LANDING-VIDEO-2-MOBILE.mp4' | file_url
+  if section.settings.video_mobile
+    assign videoUrlMp4_mob_source = section.settings.video_mobile.sources | where: 'mime_type', 'video/mp4' | first
+    assign videoUrlMp4_mob = videoUrlMp4_mob_source.url
+  endif
+
+  assign videoUrlMp4_desk = 'ABOUT_US_VIDEO_MP4.mp4' | file_url
+  if section.settings.video_desk
+    assign videoUrlMp4_desk_source = section.settings.video_desk.sources | where: 'mime_type', 'video/mp4' | first
+    assign videoUrlMp4_desk = videoUrlMp4_desk_source.url
+  endif
+
+  if section.settings.link_full_video
+    assign link_video = true
+  endif
+%}
+
+{% capture style_vars %}
+{% endcapture %}
+
+<section class="section-fv"
+  style="{{ style_vars }}">
+  {% if link_video %}<a href="{{ section.settings.cta_url }}">{% endif %}
+  <div class="video-wrap">
+    <div class="show-mobile">
+      {%- render 'object.html5-video' with {
+        videoUrlMp4: videoUrlMp4_mob,
+        class: '',
+        attributes: 'muted autoplay loop playsinline preload="metadata"'
+      } -%}  
+    </div>
+
+    <div class="show-desktop">
+      {%- render 'object.html5-video' with {
+        videoUrlMp4: videoUrlMp4_desk,
+        class: '',
+        attributes: 'muted autoplay loop playsinline preload="metadata"'
+      } -%}  
+    </div>
+
+    {% unless section.settings.link_full_video %}
+    <div class="video-overlay">
+      <div class="overlay-content content-{{ section.settings.overlay_position }}">
+        {{ section.settings.overlay_content }}
+
+        {% if section.settings.cta_label != blank %}
+          <a
+            href="{{- section.settings.cta_url -}}"
+            class="o-btn">
+            {{- section.settings.cta_label -}}
+          </a>
+          {% endif %}
+      </div>
+
+      {% if section.blocks.size > 0 %}
+      <div class="video-upsell-items">
+        {% for block in section.blocks %}
+          {% assign product = block.settings.product %}
+          <div class="upsell-item" {{ block.shopify_attributes }}>
+            <div class="upsell-content">
+              {% if product %}
+                <p>{{ block.settings.title | default: product.title }}</p>              
+              {% else %}
+                <p>{{ block.settings.title }}</p>
+              {% endif %}
+              <a class="o-btn" href="{{ product.url }}">Shop Now</a>
+            </div>
+            <div class="upsell-image">
+              {% if product %}
+                <img style="width: 48px" src="{{ product.featured_image | img_url: 'x300' }}" />
+              {% else %}
+                <img style="width: 48px" src="https://placehold.co/60" />
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    {% endunless %}
+  </div>
+  {% if link_video %}</a>{% endif %}
+</section>
+
+{% liquid 
+  assign bg_color_rgba = section.settings.overlay_bg_color | color_modify: 'alpha', 0.15
+  assign bg_color_rgba_product = section.settings.overlay_bg_color | color_modify: 'alpha', 0.25
+%}
+<style>
+  .section-fv .o-html5-video__video-container {
+    padding-bottom: 0;
+    line-height: 0;
+  }
+  .section-fv .o-html5-video__video,
+  .section-fv .video-wrap {
+    position: relative;
+  }
+  .section-fv .video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: {{ bg_color_rgba }};
+    color: {{ section.settings.overlay_text_color }};
+  }
+
+  .section-fv .overlay-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem;
+    max-width: 35%;
+  }
+  .section-fv .overlay-content p {
+    margin: 0;
+    line-height: 1.25;
+  }
+
+  .section-fv .content-top-left {
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .section-fv .content-top-center {
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .section-fv .content-top-right {
+    justify-content: flex-start;
+    align-items: flex-end;
+    text-align: right;
+    margin: 0 0 0 auto;
+  }
+
+  .section-fv .content-middle-left {
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .section-fv .content-middle-center {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .section-fv .content-middle-right {
+    justify-content: center;
+    align-items: flex-end;
+    text-align: right;
+    margin: 0 0 0 auto;
+  }
+
+  .section-fv .content-bottom-left {
+    justify-content: flex-end;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .section-fv .content-bottom-center {
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .section-fv .content-bottom-right {
+    justify-content: flex-end;
+    align-items: flex-end;
+    text-align: right;
+    margin: 0 0 0 auto;
+  }
+
+  {% liquid 
+    assign btn_colors = section.settings.btn_colors | split: ','
+  %}
+  .section-fv .overlay-content .o-btn {
+    width: fit-content;
+    min-width: fit-content;
+    background-color: {{ btn_colors[0] }};
+    color: {{ btn_colors[1] }};
+  }
+
+  .section-fv .video-upsell-items {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5px;
+  }
+  .section-fv .upsell-item {
+    max-width: 325px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    gap: 10px;
+    background: {{ bg_color_rgba_product }};
+  }
+  .section-fv .upsell-item p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.25;
+    margin-bottom: 0.25rem;        
+  }
+  .section-fv .upsell-item .o-btn {
+    padding: 5px 15px;
+    font-size: 0.85rem;
+    min-width: fit-content;    
+  }
+
+  @media screen and (max-width: 749px) {
+    .section-fv .overlay-content {
+      max-width: none;
+      justify-content: center !important;
+      align-items: center !important;
+      text-align: center !important;
+    }
+
+    .section-fv .video-overlay {
+      padding: 0 0 1rem;
+    }
+    .section-fv .video-upsell-items {
+      position: initial;
+      margin: 2rem 0 1rem;
+    }    
+
+    .section-fv .upsell-item {
+      margin: 0 auto;
+    }
+
+    .section-fv .overlay-content .o-btn {
+      font-size: 0.85rem;
+      padding: 0.45rem 1.25rem;
+    }
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Full Video Banner",
+    "presets": [
+      {
+        "name": "Full Video Banner"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "product",
+        "limit": 4,
+        "name": "Product",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "info": "Override Product title"
+          },
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Assign Product"
+          }
+        ]
+      }
+    ],
+    "settings": [
+      {
+        "type": "video",
+        "id": "video_desk",
+        "label": "Video Desktop"
+      },
+      {
+        "type": "video",
+        "id": "video_mobile",
+        "label": "Video Mobile"
+      },
+      {
+        "type": "header",
+        "content": "Overlay Content"
+      },
+      {
+        "type": "color",
+        "id": "overlay_bg_color",
+        "label": "Background Color",
+        "default": "#000000",
+        "info": "Used with an opacity of 0.15"
+      },
+      {
+        "type": "color",
+        "id": "overlay_text_color",
+        "label": "Text Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "text",
+        "id": "btn_colors",
+        "label": "Button Colors",
+        "default": "#000000, #ffffff",
+        "info": "Enter in format: #BG_COLOR, #TEXT_COLOR"
+      },
+      {
+        "type": "select",
+        "id": "overlay_position",
+        "label": "Content Position (Desktop)",
+        "info": "on mobile, content fixed to bottom center",
+        "options": [
+          {"value": "top-left", "label": "Top Left"},
+          {"value": "top-center", "label": "Top Center"},
+          {"value": "top-right", "label": "Top Right"},
+          {"value": "middle-left", "label": "Middle Left"},
+          {"value": "middle-center", "label": "Middle Center"},
+          {"value": "middle-right", "label": "Middle Right"},
+          {"value": "bottom-left", "label": "Bottom Left"},
+          {"value": "bottom-center", "label": "Bottom Center"},
+          {"value": "bottom-right", "label": "Bottom Right"}
+        ],
+        "default": "bottom-left"
+      },
+      {
+        "type": "richtext",
+        "id": "overlay_content",
+        "label": "Overlay Content",
+        "default": "<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta provident maiores nulla exercitationem dignissimos</p>"
+      },
+      {
+        "type": "text",
+        "id": "cta_label",
+        "label": "CTA Label",
+        "default": "Button"
+      },
+      {
+        "type": "url",
+        "id": "cta_url",
+        "label": "CTA URL"
+      },
+      {
+        "type": "checkbox",
+        "id": "link_full_video",
+        "label": "Link Full Video"
+      }
+    ]
+  }
+{% endschema %}

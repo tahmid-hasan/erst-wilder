@@ -1,0 +1,167 @@
+{%- comment -%}
+  Article Next
+
+  Version:
+    1.0.0 - 2021/09/09
+{%- endcomment -%}
+
+{{ 'sections.article-next.css' | asset_url | stylesheet_tag }}
+
+{%- liquid 
+  assign topWave = section.settings.top-wave
+  assign topColor1 = section.settings.top-color-1
+  assign topColor2 = section.settings.top-color-2
+  assign isFlippedTop = section.settings.flip-top-wave
+
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+-%}
+
+{%- comment -%}
+  Go to the next article, if there is no next article then instead we'll point
+  to the article at the start in order to reset
+{%- endcomment -%}
+
+{%- comment -%} Top Wave {%- endcomment -%}
+{%- if topWave != "0" -%}
+  {%- render 'object.wave' with {
+    waveNumber:topWave
+    color1: topColor1
+    color2: topColor2,
+    isFlipped: isFlippedTop
+  } -%}
+{%- endif -%}
+
+<section class="c-article-next">
+  <div class="c-article-next__inner">
+    {%- if blog.next_article != blank -%}
+      {%- assign superHeading = 'articles.article.next_article' | t | escape -%}
+      {%- render 'object.article-tile' with {
+        superHeading: superHeading,
+        articleObject: blog.next_article
+      -%}
+    {%- else -%}
+      {%- assign articlesLength = blog.articles.size | minus: 1 -%}
+      {%- assign superHeading = 'articles.article.previous_article' | t | escape -%}
+      {%- render 'object.article-tile' with {
+        superHeading: superHeading,
+        articleObject: blog.previous_article
+      -%}
+    {%- endif -%}
+
+    <div class="c-article-next__btn-container">
+      <a href="{{- blog.url -}}" class="c-article-next__btn o-btn">
+        {{ 'articles.article.back_to_blog_button' | t | escape }}
+      </a>
+    </div>
+  </div>
+</section>
+
+{%- comment -%} Bottom Wave {%- endcomment -%}
+{%- if bottomWave != "0" -%}
+  {%- render 'object.wave' with {
+    waveNumber:bottomWave
+    color1: bottomColor1
+    color2: bottomColor2,
+    isFlipped: isFlippedBottom
+  } -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Next Article",
+  "class": "c-section c-section__article-products-carousel",  
+  "settings": [
+    {
+      "type": "header",
+      "content": "Top Wave"
+    },
+    {
+      "type": "select",
+      "id": "top-wave",
+      "label": "Top Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "top-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "top-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-top-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,92 @@
+{
+  "sections": {
+    "list-collections": {
+      "type": "list-collections",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "16516276666c236341": {
+      "type": "featured--featured-collections",
+      "disabled": true,
+      "blocks": {
+        "f0cc95a9-84f7-4d7e-a21e-bfd8c046bc19": {
+          "type": "collection-block",
+          "settings": {
+            "featured-collection": "australiana",
+            "collection-name": "Australiana",
+            "image-2": "shopify:\/\/shop_images\/Screen_Shot_2022-05-04_at_11.30.46_am.png"
+          }
+        },
+        "c21f15d0-acb4-4cb2-a1d0-82a88006e035": {
+          "type": "collection-block",
+          "settings": {
+            "featured-collection": "birds",
+            "collection-name": "Birds",
+            "image-2": "shopify:\/\/shop_images\/Screen_Shot_2022-05-04_at_11.30.51_am.png"
+          }
+        },
+        "e72cfcf4-5bf2-430b-98e7-924123eb8f7b": {
+          "type": "collection-block",
+          "settings": {
+            "featured-collection": "christmas-1",
+            "collection-name": "",
+            "image-1": "shopify:\/\/shop_images\/Screen_Shot_2022-05-04_at_11.30.55_am.png",
+            "image-2": "shopify:\/\/shop_images\/Screen_Shot_2022-05-04_at_11.30.55_am_3100e610-cb4f-400c-b62b-3608f6b0bfa3.png"
+          }
+        },
+        "6bfbfd7c-43ac-42c6-abb8-26984252d28f": {
+          "type": "collection-block",
+          "settings": {
+            "featured-collection": "dogs-cats",
+            "collection-name": "Dogs & Cats",
+            "image-1": "shopify:\/\/shop_images\/Screen_Shot_2022-05-04_at_11.31.02_am.png"
+          }
+        }
+      },
+      "block_order": [
+        "f0cc95a9-84f7-4d7e-a21e-bfd8c046bc19",
+        "c21f15d0-acb4-4cb2-a1d0-82a88006e035",
+        "e72cfcf4-5bf2-430b-98e7-924123eb8f7b",
+        "6bfbfd7c-43ac-42c6-abb8-26984252d28f"
+      ],
+      "settings": {
+        "alt-background": false,
+        "cta-label": "View all",
+        "cta-url": "",
+        "top-wave": "0",
+        "top-color-1": "",
+        "top-color-2": "",
+        "flip-top-wave": false,
+        "bottom-wave": "0",
+        "bottom-color-1": "",
+        "bottom-color-2": "",
+        "flip-bottom-wave": false
+      }
+    },
+    "16516282161a389bba": {
+      "type": "media--logos",
+      "disabled": true,
+      "blocks": {
+        "ec2cb30c-33b7-4761-ba68-7313426f3426": {
+          "type": "logo-block",
+          "settings": {
+            "title": "Australiana",
+            "image": "shopify:\/\/shop_images\/Screen_Shot_2022-05-04_at_11.30.46_am_2890e2f1-6cde-489b-afd1-a98564df3776.png"
+          }
+        }
+      },
+      "block_order": [
+        "ec2cb30c-33b7-4761-ba68-7313426f3426"
+      ],
+      "settings": {
+        "title": ""
+      }
+    }
+  },
+  "order": [
+    "list-collections",
+    "16516276666c236341",
+    "16516282161a389bba"
+  ]
+}

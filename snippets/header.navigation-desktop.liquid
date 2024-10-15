@@ -1,0 +1,53 @@
+{%- comment -%}
+  Desktop Navigation
+    - Displays navigation that is used for desktop only
+
+  Params:
+    - menu: a linklist object to be used as the navigation menu
+    - class: a string to be used as an additional class
+
+  Version:
+    1.0.0 - 2021/08/22
+{%- endcomment -%}
+
+{%- if menu.links.size > 0 -%}
+  <nav class="c-navigation-desktop {{ class }}" data-navigation-desktop>
+    <div class="c-navigation-desktop__inner">
+      <div class="c-navigation-desktop__container">
+        {%- comment -%} Links {%- endcomment -%}
+        <ul class="c-navigation-desktop__links">
+          {%- for link in menu.links -%}
+            {%- comment -%} Is there a submenu? {%- endcomment -%}
+            {%- liquid
+              assign hasSubmenu = false
+              if link.links.size > 0
+                assign hasSubmenu = true
+              endif
+            -%}
+            <li
+              class="c-navigation-desktop__lvl1-item {% if hasSubmenu %}has-submenu{% endif %}"
+              {% if hasSubmenu %} data-lvl1-item {%- endif -%}
+            >
+              <a
+                href="{{- link.url -}}"
+                title="{{- link.title | escape -}}"
+                class="c-navigation-desktop__lvl1-link o-paragraph"
+              >
+                <span class="c-navigation-desktop__lvl1-link-text">
+                  {{- link.title | escape -}}
+                </span>
+              </a>
+
+              {%- comment -%} Submenu {%- endcomment -%}
+              {%- if hasSubmenu -%}
+                {%- render 'header.navigation-desktop--submenu-lvl2' with {
+                  parentLink: link
+                } -%}
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+  </nav>
+{%- endif -%}

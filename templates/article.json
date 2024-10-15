@@ -1,0 +1,51 @@
+{
+  "sections": {
+    "article-template-article-hero": {
+      "type": "article-template-article-hero",
+      "settings": {
+      }
+    },
+    "article-template-article-content": {
+      "type": "article-template-article-content",
+      "settings": {
+        "bottom-wave": "0",
+        "bottom-color-1": "",
+        "bottom-color-2": "",
+        "flip-bottom-wave": false
+      }
+    },
+    "carousels-article-products-carousel": {
+      "type": "carousels-article-products-carousel",
+      "settings": {
+        "title": "Featured Products",
+        "top-wave": "0",
+        "top-color-1": "#ffffff",
+        "top-color-2": "#f8f3ec",
+        "flip-top-wave": true,
+        "bottom-wave": "1",
+        "bottom-color-1": "#ffffff",
+        "bottom-color-2": "#f8f3ec",
+        "flip-bottom-wave": false
+      }
+    },
+    "article-template-article-next": {
+      "type": "article-template-article-next",
+      "settings": {
+        "top-wave": "0",
+        "top-color-1": "#f8f3ec",
+        "top-color-2": "",
+        "flip-top-wave": false,
+        "bottom-wave": "2",
+        "bottom-color-1": "#f8f3ec",
+        "bottom-color-2": "#f4e9d2",
+        "flip-bottom-wave": false
+      }
+    }
+  },
+  "order": [
+    "article-template-article-hero",
+    "article-template-article-content",
+    "carousels-article-products-carousel",
+    "article-template-article-next"
+  ]
+}

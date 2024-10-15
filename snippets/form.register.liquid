@@ -1,0 +1,237 @@
+{% comment %}
+  Register Form
+    Simple Register Form
+
+  Version:
+    1.0.0 - 2020/03/25
+{% endcomment %}
+
+
+<div class="c-register-form {{ class }}">
+
+  <h2>
+    <span class="p-customer__title c-register-form__title o-title o-heading__inner o-heading--3">
+      {{- 'customer.register.title' | t -}}
+    </span>
+  </h2>
+
+  {%- form 'create_customer'-%}
+
+    {%- comment -%} First Name {%- endcomment -%}
+    {%- assign input_name = 'first_name'-%}
+    <div class="o-form__input-group {% if form.errors contains input_name %}has-error{% endif %}">
+      <input
+        type="text"
+        placeholder="{{'customer.register.' | append: input_name | t}}"
+        name="customer[{{ input_name }}]"
+        class="
+          o-input
+          is-primary
+          o-form__text
+          c-login-register__input
+          c-register-form__input
+        "
+        value="{%if form[input_name]%}{{ form[input_name] }}{%endif%}"
+        required
+        spellcheck="false"
+      />
+    </div>
+
+    {%- comment -%} Last Name {%- endcomment -%}
+    {%-assign input_name = 'last_name'-%}
+    <div class="o-form__input-group">
+      <input
+        type="text"
+        placeholder="{{'customer.register.' | append: input_name | t}}"
+        name="customer[{{ input_name }}]"
+        class="
+          o-input
+          is-primary
+          o-form__text
+          c-login-register__input
+          c-register-form__input
+        "
+        value="{%if form[input_name]%}{{ form[input_name] }}{%endif%}"
+        required
+        spellcheck="false"
+      />
+    </div>
+
+    {%- comment -%} Email {%- endcomment -%}
+    {%- assign input_name = 'email' -%}
+    <div class="o-form__input-group">
+      <input
+        type="email"
+        placeholder="{{'customer.register.' | append: input_name | t}}"
+        name="customer[{{ input_name }}]"
+        class="
+          o-input
+          is-primary
+          o-form__text
+          c-login-register__input
+          c-register-form__input
+        "
+        value="{%if form[input_name]%}{{ form[input_name] }}{%endif%}"
+        required
+        spellcheck="false"
+        autocomplete="off"
+        autocapitalize="off"
+      />
+    </div>
+
+    {%- comment -%} Phone {%- endcomment -%}
+    {%- assign input_name = 'phone' -%}
+    <div class="o-form__input-group">
+      <input
+        type="text"
+        placeholder="{{'customer.register.' | append: input_name | t}}"
+        name="customer[{{ input_name }}]"
+        class="
+          o-input
+          is-primary
+          o-form__text
+          c-login-register__input
+          c-register-form__input
+        "
+        value="{%if form[input_name]%}{{ form[input_name] }}{%endif%}"
+        spellcheck="false"
+        autocomplete="off"
+        autocapitalize="off"
+      />
+    </div>
+
+     {%- comment -%} Country {%- endcomment -%}
+     {%- assign input_name = 'country' -%}
+     <div class="o-form__input-group">
+       <input
+         type="text"
+         placeholder="{{'customer.register.' | append: input_name | t}}"
+         name="customer[{{ input_name }}]"
+         class="
+           o-input
+           is-primary
+           o-form__text
+           c-login-register__input
+           c-register-form__input
+         "
+         value="{%if form[input_name]%}{{ form[input_name] }}{%endif%}"
+         spellcheck="false"
+         autocomplete="off"
+         autocapitalize="off"
+       />
+     </div>
+
+
+
+    {%- comment -%} Password {%- endcomment -%}
+
+    <p class="c-register-form__error o-form__errors" data-register-password-error>
+      {{- 'customer.register.password_mismatch' | t -}}
+    </p>
+
+    {%- assign input_name = 'password' -%}
+    <div class="o-form__input-group">
+      <input
+        data-password
+        type="password"
+        placeholder="{{'customer.register.' | append: input_name | t}}"
+        name="customer[{{ input_name }}]"
+        class="
+          o-input
+          is-primary
+          o-form__text
+          c-login-register__input
+          c-register-form__input
+        "
+        value="{%if form[input_name]%}{{ form[input_name] }}{%endif%}"
+        required
+        spellcheck="false"
+        autocomplete="off"
+        autocapitalize="off"
+      />
+    </div>
+
+    {%- comment -%} Confirm Password {%- endcomment -%}
+    {%- assign input_name = 'confirm-password' -%}
+    <div class="o-form__input-group">
+      <input
+        data-password-confirm
+        type="password"
+        placeholder="{{'customer.register.' | append: input_name | t}}"
+        name="customer[{{ input_name }}]"
+        class="
+          o-input
+          is-primary
+          o-form__text
+          c-login-register__input
+          c-register-form__input
+        "
+        value="{%if form[input_name]%}{{ form[input_name] }}{%endif%}"
+        required
+        spellcheck="false"
+        autocomplete="off"
+        autocapitalize="off"
+      />
+    </div>
+
+    {%- comment -%} Date of birth field {%- endcomment -%}
+    <div class="c-register-form__date-row">
+      <label class="c-register-form__birthday-label">{{ 'customer.register.birthday_label' | t }}
+        <span class="c-register-form__birthday-optional">{{- 'customer.register.optional' | t -}}</span>
+      </label>
+
+      <div class="c-register-form__date-container">
+        <div class="o-form__group day">
+          <select
+            class="o-input o-select c-register-form__select"
+            data-register-select-day
+          >
+            <option disabled selected>{{- 'customer.register.birth_day' | t -}}</option>
+            {%- for i in (1..31) -%}
+              <option>{{ i }}</option>
+            {%- endfor -%}
+          </select>
+        </div>
+
+        <div class="o-form__group month">
+          <select
+            class="o-input o-select c-register-form__select"
+            data-register-select-month
+          >
+            <option disabled selected>{{- 'customer.register.birth_month' | t -}}</option>
+            {%- for i in (1..12) -%}
+              <option>{{ i }}</option>
+            {%- endfor -%}
+          </select>
+        </div>
+
+        {% assign current_year = 'now' | date: "%Y" %}
+        <div class="o-form__group year">
+          <select
+            class="o-input o-select c-register-form__select"
+            data-register-select-year
+          >
+            <option disabled selected>{{- 'customer.register.birth_year' | t -}}</option>
+            {%- for i in (1903..current_year) reversed -%}
+              <option data-year-val="{{ forloop.index }}">{{ i }}</option>
+            {%- endfor -%}
+          </select>
+        </div>
+
+        {%- comment -%} Hidden field for the DOB Customer Note {%- endcomment -%}
+        <input type="hidden" name="customer[note]" value="" data-register-dob-note />
+
+        {%- comment -%} Hidden field for the DOB and Member Since Customer Tag {%- endcomment -%}
+        <input type="hidden" name="customer[tags]" value="MemberSince__{{ 'now' | date: '%d/%m/%Y' }}" data-register-dob-tag />
+      </div>
+    </div>
+
+    <div class="c-register-form__btn-container">
+      <button type="submit" class="o-btn c-register-form__btn" data-register-submit>
+        {{- 'customer.register.submit' | t -}}
+      </button>
+    </div>
+
+  {%-endform-%}
+</div>
+{%- assign form = nil-%}

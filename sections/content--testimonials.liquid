@@ -1,0 +1,284 @@
+{%- comment -%}
+  Testimonials
+    Section to display some testimonials
+
+  Version:
+    1.0.0 - 2021/10/21
+{%- endcomment -%}
+
+{{ 'sections.testimonials.css' | asset_url | stylesheet_tag }}
+{{ 'sections.testimonials.js' | asset_url | script_tag }}
+
+{%- comment -%} Assign variables {%- endcomment -%}
+{%- liquid
+  assign title = section.settings.title | escape
+  assign sectionCtaLabel = section.settings.cta-label | escape
+  assign sectionCtaUrl = section.settings.cta-url | escape
+  assign testimonialBlocks = section.blocks | where: 'type', 'testimonial-block'
+
+  assign topWave = section.settings.top-wave
+  assign topColor1 = section.settings.top-color-1
+  assign topColor2 = section.settings.top-color-2
+  assign isFlippedTop = section.settings.flip-top-wave
+
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+-%}
+
+{%- if testimonialBlocks.size > 0 -%}
+
+  {%- comment -%} Top Wave {%- endcomment -%}
+  {%- if topWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:topWave
+      color1: topColor1
+      color2: topColor2,
+      isFlipped: isFlippedTop
+    } -%}       
+  {%- endif -%}
+
+  <section class="c-testimonials">
+    <div class="c-testimonials__inner">
+      {%- comment -%} Header {%- endcomment -%}
+      <div class="c-testimonials__header">
+        {%- comment -%} Title {%- endcomment -%}
+        {%- if title != blank -%}
+          <h2 class="c-testimonials__title o-heading--1">
+            {{- title -}}
+          </h2>
+        {%- endif -%}
+
+        {%- comment -%} CTA {%- endcomment -%}
+        {%- if sectionCtaLabel != blank and sectionCtaUrl != blank -%}
+          <div class="c-testimonials__cta-container">
+            <a href="{{- sectionCtaUrl -}}" class="c-testimonials__cta o-link">
+              {{- sectionCtaLabel -}}
+            </a>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Testimonials {%- endcomment -%}
+      <div class="c-testimonials__testimonials" data-testimonials-scroller>
+        {%- for testimonialBlock in testimonialBlocks -%}
+          {%- liquid
+            assign content = testimonialBlock.settings.content | escape
+            assign author = testimonialBlock.settings.title | escape
+            assign ctaLabel = testimonialBlock.settings.cta-label | escape
+            assign ctaUrl = testimonialBlock.settings.cta-url | escape
+            assign flagImage = testimonialBlock.settings.image
+          -%}
+          {%- capture style_vars -%}
+            --o-item-width-desk: {{ testimonialBlock.settings.width_desk }}px;
+            --o-item-height-desk: {{ testimonialBlock.settings.height_desk }}px;
+            --o-item-width-mob: {{ testimonialBlock.settings.width_mob }}px;
+            --o-item-height-mob: {{ testimonialBlock.settings.height_mob }}px;
+          {%- endcapture -%}
+          {%- render 'object.testimonial-item' with {
+            class: 'c-testimonials__testimonial',
+            content: content,
+            author: author,
+            ctaLabel: ctaLabel,
+            ctaUrl: ctaUrl,
+            flagImage: flagImage,
+            style_vars: style_vars
+          } -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} Bottom Wave {%- endcomment -%}
+  {%- if bottomWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:bottomWave
+      color1: bottomColor1
+      color2: bottomColor2,
+      isFlipped: isFlippedBottom
+    } -%}
+  {%- endif -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "class": "c-section c-section__testimonials",
+  "presets": [
+    {
+      "category": "Content",
+      "name":"Testimonials"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "cta-label",
+      "label": "CTA Label"
+    },
+    {
+      "type": "url",
+      "id": "cta-url",
+      "label": "CTA Url"
+    },
+    {
+      "type": "header",
+      "content": "Top Wave"
+    },
+    {
+      "type": "select",
+      "id": "top-wave",
+      "label": "Top Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "top-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "top-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-top-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ],
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "testimonial-block",
+      "name": "Testimonial Block",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Content",
+          "info": "Keep to a small sentence (around 16 - 18 words). Too much content will break the design."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Author"
+        },
+        {
+          "type": "text",
+          "id": "cta-label",
+          "label": "CTA Label"
+        },
+        {
+          "type": "url",
+          "id": "cta-url",
+          "label": "CTA Url"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Flag Image",
+          "info": "Dimensions: 150px X 150px"
+        },
+        {
+          "type": "header",
+          "content": "Review Blob Size"
+        },
+        {
+          "type": "number",
+          "label": "Width in px (Desktop)",
+          "id": "width_desk",
+          "default": 400
+        },
+        {
+          "type": "number",
+          "label": "Height in px (Desktop)",
+          "id": "height_desk",
+          "default": 400
+        },
+        {
+          "type": "number",
+          "label": "Width in px (Mobile)",
+          "id": "width_mob",
+          "default": 325
+        },
+        {
+          "type": "number",
+          "label": "Height in px (Mobile)",
+          "id": "height_mob",
+          "default": 300
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

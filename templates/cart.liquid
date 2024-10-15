@@ -1,0 +1,13 @@
+{%- comment -%}
+  Cart Template
+
+  Version:
+    1.0.0 - 2021/09/15
+{%- endcomment -%}
+
+{{ 'sections.cart-drawer.css' | asset_url | stylesheet_tag }}
+{{ 'sections.cart-drawer.js' | asset_url | script_tag }}
+
+<div class="c-cart-template" data-cart-container data-cart-template>
+  {%- section 'cart-contents' -%}
+</div>

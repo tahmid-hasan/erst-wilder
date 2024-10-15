@@ -1,0 +1,234 @@
+{%- comment -%}
+  Designers carousel
+    Section with two tabs to show designers and collaborators carousel
+
+  Version:
+    1.0.0 - 2021/11/04
+{%- endcomment -%}
+
+
+{{ 'sections.designers-carousel.css' | asset_url | stylesheet_tag }}
+{{ 'sections.designers-carousel.js' | asset_url | script_tag }}
+
+{% liquid
+  assign desginerBlocks = section.blocks | where: 'type', 'designers'
+  assign collabBlocks = section.blocks | where: 'type', 'collabs'
+  assign designersLabel = 'meet-the-team.team.designers' | t | escape
+  assign collabsLabel = 'meet-the-team.team.collaborations' | t | escape
+
+  assign topWave = section.settings.top-wave
+  assign topColor1 = section.settings.top-color-1
+  assign topColor2 = section.settings.top-color-2
+  assign isFlippedTop = section.settings.flip-top-wave
+
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+%}
+
+{%- if desginerBlocks.size > 0 or collabBlocks.size > 0 -%}
+
+  {%- comment -%} Top Wave {%- endcomment -%}
+  {%- if topWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:topWave
+      color1: topColor1
+      color2: topColor2,
+      isFlipped: isFlippedTop
+    } -%}
+  {%- endif -%}  
+
+  <div class="c-designers-carousel" data-designers-carousel>
+    <div class="c-designers-carousel__inner">
+
+      {%- comment -%} Tabs {%- endcomment -%}
+        <div class="c-designers-carousel__tabs">
+
+          {%- if desginerBlocks.size > 0  -%}
+            <button class="c-designers-carousel__tab is-active" data-tab-designers>
+              {{- designersLabel -}}
+            </button>
+          {%- endif -%}
+
+          {%- if collabBlocks.size > 0  -%}
+            <button class="c-designers-carousel__tab  {% if desginerBlocks.size == 0 %} is-active{% endif %}" data-tab-collabs>
+              {{- collabsLabel -}}
+            </button>
+          {%- endif -%}
+
+          {%- comment -%} Active Tab Blob {%- endcomment -%}
+          {%- render 'svg.active-tab-blob' with {
+            class:'c-designers-carousel__tab-blob is-first-active'
+          } -%}
+
+        </div>
+
+        {%- comment -%} Sliders {%- endcomment -%}
+        <div class="c-designers-carousel__sliders">
+
+          {%- comment -%} Designers Slider {%- endcomment -%}
+          {%- if desginerBlocks.size > 0 -%}
+            <div class="c-designers-carousel__slider is-visible" data-slider-designers>
+              {% for designer in desginerBlocks %}
+                <p class="c-designers-carousel__slide o-heading--3">
+                  {{ designer.settings.title | escape }}
+                </p>
+              {% endfor %}
+            </div>
+          {%- endif -%}
+
+          {%- comment -%} Collaborations Slider {%- endcomment -%}
+          {%- if collabBlocks.size > 0  -%}
+            <div class="c-designers-carousel__slider{% if desginerBlocks.size == 0 %} is-visible{% endif %}" data-slider-collabs>
+              {% for collab in collabBlocks %}
+                <p class="c-designers-carousel__slide o-heading--3">
+                  {{ collab.settings.title | escape }}
+                </p>
+              {% endfor %}
+            </div>
+          {%- endif -%}
+
+        </div>
+
+    </div>
+  </div>
+
+  {%- comment -%} Bottom Wave {%- endcomment -%}
+  {%- if bottomWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:bottomWave
+      color1: bottomColor1
+      color2: bottomColor2,
+      isFlipped: isFlippedBottom
+    } -%}
+  {%- endif -%}  
+
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Designers and Collabs",
+  "class": "c-section c-section__designers-carousel",
+  "presets": [
+    {
+      "category": "Carousel",
+      "name":"Designers & Collaborations Carousel"
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Top Wave"
+    },
+    {
+      "type": "select",
+      "id": "top-wave",
+      "label": "Top Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "top-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "top-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-top-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "designers",
+      "name": "Designers",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Name"
+        }
+      ]
+    },
+    {
+      "type": "collabs",
+      "name": "Collaborations",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Name"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,55 @@
+{%- comment -%}
+  Pagination
+    - Displays the pagination for the collection section
+
+  Params:
+    - class: a string to be used as an additional class
+    - paginate: the Shopify pageinate object
+
+  Version:
+    1.0.0 - 2021/11/15
+{%- endcomment -%}
+
+{%- liquid
+  capture perPage
+    render 'tool.collection-per-page'
+  endcapture
+
+  assign productsTotal = collection.products.size
+-%}
+
+{%- comment -%} No js pagination (fallback) {%- endcomment -%}
+<div class="c-collection-pagination no-js">
+  {%- render 'object.pagination' with {
+    paginate: paginate
+  } -%}
+</div>
+
+{%- comment -%} JS pagination {%- endcomment -%}
+<div class="c-collection-pagination has-js {{ class }}" data-collection-template-pagination>
+  <p class="c-collection-pagination__count" data-collection-count-selector></p>
+
+  <button
+    type="button"
+    class="c-collection-pagination__btn"
+    data-collection-template-load-more
+  >
+    <span class="c-collection-pagination__btn-label o-heading--6">
+      {{- 'collections.collection.load_more_btn' | t -}}
+    </span>
+
+    {%- comment -%} Image {%- endcomment -%}
+    <div class="c-collection-pagination__illustration-wrapper">
+      <div class="c-collection-pagination__illustration-container o-responsive-image-container">
+        <img
+          src="{{ 'svg.shape-16.svg' | asset_url }}"
+          alt=""
+          width="215"
+          height="139"
+          lazy="true"
+          class="c-collection-pagination__illustration o-responsive-image"
+        >
+      </div>
+    </div>
+  </button>
+</div>

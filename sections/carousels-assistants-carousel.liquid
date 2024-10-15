@@ -1,0 +1,277 @@
+{%- comment -%}
+  Assistant team members  Carousel
+  - Carousel of Asssitant Team Members
+
+  Version:
+    1.0.0 - 2021/11/18
+{%- endcomment -%}
+
+{{ 'sections.assistants-carousel.css' | asset_url | stylesheet_tag }}
+{{ 'sections.assistants-carousel.js' | asset_url | script_tag }}
+
+{%- liquid 
+  assign assistantBlocks = section.blocks | where: 'type', 'assistant'
+  assign title = section.settings.title | escape
+  assign subtitle = section.settings.subtitle | escape
+
+  assign topWave = section.settings.top-wave
+  assign topColor1 = section.settings.top-color-1
+  assign topColor2 = section.settings.top-color-2
+  assign isFlippedTop = section.settings.flip-top-wave
+
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+-%}
+
+{%- if assistantBlocks.size > 0 -%}
+  {%- comment -%} Top Wave {%- endcomment -%}
+  {%- if topWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:topWave
+      color1: topColor1
+      color2: topColor2,
+      isFlipped: isFlippedTop
+    } -%}
+  {%- endif -%}  
+
+  <div class="c-assistants-carousel" data-assistants-carousel-container>
+    <div class="c-assistants-carousel__inner">
+      
+      {%- comment -%} Title {%- endcomment -%}
+      {%- if title != blank -%}
+        <h2 class="c-assistants-carousel__title">
+          {{- title -}}
+        </h2>
+      {%- endif -%}
+      
+      {%- comment -%} Subtitle {%- endcomment -%}
+      {%- if subtitle != blank -%}
+        <p class="c-assistants-carousel__subheading o-heading--6">
+          {{- subtitle -}}
+        </p>
+      {%- endif -%}
+
+      {%- comment -%} Slider/Nav Container {%- endcomment -%}
+      <div class="c-assistants-carousel__slider-container">
+
+       {%- comment -%} Slider {%- endcomment -%}
+        <div class="c-assistants-carousel__slider" data-assistants-carousel>
+          {%- for assistant in assistantBlocks -%}
+            
+            {%- liquid 
+              assign image = assistant.settings.image
+              assign name = assistant.settings.title | escape
+              assign bio = assistant.settings.bio | escape | newline_to_br
+            -%}
+
+            {%- if image != blank and name != blank  -%}
+
+              {%- comment -%} Slide {%- endcomment -%}
+              <div class="c-assistants-carousel__slide" data-carousel-thumbnail>
+
+                <div class="c-assistants-carousel__slide-inner">
+
+                  {%- comment -%} Image {%- endcomment -%}
+                  <div class="c-assistants-carousel__image-wrapper">
+                    <div class="c-assistants-carousel__image-container o-responsive-image-container">
+                      {%- render 'tool.picture' with {
+                        image: image,
+                        class:'c-assistants-carousel__image o-responsive-image',
+                        width: 260,
+                        imageSizes: '156,228',
+                        sizes: '375,550',
+                        lazy: true
+                      } -%}
+                    </div>
+                  </div>
+
+                  {%- comment -%} Slide Content{%- endcomment -%}
+                  <div class="c-assistants-carousel__slide-content">
+                  
+                    {%- comment -%} Name {%- endcomment -%}
+                    <p class="c-assistants-carousel__name o-heading--4">
+                      {{- name -}}
+                    </p>
+
+                    {%- comment -%} Bio {%- endcomment -%}
+                    {%- if bio != blank -%}
+                      <p class="c-assistants-carousel__bio">
+                        {{- bio -}}
+                      </p>
+                    {%- endif -%}
+
+                  </div>
+
+                </div>  
+              </div>
+
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        {%- comment -%} Navigation {%- endcomment -%}
+        <div class="c-assistants-carousel__nav" data-assistants-carousel-nav>
+          <span class="c-assistants-carousel__nav-arrow" data-carousel-previous>
+            {%- render 'object.icon' with {
+              icon:'chevron-left-orange'
+            } -%}
+          </span>
+          <span class="c-assistants-carousel__nav-arrow" data-carousel-next>
+            {%- render 'object.icon' with {
+              icon:'chevron-right-orange'
+            } -%}
+          </span>        
+        </div>
+        
+      </div>  
+    </div>
+  </div>
+  
+  {%- comment -%} Bottom Wave {%- endcomment -%}
+  {%- if bottomWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:bottomWave
+      color1: bottomColor1
+      color2: bottomColor2,
+      isFlipped: isFlippedBottom
+    } -%}
+  {%- endif -%}
+
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Assistants Carousel",
+  "class": "c-section c-section__assistant-carousel",
+  "presets": [
+    {
+      "category": "Carousel",
+      "name":"Assistants Carousel"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default":"The Workshop Assistants"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default":"Your pick & pack Erstwilder elves."
+    },
+    {
+      "type": "select",
+      "id": "top-wave",
+      "label": "Top Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "top-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "top-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-top-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "assistant",
+      "name": "Assistant",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Team Member Photo",
+          "info":"Dimensions: 520px X 544px"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Name"
+        },
+        {
+          "type": "textarea",
+          "id": "bio",
+          "label": "Bio"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,36 @@
+{%- liquid   
+
+  assign mfo = page.metafields.online-stockists
+  assign onlineCountryNames = mfo.country | uniq
+
+  assign onlineCountries = mfo.country
+  assign onlineAddresses = mfo.description
+-%}
+
+{%- for countryName in onlineCountryNames -%}
+
+  {%- assign innerCounter = 0 -%}
+  {%- assign countryHandle = countryName | handleize -%}
+
+  <div 
+    class="c-stockists__country-wrapper {% if forloop.first %}is-visible{% endif %}" 
+    data-stockists-online-country-wrapper 
+    data-online-country-handle={{countryHandle}}
+  >
+    <div class="c-stockists__country-wrapper-inner">
+      {%- for country in onlineCountries -%}
+
+        {%- if country == countryName -%}
+
+          <div class="c-stockists__store-info">
+            {{- onlineAddresses[innerCounter] -}}
+          </div>
+
+        {%- endif -%}
+
+        {%- assign innerCounter = innerCounter | plus: 1 -%}
+      {%- endfor -%}
+    </div>
+  </div>
+
+{%- endfor -%}

@@ -1,0 +1,167 @@
+{%- comment -%}
+    Article Template
+
+      Version:
+        1.0.0 - 2021/09/08
+{%- endcomment -%}
+
+{{ 'sections.article-content.css' | asset_url | stylesheet_tag }}
+{{ 'sections.article-content.js' | asset_url | script_tag }}
+
+{%- comment -%} Assign Variables {%- endcomment -%}
+{%- liquid
+  assign image1of2 = article.metafields.double_image_block.image_1
+  assign image2of2 = article.metafields.double_image_block.image_2
+  assign posterImage = article.metafields.article_video.video_poster[0]
+  assign videoWebm = article.metafields.article_video.video_webm[0]
+  assign videoMp4 = article.metafields.article_video.video_mp4[0]
+
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+-%}
+
+{%- if article.content != blank -%}
+  <section class="c-article-content">
+    {%- comment -%} Quote {%- endcomment -%}
+    {%- if article.excerpt != blank -%}
+      <p class="c-article-content__excerpt o-heading--3">
+        {{- article.excerpt -}}
+      </p>
+    {%- endif -%}
+
+    {%- comment -%} Setting image block for article content {%- endcomment -%}
+    {%- if image1of2 != blank or image2of2 != blank -%}
+      {%- assign defaultImage1 = image1of2 | default: image2of2 -%}
+      {%- capture imageBlock -%}
+        <div class="c-article-content__image-block">
+          <div class="c-article-content__image-container o-responsive-image-container is-left">
+            {%- render 'tool.picture' with {
+              class: 'c-article-content__image o-responsive-image',
+              image: defaultImage1,
+              width: 450,
+              sizes: '375,500,750',
+              imageSizes: '160,320,450'
+            } -%}
+          </div>
+
+          {%- if image1of2 != blank and image2of2 != blank -%}
+            <div class="c-article-content__image-container o-responsive-image-container is-right">
+              {%- render 'tool.picture' with {
+                class: 'c-article-content__image o-responsive-image'
+                image: image2of2,
+                width: 450,
+                sizes: '375,500,750',
+                imageSizes: '160,320,450'
+              } -%}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endcapture -%}
+    {%- else -%}
+      {%- assign imageBlock = "" -%}
+    {%- endif -%}
+
+    {%- comment -%} Content {%- endcomment -%}
+    <div class="c-article-content__content">
+      {{- article.content
+        | replace: '<p>%imageBlock%</p>', imageBlock
+        | replace: '<p><span>%imageBlock%</span></p>', imageBlock
+        | replace: '%imageBlock%', imageBlock
+      -}}
+    </div>
+
+    {%- comment -%}
+      Show video if we have a video url, otherwise show a static image instead
+    {%- endcomment -%}
+    {%- if posterImage != blank -%}
+      <div class="c-article-content__media-wrapper">
+        {%- if videoWebm != blank or videoMp4 != blank -%}
+          {%- render 'object.featured-video' with {
+            poster: posterImage.src,
+            videoMp4: videoMp4.src,
+            videoWebm: videoWebm.src,
+            class: 'c-article-content__media',
+            attributes: 'playsinline preload="none"'
+          } -%}
+        {%- else -%}
+          <div class="c-article-content__media-container o-responsive-image-container">
+            {%- render 'tool.picture' with {
+              image: posterImage,
+              width: 1240,
+              imageSizes: '336,510,710,900',
+              sizes: '375,550,750,1100',
+              class:'o-responsive-image'
+              lazy: true
+            } -%}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </section>
+
+  {%- comment -%} Bottom Wave {%- endcomment -%}
+  {%- if bottomWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:bottomWave
+      color1: bottomColor1
+      color2: bottomColor2,
+      isFlipped: isFlippedBottom
+    } -%}
+  {%- endif -%}  
+{%- endif -%}
+
+
+{% schema %}
+{
+  "name": "Article Content",
+  "class": "c-section c-section__article-content",  
+  "settings": [   
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

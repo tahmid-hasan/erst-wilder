@@ -1,0 +1,49 @@
+{%- comment -%}
+  Variant Selector
+    Variant Selector used for products
+
+  Parameters:
+    printJson - If true the JSON for the product will also be attached
+    selectorProduct - Product to generate for
+    selectorVariant - Current selected variant, or blank
+    class - Class of the variant selector
+
+  Version:
+    2.0.1 - 2021/10/09
+{%- endcomment -%}
+
+{%- liquid
+  if selectorVariant == blank
+    assign selectorVariant = selectorProduct.selected_or_first_available_variant
+  endif
+
+  if printJson
+    capture productJson
+      render 'json.product' with { jsonProduct: selectorProduct }
+    endcapture
+  endif
+-%}
+
+{%- capture attrCommon -%}
+  data-variant-selector
+  name="id" class="{{ class }}"
+  {% if printJson %}data-product="{{ productJson | escape }}"{% endif %}
+{%- endcapture -%}
+{%- assign selectorProductVariants = selectorProduct.variants -%}
+{%- if product.url contains 'gift-card' -%}
+  {%- assign selectorProductVariants = selectorProduct.variants | sort: 'price' -%}
+{%- endif -%}
+
+{%- if selectorProduct.has_only_default_variant or selectorProduct.variants.size <= 1 -%}
+  <input type="hidden" value="{{ selectorVariant.id }}" {{ attrCommon }} />
+{%- else -%}
+  <div class="{{class}}-wrapper">
+    <select name="id" class="{{ class }}" {{ attrCommon }}>
+      {%- for v in selectorProductVariants -%}
+        <option {% if v.id == selectorVariant.id %}selected{% endif %} value="{{ v.id }}">
+          {{- v.title | escape -}}
+        </option>
+      {%- endfor -%}
+    </select>
+  </div>
+{%- endif -%}

@@ -1,0 +1,43 @@
+{%- comment -%}
+  Icon Blocks
+  - A snippet to render the layout/styling for icon blocks
+
+  Parameters:
+    iconBlocks - blocks containing an svg code, title, and a second line
+
+  Version:
+    1.0.0 - 2021/10/15
+{%- endcomment -%}
+<div class="o-icon-blocks">
+  {%- for iconBlock in iconBlocks -%}
+
+    {%- liquid
+      assign iconSVG = iconBlock.settings.svg-code | replace: '<svg', '<svg class="o-icon-blocks__icon" '
+      assign iconTitle = iconBlock.settings.title | escape
+      assign iconLine2 = iconBlock.settings.line-2 | escape
+    -%}
+
+    {%- unless iconSVG != blank or iconTitle != blank -%}
+      {%- continue -%}
+    {%- endunless -%}
+
+    {%- comment -%} Icon Block {%- endcomment -%}
+    <div class="o-icon-blocks__block">
+      <div class="o-icon-blocks__icon-container">
+        {{- iconSVG -}}
+      </div>
+
+      <div class="o-icon-blocks__content">
+        <p class="o-icon-blocks__line-1">
+          {{- iconTitle -}}
+        </p>
+
+        {%- if iconLine2 != blank -%}
+        <p class="o-icon-blocks__line-2 o-paragraph--2">
+          {{- iconLine2 -}}
+        </p>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endfor -%}
+</div>

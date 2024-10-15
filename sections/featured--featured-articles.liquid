@@ -1,0 +1,202 @@
+{%- comment -%}
+  Featured articles
+    Section to display featured articles and link to the relevant blog
+
+  Version:
+    1.0.0 - 2021/10/22
+{%- endcomment -%}
+
+{{ 'sections.featured-articles.css' | asset_url | stylesheet_tag }}
+{{ 'sections.featured-articles.js' | asset_url | script_tag }}
+
+{%- comment -%} Assign variables {%- endcomment -%}
+{%- liquid
+  assign title = section.settings.title | escape
+  assign featuredArticles = blogs[section.settings.featured-blog.handle].articles
+  assign ctaLabel = section.settings.cta-label | escape
+  assign ctaUrl = section.settings.featured-blog.url
+
+  assign topWave = section.settings.top-wave
+  assign topColor1 = section.settings.top-color-1
+  assign topColor2 = section.settings.top-color-2
+  assign isFlippedTop = section.settings.flip-top-wave
+
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+-%}
+
+{%- if featuredArticles.size > 0 -%}
+
+  {%- comment -%} Top Wave {%- endcomment -%}
+  {%- if topWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:topWave
+      color1: topColor1
+      color2: topColor2,
+      isFlipped: isFlippedTop
+    } -%}
+  {%- endif -%}
+
+  <section class="c-featured-articles">
+    <div class="c-featured-articles__inner">
+      {%- comment -%} Title {%- endcomment -%}
+      {%- if title != blank -%}
+        <h2 class="c-featured-articles__title o-heading--1">
+          {{- title -}}
+        </h2>
+      {%- endif -%}
+
+      {%- comment -%} Articles {%- endcomment -%}
+      <div class="c-featured-articles__articles" data-articles-scroller>
+        {%- for featuredArticle in featuredArticles limit: 3 -%}
+
+          {%- render 'object.article-thumbnail' with {
+            thumbnailArticle: featuredArticle,
+            class: 'c-featured-articles__article'
+          } -%}
+        {%- endfor -%}
+      </div>
+
+      {%- comment -%} CTA {%- endcomment -%}
+      {%- if ctaLabel != blank and ctaUrl != blank -%}
+        <div class="c-featured-articles__cta-container">
+          <a href="{{- ctaUrl -}}" class="c-featured-articles__cta o-btn">
+            {{- ctaLabel -}}
+          </a>
+        </div>
+      {%- endif -%}
+    </div>
+  </section>
+
+  {%- comment -%} Bottom Wave {%- endcomment -%}
+  {%- if bottomWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:bottomWave
+      color1: bottomColor1
+      color2: bottomColor2,
+      isFlipped: isFlippedBottom
+    } -%}
+  {%- endif -%} 
+
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Featured Articles",
+  "class": "c-section c-section__featured-articles",
+  "presets": [
+    {
+      "category": "Featured",
+      "name":"Featured Articles"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "blog",
+      "id": "featured-blog",
+      "label": "Featured Blog",
+      "info": "Select the blog to pull the 3 most recent articles from."
+    },
+    {
+      "type": "text",
+      "id": "cta-label",
+      "label": "CTA Label"
+    },
+    {
+      "type": "header",
+      "content": "Top Wave"
+    },
+    {
+      "type": "select",
+      "id": "top-wave",
+      "label": "Top Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "top-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "top-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-top-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

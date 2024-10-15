@@ -1,0 +1,158 @@
+{{ 'sections.donations-hero.css' | asset_url | stylesheet_tag }}
+{{ 'sections.donations-hero.js' | asset_url | script_tag }}
+
+{%- liquid
+  assign total = section.settings.total  | escape
+  assign title = section.settings.title  | escape
+  assign text = section.settings.text | newline_to_br
+  assign totalLabel = section.settings.total-label | escape
+  assign bottomWave = section.settings.bottom-wave
+  assign color1 = section.settings.color-1
+  assign color2 = section.settings.color-2
+  assign isFlipped = section.settings.flip-bottom-wave
+
+-%}
+
+{%- if total != blank and title != blank -%}
+  <section class="c-donations-hero" data-donations-hero-section>
+
+    <div class="c-donations-hero__outer">
+      <div class="c-donations-hero__inner">
+
+        {%- comment -%} Content {%- endcomment -%}
+        <div class="c-donations-hero__content">
+
+          {%- comment -%} Title {%- endcomment -%}
+          <h2 class="c-donations-hero__title o-heading--2">
+            {{ title }}
+          </h2>
+
+          {%- comment -%} Text {%- endcomment -%}
+          {%- if text != blank -%}
+            <p class="c-donations-hero__text">{{ text }}</p>
+          {%- endif -%}
+
+        </div>
+
+        <div class="c-donations-hero__graphic-container">
+
+          {%- comment -%} Background Blob {%- endcomment -%}
+          {%- render 'svg.bird-blob'-%}
+
+          <div class="c-donations-hero__total-wrapper">
+
+            {%- comment -%} Heading {%- endcomment -%}
+            {%- if totalLabel != blank -%}
+              <p class="c-donations-hero__heading">
+                {{- totalLabel | escape -}}
+              </p>
+            {%- endif -%}
+
+            {%- comment -%} Total {%- endcomment -%}
+            <h2
+              class="c-dontations-hero__total o-heading--1"
+              data-donations-hero-total
+            >
+              {{- total -}}
+            </h2>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  {%- comment -%} Bottom Wave {%- endcomment -%}
+  {%- if bottomWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:bottomWave
+      color1: color1
+      color2: color2,
+      isFlipped: isFlipped
+    } -%}
+  {%- endif -%}
+
+{%- endif -%}
+
+
+{% schema %}
+{
+  "name": "Hero",
+  "class": "c-section c-section__donations-hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Paragraph"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Total Heading",
+      "default": "Total donated"
+    },
+    {
+      "type": "text",
+      "id": "total-label",
+      "label": "Total Label",
+      "default": "Total donated"
+    },
+    {
+      "type": "text",
+      "id": "total",
+      "label": "Total Amount Donated",
+      "default": "$134,555"
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "color-1",
+      "label": "Bottom Wave Color 1"
+    },
+    {
+      "type": "color",
+      "id": "color-2",
+      "label": "Bottom Wave Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

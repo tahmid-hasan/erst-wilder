@@ -1,0 +1,32 @@
+{{ 'sections.product-details-gift.css' | asset_url | stylesheet_tag }}
+
+{%- if product.description != blank -%}
+  <div class="c-product-details-gift" data-product-details>
+    <div class="c-product-details-gift__outer">
+      
+      <div class="c-product-details-gift__inner">
+    
+        {%- comment -%} Product Description {%- endcomment -%}
+        <div class="c-product-details-gift__description o-paragraph">
+          {{- product.description -}}
+        </div>      
+                
+      </div>  
+    </div>
+
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Product Details",
+  "class": "c-section c-section__product-details-gift",
+  "settings": [],
+  "presets": [
+    {
+      "category": "Content",
+      "name":"Product Gift Card Details"
+    }
+  ]
+}
+{% endschema %}

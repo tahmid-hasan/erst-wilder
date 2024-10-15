@@ -1,0 +1,96 @@
+{
+  "sections": {
+    "page-template-page": {
+      "type": "page-template-page",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "1651812041ae46f44f": {
+      "type": "content-faq-accordions",
+      "blocks": {
+        "5d5ee1f7-623f-4636-8e51-2da87d0cb25a": {
+          "type": "faq",
+          "settings": {
+            "title": "Resin Accessories",
+            "answer": "Please be aware that resin is akin to ceramic and glass and therefore may be damaged if dropped or knocked. Keep your Erstwilder companion neatly tucked away in this box when not being worn, avoid contact with perfumes, lotions, water, and excessive sunlight and you’ll have a trusted friend for years to come.\n\nPlease note that for any design with etched linework, particularly on mirror resins, and especially where lines curve, may have a slightly jagged or uneven appearance. This feature is due to the nature of the materials and an expected part of the process of production. Also note, mirrored acrylic cannot be polished or tumbled during the production process so it will not feature the smooth edge that you would expect on other resin pieces."
+          }
+        },
+        "50064cdb-64d8-408c-b475-b675f8b05fe3": {
+          "type": "faq",
+          "settings": {
+            "title": "Enamel Accessories",
+            "answer": "When cleaning or polishing hard enamel pins, use a microfiber cloth and non-abrasive polishing cream. Remove the rubber clutch before you begin but careful handling the exposed pin. Begin with a small area to ensure the polishing cream isn’t too harsh on the pin. Proceed from there but do be gentle and treat them with care to avoid damage. To prevent fading over time and maintain durability of your enamel pin, avoid excessive exposure to light and heat. Enamel pins are also best stored with their rubber clutches on and spaced from one another to prevent scratching."
+          }
+        },
+        "23a048bf-d590-4e2f-8e27-81d04bbc6f7f": {
+          "type": "faq",
+          "settings": {
+            "title": "Mirror Compacts",
+            "answer": "Please be aware that resin is akin to ceramic and glass and therefore may be damaged if dropped or knocked. Keep your Erstwilder companion neatly tucked away in its box when not being worn, avoid contact with perfumes, lotions, water and excessive sunlight and you'll have a trusted friend for years to come. \n\nGently wipe glass mirror clean with a soft polishing cloth. Do not get wet or apply any cleaning chemicals."
+          }
+        },
+        "48a0e893-1af2-4d6f-a303-0dbf8e34ad7a": {
+          "type": "faq",
+          "settings": {
+            "title": "Heirloom Crystal Series",
+            "answer": "To remove any surface grime, gently wipe with a microfibre cloth, gold polishing cloth, or any other cloth which is soft and clean. Avoid the use of any harsh chemicals or liquids to clean. When not in use, store the piece in its leatherette case to prevent scratching and denting. Unless gently cleaning, avoid wiping or touching the crystals, particularly those with a shimmer effect, to ensure they maintain their lustre and multi-colour appearance over time. Keep stored in a dry place."
+          }
+        },
+        "c975e9f9-d911-4fc2-b74e-b3338145f307": {
+          "type": "faq",
+          "settings": {
+            "title": "Heirloom Pomander Series",
+            "answer": "To remove any surface grime, gently wipe with a microfibre cloth, gold polishing cloth, or any other cloth which is soft and clean. Avoid the use of any harsh chemicals or liquids to clean. When not in use, store the piece in its leatherette case to prevent scratching and denting. Do not store the design with the perfume disc inside. Discs should be removed for storage. Keep stored in a dry place."
+          }
+        },
+        "ee2c1746-931d-4066-9b58-74b032b17e4c": {
+          "type": "faq",
+          "settings": {
+            "title": "Scarves",
+            "answer": "Cold hand wash \nDo not iron  \nDo not bleach  \nDo not spin dry \nDo not tumble dry \nDo not dry clean  \nLine dry in shade"
+          }
+        },
+        "efa1a126-f02c-43f3-b22b-fa263de22fb4": {
+          "type": "faq",
+          "settings": {
+            "title": "Bags",
+            "answer": "Wipe clean only. Keep away from perfumes, chemicals, and oils, as exposure to these may result in damage. For bags supplied with a dust bag, store you bag inside this or otherwise away from other items to prevent rubbing."
+          }
+        },
+        "7013b40e-4601-48b9-9a16-dd4fb782b9f4": {
+          "type": "faq",
+          "settings": {
+            "title": "Berets",
+            "answer": "How to keep your beret looking its best:\n\nGently run a lint roller over your beret to remove any dust and lint. No roller on hand?\n\nYou can also use the sticky side of sticky tape to remove dust and lint from your beret.\n\nSpot clean the beret body using a soft bristled toothbrush, cold water and a mild detergent or appropriate wool wash.\n\nDo not saturate beret\nDo not wet trims.\n\nTo dry, gently press between two towels to draw out the water – do not wring.\n\nPlace your beret on a fresh towel to dry thoroughly in its natural shape.\n\nFor best results, store your cleaned beret flat and in its hat box."
+          }
+        }
+      },
+      "block_order": [
+        "5d5ee1f7-623f-4636-8e51-2da87d0cb25a",
+        "50064cdb-64d8-408c-b475-b675f8b05fe3",
+        "23a048bf-d590-4e2f-8e27-81d04bbc6f7f",
+        "48a0e893-1af2-4d6f-a303-0dbf8e34ad7a",
+        "c975e9f9-d911-4fc2-b74e-b3338145f307",
+        "ee2c1746-931d-4066-9b58-74b032b17e4c",
+        "efa1a126-f02c-43f3-b22b-fa263de22fb4",
+        "7013b40e-4601-48b9-9a16-dd4fb782b9f4"
+      ],
+      "settings": {
+        "title": "Care Instructions",
+        "top-wave": "0",
+        "top-color-1": "",
+        "top-color-2": "",
+        "flip-top-wave": false,
+        "bottom-wave": "0",
+        "bottom-color-1": "",
+        "bottom-color-2": "",
+        "flip-bottom-wave": false
+      }
+    }
+  },
+  "order": [
+    "page-template-page",
+    "1651812041ae46f44f"
+  ]
+}

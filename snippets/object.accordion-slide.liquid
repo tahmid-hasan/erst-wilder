@@ -1,0 +1,35 @@
+{%- comment -%}
+  Accordion Slide
+    - Generates an accordion slide
+
+  Params:
+    - class: a string to be used as an additional class
+    - open: boolean, should this slide start off open?
+    - label: String used as accordion slide heading
+    - content: String for accordion content (can be richtext)
+    - iconColor: String for icon color
+
+  Version:
+    1.0.0 - 2021/11/01
+{%- endcomment -%}
+
+<details class="o-accordion {{class | escape}}" data-accordion-slide {% if open == true %} open{% endif %}>
+  <summary class="o-accordion__heading o-heading--6" data-accordion-title>
+    <span class="o-accordion__label">{{- label | escape -}}</span>
+    {%- comment -%} Body End Tags {%- endcomment -%}
+    
+    {%- render 'svg.plus' with { 
+      class: 'o-accordion__plus' 
+      color:iconColor
+    } -%}
+    {%- render 'svg.minus' with { 
+      class: 'o-accordion__minus' 
+      color:iconColor
+    } -%}
+
+  </summary>      
+  
+  <div class="o-accordion__content" data-accordion-content>
+    {{- content -}}
+  </div> 
+</details>

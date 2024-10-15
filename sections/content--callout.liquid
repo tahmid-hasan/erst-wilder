@@ -1,0 +1,264 @@
+{%- comment -%}
+  Callout
+    Section to show callout with some content, a cta button and an illustration
+
+  Version:
+    1.0.0 - 2021/10/15
+{%- endcomment -%}
+
+{{ 'sections.callout.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%} Assign variables {%- endcomment -%}
+{%- liquid
+  assign preTitle = section.settings.pre-title | escape
+  assign title = section.settings.title | escape
+  assign starsNumber = section.settings.stars-number
+  assign content = section.settings.content | escape
+  assign illustration = section.settings.illustration | replace: '<svg', '<svg class="c-callout__illustration"'
+  assign ctaLabel = section.settings.cta-label | escape
+  assign ctaUrl = section.settings.cta-url
+
+  assign topWave = section.settings.top-wave
+  assign topColor1 = section.settings.top-color-1
+  assign topColor2 = section.settings.top-color-2
+  assign isFlippedTop = section.settings.flip-top-wave
+
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+-%}
+
+{%- if title != blank and ctaLabel != blank and ctaUrl != blank -%}
+
+  {%- comment -%} Top Wave {%- endcomment -%}
+  {%- if topWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:topWave
+      color1: topColor1
+      color2: topColor2,
+      isFlipped: isFlippedTop
+    } -%}       
+  {%- endif -%}
+
+  <section class="c-callout">
+    <div class="c-callout__inner">
+      <div class="c-callout__top">
+        {%- comment -%} Pre Title {%- endcomment -%}
+        {%- if preTitle != blank -%}
+          <p class="c-callout__pretitle o-heading--5">
+            {{- preTitle -}}
+          </p>
+        {%- endif -%}
+
+        {%- comment -%} Title {%- endcomment -%}
+        <h2 class="c-callout__title o-heading--3">
+          {{- title -}}
+        </h2>
+
+        {%- comment -%} Content {%- endcomment -%}
+        {%- if content != blank -%}
+          {%- if starsNumber != blank and starsNumber > 0 -%}
+            <div class="c-callout__stars-container">
+              {%- for i in (1..starsNumber) -%}
+                <img
+                  class="c-callout__star"
+                  src="{{- 'svg.star.svg' | asset_url -}}"
+                  alt="" width="17" height="17"
+                  lazy="true"
+                >
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+
+          <p class="c-callout__content">
+            {{- content -}}
+          </p>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%}
+        Group these together so we can reverse order at desktop
+      {%- endcomment -%}
+      <div class="c-callout__bottom">
+        <div class="c-callout__cta-container">
+          {%- comment -%} CTA {%- endcomment -%}
+          <a href="{{- ctaUrl -}}" class="c-callout__cta o-btn is-alternative">
+            {{- ctaLabel -}}
+          </a>
+        </div>
+
+        {%- comment -%} Illustration {%- endcomment -%}
+        {%- if ctaUrl != blank -%}
+          <div class="c-callout__illustration-container">
+            {%- if ctaUrl != blank -%}
+              <a href="{{ctaUrl}}" class="c-callout__illustration-link">
+            {%- endif -%}
+              
+            {{- illustration -}}
+
+            {%- if ctaUrl != blank -%}
+              </a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} Bottom Wave {%- endcomment -%}
+  {%- if bottomWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:bottomWave
+      color1: bottomColor1
+      color2: bottomColor2,
+      isFlipped: isFlippedBottom
+    } -%}
+  {%- endif -%}    
+
+{%- endif -%}
+
+
+{% schema %}
+{
+  "name": "Callout",
+  "class": "c-section c-section__callout",
+  "presets": [
+    {
+      "category": "Content",
+      "name":"Callout"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "pre-title",
+      "label": "Pre Title"
+    },
+    {
+      "type": "range",
+      "id": "stars-number",
+      "label": "Number of Stars",
+      "unit": "★",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "textarea",
+      "id": "illustration",
+      "label": "SVG Illustration",
+      "info": "Ideal dimensions are 860px X 293px. Ensure that you optimise your SVG first with something like this: https://jakearchibald.github.io/svgomg/."
+    },
+    {
+      "type": "text",
+      "id": "cta-label",
+      "label": "CTA Label"
+    },
+    {
+      "type": "url",
+      "id": "cta-url",
+      "label": "CTA Url"
+    },
+    {
+      "type": "header",
+      "content": "Top Wave"
+    },
+    {
+      "type": "select",
+      "id": "top-wave",
+      "label": "Top Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "top-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "top-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-top-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

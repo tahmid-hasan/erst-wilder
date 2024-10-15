@@ -1,0 +1,71 @@
+{%- assign formClass = 'c-charity-form ' | append: class -%}
+
+{%- comment -%} Form {%- endcomment -%}
+{%- form 'contact', class: formClass -%}
+  {%- if form.posted_successfully? -%}
+    {%- comment -%} Success Messaging {%- endcomment -%}
+    <p class="c-charity-form__success" data-charity-form-success>
+      {{- 'general.charity_form.success_message' | t -}}
+    </p>
+  {%- else -%}
+    {%- comment -%} Form Errors {%- endcomment -%}
+    {% if form.errors %}
+      <p class="c-charity-form__error">{{ 'general.charity_form.error_message' | t }}</p>
+    {% endif %}
+    
+    {%- comment -%} First Name {%- endcomment -%}
+    <div class="c-charity-form__input-group">
+      <input
+        type="text"
+        placeholder="{{- 'general.charity_form.first' | t -}}"
+        class="c-charity-form__input o-input is-primary"
+        name="contact[first]"
+        required
+      />
+    </div>
+
+    {%- comment -%} Last Name {%- endcomment -%}
+    <div class="c-charity-form__input-group">
+      <input
+        type="text"
+        placeholder="{{- 'general.charity_form.last' | t -}}"
+        class="c-charity-form__input o-input is-primary"
+        name="contact[last]"
+      />
+    </div>
+
+    {%- comment -%} Email {%- endcomment -%}
+    <div class="c-charity-form__input-group">
+      <input
+        type="email"
+        placeholder="{{- 'general.charity_form.email' | t -}}"
+        class="c-charity-form__input o-input is-primary"
+        name="contact[email]"
+        required
+      />
+    </div>
+
+    {%- comment -%} Charity {%- endcomment -%}
+    <div class="c-charity-form__input-group">
+      <input
+        type="text"
+        placeholder="{{- 'general.charity_form.charity' | t -}}"
+        class="c-charity-form__input o-input is-primary"
+        name="contact[charity]"
+      />
+    </div>
+
+    {%- comment -%} Message {%- endcomment -%}
+    <div class="c-charity-form__input-group c-charity-form__textarea-group">
+      <textarea
+        placeholder="{{- 'general.charity_form.message' | t | escape-}}"
+        class="c-charity-form__textarea o-input is-primary"
+        name="contact[message]"
+      ></textarea>
+    </div>
+    
+    <button type="submit" class="c-charity-form__btn o-btn" data-charity-form-submit>
+      {{- 'general.charity_form.button_label' | t -}}
+    </button>
+  {%- endif -%}
+{%- endform -%}

@@ -1,0 +1,52 @@
+{%- comment -%}
+  Badge logic:
+
+  Add badges based on collections
+  If it belongs to "New", show the "New" burst.
+  If it belongs to Enamel Pins, Enamel Key Rings, Essential Earrings or Scarves, show "Pick & Mix".
+  If it belongs to "Staff Picks", show that burst.
+  If it has a product tag and it doesn't belong to any of the above, show that tag.
+  Priority: "New"
+
+  TODO: COME UP WITH A BETTER WAY TO DO THIS instead of hardcoding the collection names.
+{%- endcomment -%}
+
+{%- capture clist -%}
+  {%- for col in product.collections -%}
+    {{ col.handle }}
+  {%- endfor -%}
+{%- endcapture -%}
+
+{%- liquid
+  assign badges = ''
+
+  if clist contains 'new'
+    assign badge = 'products.product.badge_new' | t
+    assign badges = badges | append: '|' | append: badge
+  endif
+  if clist contains 'erstwilder-pins' or clist contains 'erstwilder-essentials' or clist contains 'scarves' or clist contains 'enamel-key-rings'
+    assign badge = 'products.product.badge_pick_mix' | t
+    assign badges = badges | append: '|' | append: badge
+  endif
+  if clist contains 'staff-picks'
+    assign badge = 'products.product.staff_picks' | t
+    assign badges = badges | append: '|' | append: badge
+  endif
+  
+  for tag in product.tags
+    if tag contains 'Badge_'
+      assign tSplit = tag | split: 'Badge_'
+      assign badge = tSplit.last
+      assign badges = badges | append: '|' | append: badge
+    endif
+  endfor
+-%}
+
+{%- if badges != blank -%}
+  {% assign badges = badges | remove_first: '|' | split: '|'  %}
+  <span class="o-product-thumbnail__badge o-paragraph--1">
+    {% for item in badges limit: 2 %}
+      <span>{{- item | escape -}}</span>
+    {% endfor %}
+  </span>
+{%- endif -%}

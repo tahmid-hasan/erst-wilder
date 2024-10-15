@@ -1,0 +1,204 @@
+{%- comment -%}
+  Featured Content 4
+    Section to show content with an image, illustration, and content
+
+  Version:
+    1.0.0 - 2021/10/19
+{%- endcomment -%}
+
+{{ 'sections.featured-content-4.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%} Assign variables {%- endcomment -%}
+{%- liquid
+  assign image = section.settings.image
+  assign title = section.settings.title | escape
+  assign description = section.settings.content | escape | newline_to_br
+
+  assign topWave = section.settings.top-wave
+  assign topColor1 = section.settings.top-color-1
+  assign topColor2 = section.settings.top-color-2
+  assign isFlippedTop = section.settings.flip-top-wave
+
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+-%}
+
+{%- if image != blank and title != blank -%}
+
+  {%- comment -%} Top Wave {%- endcomment -%}
+  {%- if topWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:topWave
+      color1: topColor1
+      color2: topColor2,
+      isFlipped: isFlippedTop
+    } -%}
+  {%- endif -%}  
+
+  <section class="c-featured-content-4">
+    <div class="-featured-content-4__outer">
+      <div class="c-featured-content-4__inner">
+
+        {%- comment -%} Images/Illustration Wrapper {%- endcomment -%}
+        <div class="c-featured-content-4__image-wrapper">
+          {%- comment -%} Image 1 {%- endcomment -%}
+          <div class="c-featured-content-4__image-container o-responsive-image-container">
+            {%- render 'tool.picture' with {
+              image: image,
+              class: "c-featured-content-4__image o-responsive-image",
+              width: 1172,
+              imageSizes:'320,426,515,796,965'
+              sizes: '375,500,1000,1350,1650'
+              lazy:true
+            } -%}
+          </div>
+  
+          {%- comment -%} Background Shape {%- endcomment -%}
+          <img
+            class="c-featured-content-4__illustration-background"
+            src="{{- 'svg.flower-5.svg' | asset_url -}}" alt=""
+            width="245" height="229"
+          >
+        </div>
+  
+        {%- comment -%} Content {%- endcomment -%}
+        <div class="c-featured-content-4__content">
+  
+          {%- comment -%} Title{%- endcomment -%}
+          <h3 class="c-featured-content-4__title">
+            {{- title -}}
+          </h3>  
+         
+        </div>  
+  
+      </div>
+    </div>
+  </section>
+  
+  {%- comment -%} Bottom Wave {%- endcomment -%}
+  {%- if bottomWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:bottomWave
+      color1: bottomColor1
+      color2: bottomColor2,
+      isFlipped: isFlippedBottom
+    } -%}
+  {%- endif -%}
+
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Featured Content 4",
+  "class": "c-section c-section__featured-content-4",
+  "presets": [
+    {
+      "category": "Content",
+      "name":"Featured Content 4"
+    }
+  ],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "Dimensions: 2344px X 1362px"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "header",
+      "content": "Top Wave"
+    },
+    {
+      "type": "select",
+      "id": "top-wave",
+      "label": "Top Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "top-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "top-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-top-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,132 @@
+{%- comment -%}
+  Cart upsells
+    Section used as a shell to render the cart upsells contents. Uses the section
+    rendering API to render the cart-upsells--inner section inside itself.
+    This is triggered with the "bundled section rendering" when the
+    ON_CART_UPDATE event is triggered and on page load.
+
+  Version:
+    1.0.0 - 2021/12/20
+{%- endcomment -%}
+
+{%- liquid
+  assign title = 'general.cart.cart_upsell_title' | t | escape
+  assign add = 'general.cart.add' | t | escape
+  assign upsellCollection = shop.metafields.globals.upsell_collection.first
+-%}
+
+<div class="c-cart-upsells"  data-cart-upsells-container>
+  <div class="c-cart-upsells__inner">
+    <p class="c-cart-upsells__title o-paragraph--2">
+      {{- title -}}
+    </p>
+    <div class="c-cart-upsells__products" data-cart-upsells>
+
+      {%- liquid
+        assign tooltipLabel = collections[upsellCollection].metafields.cart.tooltip_label | escape
+        assign tooltipText = collections[upsellCollection].metafields.cart.tooltip_text | escape
+        assign cartLineDesc = collections[upsellCollection].metafields.cart.cart_line_description | escape
+      -%}
+
+      {%- for upsellProduct in collections[upsellCollection].products -%}
+        {%- assign luckyDipInCart = false -%}
+        {%- assign freeLuckyDipInCart = false -%}
+
+        {%- comment -%} Check if item is already in cart {%- endcomment -%}
+        {%- for item in cart.items -%}
+          {%- if item.id == upsellProduct.first_available_variant.id -%}
+            {%- assign luckyDipInCart = true -%}
+            {%- break -%}
+          {%- endif -%}
+
+          {%- assign lcProductTags = item.product.tags | downcase -%}
+          {%- if item.properties['_free-gift'] -%}
+            {%- if lcProductTags contains 'luckydip' or lcProductTags contains 'lucky dip' -%}
+              {%- assign freeLuckyDipInCart = true -%}
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- comment -%} If product is available and not already in cart, proceed {%- endcomment -%}
+        {%- if upsellProduct.available and luckyDipInCart == false -%}
+
+          {%- assign upsellVariant = upsellProduct.selected_or_first_available_variant -%}
+          {%- assign price = upsellVariant.price  | money | remove: '.00' -%}
+          {%- assign comparePrice = upsellVariant.compare_at_price  | money | remove: '.00' -%}
+
+          <div
+            class="c-cart-upsells__product"
+            data-cart-upsell-product
+            data-variant-id="{{- upsellVariant.id -}}"
+          >
+            <div class="c-cart-upsells__image-container o-responsive-image-container">
+              <a href="{{- upsellVariant.url -}}">
+                {%- render 'tool.picture' with {
+                  class: 'c-cart-upsells__image o-responsive-image',
+                  image: upsellProduct.featured_image,
+                  width: 64
+                } -%}
+              </a>
+            </div>
+
+            <div class="c-cart-upsells__details-wrapper">
+              <div class="c-cart-upsells__details">
+
+                <p class="c-cart-upsells__product-title">
+                  <span class="o-paragraph--2">
+                    {{- upsellProduct.title -}}
+                  </span>
+                </p>
+
+                <p class="c-cart-upsells__price">
+                  <span class="c-cart-upsells__price-wrapper">
+                    {%- if comparePrice > price -%}
+                      <span class="o-paragraph--2 c-cart-upsells__compare-price">
+                        {{- comparePrice -}}
+                      </span>
+                    {%- endif -%}
+
+                    <span class="o-paragraph--2" data-currency data-money="{{ upsellVariant.price }}">
+                      {{- price -}}
+                    </span>
+
+                    {%- if cartLineDesc and freeLuckyDipInCart == false -%}
+                    <span class="c-cart-upsells__description">
+                      {{- cartLineDesc -}}
+                    </span>
+                    {%- endif -%}
+                  </span>
+
+                  {%- comment -%} Tooltip {%- endcomment -%}
+                  {%- if tooltipLabel != blank and tooltipText != blank -%}
+                    <span class="o-paragraph--2 c-cart-upsells__tooltip-label">
+                      {{- tooltipLabel -}}
+                    </span>
+
+                    <span class="c-cart-upsells__tooltip">
+                      {{- tooltipText -}}
+                    </span>
+                  {%- endif -%}
+                </p>
+              </div>
+              <div class="c-cart-upsells__add-button o-paragraph--2" data-cart-upsell-add-btn>
+                <span>{{- add -}}</span>
+                {%- render 'object.icon' with {
+                  icon: 'plus-circle',
+                  class: 'c-cart-upsells__add-icon'
+                } -%}
+              </div>
+            </div>
+          </div>
+
+          {%- comment -%} Stop at one product {%- endcomment -%}
+          {%- break -%}
+
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+
+</div>
+
+

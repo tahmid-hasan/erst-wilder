@@ -1,0 +1,233 @@
+{%- comment -%}
+  USPs
+    Section to show usps with some content and some images
+
+  Version:
+    1.0.0 - 2021/11/11
+{%- endcomment -%}
+
+
+{{ 'sections.usps-2.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%} Assign variables {%- endcomment -%}
+{%- liquid
+  assign image1 = section.settings.image
+  assign image2 = section.settings.image-2
+  assign preTitle = section.settings.pre-title | escape
+  assign title = section.settings.title | escape
+  assign ctaLabel = section.settings.cta-label | escape
+  assign ctaUrl = section.settings.cta-url
+  assign uspBlocks = section.blocks | where: 'type', 'usp-block'
+  assign backgroundColor = section.settings.bg-color | default: '#F8F3EC'
+
+  assign topWave = section.settings.top-wave
+  assign topColor1 = section.settings.top-color-1
+  assign topColor2 = section.settings.top-color-2
+  assign isFlippedTop = section.settings.flip-top-wave
+-%}
+
+{%- if title != blank or uspBlocks.size > 0 -%}
+  {{ 'sections.usps.css' | asset_url | stylesheet_tag }}
+
+  {%- comment -%} Top Wave {%- endcomment -%}
+  {%- if topWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:topWave
+      color1: topColor1
+      color2: topColor2,
+      isFlipped: isFlippedTop
+    } -%}
+  {%- endif -%}   
+
+  <section class="c-usps-2">
+    <div class="c-usps-2__outer">    
+      <div class="c-usps-2__inner">
+
+        {%- comment -%}
+          We're using a snippet to render the usps. This way it can be reused in
+          other sections.
+        {%- endcomment -%}
+        {%- render 'object.usps' with {
+          class: 'c-usps-2__usps',
+          preTitle: preTitle, 
+          title: title,
+          ctaLabel: ctaLabel,
+          ctaUrl: ctaUrl,
+          uspBlocks: uspBlocks
+        } -%}
+
+        {%- if image1 != blank -%}
+        
+          {%- comment -%} Image/illustration wrapper {%- endcomment -%}
+          <div class="c-usps-2__image-wrapper">
+
+            {%- comment -%} Image 1 {%- endcomment -%}
+            <div class="c-usps-2__image-1-container o-responsive-image-container">
+              {%- render 'tool.picture' with {
+                image: image1,
+                class: "c-usps-2__image-1 o-responsive-image",
+                width: 710,
+                imageSizes:'236,360,610'
+                sizes: '375,500,750'
+                lazy:true
+              } -%}
+            </div>
+
+            {%- comment -%} Image 2 {%- endcomment -%}
+            <div class="c-usps-2__image-2-container o-responsive-image-container">
+              {%- render 'tool.picture' with {
+                image: image2,
+                class: "c-usps-2__image-2 o-responsive-image",
+                width: 670,
+                imageSizes:'180,305,555'
+                sizes: '375,500,750'
+                lazy:true
+              } -%}
+            </div>
+
+            {%- comment -%} Background Shape {%- endcomment -%}
+            <img
+              class="c-usps-2__illustration-background-1"
+              src="{{- 'svg.shape-14.svg' | asset_url -}}" alt=""
+              width="548" height="514"
+            > 
+            <img
+              class="c-usps-2__illustration-background-2"
+              src="{{- 'svg.shape-15.svg' | asset_url -}}" alt=""
+              width="442" height="240"
+            >
+          </div>
+
+        {%- endif -%}
+      </div>
+  
+    </div>
+
+    {%- comment -%} Background color setter {%- endcomment -%}
+    <div class="c-usps-2__background-setter" style="background-color:{{- backgroundColor -}};"></div>
+
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "USPs 2",
+  "class": "c-section c-section__usps-2",
+  "presets": [
+    {
+      "category": "Content",
+      "name":"USPs 2"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "pre-title",
+      "label": "Pre Title"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "cta-label",
+      "label": "CTA Label"
+    },
+    {
+      "type": "url",
+      "id": "cta-url",
+      "label": "CTA Url"
+    },    
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image 1",
+      "info": "Dimensions: 1420px X 1840px"
+    },
+    {
+      "type": "image_picker",
+      "id": "image-2",
+      "label": "Image 2",
+      "info": "Dimensions: 1340px X 1640px"
+    },
+    {
+      "type": "color",
+      "id": "bg-color",
+      "label": "Background color of next section",
+      "default": "#F8F3EC",
+      "info": "A background color for the bottom of this section, which should be the background color of the next section"
+    },
+    {
+      "type": "header",
+      "content": "Top Wave"
+    },
+    {
+      "type": "select",
+      "id": "top-wave",
+      "label": "Top Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "top-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "top-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-top-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ],
+  "max_blocks": 3,
+  "blocks": [
+    {
+      "type": "usp-block",
+      "name": "USP Block",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "svg-code",
+          "label": "SVG code",
+          "info": "Ensure that the svg has been optimised and that it uses viewbox rather then width & height. This browser tool can be used to do this: https://jakearchibald.github.io/svgomg/."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Line 1"
+        },
+        {
+          "type": "text",
+          "id": "line-2",
+          "label": "Line 2"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

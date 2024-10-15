@@ -1,0 +1,57 @@
+{%- comment -%}
+  Mobile Navigation Submenu - Level 2
+    - Displays navigation submenu that is used in the header navigation.
+
+    Params:
+    - parentLink: The parent link object - used for the submenu links and to check
+    for the accessories menu
+
+  Version:
+    1.0.0 - 2021/012/09
+{%- endcomment -%}
+
+{%- if parentLink != blank -%}
+  {%- assign parentTitle = parentLink.title | escape | handleize -%}
+
+  {%- if parentTitle == 'accessories' -%}
+    {%- comment -%} Illustration menu {%- endcomment -%}
+    <ul class="c-navigation-mobile__lvl2 has-illustrations" data-mobile-submenu>
+      {%- for link in parentLink.links -%}
+        {%- assign illustration = link.object.metafields.navigation.illustration[0].media_inline -%}
+        {%- unless illustration != blank -%}{%- continue -%}{%- endunless -%}
+        {%- assign illustration = illustration | replace: '<svg', '<svg class="c-navigation-mobile__lvl2-illustration"' -%}
+
+        <li class="c-navigation-mobile__lvl2-illustration-item">
+          <a
+            href="{{- link.url -}}"
+            title="{{- link.title | escape -}}"
+            class="c-navigation-mobile__lvl2-link o-paragraph--2"
+          >
+            <span class="c-navigation-mobile__lvl2-illustration-container">
+              {{- illustration -}}
+            </span>
+
+            <span class="c-navigation-mobile__lvl2-illustration-label">
+              {{- link.title | escape -}}
+            </span>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  {%- else -%}
+    {%- comment -%} Default menu {%- endcomment -%}
+    <ul class="c-navigation-mobile__lvl2" data-mobile-submenu>
+      {%- for link in parentLink.links -%}
+        <li class="c-navigation-mobile__lvl2-item">
+          <a
+            href="{{- link.url -}}"
+            title="{{- link.title | escape -}}"
+            class="c-navigation-mobile__lvl2-link o-paragraph--2"
+          >
+            {{- link.title | escape -}}
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+{%- endif -%}

@@ -1,0 +1,206 @@
+{%- comment -%}
+ Rewards Details
+    Section to display rewards points, coupons, and activity log
+
+    Only display if customer is logged in
+
+  Version:
+    1.0.0 - 2021/10/25
+{%- endcomment -%}
+
+{%- if customer -%}
+    
+  {{ 'sections.rewards-details.css' | asset_url | stylesheet_tag }}
+  {{ 'sections.rewards.js' | asset_url | script_tag }}
+
+  {%- comment -%} Assign variables {%- endcomment -%}
+  {%- liquid
+    assign tab1 = section.settings.tab-1-label | escape
+    assign tab2 = section.settings.tab-2-label | escape 
+    assign tab3 = section.settings.tab-3-label | escape 
+    assign tab4 = section.settings.tab-4-label | escape
+    assign rewardsSubtitle = section.settings.tab-2-subtitle | escape
+    assign iconBlocks = section.blocks | where: 'type', 'icon-block'
+    assign helpContent = section.settings.tab-4-content | escape | newline_to_br
+  -%}
+
+  <div class="c-rewards-details" data-rewards-details>
+    <div class="c-rewards-details__inner">
+
+      {%- comment -%} Tabs {%- endcomment -%}
+      <div class="c-rewards-details__tabs">
+
+        {%- comment -%} Tab How to Earn {%- endcomment -%}
+        {%- if iconBlocks.size > 0 -%}
+          <span class="c-rewards-details__tab o-heading--3 is-active" data-rewards-tab data-tab-index="1">
+            {{- tab1 -}}
+          </span>
+        {%- endif -%}
+
+        {%- comment -%} Tab Rewards {%- endcomment -%}
+        <span class="c-rewards-details__tab o-heading--3" data-rewards-tab data-tab-index="2">
+          {{- tab2 -}}
+        </span>
+
+        {%- comment -%} Tab Activity {%- endcomment -%}
+        <span class="c-rewards-details__tab o-heading--3" data-rewards-tab data-tab-index="3">
+          {{- tab3 -}}
+        </span>
+
+        {%- comment -%} Tab Help {%- endcomment -%}
+        {%- if helpContent != blank -%}        
+          <span class="c-rewards-details__tab o-heading--3" data-rewards-tab data-tab-index="4">
+            {{- tab4 -}}
+          </span>
+        {%- endif -%}
+
+      </div>
+
+      <div class="c-rewards-details__content-wrapper">
+
+        {%- comment -%} How to Earn {%- endcomment -%}
+        {%- if iconBlocks.size > 0 -%}
+          <div class="c-rewards-details__content is-visible" data-rewards-content data-tab-index="1">
+            {%- render 'object.icon-blocks' with {
+              iconBlocks: iconBlocks
+            } -%}
+          </div>
+        {%- endif -%}
+
+        {%- comment -%} Rewards {%- endcomment -%}
+        <div class="c-rewards-details__content {% unless iconBlocks.size > 0 %} is-visible{% endunless %}" 
+          data-rewards-content 
+          data-tab-index="2"
+        >
+          {%- if rewardsSubtitle != blank -%}
+            <h6 class="c-rewards-details__rewards-subtitle">
+              {{- rewardsSubtitle -}}
+            </h6>
+          {%- endif -%}
+          <div class="c-rewards-details__rewards-wrapper" data-rewards-coupons>
+            {%- comment -%} Data from Smile.io {%- endcomment -%}
+          </div>
+        </div>
+
+        {%- comment -%} Activity {%- endcomment -%}
+        <div class="c-rewards-details__content" data-rewards-content data-tab-index="3">
+          <div class="c-rewards-details__activity-wrapper" data-rewards-activity>
+            {%- comment -%} Data from Smile.io {%- endcomment -%}
+            <p class="c-rewards-details__activity-message">
+              {{- 'rewards.activity_message' | t -}}
+            </p>
+          </div>
+        </div>
+
+        {%- comment -%} Help {%- endcomment -%}
+        {%- if helpContent != blank -%}
+          <div class="c-rewards-details__content" data-rewards-content data-tab-index="4">
+            <p class="c-rewards-details__help-wrapper">
+              {{- helpContent -}}
+            </p>
+          </div>
+        {%- endif -%}
+
+      </div>
+    </div>
+  </div>
+
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Customer - Reward Details",
+  "class": "c-section c-section__rewards-detals",
+  "presets": [
+    {
+      "category": "Content",
+      "name": "Rewards Details"
+    }
+  ],
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "This section will only display if customers are logged in"
+    },
+    {
+      "type": "header",
+      "content": "How to Earn",
+      "info": "Section to display icon blocks"
+    },
+    {
+     "type": "text",
+     "id": "tab-1-label",
+     "label": "Label",
+     "default": "How to Earn"
+    },
+    {
+      "type": "header",
+      "content": "Rewards",
+      "info": "Section to display used and unused coupons"
+    },
+    {
+      "type": "text",
+      "id": "tab-2-label",
+      "label": "Label",
+      "default": "Rewards"
+    },
+    {
+      "type": "text",
+      "id": "tab-2-subtitle",
+      "label": "Subtitle",
+      "default": "Apply your coupon when it’s time to checkout."
+    },
+    {
+      "type": "header",
+      "content": "Account",
+      "info": "Section to display customer's transaction history"
+    },
+    {
+      "type": "text",
+      "id": "tab-3-label",
+      "label": "Label",
+      "default": "Activity"
+    },
+    {
+      "type": "header",
+      "content": "Help",
+      "info": "Section to display text content"
+    },
+    {
+      "type": "text",
+      "id": "tab-4-label",
+      "label": "Label",
+      "default": "Help"
+    },
+    {
+      "type": "textarea",
+      "id": "tab-4-content",
+      "label": "Content"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon-block",
+      "name": "Icon Block",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "svg-code",
+          "label": "SVG code",
+          "info": "Ensure that the svg has been optimised and that it uses viewbox rather then width & height. This browser tool can be used to do this: https://jakearchibald.github.io/svgomg/."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Line 1"
+        },
+        {
+          "type": "text",
+          "id": "line-2",
+          "label": "Line 2"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,496 @@
+{
+  "sections": {
+    "banners-hero-image-content": {
+      "type": "banners-hero-image-content",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/MEET_THE_TEAM_CHARACTERS_2024_02.jpg",
+        "title": "Meet the team!",
+        "text": "We’re a pretty mixed bunch over here at Erstwilder, from all walks of life and with all sorts of interests. But it’s those differences that make the world a special place, right? \n\nWe’re so proud to work with some of the most talented artists, illustrators and designers in Australia (and a few around the world too!). And though we're always taking feedback from our wonderful community (that's you!) around what designs and collections to create, these amazing people are the ones who bring your Erstwilder creations to life. Their own wonderful personalities and passions influence our collections in the most amazing ways.\n\nThat said, take a moment to get to know us, the team at HQ and our current Erstwilder Original collection designed. We're delighted to e-meet you.",
+        "banner_bottom_text": "",
+        "hero--bottom-text-bg-color": "",
+        "hero--bottom-text-color": ""
+      }
+    },
+    "carousels-team-carousel": {
+      "type": "carousels-team-carousel",
+      "blocks": {
+        "b6219c05-c7b6-4d8e-afd8-fe405f8aadba": {
+          "type": "team-member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Cathy.jpg",
+            "title": "Catherine",
+            "role": "Customer Service Manager",
+            "subtitle": "'Queen of Erstwildian Support'",
+            "years": "HQ Team",
+            "pronouns": "She\/Her",
+            "bio": "Hi there, I'm Cath. I have the privilege of helping to take care of you lovely Erstwildians as Customer Service Manager. I'm here to assist with your enquiries, listen to your feedback, share your suggestions for your dream collaborations with our design team and most importantly ensure we are sparking joy for you, our wonderful community. In my spare time you'll find me outdoors, probably on my bike as I choose to ride at every opportunity and often leave the car at home. Unfortunately, no fur babies, however 2 beautiful doves visit me daily and have adopted me as their personal seed chef.  \n\nFavourite quote: \" I've learned that people will forget what you say, people will forget what you do, but they will never forget how you made them feel.  - Maya Angelou\""
+          }
+        },
+        "f4b5dd4e-95fb-4ca7-b806-2064ac3ebf73": {
+          "type": "team-member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Joy.jpg",
+            "title": "Joy",
+            "role": "Customer Service Representative",
+            "subtitle": "'Princess of Erstwildian Support'",
+            "years": "HQ Team",
+            "pronouns": "She\/They",
+            "bio": "Hi Lovelies, I’m Joy! Now I know what you’re thinking. I’m doing customer service with Erstwilder and my name is Joy. It’s almost too good to be true. Alas, it is true! I’m happily stuck in the 90’s\/00’s with my style and can recite song lyrics from the Spice Girls to Tool at a drop of a hat. Outside of work, I’m cracking into massive Lego sets. As a self-confessed nerd\/hobbit, I love staying in and catching up with friends when I game online. If I could pick my ideal holiday, I’d love to head back to Aotearoa (New Zealand) and do all the Lord of The Rings Tours. Over at Erstwilder, I have the best job because I get to look after all of you – our wonderful community – and I hope to have the pleasure of chatting with you all.\n\nFavourite quote: “If you can’t love yourself how are you going to love somebody else!  Can I get an amen!” – RuPaul"
+          }
+        },
+        "2a146381-4271-4b83-a443-abb03d135913": {
+          "type": "team-member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Erstwilder-Headshot-MeetTheTeam-Marc_1024x1024_b7e420e3-d01d-4b75-a149-3914123d8192.jpg",
+            "title": "Marc",
+            "role": "Owner & Creative Director",
+            "subtitle": "'The Grand Master of Inspiration'",
+            "years": "HQ Team",
+            "pronouns": "He\/Him",
+            "bio": "Me in a nutshell? 80% health enthusiast, 20% cookie monster. As an owner, Managing Director and Creative Director, my job mostly involves keeping the team inspired with super fun ideas (made easy thanks to the wonderful suggestions you all submit to us), motivating everyone (also not particularly difficult with this awesome bunch), looking at ways we can give you the best possible experiences and just generally spreading joy. I’m also responsible for keeping the kitchen stocked with biscuits and M&M’s. When I’m not here you’ll find me at the park, or the beach, or somewhere else in nature with my darling wife Dani, baby girl Indiana and little man Sonny. Oh, or I’ll be at the movies. Hot tip - go late enough and a movie ticket gets you the whole cinema!\n\nFavourite quote:  “When life shuts a door open it again. It’s a door. That’s how they work.”"
+          }
+        },
+        "9d7821ca-c363-4085-97cd-49395abb1733": {
+          "type": "team-member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Erstwilder-Headshot-MeetTheTeam-Adam-2_1024x1024_c278d57c-cc80-4efa-bf0a-3c964ecb207b.jpg",
+            "title": "Adam",
+            "role": "Owner & CFO",
+            "subtitle": "'The Founding Father of Quirk'",
+            "years": "HQ Team",
+            "pronouns": "He\/Him",
+            "bio": "When you blow the budget on beautiful brooches and need someone to blame, I guess you can look my way. You see, I’m the fella who (along with our original designer, Louisa) started the Erstwilder label). As an owner, Managing Director and head of Operations and Finance, I’m usually focused on that ‘bigger picture’ stuff, like looking after our stockist program, managing our production, and keeping an eye on the financials. I also get to be involved in a bunch of creative roles too, lucky me! I moved from Melbourne to Sydney in early 2020, to settle down with my wife and beautiful baby boy, but I make sure to come visit the team at HQ as much as possible. Outside of work, you can find me watching docos on YouTube, jogging at the beach, watching footy, slow cooking meat, checking out some local live music, and enjoying time with my family.\n\nFavourite quote: “Speak kind to a stranger, you never know, it might be an angel”"
+          }
+        },
+        "d0e94d73-35a9-4204-b84f-c35a1773af46": {
+          "type": "team-member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Erstwilder-Headshot-MeetTheTeam-Evelyn_1024x1024_ec1411bc-b0a3-4b78-ad55-e34ba8098144.jpg",
+            "title": "Evelyn",
+            "role": "Strategic Marketing Manager",
+            "subtitle": "'Head of Hype'",
+            "years": "HQ Team",
+            "pronouns": "She\/Her",
+            "bio": "Hello lovelies, you can call me Ev! I’m the Strategic Marketing Manager here at Erstwilder, also known as the Head of Hype. My priority is to make your online shopping experience as seamless and exciting as possible, along with spreading Erstwildian joy globally. I’m a typical night owl who can run on 5 hours sleep, my drink of choice is a classic margarita or mocha, and my favourite pastime is re-watching Gilmore Girls from start to finish. If I could go back to any time in history, you’ll find me in Elizabethan England. Hopefully still with my head!\n\nFavourite quote:  “All that is gold does not glitter, not all those who wander are lost”"
+          }
+        },
+        "f7d3c7da-aa67-4ff3-9efd-0a6a12aafb9d": {
+          "type": "team-member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/SARAH_MEET_THE_TEAM_SMALL_0ae2a083-cd33-4913-b13f-4012394fae81.jpg",
+            "title": "Sarah",
+            "role": "Ecommerce Specialist",
+            "subtitle": "'Ambassador of Buzz'",
+            "years": "HQ Team",
+            "pronouns": "She\/Her",
+            "bio": "Hey everyone, I'm Sarah the Ecommerce Specialist at Erstwilder, nice to meet you! I usually describe my job as making sense of all the data and numbers that come from online shoppers such as yourselves, and helping the team make online shopping as fun as possible. When I’m not at work you can catch me on a walk in a nice park, or at home watching my favourite movies (for the 10th time). I also love a good sunset whether it be at the beach in summer or across the city skyline after work, and you best believe I’m that person that has a thousand sunset pictures in their camera roll!\n\nFavourite quote: “Life moves pretty fast. If you don’t stop and look around once in a while, you could miss it.” Ferris Bueller"
+          }
+        },
+        "85110b8b-7591-43f4-82a5-8fe2a94a93b1": {
+          "type": "team-member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Hannah_small_35ffa59b-d730-4afe-b4d2-f589d9c72033.jpg",
+            "title": "Hannah",
+            "role": "Creative Lead",
+            "subtitle": "'Maker of Dreams'",
+            "years": "HQ Team",
+            "pronouns": "She\/They",
+            "bio": "Hi there! I’m Hannah, and I’m Erstwilder’s Digital Designer. I spend my days designing the banners and graphics that enhance your online experience, as well as the packaging that houses your adored accessories. I love creating, viewing, and reviewing all things art and animation! And I also love shopping for crazily patterned shirts. When I’m not at work, you can find me at home playing point-and-click puzzle games, doing a jigsaw with my family, or reading poetry by the sea with a cup of chai. \n\nFavourite quote: “In the end the shadow was only a small and passing thing: There was light and high beauty forever beyond its reach.” - JRR Tolkien, The Lord of the Rings"
+          }
+        },
+        "d83738cc-8586-410d-9916-65039de8d737": {
+          "type": "team-member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Joel_small_b1d07650-91f9-4517-9b1b-ebe0e298d441.jpg",
+            "title": "Joel",
+            "role": "Warehouse Manager",
+            "subtitle": "'Director of the Day-to-Day'",
+            "years": "HQ Team",
+            "pronouns": "He\/Him",
+            "bio": "Hi, I’m Joel. I am the Warehouse Manager at Erstwilder, and my role is to lead the team that makes sure your special little somethings leave HQ and arrive on your doorstep in a timely fashion. It has been said that if I were any more laid back, I’d be lying down. Outside of work, I’m usually watching footy (or any sport for that matter, much to my wife’s dismay), getting creative in the kitchen and running around after my three wildlings, Caleb, Elliott and Cooper, alongside my wife, Kristen. In what presently feels like another life, I love to go to live gigs and travel (I can’t wait to get back to Hawaii!).\n\nFavourite quote: “When someone says you can’t do it, do it twice and take photos”"
+          }
+        },
+        "c8a37c5d-d725-4296-b5c6-bef90df0b57b": {
+          "type": "team-member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Rach.jpg",
+            "title": "Rachel",
+            "role": "Fulfilment Coordinator",
+            "subtitle": "'Lead of the Pack(ing)'",
+            "years": "HQ Team",
+            "pronouns": "She\/Her",
+            "bio": "Hello everyone! You might not hear of me or see me often but I help lead the HQ team who are picking and packing all of your orders, and getting whatever admin needs to be done around that. Outside of work, I spend all of my precious time with friends and family, hanging out with my amazing partner Daniel or chasing around my little boy, Jax. There will usually be music involved too, whether that’s at home or better yet, checking out some live music at a pub. I’m also partial to dinner outings and long drives. Growing up with not one, not two, but three brothers taught me not to be scared to get my hands (or the rest of me) dirty. It also taught me to tackle problems head-on. I’m not one to dwell on drama, I prefer to find solutions!\n\nFavourite quote: “Be who you are and say what you feel, because those who mind don't matter and those who matter don't mind.”"
+          }
+        },
+        "bcad3d8a-f709-4c7c-a4ee-8d7d6eddfea9": {
+          "type": "team-member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Kenny_small_53c520ba-c3e2-4f6b-a8ef-91a75534cb04.jpg",
+            "title": "Kenny",
+            "role": "Stock Coordinator",
+            "subtitle": "'Warehouse Warrior'",
+            "years": "HQ Team",
+            "pronouns": "He\/Him",
+            "bio": "Hey, my name is Kenny, and I'm the Stock Coordinator at Erstwilder. I bounce around the warehouse doing everything I can to help the team but my main responsibility is the organisation of our designs. Most importantly, keeping track of stock levels to ensure we always have what you've ordered ;) I spend my time off work playing different games with my friends and watching videos on ancient history. I enjoy keeping up with Formula 1, from the racing to keeping up with all the technical jargon.\n\nFavourite quote: \"The happiness of your life depends upon the quality of your thoughts\" Marcus Aurelius"
+          }
+        },
+        "5d69e599-4ce5-4dfb-a646-3599c4a28b7d": {
+          "type": "team-member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/JUSTINE.jpg",
+            "title": "Justine",
+            "role": "Warehouse Assistant",
+            "subtitle": "'Jill of all Trades'",
+            "years": "HQ Team",
+            "pronouns": "She\/Her",
+            "bio": "Hi everyone! I’m Justine, a Warehouse Assistant here at Erstwilder. I’m a bit of a jack - or jill – of all trades, doing everything from picking and packing your lovely orders and getting them out to you as quickly as we can, to ensuring the quality of stock that goes out to everyone meets our high standards, to a variety of other e-commerce and admin duties to help keep everything in order. Being a bit of a homebody, I’m often found curling up on the couch under a blanket with a good book or binging the latest tv shows. I love anything fantasy and sci-fi, and my favourite movies will always (always!) be The Lord of the Rings trilogy, so naturally my wedding was held at a castle in the mountains with Gandalf officiating – yep, a true story.\n\nFavourite quote: “It is the small everyday deeds of ordinary folk that keep the darkness at bay. Small acts of kindness and love.” – Gandalf"
+          }
+        },
+        "dc93601c-fc3f-49f6-adf6-e2e37527255d": {
+          "type": "team-member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/IVAN.jpg",
+            "title": "Ivan",
+            "role": "Warehouse Assistant",
+            "subtitle": "'Designated Tall Person'",
+            "years": "HQ Team",
+            "pronouns": "He\/Them",
+            "bio": "Hi there, I’m Ivan.  I’m part of the Warehouse Team, primarily responsible for getting designs down from hard-to-reach places for the whole warehouse team when packing your orders, and notorious for aggressively pursuing the largest and most out there orders to pack.  If you’ve ever felt guilty about your order of 15 brooches, 3 earrings, 4 necklaces, and a beret; don’t, because packing it made me quite happy.  Outside the warehouse, you’ll find me reading, gaming online, arguing about cool and esoteric sci-fi concepts with people I don’t know, and other wholesome pursuits.  I’m also usually typing one-handed, due to my cat Woody locking down my arm whenever he occupies my lap, the scamp. \n\nFavourite quote:  “We defeat our enemies by making them into our friends.” (Various, Humanity, First Contact)"
+          }
+        },
+        "06049497-cd5c-4e25-b189-cc1ae6832f4b": {
+          "type": "team-member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Image_1.jpg",
+            "title": "Carmen",
+            "role": "Designer",
+            "subtitle": "",
+            "years": "",
+            "pronouns": "She\/Her",
+            "bio": "I am an illustrator and artist from Sydney’s inner west. Drawing is my passion and I am very much inspired by animals and all things botanical. A typical day for me would consist of running my online shop, working on commissioned artwork and of course creating super fun and colourful brooches with the lovely people from Erstwilder. I love working for Erstwilder because they encourage creativity and let you take control of the design and output of each brooch. Some of my favourite designs would have to be Best Budgies, Janettie the Patient and Flora Fox Face. When I'm not drawing, you will find me hanging out with my cat Miso, visiting all the galleries or enjoying a Bloody Mary with my bestie and partner in crime."
+          }
+        },
+        "e6ab5ca9-4dc3-455f-b4c0-f76903dae948": {
+          "type": "team-member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Shea_O_Connor_Headshot_square.jpg",
+            "title": "Shea",
+            "role": "Designer",
+            "subtitle": "",
+            "years": "",
+            "pronouns": "She\/Her",
+            "bio": "Hey! I’m Shea (rhymes with yay). I’m an illustrator and designer currently drawing up a storm in Atlanta, Georgia, USA. I’m super inspired by all things dripping in vintage glamour and joy, and I fear no sparkle. When I’m not creating, you can find me complimenting the plants in my garden, singing and whistling to my two fur babies, watching old musicals, or reading voraciously with a cup of piping hot coffee. \n \nFavorite Quote: “I know nothing with any certainty, but the sight of the stars makes me dream.” — Vincent van Gogh"
+          }
+        },
+        "036d627e-bdd6-4c84-941d-d73469144de3": {
+          "type": "team-member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Hallie_Erstwilder_Web.jpg",
+            "title": "Hallie",
+            "role": "Designer",
+            "subtitle": "",
+            "years": "",
+            "pronouns": "She\/Her",
+            "bio": "Bonjour! My name is Hallie. I am a designer who lives in Melbourne with my family and fur baby Pepsi! I help to design the visionary concepts of Erstwilder's amazing creative team! ! I love the creative energy at Erstwilder – it’s like designing in sunshine ALL THE TIME! My favourite place to be is in a Vintage shop or market. I love finding unique treasures that can be a source of inspiration and  I can give a new home to. “Pick me, pick me” the orphaned objects call. As Maria would ask - What are a few of your favourite things? I love horses in all its forms - Unicorns, Pegasus and seahorses! Horses must be my spirit animal. My favourite movie is Xanadu - it is the mixed tape  of movie greatness - 80’s, 50’s, roller skates, romance, music, dancing, greek mythology and LA architecture - it has it all! And my favourite humans  in the world are my boys!"
+          }
+        },
+        "a01b45d6-1b08-472e-9a94-7ea5e48ec3f2": {
+          "type": "team-member",
+          "disabled": true,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/holly.jpg",
+            "title": "Holly",
+            "role": "Product Developer",
+            "subtitle": "'Darling of Design Awakening'",
+            "years": "HQ Team",
+            "pronouns": "She\/Her",
+            "bio": "Hello, darlings! I'm Holly, the Product Developer for all the beautiful treasures dreamed up at Erstwilder.  My role is to bring to life in 3D form, all of the illustrations from our wonderfully talented designers. Pretty sure I was born in the wrong decade because I've always loved everything from the '50s. This was contributed to by my glorious Nonnie, who opened my eyes to all things glamourous. When I'm not being creative, I love watching old romantic musicals & classic horror monsters, pet sitting adorable fur babies and dreaming about living in a Disney fantasy land with my cat Dinah. Like a real-life Alice, I am now exploring the quirky, playful and vibrant wonderland that is Erstwilder. \n\nFavourite quote: \"If you put your mind to it, you can accomplish anything.\""
+          }
+        }
+      },
+      "block_order": [
+        "b6219c05-c7b6-4d8e-afd8-fe405f8aadba",
+        "f4b5dd4e-95fb-4ca7-b806-2064ac3ebf73",
+        "2a146381-4271-4b83-a443-abb03d135913",
+        "9d7821ca-c363-4085-97cd-49395abb1733",
+        "d0e94d73-35a9-4204-b84f-c35a1773af46",
+        "f7d3c7da-aa67-4ff3-9efd-0a6a12aafb9d",
+        "85110b8b-7591-43f4-82a5-8fe2a94a93b1",
+        "d83738cc-8586-410d-9916-65039de8d737",
+        "c8a37c5d-d725-4296-b5c6-bef90df0b57b",
+        "bcad3d8a-f709-4c7c-a4ee-8d7d6eddfea9",
+        "5d69e599-4ce5-4dfb-a646-3599c4a28b7d",
+        "dc93601c-fc3f-49f6-adf6-e2e37527255d",
+        "06049497-cd5c-4e25-b189-cc1ae6832f4b",
+        "e6ab5ca9-4dc3-455f-b4c0-f76903dae948",
+        "036d627e-bdd6-4c84-941d-d73469144de3",
+        "a01b45d6-1b08-472e-9a94-7ea5e48ec3f2"
+      ],
+      "settings": {
+        "title": "The Erstwilder Team",
+        "subtitle": "Your designers, marketers, customer care and operations people.",
+        "top-wave": "0",
+        "top-color-1": "",
+        "top-color-2": "",
+        "flip-top-wave": false,
+        "bottom-wave": "0",
+        "bottom-color-1": "",
+        "bottom-color-2": "",
+        "flip-bottom-wave": false
+      }
+    },
+    "carousels-designers-carousel": {
+      "type": "carousels-designers-carousel",
+      "blocks": {
+        "designers_9E7x7R": {
+          "type": "designers",
+          "settings": {
+            "title": "Holly Cooper"
+          }
+        },
+        "1ea65153-0132-4ac7-af8f-0080514d17ee": {
+          "type": "designers",
+          "settings": {
+            "title": "Catherine Bowers"
+          }
+        },
+        "7f45d3e1-b29f-4598-8beb-819df026ef01": {
+          "type": "designers",
+          "settings": {
+            "title": "Elena Leong"
+          }
+        },
+        "5ee5644c-a469-4b7c-b074-180f05b0c0ac": {
+          "type": "designers",
+          "settings": {
+            "title": "Sally Land"
+          }
+        },
+        "bf3bed5d-933f-490d-8567-e5c56500c4f5": {
+          "type": "designers",
+          "settings": {
+            "title": "Jess Racklyeft"
+          }
+        },
+        "6d4d268a-1f06-436d-bfb4-c4d949361397": {
+          "type": "designers",
+          "settings": {
+            "title": "Louisa Camille"
+          }
+        },
+        "ed890654-7d33-4708-8161-17328fbb52bf": {
+          "type": "designers",
+          "settings": {
+            "title": "Donna Luke"
+          }
+        },
+        "9b372c5c-1962-46c0-b981-07c7a4178a9b": {
+          "type": "designers",
+          "settings": {
+            "title": "Lorri McPherson"
+          }
+        },
+        "f9d4c76b-8386-421d-80a4-9df5d95ad2ce": {
+          "type": "designers",
+          "settings": {
+            "title": "Cat McInnes"
+          }
+        },
+        "e9e59e98-9215-442f-908a-dba8f8b1dd4c": {
+          "type": "collabs",
+          "settings": {
+            "title": "Pete Cromer"
+          }
+        },
+        "33b23286-66e6-4a3a-b255-919ae8d7345b": {
+          "type": "collabs",
+          "settings": {
+            "title": "Jocelyn Proust"
+          }
+        },
+        "fb85e28d-2813-4d0e-b10f-2821e1686226": {
+          "type": "collabs",
+          "settings": {
+            "title": "Melanie Hava"
+          }
+        },
+        "46f206d7-6a77-48f2-a18e-6eb2e8f7712f": {
+          "type": "collabs",
+          "settings": {
+            "title": "Laura Blythman"
+          }
+        },
+        "45c74486-20e1-409a-9ee2-a2d9a8f16f8e": {
+          "type": "collabs",
+          "settings": {
+            "title": "Liz Harry"
+          }
+        },
+        "6524a63e-7c62-4b2d-8a47-801cd954070e": {
+          "type": "collabs",
+          "settings": {
+            "title": "Stephanie Buscema"
+          }
+        },
+        "edd3d5c6-cf6f-44d2-9361-8b55785e2856": {
+          "type": "collabs",
+          "settings": {
+            "title": "Mimsy"
+          }
+        },
+        "3fac48d3-c579-4893-8d2a-d274b0f10c08": {
+          "type": "collabs",
+          "settings": {
+            "title": "Mel Stringer"
+          }
+        }
+      },
+      "block_order": [
+        "designers_9E7x7R",
+        "1ea65153-0132-4ac7-af8f-0080514d17ee",
+        "7f45d3e1-b29f-4598-8beb-819df026ef01",
+        "5ee5644c-a469-4b7c-b074-180f05b0c0ac",
+        "bf3bed5d-933f-490d-8567-e5c56500c4f5",
+        "6d4d268a-1f06-436d-bfb4-c4d949361397",
+        "ed890654-7d33-4708-8161-17328fbb52bf",
+        "9b372c5c-1962-46c0-b981-07c7a4178a9b",
+        "f9d4c76b-8386-421d-80a4-9df5d95ad2ce",
+        "e9e59e98-9215-442f-908a-dba8f8b1dd4c",
+        "33b23286-66e6-4a3a-b255-919ae8d7345b",
+        "fb85e28d-2813-4d0e-b10f-2821e1686226",
+        "46f206d7-6a77-48f2-a18e-6eb2e8f7712f",
+        "45c74486-20e1-409a-9ee2-a2d9a8f16f8e",
+        "6524a63e-7c62-4b2d-8a47-801cd954070e",
+        "edd3d5c6-cf6f-44d2-9361-8b55785e2856",
+        "3fac48d3-c579-4893-8d2a-d274b0f10c08"
+      ],
+      "settings": {
+        "top-wave": "1",
+        "top-color-1": "#f8f3ec",
+        "top-color-2": "#f4e9d2",
+        "flip-top-wave": false,
+        "bottom-wave": "0",
+        "bottom-color-1": "#f8f3ec",
+        "bottom-color-2": "#f4e9d2",
+        "flip-bottom-wave": true
+      }
+    },
+    "carousels-assistants-carousel": {
+      "type": "carousels-assistants-carousel",
+      "blocks": {
+        "c987e38e-2590-4a43-b655-0c2daef7ecfe": {
+          "type": "assistant",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Bitmap_1.jpg",
+            "title": "Sally Camille",
+            "bio": "Dissentiunt argumentum saepe veri unum id corrumpit dicit fuisset at dolores no duo ex."
+          }
+        },
+        "27af2083-4887-44bf-89d1-633f1184ec34": {
+          "type": "assistant",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Bitmap_4.jpg",
+            "title": "Sally Camille",
+            "bio": "Dissentiunt argumentum saepe veri unum id corrumpit dicit fuisset at dolores no duo ex."
+          }
+        },
+        "e92f2581-8ff0-44f6-9f2c-87a1aca23c29": {
+          "type": "assistant",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Bitmap_5.jpg",
+            "title": "Sally Camille",
+            "bio": "Dissentiunt argumentum saepe veri unum id corrumpit dicit fuisset at dolores no duo ex."
+          }
+        },
+        "56923f0f-cdd4-45f0-8a70-1e7410573fb0": {
+          "type": "assistant",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Bitmap_2.jpg",
+            "title": "Sally Camille",
+            "bio": "Dissentiunt argumentum saepe veri unum id corrumpit dicit fuisset at dolores no duo ex."
+          }
+        },
+        "954be65c-43bd-43f3-83d8-7e29f2e7fb43": {
+          "type": "assistant",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Bitmap.jpg",
+            "title": "Sally Camille",
+            "bio": "Dissentiunt argumentum saepe veri unum id corrumpit dicit fuisset at dolores no duo ex."
+          }
+        },
+        "1756223e-2357-4146-9be1-7ddd7fdd90c2": {
+          "type": "assistant",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Bitmap_2.jpg",
+            "title": "Sally Camille",
+            "bio": "Dissentiunt argumentum saepe veri unum id corrumpit dicit fuisset at dolores no duo ex."
+          }
+        },
+        "5eaeb723-1bf7-4957-87a2-a3cc1691ee0e": {
+          "type": "assistant",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Bitmap_3.jpg",
+            "title": "Lorem Ipsum",
+            "bio": "Nulla velit risus, consectetur vitae luctus at, condimentum vel urna. Nam vel felis metus."
+          }
+        },
+        "0d794bdb-f10d-4328-9a9b-a4001f57e598": {
+          "type": "assistant",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Bitmap.jpg",
+            "title": "Lorem Ipsum",
+            "bio": "Nulla velit risus, consectetur vitae luctus at, condimentum vel urna. Nam vel felis metus."
+          }
+        }
+      },
+      "block_order": [
+        "c987e38e-2590-4a43-b655-0c2daef7ecfe",
+        "27af2083-4887-44bf-89d1-633f1184ec34",
+        "e92f2581-8ff0-44f6-9f2c-87a1aca23c29",
+        "56923f0f-cdd4-45f0-8a70-1e7410573fb0",
+        "954be65c-43bd-43f3-83d8-7e29f2e7fb43",
+        "1756223e-2357-4146-9be1-7ddd7fdd90c2",
+        "5eaeb723-1bf7-4957-87a2-a3cc1691ee0e",
+        "0d794bdb-f10d-4328-9a9b-a4001f57e598"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "The Workshop Assistants",
+        "subtitle": "Your pick & pack Erstwilder elves.",
+        "top-wave": "0",
+        "top-color-1": "",
+        "top-color-2": "",
+        "flip-top-wave": false,
+        "bottom-wave": "0",
+        "bottom-color-1": "",
+        "bottom-color-2": "",
+        "flip-bottom-wave": false
+      }
+    },
+    "content-featured-content-7": {
+      "type": "content-featured-content-7",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/MEET_THE_TEAM_WORK_WITH_US.jpg",
+        "title": "Want to work with us?",
+        "content": "<p>We're always open to opportunities and love hearing from talented people who have their heart set on joining our team. So, while we might not always have your dream position available, we'd welcome an introduction. Besides, who knows what the future holds! Contact us below to discuss working together.<\/p>",
+        "cta-label": "Work with us",
+        "cta-url": "shopify:\/\/pages\/contact",
+        "top-wave": "0",
+        "top-color-1": "",
+        "top-color-2": "",
+        "flip-top-wave": false,
+        "bottom-wave": "3",
+        "bottom-color-1": "#e4987f",
+        "bottom-color-2": "#f4e9d2",
+        "flip-bottom-wave": false
+      }
+    }
+  },
+  "order": [
+    "banners-hero-image-content",
+    "carousels-team-carousel",
+    "carousels-designers-carousel",
+    "carousels-assistants-carousel",
+    "content-featured-content-7"
+  ]
+}

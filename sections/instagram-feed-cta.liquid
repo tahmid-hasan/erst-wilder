@@ -1,0 +1,212 @@
+
+{{ 'sections.instagram-feed-cta.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign title = section.settings.title | escape
+  assign preheading = section.settings.preheading | escape
+  assign ctaLabel = section.settings.cta-label | escape
+  assign igLink = section.settings.ig-link
+
+  assign topWave = section.settings.top-wave
+  assign topColor1 = section.settings.top-color-1
+  assign topColor2 = section.settings.top-color-2
+  assign isFlippedTop = section.settings.flip-top-wave
+
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+-%}
+
+{%- comment -%} Top Wave {%- endcomment -%}
+{%- if topWave != "0" -%}
+  {%- render 'object.wave' with {
+    waveNumber:topWave
+    color1: topColor1
+    color2: topColor2,
+    isFlipped: isFlippedTop
+  } -%}
+{%- endif -%}
+
+<section class="c-instagram-feed-cta">
+  <div class="c-instagram-feed-cta__outer">
+    <div class="c-instagram-feed-cta__inner">
+
+      <div class="c-instagram-feed-cta__header">
+
+        {%- comment -%} Pretitle {%- endcomment -%}
+        {%- if preheading != blank -%}
+          <p class="c-instagram-feed-cta__preheading">
+            {{- preheading -}}
+          </p>
+        {%- endif -%}
+
+        {%- comment -%} Title {%- endcomment -%}
+        {%- if title != blank -%}
+          <h5 class="c-instagram-feed-cta__title o-heading--3">
+            {{- title -}}
+          </h5>
+        {%- endif -%}
+
+      </div>
+
+      {%- comment -%} Instagram Feed {%- endcomment -%}
+      <div class="c-instagram-feed-cta__feed-container">
+        <div id="insta-feed">
+          {%- comment -%} Instafeed App {%- endcomment -%}
+        </div>
+      </div>
+
+      {%- comment -%} Instagram Link {%- endcomment -%}
+      {%- if ctaLabel != blank and igLink != blank -%}
+        <a href="{{- igLink -}}" class="c-instagram-feed-cta__link o-btn" target="_blank">
+          {{- ctaLabel -}}
+        </a>
+      {%- endif -%}
+
+    </div>
+  </div>
+</section>
+
+{%- comment -%} Bottom Wave {%- endcomment -%}
+{%- if bottomWave != "0" -%}
+  {%- render 'object.wave' with {
+    waveNumber:bottomWave
+    color1: bottomColor1
+    color2: bottomColor2,
+    isFlipped: isFlippedBottom
+  } -%}
+{%- endif -%}
+
+{% schema %}
+  {
+    "name": "Instagram Feed with CTA",
+    "class": "c-section c-section__instagram-feed-cta",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Instagram Feed Title",
+        "default": "Join us on our Instagram"
+      },
+      {
+        "type": "text",
+        "id": "preheading",
+        "label": "Pre-heading",
+        "default": "Socials"
+      },
+      {
+        "type": "text",
+        "id": "cta-label",
+        "label": "CTA Label",
+        "default": "@erstwilder"
+      },
+      {
+        "type": "text",
+        "id": "ig-link",
+        "label": "Instagram Link",
+        "default": "https://www.instagram.com/erstwilder"
+      },
+      {
+        "type": "textarea",
+        "id": "instagram-script",
+        "label": "Instagram Script",
+        "info": "Place the FourSixty script here."
+      },
+      {
+        "type": "header",
+        "content": "Top Wave"
+      },
+      {
+        "type": "select",
+        "id": "top-wave",
+        "label": "Top Wave",
+        "default": "0",
+        "options": [
+          {
+            "value": "0",
+            "label": "No Wave"
+          },
+          {
+            "value": "1",
+            "label": "Wave 1"
+          },
+          {
+            "value": "2",
+            "label": "Wave 2"
+          },
+          {
+            "value": "3",
+            "label": "Wave 3"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "top-color-1",
+        "label": "Color 1"
+      },
+      {
+        "type": "color",
+        "id": "top-color-2",
+        "label": "Color 2"
+      },
+      {
+        "type": "checkbox",
+        "id": "flip-top-wave",
+        "label": "Flip wave vertically",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Bottom Wave"
+      },
+      {
+        "type": "select",
+        "id": "bottom-wave",
+        "label": "Bottom Wave",
+        "default": "0",
+        "options": [
+          {
+            "value": "0",
+            "label": "No Wave"
+          },
+          {
+            "value": "1",
+            "label": "Wave 1"
+          },
+          {
+            "value": "2",
+            "label": "Wave 2"
+          },
+          {
+            "value": "3",
+            "label": "Wave 3"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "bottom-color-1",
+        "label": "Color 1"
+      },
+      {
+        "type": "color",
+        "id": "bottom-color-2",
+        "label": "Color 2"
+      },
+      {
+        "type": "checkbox",
+        "id": "flip-bottom-wave",
+        "label": "Flip wave vertically",
+        "default": false
+      }
+    ],
+    "presets": [
+      {
+        "category": "Media",
+        "name":"Instagram Feed with CTA"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,482 @@
+{
+  "sections": {
+    "faq-template-faq": {
+      "type": "faq-template-faq",
+      "blocks": {
+        "d49e39d4-1077-4a9f-bdbb-2c55d9e7923c": {
+          "type": "category",
+          "settings": {
+            "title": "Shipping"
+          }
+        },
+        "e36d4709-e17b-4eba-9143-5066efce7da4": {
+          "type": "faq",
+          "disabled": true,
+          "settings": {
+            "category": "Shipping",
+            "title": "**Orders Open but Dispatch Delayed for the Holidays!**",
+            "answer": "<p>Please note that we are currently on a short holiday break. Orders can still be placed but all orders received after 9am AEDT on Friday 22nd December 2023 will be dispatched within 5 working days of our return to HQ on Tuesday 2nd January 2024.<\/p>"
+          }
+        },
+        "0bb45115-db20-4b82-a544-7a10f0ed4c06": {
+          "type": "faq",
+          "settings": {
+            "category": "Shipping",
+            "title": "Shipping within Australia",
+            "answer": "<p>FREE Express shipping for all orders over $80<\/p><p>$7.95 flat rate Express shipping for all other orders under $80<\/p><p><\/p><p>All domestic orders are sent via Australia Post Express. Deliveries to major cities should arrive within 3 business days. All parcels larger than letterbox size require signature upon delivery. Please select 'Authority to Leave' at checkout if you wish to have your parcel left at your door, and add a note detailing where the parcel is to be left, otherwise your order will be taken to your local post office for safe keeping. Please note that by doing so, Erstwilder and Australia Post are not liable for any missing parcels.<\/p>"
+          }
+        },
+        "84c7fc48-b453-44f4-854b-6e74e35bbead": {
+          "type": "faq",
+          "settings": {
+            "category": "Shipping",
+            "title": "Shipping to the USA",
+            "answer": "<p>Free <strong>DHL E-Commerce<\/strong> shipping for orders over $120 (AUD)<\/p><p>$9.95 (AUD) flat rate <strong>DHL E-Commerce<\/strong> shipping for orders under $120 (AUD)<\/p><p>$14.95 (AUD) <strong>DHL Express<\/strong> shipping is optional at checkout for all orders<\/p><p>Delivery expected between 4-6 business days<\/p><p>All DHL parcels are fully tracked<\/p><p><em>*Please note that the final stage of delivery may be completed in your country by either DHL or USPS. No signature is required.<\/em><\/p>"
+          }
+        },
+        "2fdfffe1-3ba7-457a-be55-7e02e9408302": {
+          "type": "faq",
+          "settings": {
+            "category": "Shipping",
+            "title": "Shipping Internationally (excluding the USA)",
+            "answer": "<p>For international orders (other than those shipping to the USA) two services are available: <strong>DHL E-Commerce<\/strong> and <strong>Australia Post International.<\/strong> <br\/><br\/>Shipping fees and free shipping thresholds are the same for both services:<\/p><p>FREE international shipping for all orders over $120 (AUD) <\/p><p>Flat rate $9.95 (AUD) international shipping for all orders under $120 (AUD) <\/p><p><strong>DHL Express<\/strong> is optional too but is charged a flat rate of $14.95 (AUD) irrespective of order value. <\/p><p>Before selecting your shipping service, please consider the benefits of each as outlined below. <\/p><p> <\/p><p><strong>DHL E-COMMERCE<\/strong> is a high-quality courier service, with <strong>DHL EXPRESS<\/strong> the quickest international shipping option we offer at checkout.<br\/><br\/>Note, all DHL shipments may incur higher fees for delivery completion once arriving in your country\/region, at their discretion. These charges vary by parcel and region and are charged to you directly via DHL, not Erstwilder. As such, we cannot be held responsible for any additional fees you may incur on delivery by DHL. <br\/><br\/>Please also note all DHL E-commerce international parcels (except USA) are sorted through the DHL German facility first, before being passed onto your local postal service for delivery. Tracking updates can be delayed so please refer to the estimated delivery times below before escalating further.<br\/><br\/>**Update: 1st Dec 2023 - please note there may be additional delays currently due to peak holiday season**<\/p><p><em>Estimated Delivery Times with DHL E-Commerce: <\/em><\/p><p><em>USA: 4-6 business days <\/em><\/p><p><em>UK: 5 business days <\/em><\/p><p><em>New Zealand: 5-7 business days  <\/em><\/p><p><em>Canada: 9-10 business days<\/em><\/p><p><em>Singapore: 5-6 business days <\/em><\/p><p><em>Norway: 8 business days <\/em><\/p><p><em>Germany: 8 business days  <\/em><\/p><p><em>Czech Republic: 9-10 business days  <\/em><\/p><p> <\/p><p><strong>AUSTRALIA POST INTERNATIONAL<\/strong> is a standard mail service and has an estimated delivery window of 10-15 business days, at a minimum. This option is an ‘all-inclusive’ priced service, meaning the only additional fees you may incur are Custom and Duty taxies set and charged by your local government departments, for which you are responsible. <\/p><p>While instances of missing\/lost parcels for both services are low, and although we cannot be held responsible for lost\/missing parcels, if an order is lost in transit, or delayed beyond all reasonable expectations provided by the carrier, we will re-ship the product at our expense (subject to availability), but you will be required to pay a re-shipping fee of $14.95. <\/p><p>Signature is not required for delivery for any service other than DHL Express. If you are not available to receive the delivery and there is no safe place to leave the parcel, a card will be left for you to arrange redelivery or self-collection from your local post office. <\/p><p>All international orders require a phone number for delivery and must be delivered to a residential address. They cannot be delivered to a PO Box, Army Base or Hotel. <\/p><p><em>Due to carrier limitations please note that we are currently unable to ship to the following countries\/regions: <\/em><\/p><p><em>Algeria- Cuba - Iran - Islamic Republic Of Korea - Israel - Democratic People's Republic Of North Korea - Kuwait- Latvia - Morocco - Nepal - Nigeria - Pakistan - Russia - Saudi Arabia - Sudan - Syria <\/em><\/p><p>*Note that due to the current crisis in the Middle East, and complications with shipping services in the region, we have been advised not to ship parcels to Israel. This is temporary and we will resume shipping as soon as possible.<\/p><p>Some countries cannot be shipped to with a tracked service. If this is the case for your delivery address, you will receive an email confirming that you'd like to proceed before your order is shipped, as we cannot be responsible for untracked shipments.<\/p>"
+          }
+        },
+        "8f98dc3b-675d-4c44-bae4-aaf21927725b": {
+          "type": "faq",
+          "settings": {
+            "category": "Shipping",
+            "title": "Processing & Dispatch Times",
+            "answer": "<p>Processing orders quickly is important to us, and something we’re well known for - just ask any Erstwildian! Most days we’re able to dispatch all orders placed before 1:00pm (AEDT\/AEST) on the same day, however during major sale events or new collection launches, please allow up to 7 working days to receive your shipping confirmation email.<\/p><p>Once your order is processed, you will receive a shipping confirmation email with tracking details. If you haven't received a shipping confirmation email within 7 business days, please contact us via hello@erstwilder.com and we'll be able to assist further.<\/p><p>Deliveries are sent during business hours - Monday to Friday. Orders placed on weekends and public holidays will be processed the next business day.<\/p>"
+          }
+        },
+        "0c2cb1cb-abe3-4aaa-9558-7d8d55df750f": {
+          "type": "faq",
+          "settings": {
+            "category": "Shipping",
+            "title": "Will I be charged shipping if I use a discount code?",
+            "answer": "<p>If using a Discount Code brings your order total below our free shipping threshold then yes, standard shipping charges will apply.<\/p>"
+          }
+        },
+        "55f9ac12-f223-49d2-911a-63ec25a90741": {
+          "type": "faq",
+          "settings": {
+            "category": "Shipping",
+            "title": "Customs & Duty Fees",
+            "answer": "<p>If you are ordering from outside of Australia, you will be responsible for any customs\/duties charges in your own country. For further information, please contact your local customs office.<\/p>"
+          }
+        },
+        "ab43ca90-94fa-4d29-9b6f-3561e73b3696": {
+          "type": "faq",
+          "settings": {
+            "category": "Shipping",
+            "title": "Orders Returned to Sender",
+            "answer": "<p>If your parcel happens to return to Erstwilder due to failure to collect from a drop-off location, you will be notified to pay a re-shipping fee if you would still like your order re-sent to you. Should you not want the order re-sent, you will be refunded less the original shipping costs and a 10% restocking fee. We try to offer competitive shipping rates, which is quite costly for us, so we appreciate your understanding that we are unable to re-ship orders at our expense.<\/p>"
+          }
+        },
+        "9b19ab00-6677-4f5d-906c-c47c9e4d836e": {
+          "type": "faq",
+          "settings": {
+            "category": "General (Other)",
+            "title": "Will I receive a printed invoice?",
+            "answer": "<p>We’re always looking at ways we can reduce our impact on the environment, so as of September 1st 2018, we’ve gone paperless! Rather than including a printed invoice in your parcel, you’ll find a link to your invoice in your order confirmation and shipping confirmation emails. We estimate this will save approximately five average size pine trees every year! Can’t find the link? <a href=\"mailto:hello@erstwilder.com\">Email us <\/a>and we’ll email you a copy of the invoice.<\/p>"
+          }
+        },
+        "9b48bc2c-08af-4f73-af80-3de62e7d2aa6": {
+          "type": "category",
+          "settings": {
+            "title": "Returns"
+          }
+        },
+        "15227946-2ed1-4b9f-9bb6-bad76690b403": {
+          "type": "faq",
+          "settings": {
+            "category": "Returns",
+            "title": "Returns Policy",
+            "answer": "<p>We want you to love your Erstwilder purchases, which is why we offer a 60-day return policy for all purchases on erstwilder.com that meet the criteria below:<\/p><p>- Items must be returned within 60 days of purchase together with proof of purchase.<\/p><p>- Items must be in their original condition with accompanying gift boxes, story cards and swing tags.<\/p><p>- Lucky Dips, Perfectly Imperfect and Gift Cards cannot be returned<\/p><p>- No refunds on Embroidery Patterns<\/p><p>- Earrings are not able to be returned for hygiene reasons<\/p><p>- For each order, a maximum of three items can be returned.<\/p><p>If you return anything within 30-days we’ll issue a refund.  After that, (up to 31-60 days) you’ll receive a digital store gift card in place of a refund.<\/p><p>As much as we’d love to, we cannot sustain accepting returns after 60-days has passed. Please do not send items back without first contacting us as you may need to pay to have them returned to you once again and we’d rather you to avoid the unnecessary spend.<\/p><p>We don’t offer exchanges, however if you get a digital gift card, you can use this to purchase something else you will love – super easy!<br\/><br\/><em>Note: If a one-use discount code is redeemed with an order that is then subsequently cancelled or has an item returned due to change of mind, the discount code will not be reinstated and only the paid amount (after discounts) will be refunded or credited.<\/em><\/p>"
+          }
+        },
+        "6936ff9e-da8e-4711-8f1f-5cdbd5ee180f": {
+          "type": "faq",
+          "settings": {
+            "category": "Returns",
+            "title": "Return Postage Fees",
+            "answer": "<p>Where items are returned due to faults, a full refund will be issued for the purchase, including any original postage fees paid. For ‘change of mind’ returns the value of the refund or digital gift card will be to the value of the product only. We can provide a prepaid label for 'Change of Mind' returns in Australia, with the $7.95 cost deducted from your refund. International customers are responsible for their own return postage for 'Change of Mind' returns. Also, if your return reduces your original order total to below the free shipping threshold when your order was placed, then the return amount will have any original shipping fees subtracted. Sometimes we’re not able to tell from photos or evidence provided whether there is in fact a fault. In these instances, we’ll provide you with a pre-paid returns label to ship your piece\/s back to us so we can assess the fault in person. If we determine that there is no fault you may be required to pay a re-shipping fee to have the item sent to you again.<\/p>"
+          }
+        },
+        "d6fd90ba-70f1-4507-87ad-f8e540d4c105": {
+          "type": "faq",
+          "settings": {
+            "category": "Returns",
+            "title": "Fair Use",
+            "answer": "<p>Don’t get us wrong, we’re sure 99% of you are lovely, trustworthy and honest people, but as a small business we need to protect ourselves from being taken advantage of. So, if we notice a strange pattern of returns, we might need to investigate and take action, such as deactivating the account in question. This may be in cases where we think people are wearing items and then sending them back, or ordering multiples of an item during a launch and then consistently returning some. If you find your account deactivated and believe it to be in error please reach out to us at <a href=\"mailto:hello@erstwilder.com\">hello@erstwilder.com<\/a>.<\/p><p>If you have any questions regarding your return please email the team at <a href=\"mailto:hello@erstwilder.com\">hello@erstwilder.com<\/a>.<\/p>"
+          }
+        },
+        "89a4507c-85e5-4d96-8784-525aa35cf574": {
+          "type": "faq",
+          "settings": {
+            "category": "Returns",
+            "title": "How to Return an Item",
+            "answer": "<p>As per our policy, we accept returns on eligible product for either <span style=\"text-decoration:underline\">change of mind<\/span> or <span style=\"text-decoration:underline\">faulty product<\/span>.<\/p><p>The process for the return will depend on the return type and your location. <\/p><p>Please note, for all scenarios, we cannot be held responsible for any lost returns.<\/p><p><span style=\"text-decoration:underline\"><strong>CHANGE OF MIND returns<\/strong><\/span><\/p><p><strong>Australian customers<\/strong><\/p><p>Erstwilder can provide a pre-paid Australia Post label, with the $7.95 cost deducted from your refund. Alternatively, you can choose to organise your own return delivery, in which case we strongly recommend using a traceable delivery method<br\/>and taking note of your tracking number.<\/p><p>To organise a pre-paid label, please contact customer case via email at <a href=\"mailto:hello@erstwilder.com\">hello@erstwilder.com<\/a> with ‘RETURNS’ in the subject line and be sure to include your contact details and order number.<\/p><p>Otherwise, please send your return (including your contact details and order number) to the following address:<\/p><p>Erstwilder<\/p><p>13 Edgecombe Court<\/p><p>Moorabbin, VIC, 3189<\/p><p>Australia <\/p><p><strong>International customers<\/strong><\/p><p>International customers are responsible for organising their own return postage. We strongly recommend using a traceable delivery method and taking<br\/>note of your tracking number.<\/p><p>Please send your return (including your contact details and order number) to<br\/>the following address:<\/p><p>Erstwilder<\/p><p>13 Edgecombe Court<\/p><p>Moorabbin, VIC, 3189<\/p><p>Australia<\/p><p><span style=\"text-decoration:underline\"><strong>FAULTY PRODUCT returns<\/strong><\/span><\/p><p>To return an item due to a product fault, please email us at <a href=\"mailto:hello@erstwilder.com\">hello@erstwilder.com<\/a> with ‘RETURNS FAULTY’ in the subject line and be sure to include your contact details, order number<br\/>and reason for the return in the body of the email, including pictures of the fault.<\/p><p>Then, please wait for our team to assess and reply. Don't worry, we'll get back to you as quickly as possible, usually by the next business day!<\/p><p><strong>Australian customers<\/strong><\/p><p>For all approved returns, we will then issue you with a pre-paid returns label. You can print and take it along to the post office to send your return. If you<br\/>don't have a printer, most Australia Post Offices can print for you! <\/p><p>You can check if yours does here: <a href=\"https:\/\/auspost.com.au\/locate\/returns-print-at-post\">https:\/\/auspost.com.au\/locate\/returns-print-at-post<\/a><\/p><p><strong>International customers<\/strong><\/p><p>Our customer care team will reply with the best solution based on your region, case by case.<\/p><p><\/p><p><span style=\"text-decoration:underline\"><strong>What happens next?<\/strong><\/span><\/p><p>Once a return (change of mind or faulty product) is received at HQ, it will be reviewed and after being cleared you will receive a refund for the purchase price. <\/p><p>Please note, if any discount codes were used during checkout, the final discounted price that was paid will be refunded, as per your order confirmation details. <\/p><p>If the return is for a change of mind you will be refunded the product value less any associated shipping charges (original and return shipping) but with our pre-paid return labels you'll be getting the lowest possible shipping rates.<\/p><p>We endeavor to process refunds as soon as they are received but please allow up to 5 working days for returns to be processed, especially during peak busy periods. <\/p><p>You will receive an email notification of any refund once it has been processed.<br\/><br\/><em>Please note: If a one-use discount code is redeemed with an order that is then subsequently cancelled or has an item returned due to change of mind, the discount code will not be reinstated and only the paid amount (after discounts) will be refunded or credited.<\/em><\/p>"
+          }
+        },
+        "55cf2a50-fbcb-4472-9128-69eaf4a05570": {
+          "type": "faq",
+          "settings": {
+            "category": "Returns",
+            "title": "How to Exchange an Item",
+            "answer": "<p>Due to the limited nature of our pieces, we are unable to offer exchanges on any items. If you would like a different item to the one you have ordered, we suggest purchasing the new piece and following the returns process for a refund of the original item.<\/p>"
+          }
+        },
+        "caeb608a-27b5-427d-94a9-adf4af093cf7": {
+          "type": "faq",
+          "settings": {
+            "category": "Returns",
+            "title": "Can I return an item purchased from a stockist?",
+            "answer": "<p>Return and exchange policies are subject to the discretion of individual stockists. The same policy stated above may not apply. If you have purchased an Erstwilder product from an authorised stockist, any request for a refund or exchange must be first directed to the store of purchase. If you are not happy with their response please reach out to us at <a href=\"mailto:hello@erstwilder.com\">hello@erstwilder.com<\/a>.<\/p>"
+          }
+        },
+        "fcc6cf48-141b-49e8-81f0-fb343dfb4947": {
+          "type": "faq",
+          "settings": {
+            "category": "Returns",
+            "title": "Can Erstwilder repair damaged designs?",
+            "answer": "<p>We don’t currently offer repairs, but minor issues can often be fixed easily if you’re outside of our returns and exchanges window so do ask us! We have a fantastic returns and exchange policy though. For all the details on this, please head across to our Returns Information.<\/p>"
+          }
+        },
+        "ebd572a8-8a41-4620-97f4-4c8a9ca62885": {
+          "type": "category",
+          "settings": {
+            "title": "Payment and Checkout"
+          }
+        },
+        "3a6d247c-e1e3-4318-bfda-4c85585f40a1": {
+          "type": "faq",
+          "settings": {
+            "category": "Payment and Checkout",
+            "title": "Can I make changes to a submitted order?",
+            "answer": "<p>Unfortunately we are unable to make changes to your order or combine orders once submitted. Please ensure all details on your order are correct before submitting your order, in particular your email address, delivery address and contact number.<\/p>"
+          }
+        },
+        "579194d1-b173-48dc-b729-a2ca9f7a329c": {
+          "type": "faq",
+          "settings": {
+            "category": "Payment and Checkout",
+            "title": "Can I combine a discount code and gift card?",
+            "answer": "<p>Why, yes you can! Gift cards are a valid form of payment and therefore you can use a discount code with gift cards to place your order. Please note however, discount codes cannot be used to purchase gift cards.<\/p>"
+          }
+        },
+        "b0bb5cc2-ebc3-479f-9782-46885ffefd5e": {
+          "type": "faq",
+          "settings": {
+            "category": "Payment and Checkout",
+            "title": "Can I use multiple discount codes?",
+            "answer": "<p>Only one discount code can be applied to an order when checking out.<\/p>"
+          }
+        },
+        "96e79087-57c2-4d65-a1de-1f7ac9a553e7": {
+          "type": "faq",
+          "settings": {
+            "category": "Payment and Checkout",
+            "title": "Will I be charged shipping if I use a discount code?",
+            "answer": "<p>If using a Discount Code brings your order total below our free shipping threshold then yes, standard shipping charges will apply.<\/p>"
+          }
+        },
+        "2bec7aef-741a-4b7f-9656-1cb1a3ad246c": {
+          "type": "faq",
+          "settings": {
+            "category": "Payment and Checkout",
+            "title": "Why did an item disappear from my cart at checkout?",
+            "answer": "<p>We know. It’s the worst. You’ve been ready and waiting for launch, logged in, quickly added your favourite pieces to your cart, rushed to check out, and suddenly items you were paying for are no longer available?! It seems unfair. It shouldn’t be possible! We totally get this feeling. Unfortunately the way most e-commerce systems work (outside of things like ticketing and hotel bookings, for example) is that items are not held when added to your cart but are held only during the actual payment processing stage (for about 5 minutes!). Once you’ve proceeded through the checkout and payment is being finalised, our site will do a last check to make sure all products which were in your cart are indeed still in stock. Sometimes the response to our launches is overwhelming and on occasion we may find hundreds of people all trying to buy a limited design of which we only have a small number of pieces avaialble. So, it’s possible that things ‘disappear’ from your cart from time to time during launches. We apologise in advance if this does ever happen to you but we appreciate your understanding.<\/p>"
+          }
+        },
+        "568c1eb8-f943-43d9-aee9-f37456bc9861": {
+          "type": "faq",
+          "settings": {
+            "category": "Payment and Checkout",
+            "title": "Are there quantity limits when shopping Erstwilder designs?",
+            "answer": "<p>Yes. To ensure our launches are as fair as possible to all, and to prevent scalping, all new resin designs are limited to a maximum of 2 per order. We do not set this to 1 per order because it is common for our community members to shop for themselves and friends or family members at the same time. All other designs that are not resin, such as enamel pins, are limited to a maximum of 10. After 30 days from launch, resin design limits are updated to a maximum of 6 per design, per order.<\/p>"
+          }
+        },
+        "35b7fca7-23ae-4df1-b96b-28a88b15ef16": {
+          "type": "faq",
+          "settings": {
+            "category": "Payment and Checkout",
+            "title": "How can I pay for my order?",
+            "answer": "<p>In an ideal world, we’d accept payment in records, organic veggies, or our personal favourite - hugs. Alas, some form of remuneration is required or we might run out of money to produce more designs for you! You can check out with PayPal, all major credit cards, and a variety of buy now pay later options depending on your region.<\/p>"
+          }
+        },
+        "85b4f62d-2f9f-4604-95c1-98c5ea8bec0d": {
+          "type": "faq",
+          "settings": {
+            "category": "Payment and Checkout",
+            "title": "Do you have Buy Now Pay Later options?",
+            "answer": "<p>Afterpay, Zippay, Klarna and Sezzle are all available on ERSTWILDER.COM.<\/p><p>Customers in Australia can choose between Afterpay, Zippay and Klarna.<\/p><p>Customers in the USA can choose between Afterpay and Sezzle.<\/p><p>Customers in New Zealand can checkout with Afterpay.<\/p><p>All are safe, simple and convenient payment options, which allow you shop now and pay later for your purchases, but receive your parcels immediately!<\/p><p>For all the details to choose the right service provider for you, please visit the providers' websites.<\/p>"
+          }
+        },
+        "48cd9815-2ff7-4104-be6e-cd54e121410b": {
+          "type": "faq",
+          "settings": {
+            "category": "Payment and Checkout",
+            "title": "Will I earn reward points when purchasing or redeeming gift cards?",
+            "answer": "<p>No, Erstwilder Gift Cards are not included in the Erstwilder rewards program.<\/p>"
+          }
+        },
+        "9fd24951-a2ef-44b0-aa2f-cb8c609eb3f3": {
+          "type": "faq",
+          "settings": {
+            "category": "Payment and Checkout",
+            "title": "Can gift cards be redeemed with stockists?",
+            "answer": "<p>No, Erstwilder Gift Cards are only valid tender on ERSTWILDER.COM<\/p>"
+          }
+        },
+        "bfa814ad-0695-4375-88d4-788e4a249682": {
+          "type": "faq",
+          "settings": {
+            "category": "Payment and Checkout",
+            "title": "What currency can I pay in?",
+            "answer": "<p>Though you can convert and view prices in a variety of currencies (as per the drop down selector found in the top navigation bar or at the bottom of the website), all prices will convert to Australian dollars for checkout, and orders are ultimately charged in Australian dollars.<\/p>"
+          }
+        },
+        "e1e875f7-c60f-4c36-8697-f0ee345d979c": {
+          "type": "faq",
+          "settings": {
+            "category": "Payment and Checkout",
+            "title": "Is my payment secure?",
+            "answer": "<p>When it comes to your information, we take our responsibilities and obligations very seriously. All personal information such as contact, shipping, and billing details are encrypted and securely communicated to us via a secure server using SSL technology. We never see the full details of credit card information entered.<\/p><p>Credit card payments are proceccesed via Shopify Pay which uses ‘Stripe’, an industry leading card processing authority that exceeds the most stringent security standards. For more information on Stripe, please visit the<a href=\"https:\/\/stripe.com\/docs\/security\" target=\"_blank\"> Stripe <\/a>website.<\/p><p>When checking out with Paypal, your payment details are never exposed to us and are securely encrypted on PayPal’s own servers. For more information on PayPal, please visit the <a href=\"https:\/\/www.paypal.com\/au\/webapps\/mpp\/why-paypal?&kw=sBWT2G5Vx_dc;43029473753;875h0z6319&gclid=COOli-6btscCFUgGvAodQBgApg&mpch=ads&mplx=27731-206508-42569-0&spid=110702961098571598\" target=\"_blank\">PayPal<\/a> website. Please note that we do not accept eCheque via PayPal.<\/p>"
+          }
+        },
+        "784fe5ef-a06e-4e66-815c-86de0c4622db": {
+          "type": "category",
+          "settings": {
+            "title": "Design and Production"
+          }
+        },
+        "387c0473-57a8-40cb-a6c4-a354a6e519c9": {
+          "type": "faq",
+          "settings": {
+            "category": "Design and Production",
+            "title": "Are Erstwilder designs limited run?",
+            "answer": "<p>As a proudly ‘limited run’ brand, all Erstwilder designs are produced in limited numbers for worldwide release. Once sold out, they do not return to stock, to ensure our pieces remain special and collectable, as intended.<br\/><br\/>When Erstwilder first began in 2011, production was capped as low as 200 pieces of each design. But over the years, with the rate designs sold out, we slowly started producing more to better meet the demand from our community and minimise the number of people missing out on designs that were meaningful to them. The maximum was first increased to 1,500 pieces, then again in April 2021 to 3,000 pieces per design. However, we very rarely (almost never in fact!) produce anywhere near the maximum amount of any design. This is something we continue to look at and discuss on an almost daily basis.<br\/><br\/>A common misconception is that we make the same number of pieces for each design. In reality, we try our best to predict how popular a piece will be and produce to meet the demand for each design accordingly. So, one design from the same collection may have 500 units produced, another 150. We’re only human however and don’t always get this right (it is rather tricky!) which does mean despite our best efforts, we can sell out of styles quickly on launch days.<br\/><br\/>If you’re interested to see how many pieces of each design we produced historically, please visit the <a href=\"https:\/\/www.erstwildermuseum.com\/\" target=\"_blank\" title=\"https:\/\/www.erstwildermuseum.com\/\">Erstwilder Museum<\/a>. Note that new collections are typically added to the Museum approximately 120 days after their official release.<br\/><br\/>*Note, the above does not apply to our Remembrance and Pride & Joy collections, which are not subject to the same limited production policy due to their charitable contributions.<\/p>"
+          }
+        },
+        "9bd15dc6-2735-421e-beb3-785d294e82f9": {
+          "type": "faq",
+          "settings": {
+            "category": "Design and Production",
+            "title": "Why do the resin designs vary slightly from piece to piece?",
+            "answer": "<p>Many hands are involved in producing a resin Erstwilder design. The process begins with our illustrator's hands; creating unique, original character-based artworks. Once the layers of a given design have been laser cut, the layers, and all components are then assembled by hand.<\/p><p>Any additional painted detailing is also completed by hand. Because of the manual and human approach we take in production, pieces may have slight variations in component sizes, colouring, and even resin patterns. We like it this way and tend to think it makes our designs as unique from each other as the wonderful people that wear them.<\/p>"
+          }
+        },
+        "7187e06e-c99c-4d86-b2de-05c5d82fd051": {
+          "type": "faq",
+          "settings": {
+            "category": "Design and Production",
+            "title": "Why do designs look different in real life as compared to photos Online?",
+            "answer": "<p>Resin is notoriously difficult to photograph due to its reflective nature. We’re often told photos simply don’t do our designs any justice. Colours also display differently on different computer monitors. That said, we always do our best to photograph designs to show their colouring as accurately as possible.<\/p>"
+          }
+        },
+        "02a8d78e-fc14-4990-ae47-f17870a0b909": {
+          "type": "faq",
+          "settings": {
+            "category": "Design and Production",
+            "title": "Where are Erstwilder pieces designed, and who designs them?",
+            "answer": "<p>Right here in our hometown of Melbourne, Australia. Though originally designed by Louisa Camille, since late 2014 we've worked with an amazing mix of Australian illustrators and artists. These incredibly talented people are responsible for the design work which brings our collections to life. Elements of the design work are done remotely by the illustration team, but all designs are refined, finalised, and submitted into production from our HQ here in Melbourne.<\/p>"
+          }
+        },
+        "a459605e-6d1d-4523-9f66-525f3dda70fd": {
+          "type": "faq",
+          "settings": {
+            "category": "Design and Production",
+            "title": "Where are Erstwilder designs made?",
+            "answer": "<p>Production has always been completed in China, with components being sourced across Asia. We've found the experts in our niche and are proud of our production partnerships.<\/p>"
+          }
+        },
+        "1af719c7-51a2-4566-9a3f-d166fe943d87": {
+          "type": "faq",
+          "settings": {
+            "category": "Design and Production",
+            "title": "Is production ethical?",
+            "answer": "<p>Absolutely! We would only ever work with production partners who share Erstwilder's values and mission to spark joy in the world. Our production team in China are the experts in our niche and are just as invested as we are in delighting the Erstwilder community and working in a way we can all be proud of. The safety and fair treatment of our production team is of the utmost importance to us, as it is to our production partner as well. No employees are under the age of 18, salaries increase each year, and team members are provided with a ‘living wage’ higher than the standard minimum to ensure quality of living. Employees are empowered to join unions if they so choose, there are regular employee representative meetings, and permanent suggestion boxes to solicit employee suggestions. The workplace is equipped with all required safety facilities. Most importantly, the production team conducts internal safety and ethical audits quarterly in addition to undergoing annual ethical audits each year, run by external auditor Sedex. Learn more about Sedex <a href=\"https:\/\/www.sedex.com\/\" target=\"_blank\" title=\"https:\/\/www.sedex.com\/\">here<\/a>.<\/p>"
+          }
+        },
+        "8fad593b-b0d3-4669-a6e0-08820a15e855": {
+          "type": "faq",
+          "settings": {
+            "category": "Design and Production",
+            "title": "Are Erstwilder designs made by hand?",
+            "answer": "<p>Our designs are not made exclusively by hand, though many of the processes are completed this way. Our resin designs are produced initially from laser cut sheets of resin. Layers are then hand-assembled to create that Erstwilder signature depth and dimensionality. All painted detailing is also finished by hand.<\/p>"
+          }
+        },
+        "74afc4e4-5c12-4c0d-8b1b-9d5441ac5771": {
+          "type": "faq",
+          "settings": {
+            "category": "Design and Production",
+            "title": "Do all designs come in gift boxes?",
+            "answer": "<p>Not all, but most! All of our core Erstwilder jewellery line (including all resin brooches, earrings, and necklaces) arrive packaged in a delightfully branded gift box, customised for the collection they are a part of. Designs released after February 2015 also include an insert in the lid featuring the design's original sketch, name, and story. Designs that include packaging, but not our round gift boxes, include Erstwilder Essential earrings, enamel pins, and scarves.<\/p>"
+          }
+        },
+        "11214545-8327-446b-8e23-5b31b5edfe11": {
+          "type": "faq",
+          "settings": {
+            "category": "Design and Production",
+            "title": "How are Erstwilder prices determined?",
+            "answer": "<p>As part of our mission to spark joy since 2011, we’ve always tried to keep our designs as affordable as possible, and we continue to do so. <br\/><br\/>Pricing for our designs have always been determined by a formula based on our production costs, which is why over time, prices have naturally increased. So, what factors impact the cost of our designs? There are quite a few! Importantly (and interestingly!) the size of a design or amount of resin used has very little impact. The bulk of the cost is in the craft, the workmanship. That is the number of pieces and layers that need to be hand-assembled, as well as the amount of detail applied such as etching, paint-fill and printing techniques. <br\/><br\/>Then, other elements that can influence price are license fees, artist royalties, and the number we make of each design, which can vary significantly from each piece to piece and product type (e.g. brooch vs earrings), along with range to range. <br\/><br\/>For our enamel designs, size plays a bigger role than with resin, but the main determinant if the number of colours used and total quantity produced per design.<\/p>"
+          }
+        },
+        "88b76637-edda-40cf-b68b-996c28f64ba4": {
+          "type": "faq",
+          "settings": {
+            "category": "Design and Production",
+            "title": "What are Erstwilder designs made from?",
+            "answer": "<p>The main component of the designs we're best known for is resin, reminiscent of the gorgeous 1930s Bakelite originally used for vintage radio and telephone casings. The components we use have changed over time, as we’re always searching for the best possible quality. At present, designs are produced using beautiful and strong plated brass brooch pins. All earring posts, hooks, necklace chains and jump rings are made from high quality, hypoallergenic stainless steel. <\/p><p>Component information specific to each design can also be found on product pages.<\/p>"
+          }
+        },
+        "653f3fa9-2bc9-4143-b107-da29e438094b": {
+          "type": "category",
+          "settings": {
+            "title": "General (Other)"
+          }
+        },
+        "c84bd1d8-421d-4c05-8aa5-82563396739c": {
+          "type": "faq",
+          "settings": {
+            "category": "General (Other)",
+            "title": "Do you have a Rewards program?",
+            "answer": "<p>We sure do! With the Erstwilder Rewards Club, you’ll receive points for every dollar you spend, which you can redeem for discounts on future purchases. <br\/><br\/>And, if you want even more points, there’s lots of ways to do that too without spending a cent. Just signing up <a href=\"https:\/\/www.erstwilder.com\/account\/register\" target=\"_blank\" title=\"https:\/\/www.erstwilder.com\/account\/register\">here<\/a> gets you 1,500 points to start with. It pays to be quirky!<br\/><br\/>For full program details please visit the <a href=\"https:\/\/www.erstwilder.com\/pages\/the-erstwilder-rewards-club\">Rewards Club<\/a> page.<\/p>"
+          }
+        },
+        "a3e24651-c0c5-4c43-8cb3-7206be99be2d": {
+          "type": "faq",
+          "settings": {
+            "category": "General (Other)",
+            "title": "Can I have multiple accounts or Rewards accounts?",
+            "answer": "<p>You are permitted to have one site account, linking one rewards account, per customer. We have worked hard to create a generous rewards program and, as a small business, it’s important that only one account is held by each customer to ensure rewards and discount codes are issued fairly and enable us to continue running our reward program ongoing.<br\/><br\/>Where our system flags suspicious account activity, site and rewards accounts may be deactivated. We appreciate your understanding.<\/p>"
+          }
+        },
+        "f04c9cb6-8a2e-42ba-bd2b-5e25cad82f83": {
+          "type": "faq",
+          "settings": {
+            "category": "General (Other)",
+            "title": "How can I edit personal details in my account?",
+            "answer": "<p>To update your address details, simply log in to your store account and click on the 'Addresses' link under the 'My Account' heading.<\/p><p>To update your account name and email address, please contact our customer care team via email at hello@erstwilder.com and we'll get back to you shortly!<\/p>"
+          }
+        },
+        "4e3a07a3-6117-4ddf-b9d8-b6e977fab090": {
+          "type": "faq",
+          "settings": {
+            "category": "Design & Production",
+            "title": "Can I submit a design idea?",
+            "answer": "<p>Yes, please! We’ve even dedicated a page to it on our website. Head over to the <a href=\"https:\/\/www.erstwilder.com\/pages\/submit-a-design\">Suggestion Box<\/a> and tell us what we should make next! All of your ideas are fed right through to our design team; they love it when some fresh sparks are thrown into their brainstorming sessions.<\/p>"
+          }
+        },
+        "25fca3a5-75d1-407b-acd8-41327fcb38b7": {
+          "type": "faq",
+          "settings": {
+            "category": "General (Other)",
+            "title": "Do you have a stockist in my area?",
+            "answer": "<p>Check out our <a href=\"https:\/\/www.erstwilder.com\/pages\/erstwilder-stockists\"><strong>stockist <\/strong><\/a>page to search your area for recommended Erstwilder stockists. <br\/><br\/>Note that no stockist carries the entire range, so either shop online with us or email our team at <a href=\"mailto:hello@erstwilder.com\"><strong>hello@erstwilder.com<\/strong><\/a> and we’ll help you find the designs you’re after in a store near you. <br\/><br\/>Alternatively, you can try your luck in the <a href=\"https:\/\/www.facebook.com\/groups\/ErstwilderShopLocal\/\" target=\"_blank\"><strong>‘Erstwilder Shop Local’<\/strong><\/a> group on Facebook which has been set up by us specifically to connect you with stockists near you.<\/p>"
+          }
+        },
+        "f72ed668-878e-463c-aba5-6451ee42e4ef": {
+          "type": "faq",
+          "settings": {
+            "category": "General (Other)",
+            "title": "Can I submit feedback?",
+            "answer": "<p>Oh, we love feedback! Almost as much as we love baby pandas, ice cream and Benedict Cumberbatch. If you’ve got something you want us to hear, send it on through to <a href=\"mailto:hello@erstwilder.com\">hello@erstwilder.com<\/a>.<\/p>"
+          }
+        },
+        "bff360c8-5a4e-48ca-8103-84c4bfc7c5ee": {
+          "type": "category",
+          "disabled": true,
+          "settings": {
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "d49e39d4-1077-4a9f-bdbb-2c55d9e7923c",
+        "e36d4709-e17b-4eba-9143-5066efce7da4",
+        "0bb45115-db20-4b82-a544-7a10f0ed4c06",
+        "84c7fc48-b453-44f4-854b-6e74e35bbead",
+        "2fdfffe1-3ba7-457a-be55-7e02e9408302",
+        "8f98dc3b-675d-4c44-bae4-aaf21927725b",
+        "0c2cb1cb-abe3-4aaa-9558-7d8d55df750f",
+        "55f9ac12-f223-49d2-911a-63ec25a90741",
+        "ab43ca90-94fa-4d29-9b6f-3561e73b3696",
+        "9b19ab00-6677-4f5d-906c-c47c9e4d836e",
+        "9b48bc2c-08af-4f73-af80-3de62e7d2aa6",
+        "15227946-2ed1-4b9f-9bb6-bad76690b403",
+        "6936ff9e-da8e-4711-8f1f-5cdbd5ee180f",
+        "d6fd90ba-70f1-4507-87ad-f8e540d4c105",
+        "89a4507c-85e5-4d96-8784-525aa35cf574",
+        "55cf2a50-fbcb-4472-9128-69eaf4a05570",
+        "caeb608a-27b5-427d-94a9-adf4af093cf7",
+        "fcc6cf48-141b-49e8-81f0-fb343dfb4947",
+        "ebd572a8-8a41-4620-97f4-4c8a9ca62885",
+        "3a6d247c-e1e3-4318-bfda-4c85585f40a1",
+        "579194d1-b173-48dc-b729-a2ca9f7a329c",
+        "b0bb5cc2-ebc3-479f-9782-46885ffefd5e",
+        "96e79087-57c2-4d65-a1de-1f7ac9a553e7",
+        "2bec7aef-741a-4b7f-9656-1cb1a3ad246c",
+        "568c1eb8-f943-43d9-aee9-f37456bc9861",
+        "35b7fca7-23ae-4df1-b96b-28a88b15ef16",
+        "85b4f62d-2f9f-4604-95c1-98c5ea8bec0d",
+        "48cd9815-2ff7-4104-be6e-cd54e121410b",
+        "9fd24951-a2ef-44b0-aa2f-cb8c609eb3f3",
+        "bfa814ad-0695-4375-88d4-788e4a249682",
+        "e1e875f7-c60f-4c36-8697-f0ee345d979c",
+        "784fe5ef-a06e-4e66-815c-86de0c4622db",
+        "387c0473-57a8-40cb-a6c4-a354a6e519c9",
+        "9bd15dc6-2735-421e-beb3-785d294e82f9",
+        "7187e06e-c99c-4d86-b2de-05c5d82fd051",
+        "02a8d78e-fc14-4990-ae47-f17870a0b909",
+        "a459605e-6d1d-4523-9f66-525f3dda70fd",
+        "1af719c7-51a2-4566-9a3f-d166fe943d87",
+        "8fad593b-b0d3-4669-a6e0-08820a15e855",
+        "74afc4e4-5c12-4c0d-8b1b-9d5441ac5771",
+        "11214545-8327-446b-8e23-5b31b5edfe11",
+        "88b76637-edda-40cf-b68b-996c28f64ba4",
+        "653f3fa9-2bc9-4143-b107-da29e438094b",
+        "c84bd1d8-421d-4c05-8aa5-82563396739c",
+        "a3e24651-c0c5-4c43-8cb3-7206be99be2d",
+        "f04c9cb6-8a2e-42ba-bd2b-5e25cad82f83",
+        "4e3a07a3-6117-4ddf-b9d8-b6e977fab090",
+        "25fca3a5-75d1-407b-acd8-41327fcb38b7",
+        "f72ed668-878e-463c-aba5-6451ee42e4ef",
+        "bff360c8-5a4e-48ca-8103-84c4bfc7c5ee"
+      ],
+      "settings": {
+        "title": "FAQ",
+        "subtitle": "We’re here to help",
+        "description": "What do you need help with?",
+        "bottom-wave": "3",
+        "bottom-color-1": "#e4987f",
+        "bottom-color-2": "#f8f3ec",
+        "flip-bottom-wave": true
+      }
+    },
+    "content-callout-cta": {
+      "type": "content-callout-cta",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/FAQ.jpg",
+        "title": "Couldn’t find the answer that you’re looking for?",
+        "description": "Our friendly team is always here to help. Get in touch and our amazing customer support team will be with you as soon as they can.",
+        "cta-label": "Get in touch",
+        "cta-url": "shopify:\/\/pages\/contact",
+        "top-wave": "0",
+        "top-color-1": "#e4987f",
+        "top-color-2": "#f8f3ec",
+        "flip-top-wave": false,
+        "bottom-wave": "2",
+        "bottom-color-1": "#e4987f",
+        "bottom-color-2": "#f4e9d2",
+        "flip-bottom-wave": false
+      }
+    }
+  },
+  "order": [
+    "faq-template-faq",
+    "content-callout-cta"
+  ]
+}

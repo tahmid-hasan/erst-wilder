@@ -1,0 +1,192 @@
+{
+  "sections": {
+    "banners-hero-video": {
+      "type": "banners-hero-video",
+      "settings": {
+        "preheading": "",
+        "title": "Fashioned to keep your outfits extraordinary and your days dandy",
+        "description": "Erstwilder was born in 2011, in a little studio in our hometown of Melbourne, Australia. The label came to life when we began sketching wonderful little creatures that we instantly fell head over heels for. Possessing a love of accessories, and all things vintage-inspired, we initially applied our playful character art to brooch designs and quickly became famous for our collectible brooches, earrings and necklaces. Fast forward to today and you’ll find us designing and producing all sorts of limited-run adornments. We’ve never lost our love for resin and acrylic, but as our community has grown and their requests diversified, so has our offering as we explored enamel accessories, scarves and designer bags and more!",
+        "image": "shopify:\/\/shop_images\/ABOUT_PAGE_VIDEO_THUMBNAIL_02.png",
+        "video-webm": "https:\/\/cdn.shopify.com\/s\/files\/1\/0894\/6582\/files\/ABOUT_US_VIDEO_WEBM.webm?v=1652837052",
+        "video-mp4": "https:\/\/cdn.shopify.com\/s\/files\/1\/0894\/6582\/files\/ABOUT_US_VIDEO_MP4.mp4?v=1652837052",
+        "bottom-wave": "0",
+        "bottom-color-1": "",
+        "bottom-color-2": "",
+        "flip-bottom-wave": false
+      }
+    },
+    "content-block-text": {
+      "type": "content-block-text",
+      "settings": {
+        "title": "Decidedly fun, often outrageous, somewhat quirky and always delightfully companionable.",
+        "top-wave": "0",
+        "top-color-1": "",
+        "top-color-2": "",
+        "flip-top-wave": false,
+        "bottom-wave": "0",
+        "bottom-color-1": "",
+        "bottom-color-2": "",
+        "flip-bottom-wave": false
+      }
+    },
+    "content-featured-content-3": {
+      "type": "content-featured-content-3",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/b038d82acc9b-25EB783D_ADFD_4E59_A0BE_61.jpg",
+        "image-2": "shopify:\/\/shop_images\/ABOUT_FEATURED_CONTENT_3_02_4_84baa76c-b482-4863-8279-93decc915926.jpg",
+        "title": "Our Philosophy",
+        "content": "<p>Our mission is simple. While producing wearable art is what we do, we’re driven by an all-important ‘why’ – to spark joy in the world. We love hearing tales of how our designs have touched people, enabled self-expression, inspired confidence, opened conversations, started friendships, provoked nostalgia, and even assisted people in getting through their tougher days. The <a href=\"\/pages\/donations\" target=\"_blank\" title=\"Donations\"><strong>Erstwilder Cares charitable giving program<\/strong><\/a> also allows us to deliver on our purpose in tangible ways too, providing real assistance where it’s needed. We want to spark joy in our community and in turn inspire them to pay that forward in their everyday lives too.<\/p>",
+        "top-wave": "0",
+        "top-color-1": "",
+        "top-color-2": "",
+        "flip-top-wave": false,
+        "bottom-wave": "1",
+        "bottom-color-1": "#f8f3ec",
+        "bottom-color-2": "#f4e9d2",
+        "flip-bottom-wave": false
+      }
+    },
+    "content-featured-content-4": {
+      "type": "content-featured-content-4",
+      "disabled": true,
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Group_405.jpg",
+        "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
+        "top-wave": "0",
+        "top-color-1": "",
+        "top-color-2": "",
+        "flip-top-wave": false,
+        "bottom-wave": "0",
+        "bottom-color-1": "",
+        "bottom-color-2": "",
+        "flip-bottom-wave": false
+      }
+    },
+    "content-featured-content-5": {
+      "type": "content-featured-content-5",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/ABOUT_FEATURED_CONTENT_5_02_b470d818-460b-476b-a297-ee0fea3a6d13.png",
+        "title": "Our Team",
+        "content": "<p>Everyone at Erstwilder HQ shares a love of animals great and small and we draw a lot of inspiration from all things vintage. These passions combine to create our darling adornments which provide the perfect antidote to those drab, ordinary days. We are so privileged to work with a team of local designers whose own personalities and passions influence our collections in the most amazing ways. And we’re honoured to be able to collaborate with some other incredibly talented individuals, who are well-established artists in their own right.<\/p>",
+        "cta-label": "Meet the team",
+        "cta-url": "shopify:\/\/pages\/meet-the-erstwilder-team",
+        "top-wave": "0",
+        "top-color-1": "",
+        "top-color-2": "",
+        "flip-top-wave": false,
+        "bottom-wave": "2",
+        "bottom-color-1": "#f4e9d2",
+        "bottom-color-2": "#e4987f",
+        "flip-bottom-wave": false
+      }
+    },
+    "content-usps-2": {
+      "type": "content-usps-2",
+      "blocks": {
+        "a49afedb-373f-4d3a-9683-a202c5ee7ae9": {
+          "type": "usp-block",
+          "settings": {
+            "svg-code": "<svg id=\"Layer_1\" data-name=\"Layer 1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 54 52\"><defs><style>.cls-1{fill:#fff}<\/style><\/defs><path class=\"cls-1\" d=\"M37.61 14.73V9.92c0-5.15-7.93-9.18-18-9.18s-18 4-18 9.18v31.59c0 5.15 7.93 9.18 18 9.18a32.5 32.5 0 0 0 9.32-1.3 18 18 0 1 0 8.73-34.66Zm-2-.13h-.44l.49-.45Zm-16-11.86c8.7 0 16.05 3.29 16.05 7.18s-7.35 7.18-16 7.18-16-3.29-16-7.18 7.21-7.18 15.9-7.18Zm0 16.36a34.83 34.83 0 0 0 4.39-.28A18.06 18.06 0 0 0 19.24 25c-8.55-.08-15.72-3.33-15.72-7.17v-3.66c2.97 2.95 8.96 4.93 16.04 4.93Zm-16 13.18V30c2.69 2.66 7.87 4.52 14.14 4.84a17.89 17.89 0 0 0 1.81 6c-8.65 0-15.95-3.3-15.95-7.18ZM18.44 27a17.78 17.78 0 0 0-.93 5.67v.19c-7.81-.47-14-3.56-14-7.12v-3.67c2.82 2.79 8.34 4.7 14.93 4.93Zm1.12 21.72c-8.69 0-16-3.29-16-7.18v-3.68c3 3 9 4.93 16 4.93h1.07A18.11 18.11 0 0 0 26.16 48a32.6 32.6 0 0 1-6.6.69Zm16 0a16 16 0 1 1 16-16 16.07 16.07 0 0 1-16 15.97Z\"><\/path><path class=\"cls-1\" d=\"M45.48 23.75A4.56 4.56 0 0 0 41.21 22c-2.55.38-4.91 3-6.33 5.75-2.45-2.28-6.51-3.35-9.29-2.31-1.3.49-3.44 1.86-3.27 5.57a6 6 0 0 0 1.68 3.6A42.9 42.9 0 0 0 32.07 41c1.66 1.12 3.38 2.28 4.92 3.52a1.29 1.29 0 0 0 .81.3h.25a1.25 1.25 0 0 0 .87-.65c.76-1.38 1.69-2.76 2.68-4.22 2.3-3.41 4.68-6.93 5.08-11 .13-1.28.14-3.66-1.2-5.21Zm-.79 5c-.35 3.53-2.59 6.84-4.75 10-.81 1.19-1.64 2.42-2.36 3.65-1.42-1.1-2.93-2.12-4.39-3.1a41.62 41.62 0 0 1-7.69-6.1 4.12 4.12 0 0 1-1.18-2.39c-.08-1.86.58-3.07 2-3.59A4.79 4.79 0 0 1 28 27a8.41 8.41 0 0 1 6.12 2.8 1.21 1.21 0 0 0 1.12.45 1.3 1.3 0 0 0 1-.76c1.11-2.53 3.27-5.25 5.27-5.56A2.65 2.65 0 0 1 44 25.05a5.18 5.18 0 0 1 .69 3.72Z\"><\/path><\/svg>",
+            "title": "$308,433",
+            "line-2": "Total donations to date"
+          }
+        },
+        "6072ddcb-61b6-4058-8557-af7c24ebe165": {
+          "type": "usp-block",
+          "disabled": true,
+          "settings": {
+            "svg-code": "<svg id=\"Layer_1\" data-name=\"Layer 1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 54 52\"><defs><style>.cls-1{fill:#fff}<\/style><\/defs><path class=\"cls-1\" d=\"M43.06 23.67a3.72 3.72 0 0 0-2.79.85 4.18 4.18 0 0 0-3-1.57 2.49 2.49 0 0 0-2.36 1.94 2.78 2.78 0 0 0 .16 1.86 15.58 15.58 0 0 0 2 3.23c.43.59.84 1.14 1.19 1.72a1.1 1.1 0 0 0 .78.51h.13a1.23 1.23 0 0 0 .77-.28c.39-.35.86-.69 1.35-1.06a9.41 9.41 0 0 0 3.2-3.31 3.14 3.14 0 0 0 .23-2.4 2.24 2.24 0 0 0-1.66-1.49Zm-.35 3a8 8 0 0 1-2.58 2.56l-.7.51c-.24-.34-.48-.67-.73-1A13.62 13.62 0 0 1 36.93 26a.86.86 0 0 1-.09-.5c.15-.51.36-.51.48-.52A2.2 2.2 0 0 1 39 26.29a1.21 1.21 0 0 0 .8.71 1.12 1.12 0 0 0 1-.33 2.79 2.79 0 0 1 1.83-1s.12 0 .21.27a1.36 1.36 0 0 1-.13.78Z\"><\/path><path class=\"cls-1\" d=\"M45.31 7.37h-3.06V4.43a2.81 2.81 0 0 0-5.62 0v2.94H17.38V4.43a2.81 2.81 0 1 0-5.61 0v2.94H8.69a6.51 6.51 0 0 0-6.5 6.51v29.53a6.51 6.51 0 0 0 6.5 6.51h36.62a6.51 6.51 0 0 0 6.5-6.51V13.88a6.51 6.51 0 0 0-6.5-6.51Zm-6.68-2.94a.81.81 0 0 1 1.62 0v7.88a.81.81 0 1 1-1.62 0V4.43Zm-24.86 0a.81.81 0 1 1 1.61 0v7.88a.81.81 0 1 1-1.61 0V4.43ZM8.69 9.37h3.08v2.94a2.81 2.81 0 1 0 5.61 0V9.37h19.25v2.94a2.81 2.81 0 0 0 5.62 0V9.37h3.06a4.51 4.51 0 0 1 4.5 4.51v3.94H4.19v-3.94a4.51 4.51 0 0 1 4.5-4.51Zm36.62 38.55H8.69a4.51 4.51 0 0 1-4.5-4.51V19.82h45.62v23.59a4.51 4.51 0 0 1-4.5 4.51Z\"><\/path><path class=\"cls-1\" d=\"M14.4 24.15a3.67 3.67 0 1 0 3.67 3.66 3.67 3.67 0 0 0-3.67-3.66Zm0 5.33a1.67 1.67 0 1 1 1.67-1.67 1.67 1.67 0 0 1-1.67 1.67ZM27 24.15a3.67 3.67 0 1 0 3.67 3.66A3.67 3.67 0 0 0 27 24.15Zm0 5.33a1.67 1.67 0 1 1 1.67-1.67A1.67 1.67 0 0 1 27 29.48ZM14.4 35.35A3.67 3.67 0 1 0 18.07 39a3.68 3.68 0 0 0-3.67-3.65Zm0 5.34A1.67 1.67 0 1 1 16.07 39a1.67 1.67 0 0 1-1.67 1.69ZM27 35.35A3.67 3.67 0 1 0 30.67 39 3.68 3.68 0 0 0 27 35.35Zm0 5.34A1.67 1.67 0 1 1 28.67 39 1.67 1.67 0 0 1 27 40.69ZM39.6 35.35A3.67 3.67 0 1 0 43.27 39a3.67 3.67 0 0 0-3.67-3.65Zm0 5.34A1.67 1.67 0 1 1 41.27 39a1.66 1.66 0 0 1-1.67 1.69Z\"><\/path><\/svg>",
+            "title": "$36,532",
+            "line-2": "Total donations in 2023"
+          }
+        },
+        "c0f5d143-6391-4cd1-a03c-068568645543": {
+          "type": "usp-block",
+          "settings": {
+            "svg-code": "<svg id=\"Layer_1\" data-name=\"Layer 1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 54 52\"><defs><style>.cls-1{fill:#fff}<\/style><\/defs><path class=\"cls-1\" d=\"M18.44 25.73c2.14 1.51 4.35 3.08 6.33 4.77a1.42 1.42 0 0 0 .89.33h.23a1.37 1.37 0 0 0 1-.68c1-1.79 2.3-3.57 3.64-5.45 3.1-4.34 6.3-8.84 6.94-14 .16-1.7.25-4.7-1.38-6.7a5.63 5.63 0 0 0-5.24-2.36c-3.36.42-6.54 4-8.43 7.52-3-3.18-8.35-4.81-12-3.53-1.62.57-4.33 2.21-4.23 6.87a7.47 7.47 0 0 0 2 4.62c2.94 3.42 6.65 6.06 10.25 8.61ZM11 7.55a6.63 6.63 0 0 1 2.17-.34 11.14 11.14 0 0 1 8.31 4 1.27 1.27 0 0 0 1.17.51 1.4 1.4 0 0 0 1.11-.79c1.6-3.36 4.61-6.93 7.34-7.28a3.73 3.73 0 0 1 3.44 1.65c.84 1 1.17 2.92.9 5.11-.57 4.68-3.63 9-6.58 13.11-1.21 1.7-2.37 3.32-3.36 5-1.89-1.57-3.93-3-5.9-4.41-3.5-2.48-7.12-5-9.91-8.25a5.66 5.66 0 0 1-1.54-3.36c-.06-2.6.92-4.26 2.85-4.95ZM52.43 37.37a1 1 0 0 0-.31-.28c-3.71-2.05-9.31-5.15-9.57-5.31a9 9 0 0 0-4.93-1.12c-1.62.09-4.36 1.08-7.25 2.13a50.92 50.92 0 0 1-6.57 2.09 2.65 2.65 0 0 0-2.11 2.33 2.49 2.49 0 0 0 1 2.1c-2.35.83-5.19 1.65-6.38 1.48s-3.56-1.79-5.48-3.08a21.77 21.77 0 0 0-4.47-2.62c-1.87-.58-3.66-.48-4.67.27A2.1 2.1 0 0 0 .8 37.1c0 .59.74 1.56 1.93 2.68.88 2.42 2.84 6.29 4.64 7.73.52.42 1.55.89 4.51.89 1.23 0 2.82-.09 4.83-.29a7.64 7.64 0 0 0 .85.18c3.54.57 8.76-.58 13.38-1.6A35.82 35.82 0 0 1 38 45.53c2.73.17 7.83 4.22 9.57 5.76a1 1 0 0 0 .66.26 1 1 0 0 0 .5-.13c1.68-1 3.45-5.09 4.12-8.36.58-2.65.43-4.56-.42-5.69ZM8.62 46a12.4 12.4 0 0 1-2.41-3.36 48.92 48.92 0 0 0 6.21 3.8c-3.05.01-3.71-.44-3.8-.44Zm42.31-3.3a18 18 0 0 1-2.69 6.56c-1.85-1.57-6.77-5.47-10.08-5.68h-.4a41.6 41.6 0 0 0-7.25 1.22c-4.22.93-9.48 2.08-12.64 1.58C12.69 45.5 3.8 38.59 2.83 37a3.82 3.82 0 0 1 2.89 0 22.66 22.66 0 0 1 3.94 2.37c2.42 1.63 4.71 3.18 6.31 3.4 2.35.32 7.6-1.65 9.09-2.24a6.15 6.15 0 0 0 4.61-.36 12.57 12.57 0 0 1 6.53-.87 1 1 0 0 0 .17-2 14.43 14.43 0 0 0-7.43 1 4.21 4.21 0 0 1-3.45.26c-1.39-.45-1.87-1-1.86-1.23a.69.69 0 0 1 .49-.5A51.07 51.07 0 0 0 31 34.66c2.63-1 5.36-1.94 6.69-2a7 7 0 0 1 3.8.85l9.39 5.21c.34.57.48 1.86.05 3.93Z\"><\/path><\/svg>",
+            "title": "1% of all Sales",
+            "line-2": "Our donation commitment"
+          }
+        }
+      },
+      "block_order": [
+        "a49afedb-373f-4d3a-9683-a202c5ee7ae9",
+        "6072ddcb-61b6-4058-8557-af7c24ebe165",
+        "c0f5d143-6391-4cd1-a03c-068568645543"
+      ],
+      "settings": {
+        "pre-title": "Current Donations",
+        "title": "For the people & the planet",
+        "cta-label": "Learn more about the Erstwilder Cares charity program",
+        "cta-url": "shopify:\/\/pages\/donations",
+        "image": "shopify:\/\/shop_images\/ABOUT_USPs_2_01.jpg",
+        "image-2": "shopify:\/\/shop_images\/anzac_mix.jpg",
+        "bg-color": "#f8f3ec",
+        "top-wave": "0",
+        "top-color-1": "",
+        "top-color-2": "",
+        "flip-top-wave": false
+      }
+    },
+    "content-featured-content-6": {
+      "type": "content-featured-content-6",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/ABOUT_FEATURED_CONTENT_6_01_95248b4c-489b-4165-b7bf-41c91d31b7c5.jpg",
+        "image-2": "shopify:\/\/shop_images\/ABOUT_FEATURED_CONTENT_6_04.jpg",
+        "title": "Our Design Process",
+        "content": "<p>As with all things, the design process already starts with an idea. Sure, we have lots of our own, but we actively engage with our wonderful community often to find out exactly what they want us to produce. Truth be told, often many of the best ideas are theirs (yours!), and we are honoured to be able to bring these to life. But character design is only part of the process; each piece in the Erstwilder collection has its own narrative including a unique name and short story which serves as an homage to history, myth, pop-culture and classic storytelling. This is what makes an Erstwilder character - an Erstwildling as we like to call them - the perfect gift for anyone who loves to accessorise.<\/p>",
+        "cta-label": "Explore our Design Themes",
+        "cta-url": "shopify:\/\/pages\/shop-by-theme",
+        "top-wave": "0",
+        "top-color-1": "",
+        "top-color-2": "",
+        "flip-top-wave": false,
+        "bottom-wave": "3",
+        "bottom-color-1": "#f8f3ec",
+        "bottom-color-2": "#e4987f",
+        "flip-bottom-wave": false
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "title": "Don’t miss a thing!",
+        "subtitle": "Stay in the know with launch announcements, sales and events. Remember, everything we create is limited run, so you best be on the list to hear about it first!",
+        "top-wave": "0",
+        "top-color-1": "",
+        "top-color-2": "",
+        "flip-top-wave": false,
+        "bottom-wave": "1",
+        "bottom-color-1": "#f8f3ec",
+        "bottom-color-2": "#e4987f",
+        "flip-bottom-wave": true
+      }
+    },
+    "instagram-feed": {
+      "type": "instagram-feed",
+      "settings": {
+        "title": "Instagram",
+        "ig-handle": "@erstwilder",
+        "top-wave": "0",
+        "top-color-1": "",
+        "top-color-2": "",
+        "flip-top-wave": false,
+        "bottom-wave": "2",
+        "bottom-color-1": "#f8f3ec",
+        "bottom-color-2": "#f4e9d2",
+        "flip-bottom-wave": false
+      }
+    }
+  },
+  "order": [
+    "banners-hero-video",
+    "content-block-text",
+    "content-featured-content-3",
+    "content-featured-content-4",
+    "content-featured-content-5",
+    "content-usps-2",
+    "content-featured-content-6",
+    "newsletter",
+    "instagram-feed"
+  ]
+}

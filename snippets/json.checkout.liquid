@@ -1,0 +1,39 @@
+{
+  "items": [
+    {%- for line in checkout.line_items -%}
+      {%- liquid 
+        assign product = line.variant.product
+        assign removeKey = line.key
+        unless removeKey contains line.variant_id
+          assign removeKey = line.variant_id | append: ':' | append: line.id
+        endunless
+      -%}
+      {
+        "id": {{ line.id | json }},
+        "variant_id": {{ line.variant_id | json }},
+        "variant_title": {{ line.variant.title | json }},
+        "product_id": {{ line.product_id | json }},
+        "price": {{ line.price | json }},
+        "quantity": {{ line.quantity | json }},
+        "sku": {{ line.sku | json }},
+        "product": {{ line.product | json }},
+        "remove_key": {{ removeKey | json }},
+        "properties": {
+          {%- for property in line.properties -%}
+            {{ property.first | json }}: {{ property.last | json }}
+            {%- unless forloop.last -%},{%- endunless -%}
+          {%- endfor -%}
+        }
+      }
+      {%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+  ],
+  "attributes": {{ checkout.attributes | json }},
+  "shipping_address": {{ checkout.shipping_address | json }},
+  "shipping_method": {%- if checkout.shipping_method != blank -%}
+    {
+      "handle": {{ checkout.shipping_method.handle | json }},
+      "title": {{ checkout.shipping_method.title | json }}
+    }
+  {%- else -%}null{%- endif -%}
+}

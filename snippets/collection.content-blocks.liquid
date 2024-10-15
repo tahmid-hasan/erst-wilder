@@ -1,0 +1,87 @@
+{%- comment -%}
+  Content Blocks
+    - Displays the content blocks for the collection section
+
+  Params:
+    - class: a string to be used as an additional class
+
+  Version:
+    1.0.0 - 2021/11/15
+{%- endcomment -%}
+
+{%- assign contentBlocks = section.blocks | where: 'type', 'content-block' -%}
+{%- assign blockIndex = 0 -%}
+
+{%- if contentBlocks.size > 0 -%}
+  {%- for contentBlock in contentBlocks -%}
+    {%- liquid
+      assign collectionHandles = contentBlock.settings.collections | escape
+      assign blockPosition = contentBlock.settings.position | escape
+      assign image = contentBlock.settings.image
+      assign content = contentBlock.settings.title | escape
+
+      if collectionHandles != blank
+        unless collectionHandles contains collection.handle
+          continue
+        endunless
+      endif
+
+      unless blockPosition != blank and image != blank and content != blank
+        continue
+      endunless
+    -%}
+
+    {%- comment -%} Need to set primary and secondary classes {%- endcomment -%}
+    {%- assign indexMod = blockIndex | modulo: 2  -%}
+    {%- if indexMod == 0 -%}
+      {%- assign blockClass = class | append: ' is-primary' -%}
+    {%- else -%}
+      {%- assign blockClass = class | append: ' is-secondary' -%}
+    {%- endif -%}
+
+    <div
+      class="o-content-block {{ blockClass }}"
+      data-content-block
+      data-content-block-position="{{- blockPosition -}}"
+    >
+      <div class="o-content-block__inner">
+        {%- comment -%} Image {%- endcomment -%}
+        <div class="o-content-block__image-container o-responsive-image-container">
+          {%- render 'tool.picture' with {
+            image: image,
+            class: "o-content-block__image o-responsive-image",
+            width: 711,
+            sizes: '375,550,750',
+            imageSizes: '265,440,640'
+          } -%}
+        </div>
+
+        <div class="o-content-block__content-container">
+          {%- comment -%} Content {%- endcomment -%}
+          <p class="o-content-block__content o-heading--4">
+            {{- content -}}
+          </p>
+
+          {%- comment -%} Illustration {%- endcomment -%}
+          {%- if indexMod == 0 -%}
+            <div class="o-content-block__illustration-wrapper">
+              <div class="o-content-block__illustration-container o-responsive-image-container">
+                <img
+                  src="{{ 'svg.bird.svg' | asset_url }}"
+                  alt=""
+                  width="160"
+                  height="139"
+                  lazy="true"
+                  class="o-content-block__illustration o-responsive-image"
+                >
+              </div>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+
+    {%- comment -%} Increment index {%- endcomment -%}
+    {%- assign blockIndex = blockIndex | plus: 1 -%}
+  {%- endfor -%}
+{%- endif -%}

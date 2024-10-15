@@ -1,0 +1,39 @@
+.sc-gcr {
+  max-width: 600px;
+  margin: 0 auto;
+  display: grid; 
+  gap: 0.5rem; 
+  justify-content: center;
+}
+
+.sc-gcr .checkbox-container {
+  display: flex;
+  align-items: center; 
+  gap: 5px;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.sc-gcr .gift-card-recipient__fields {
+  max-width: 600px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.gift-form-wrap label {
+  text-align: center;
+}
+
+.sc-gcr .input,
+.sc-gcr .o-input {
+  text-align: center;
+}
+
+.sc-gcr input[type="date"] {
+  background: #f4e9d2;
+  padding: 1rem;
+  margin: 1rem 0;
+  width: 100%;
+  display: block;
+}

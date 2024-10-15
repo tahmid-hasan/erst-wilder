@@ -1,0 +1,226 @@
+{%- comment -%}
+  Hero Rewards banner
+    Section to display hero banner with full width image
+
+    Only display if customer is logged in
+
+  Version:
+    1.0.0 - 2021/10/25
+{%- endcomment -%}
+
+{%- if customer -%}
+  
+  {{ 'sections.hero-rewards.css' | asset_url | stylesheet_tag }}
+  {{ 'sections.rewards.js' | asset_url | script_tag }}
+
+  {%- comment -%} Assign variables {%- endcomment -%}
+  {%- liquid
+    assign pretitle = section.settings.title | default: page.title | escape
+    assign greeting = 'rewards.greeting' | t: customer: customer.first_name | escape
+    assign image1 = section.settings.image
+    assign image2 = section.settings.image-2
+    assign image3 = section.settings.image-3
+    assign content = section.settings.content
+    assign nextRewardPlaceholder = section.settings.next-reward-placeholder | escape
+    assign currentPointsPlaceholder = section.settings.current-points-placeholder | escape
+
+    assign wave = section.settings.wave
+    -%}
+
+  <div class="c-hero-rewards" data-rewards-hero>
+
+    <div class="c-hero-rewards__outer">
+      <div class="c-hero-rewards__inner">
+
+        {%- comment -%} Shape 1 {%- endcomment -%}
+        <img
+          src="{{- 'svg.shape-20.svg' | asset_url -}}"
+          alt=""
+          class="c-hero-rewards__illustration-1"
+          width="240"
+          height="106"
+          lazy="true"
+        >
+        {%- comment -%} Shape 2 {%- endcomment -%}
+        <img
+          src="{{- 'svg.shape-21.svg' | asset_url -}}"
+          alt=""
+          class="c-hero-rewards__illustration-2"
+          width="223"
+          height="248"
+          lazy="true"
+        >         
+        {%- comment -%} Shape 3 {%- endcomment -%}
+        <img
+          src="{{- 'svg.shape-22.svg' | asset_url -}}"
+          alt=""
+          class="c-hero-rewards__illustration-3"
+          width="223"
+          height="248"
+          lazy="true"
+        >
+        {%- comment -%} Image 1 {%- endcomment -%}
+        {%- if image1 != blank -%}
+          <div class="c-hero-rewards__image-wrapper--1">
+            <div class="o-responsive-image-container c-hero-rewards__image-container">
+              {%- render 'tool.picture' with {
+                image: image1,
+                class: 'o-responsive-image c-hero-rewards__image',
+                width: 400,
+                sizes: '750,1100,1650'
+                imageSizes: '140,220,330'
+              } -%}
+            </div>
+          </div> 
+        {%- endif -%}
+     
+        {%- comment -%} Image 2 {%- endcomment -%}
+        {%- if image2 != blank -%}
+          <div class="c-hero-rewards__image-wrapper--2">
+            <div class="o-responsive-image-container c-hero-rewards__image-container">
+              {%- render 'tool.picture' with {
+                image: image2,
+                class: 'o-responsive-image c-hero-rewards__image',
+                width: 409,
+                sizes: '750,1100,1650'
+                imageSizes: '153,220,330'
+              } -%}
+            </div>
+          </div>
+        {%- endif -%}
+        {%- comment -%} Image 3 {%- endcomment -%}
+        {%- if image3 != blank -%}
+          <div class="c-hero-rewards__image-wrapper--3">
+            <div class="o-responsive-image-container c-hero-rewards__image-container">
+              {%- render 'tool.picture' with {
+                image: image3,
+                class: 'o-responsive-image c-hero-rewards__image',
+                width: 400,
+                sizes: '750,1100,1650'
+                imageSizes: '140,220,330'
+              } -%}
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- comment -%} Pretitle {%- endcomment -%}
+        <h1 class="c-hero-rewards__pretitle o-paragraph">
+          {{- pretitle -}}
+        </h1>
+
+        {%- comment -%} Greeting {%- endcomment -%}
+        <p class="o-heading--1 c-hero-rewards__greeting">
+          {{- greeting -}}
+        </p>
+
+        {%- comment -%} Subtitle {%- endcomment -%}
+        <p class="c-hero-rewards__subtitle" data-rewards-points-accumulated>
+          {{- currentPointsPlaceholder -}}
+        </p>
+
+        <div class="c-hero-rewards__rewards-meter">
+
+        {%- comment -%} Progress Fill Circle {%- endcomment -%}
+        <div class="c-hero-rewards__outer-circle" data-outer-circle></div>
+
+        {%- comment -%} Inner Cirlce {%- endcomment -%}
+        <div class="c-hero-rewards__inner-circle"></div>
+          <div class="c-hero-rewards__meter-text">
+            {%- comment -%} Next Reward {%- endcomment -%}
+            <p class="c-hero-rewards__next-reward is-unembiggened o-heading--1" data-next-reward>
+              {{- nextRewardPlaceholder -}}
+            </p>
+            {%- comment -%} Next Reward Points Total {%- endcomment -%}
+            <p class="c-hero-rewards__reward-text" data-next-rewards-points></p>
+          </div>
+        </div>
+
+      </div>
+
+      {%- comment -%} Wave {%- endcomment -%}
+      {%- if wave -%}        
+        {%- render 'object.wave' with {
+          waveNumber:"1"
+          color1: '#f8f3ec'
+          color2: '#e4987f',
+          isFlipped: true
+        } -%}
+      {%- endif -%}   
+
+    </div>
+
+    {%- comment -%} Content {%- endcomment -%}
+    {%- if content != blank -%}
+      <div class="c-hero-rewards__content">
+        {{- content -}}
+      </div>
+    {%- endif -%}
+  </div>
+
+
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Customer - Hero Rewards",
+  "class": "c-section c-section__hero-rewards",
+  "presets": [
+    {
+      "category": "Banners",
+      "name": "Hero Rewards"
+    }
+  ],
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "This section will only display if customers are logged in"
+    },
+    {
+      "type": "text",
+      "id": "next-reward-placeholder",
+      "label": "Next Reward Placeholder",
+      "default": "Finding your next reward..."
+    },
+    {
+      "type": "text",
+      "id": "current-points-placeholder",
+      "label": "Current Points Placeholder",
+      "default": "Just our way of showing appreciation"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image 1",
+      "info": "Dimensions: 800px X 800px"
+    },
+    {
+      "type": "image_picker",
+      "id": "image-2",
+      "label": "Image 2",
+      "info": "Dimensions: 820px X 1132px"
+    },
+    {
+      "type": "image_picker",
+      "id": "image-3",
+      "label": "Image 3",
+      "info": "Dimensions: 448px X 448px"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "checkbox",
+      "id": "wave",
+      "label": "Include Wave",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

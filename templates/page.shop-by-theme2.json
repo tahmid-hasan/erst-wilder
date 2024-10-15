@@ -1,0 +1,233 @@
+{
+  "sections": {
+    "shop-by-collection": {
+      "type": "shop-by-collection",
+      "blocks": {
+        "b5edf0ac-58e0-4ee9-8b72-a05e1d5ed6eb": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Australiana",
+            "block_image": "shopify:\/\/shop_images\/AUSTRALIANA_8aefcbc6-627b-4cf0-aab1-79059139f943.jpg",
+            "link_to": "australiana-theme"
+          }
+        },
+        "7f393d8d-ef20-4c86-9b67-4a8ba62564d7": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Birds",
+            "block_image": "shopify:\/\/shop_images\/BIRDS_1e208b3b-aa11-4d1b-8954-589a5fc03130.jpg",
+            "link_to": "birds-1"
+          }
+        },
+        "2bcd67b3-7dc9-4a86-8862-73503bdb931b": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Christmas",
+            "block_image": "shopify:\/\/shop_images\/CHRISTMAS_c431c0b2-1d04-493f-a39d-7ce7ef20e7d2.jpg",
+            "link_to": "christmas-1"
+          }
+        },
+        "85b9a34c-af7f-496b-b39d-a36338bd4c3f": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Dogs & Cats",
+            "block_image": "shopify:\/\/shop_images\/DOGS_CATS_1029edd1-a9ea-4e01-8ea3-9b6746c3751f.jpg",
+            "link_to": "dogs-cats"
+          }
+        },
+        "91f7588f-422d-4ce9-b247-5dffccea4f88": {
+          "type": "collection_block",
+          "disabled": true,
+          "settings": {
+            "block_title": "Dogs, Cats & Birds",
+            "block_image": "shopify:\/\/shop_images\/DOGS_CATS_BIRDS_075fc3a4-8318-4283-bdd2-39e60f6c8afc.jpg",
+            "link_to": "dogs-cats-birds"
+          }
+        },
+        "3e15a607-c77c-42ce-aebc-78c7651dd5d5": {
+          "type": "collection_block",
+          "disabled": true,
+          "settings": {
+            "block_title": "Easter",
+            "block_image": "shopify:\/\/shop_images\/EASTER_3c6667bd-fd2d-430e-8cca-d22bc00a80d8.jpg",
+            "link_to": "easter"
+          }
+        },
+        "c7efc44c-cceb-43a4-840b-e44abfada2c4": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Food & Drinks",
+            "block_image": "shopify:\/\/shop_images\/EDIBLES_80b90889-ac3e-46ef-8b51-6946f6055ffc.jpg",
+            "link_to": "food-drink"
+          }
+        },
+        "131f93bb-b95a-4bb3-aa5e-35b4ec01c531": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Fan Favourites",
+            "block_image": "shopify:\/\/shop_images\/FAN_FAVOURITES_64d2bf88-dd36-4ef0-9d5c-5e7bef8a1426.jpg",
+            "link_to": "fan-favourites-1"
+          }
+        },
+        "26100480-6869-4ab9-a065-4973aaa16db5": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Flowers & Plants",
+            "block_image": "shopify:\/\/shop_images\/FLOWERS_PLANTS_11515da9-db4f-4dd3-abe8-47baaba579d3.jpg",
+            "link_to": "flowers-plants"
+          }
+        },
+        "f4a84ec6-853d-40cf-adb8-882250e41e54": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Halloween",
+            "block_image": "shopify:\/\/shop_images\/HALLOWEEN_69881483-f945-40bc-8fa9-cdfa6360e96e.jpg",
+            "link_to": "halloween-1"
+          }
+        },
+        "97794cc9-27b9-4aed-9c80-3dd42304ddfc": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Licensed",
+            "block_image": "shopify:\/\/shop_images\/LICENSED_73f98db7-c2db-47f3-a40a-84752dd55adb.jpg",
+            "link_to": "licensed"
+          }
+        },
+        "186e7d8a-55a4-48e0-bca9-2043e61ed820": {
+          "type": "collection_block",
+          "disabled": true,
+          "settings": {
+            "block_title": "Misfits",
+            "block_image": "shopify:\/\/shop_images\/MISFITS_55347f84-a03d-49df-a96e-90369196f048.jpg",
+            "link_to": "misfits"
+          }
+        },
+        "7a611243-ea2c-4371-a496-2e33029a560b": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Myth & Magic",
+            "block_image": "shopify:\/\/shop_images\/MYTH_MAGIC_4b446fae-7190-49a9-8f64-44c2a4edbdba.jpg",
+            "link_to": "myth-magic"
+          }
+        },
+        "035828ab-5a6d-49e9-aac4-d4fabfe9e337": {
+          "type": "collection_block",
+          "disabled": true,
+          "settings": {
+            "block_title": "Nautical",
+            "block_image": "shopify:\/\/shop_images\/NAUTICAL_3f72eb92-bfe0-43df-9d77-0f1de74b9b07.jpg",
+            "link_to": "nautical"
+          }
+        },
+        "0c2f4f8c-9d50-492e-8c01-5d8452b819db": {
+          "type": "collection_block",
+          "disabled": true,
+          "settings": {
+            "block_title": "Space",
+            "block_image": "shopify:\/\/shop_images\/OUTER_SPACE_f38d0f21-c79a-4778-aa55-2c5c93c00ce7.jpg",
+            "link_to": "outerspace"
+          }
+        },
+        "0d55ec6f-2449-4bd6-8413-8ad6ff7dfcbb": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Portraits",
+            "block_image": "shopify:\/\/shop_images\/PEOPLE_PORTRAITS_650d6de7-4083-48c9-8977-47ea001e72c1.jpg",
+            "link_to": "people-portraits"
+          }
+        },
+        "7ee43ae0-3667-4827-96a2-1efe26de28eb": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Sea & Space",
+            "block_image": "shopify:\/\/shop_images\/SEA_SPACE_f6ccdcd1-101d-4b50-bc8a-49ddfbf85335.jpg",
+            "link_to": "sea-space"
+          }
+        },
+        "collection_block_6MkF4n": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Travel",
+            "block_image": "shopify:\/\/shop_images\/MAIN_NAVIGATION_ICONS_SHOP_BY_THEME_TRAVEL.jpg",
+            "link_to": "travel"
+          }
+        },
+        "0e80e9e7-33c9-4b72-a34d-49867cb7fe78": {
+          "type": "collection_block",
+          "disabled": true,
+          "settings": {
+            "block_title": "Toys",
+            "block_image": "shopify:\/\/shop_images\/TOYS_2f00fe02-630a-4775-8e79-114d5b0aa65d.jpg",
+            "link_to": "toys"
+          }
+        },
+        "d22e0f18-1c58-42f0-a39c-43ca409eec7c": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Wild Animals",
+            "block_image": "shopify:\/\/shop_images\/WILD_ANIMALS_c77c5956-303e-4195-9ebf-107a13553540.jpg",
+            "link_to": "wild-animals"
+          }
+        },
+        "d6da15a3-867e-416b-a3ea-442f2b0b050b": {
+          "type": "collection_block",
+          "settings": {
+            "block_title": "Remembrance",
+            "block_image": "shopify:\/\/shop_images\/REMEMBRANCE_00f04741-7979-4fa7-b6be-570dfb168554.jpg",
+            "link_to": "remembrance"
+          }
+        }
+      },
+      "block_order": [
+        "b5edf0ac-58e0-4ee9-8b72-a05e1d5ed6eb",
+        "7f393d8d-ef20-4c86-9b67-4a8ba62564d7",
+        "2bcd67b3-7dc9-4a86-8862-73503bdb931b",
+        "85b9a34c-af7f-496b-b39d-a36338bd4c3f",
+        "91f7588f-422d-4ce9-b247-5dffccea4f88",
+        "3e15a607-c77c-42ce-aebc-78c7651dd5d5",
+        "c7efc44c-cceb-43a4-840b-e44abfada2c4",
+        "131f93bb-b95a-4bb3-aa5e-35b4ec01c531",
+        "26100480-6869-4ab9-a065-4973aaa16db5",
+        "f4a84ec6-853d-40cf-adb8-882250e41e54",
+        "97794cc9-27b9-4aed-9c80-3dd42304ddfc",
+        "186e7d8a-55a4-48e0-bca9-2043e61ed820",
+        "7a611243-ea2c-4371-a496-2e33029a560b",
+        "035828ab-5a6d-49e9-aac4-d4fabfe9e337",
+        "0c2f4f8c-9d50-492e-8c01-5d8452b819db",
+        "0d55ec6f-2449-4bd6-8413-8ad6ff7dfcbb",
+        "7ee43ae0-3667-4827-96a2-1efe26de28eb",
+        "collection_block_6MkF4n",
+        "0e80e9e7-33c9-4b72-a34d-49867cb7fe78",
+        "d22e0f18-1c58-42f0-a39c-43ca409eec7c",
+        "d6da15a3-867e-416b-a3ea-442f2b0b050b"
+      ],
+      "settings": {
+        "top_heading": "Shop By Theme",
+        "intro_paragraph": "Looking for something specific? We’re here to help with all available Erstwilder accessories organised by theme! Amazed by Australiana? A fan of florals? Crazy for cats? Whatever floats your boat, stylistically speaking, you’ll find it right here."
+      }
+    },
+    "1662517923d874cc9d": {
+      "type": "anyone-content-heading-double-cta",
+      "settings": {
+        "title": "Shop all available designs",
+        "subtitle": "Shop everything all together, or explore all Erstwilder designs by theme.",
+        "cta-label-1": "Shop All Designs",
+        "cta-link-1": "shopify:\/\/collections\/all",
+        "cta-label-2": "Shop By Collection",
+        "cta-link-2": "shopify:\/\/pages\/shop-by-collection",
+        "top-wave": "0",
+        "top-color-1": "",
+        "top-color-2": "",
+        "flip-top-wave": false,
+        "bottom-wave": "0",
+        "bottom-color-1": "",
+        "bottom-color-2": "",
+        "flip-bottom-wave": false
+      }
+    }
+  },
+  "order": [
+    "shop-by-collection",
+    "1662517923d874cc9d"
+  ]
+}

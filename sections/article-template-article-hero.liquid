@@ -1,0 +1,68 @@
+{%- comment -%}
+  Article Hero Banner
+
+  Version:
+    1.0.0 - 2021/09/09
+{%- endcomment -%}
+
+{{ 'sections.article-hero.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign imageDesktop = article.metafields.banner.image_desktop
+  assign imageMobile = article.metafields.banner.image_mobile
+
+  assign title = article.title
+  assign articleTags = article.tags
+  assign articleWords = article.content | strip_html | strip_newlines | downcase | replace: 'and','' | replace: 'the','' | split:' '
+  assign minToRead = articleWords | size | divided_by: 180 | ceil
+  assign readTimePostfix = 'articles.article.read_time_postfix' | t | prepend: ''
+-%}
+
+<section class="c-article-hero {% if imageDesktop == blank %}has-no-image{% endif %}">
+  {%- if imageDesktop != blank -%}
+    <div class="c-article-hero__image-container o-responsive-image-container">
+      {%- comment -%} Desktop Image {%- endcomment -%}
+      {%- capture pictureClass -%}
+        c-article-hero__image
+        o-responsive-image
+        is-desktop
+        {% if imageMobile != blank %}has-mobile{%- endif -%}
+      {%- endcapture -%}
+
+      {%- render 'tool.picture' with {
+        image: imageDesktop,
+        class: pictureClass,
+        width: 2560,
+        sizes: '320,375,500,750,1100,1650,2000',
+        imageSizes: '320,375,500,750,800,1080,1160'
+      } -%}
+
+      {%- comment -%} Mobile Image {%- endcomment -%}
+      {%- if imageMobile != blank -%}
+        {%- assign pictureClass = 'c-article-hero__image o-responsive-image is-mobile' -%}
+
+        {%- render 'tool.picture' with {
+          image: imageMobile,
+          class: pictureClass,
+          width: 750,
+          sizes: '320,375,500'
+        } -%}
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  <div class="c-article-hero__content">
+    <h1 class="c-article-hero__title o-heading--2">
+      {{- title | escape -}}
+    </h1>
+
+    <div class="c-article-hero__article-info">
+      {% for articleTag in articleTags %}
+        {%- assign newTag = articleTag | split: '_' -%}
+        {%- assign tag = newTag.last -%}
+        <p class="c-article-hero__info-tag ">{{- tag -}},</p>
+      {% endfor %}
+      <p class="c-article-hero__info-read-time">{{- minToRead | append: readTimePostfix | escape -}}</p>
+    </div>
+  </div>
+</section>

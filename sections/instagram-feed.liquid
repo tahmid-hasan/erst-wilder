@@ -1,0 +1,182 @@
+
+{{ 'sections.instagram-feed.css' | asset_url | stylesheet_tag }}
+
+{%- liquid 
+  assign title = section.settings.title | escape
+  assign igHandle = section.settings.ig-handle | escape
+
+  assign topWave = section.settings.top-wave
+  assign topColor1 = section.settings.top-color-1
+  assign topColor2 = section.settings.top-color-2
+  assign isFlippedTop = section.settings.flip-top-wave
+
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+-%}
+
+  {%- comment -%} Top Wave {%- endcomment -%}
+  {%- if topWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:topWave
+      color1: topColor1
+      color2: topColor2,
+      isFlipped: isFlippedTop
+    } -%}
+  {%- endif -%}
+
+  <section class="c-instagram-feed">
+    <div class="c-instagram-feed__outer">      
+      <div class="c-instagram-feed__inner">
+
+        <div class="c-instagram-feed__header">
+          {%- comment -%} Title {%- endcomment -%}
+          {%- if title != blank -%}
+            <h5 class="c-instagram-feed__title o-heading--2">
+              {{- title -}}
+            </h5>
+          {%- endif -%}
+          
+          {%- comment -%} IG Handle {%- endcomment -%}
+          {%- if igHandle != blank -%}
+            <p class="c-instagram-feed__ig-handle">
+              {{- igHandle -}}
+            </p>
+          {%- endif -%}          
+        </div>
+  
+        {%- comment -%} Instagram Feed {%- endcomment -%}
+        <div class="c-instagram-feed__feed-container">
+          <div id="insta-feed">
+            {%- comment -%} Instafeed App {%- endcomment -%}
+          </div>       
+        </div> 
+
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} Bottom Wave {%- endcomment -%}
+  {%- if bottomWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:bottomWave
+      color1: bottomColor1
+      color2: bottomColor2,
+      isFlipped: isFlippedBottom
+    } -%}
+  {%- endif -%}    
+{% schema %}
+{
+  "name": "Instagram Feed",
+  "class": "c-section c-section__instagram-feed",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Instagram Feed Title",
+      "default": "Join us on our Instagram"
+    },
+    {
+      "type": "text",
+      "id": "ig-handle",
+      "label": "Instagram Handle",
+      "default": "@erstwilder"
+    },
+    {
+      "type": "header",
+      "content": "Top Wave"
+    },
+    {
+      "type": "select",
+      "id": "top-wave",
+      "label": "Top Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "top-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "top-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-top-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "category": "Media",
+      "name":"Instagram Feed"
+    }
+  ]
+}
+{% endschema %}

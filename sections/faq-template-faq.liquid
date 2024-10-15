@@ -1,0 +1,302 @@
+{%- comment -%}
+  FAQ Page
+
+  Version:
+  1.0.0 - 2021/09/20
+{%- endcomment -%}
+
+{{ 'sections.faq.css' | asset_url | stylesheet_tag }}
+{{ 'sections.faq.js' | asset_url | script_tag }}
+
+{%- liquid 
+
+  assign title = section.settings.title | escape
+  assign subtitle = section.settings.subtitle | default: page.title | escape
+  assign description = section.settings.description | escape
+
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+-%}
+
+
+{%- if section.blocks.size > 0 -%}
+  {%- assign categoriesNavDefault = '' -%}
+  {%- assign categoriesNavBody = '' -%}
+  {%- assign categoryBlocks = section.blocks | where: 'type', 'category' -%}
+  {%- assign counter = 0 -%}
+
+  {%- for categoryBlock in categoryBlocks -%}
+    {%- assign categoryTitle = categoryBlock.settings.title | escape -%}
+    {%- assign categoryHandle = categoryTitle | handleize -%}
+
+    {%- comment -%} Only show the category blocks with titles {%- endcomment -%}
+    {%- unless categoryTitle != blank and categoryHandle != blank -%}
+      {%- continue -%}
+    {%- endunless -%}
+
+    {%- comment -%} Capture the first viable option {%- endcomment -%}
+    {%- if counter == 0 -%}
+      {%- capture categoriesNavDefault -%}
+        <button class="c-faq__categories-default o-paragraph--2" data-faq-category-default>
+          <span data-faq-category-default-content>
+            {{- categoryTitle -}}
+          </span>
+
+          {%- render 'object.icon' with {
+            icon: 'arrow-down',
+            class: 'c-faq__categories-chevron'
+          } -%}
+        </button>
+      {%- endcapture -%}
+    {%- endif -%}
+
+    {%- comment -%} Build the categories nav options {%- endcomment -%}
+    {%- capture categoriesNavBody -%}
+      {{- categoriesNavBody -}}
+      <button
+        type="button"
+        class="c-faq__categories-button o-paragraph--2{% if counter == 0 %} is-active{% endif %}"
+        data-faq-category-button data-category-handle="{{- categoryHandle -}}"
+      >
+        {{- categoryTitle -}}
+      </button>
+    {%- endcapture -%}
+
+    {%- comment -%} Build accordions at same time so we can sort them by category in order {%- endcomment -%}
+    {%- capture accordions -%}
+      {{- accordions -}}
+
+      {%- assign faqBlocks = section.blocks | where: 'type', 'faq' -%}
+      {%- assign innerCounter = 0 -%}
+
+      {%- comment -%} Start Inner Loop {%- endcomment -%}
+      {%- for faqBlock in faqBlocks -%}
+        {%- if
+          faqBlock.type != 'faq' or
+          faqBlock.settings.category != categoryTitle or
+          faqBlock.settings.title == blank or
+          faqBlock.settings.answer == blank
+        -%}
+          {%- continue -%}
+        {%- endif -%}
+
+        {%- comment -%} Show first category section, Show Answer on first question {%- endcomment -%}
+        <div class="c-faq-accordion__slide o-accordion
+          {% if innerCounter == 0 %} is-visible-body{% endif %}
+          {% if counter == 0 %} is-visible{% endif %}"
+          data-category-handle="{{ categoryHandle }}"
+          data-accordion
+        >
+          {%- comment -%} FAQ Question {%- endcomment -%}
+          <h3 class="c-faq-accordion__title o-heading--4">
+            {{- faqBlock.settings.title | escape -}}
+          </h3>
+
+          {%- comment -%} FAQ Answer {%- endcomment -%}
+          <div class="c-faq-accordion__body o-paragraph--2" data-accordion-body>
+            {{- faqBlock.settings.answer -}}
+          </div>
+
+          {%- comment -%} Show 'Hide' button on first question and 'Show' button on the rest {%- endcomment -%}
+          <p class="c-faq-accordion__toggle o-paragraph--2" data-accordion-toggle>
+            <span class="c-faq-accordion__toggle--hide
+              {% if innerCounter == 0 %} is-visible {%- endif -%}"
+              data-accordion-hide
+            >
+              {{- 'faq.faq.hide' | t | escape -}}
+            </span>
+            <span class="c-faq-accordion__toggle--show
+              {% if innerCounter != 0 %} is-visible {%- endif -%}"
+                data-accordion-show>
+                {{- 'faq.faq.show' | t | escape -}}
+            </span>
+          </p>
+        </div>
+
+        {%- assign innerCounter = innerCounter | plus: 1 -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+
+    {%- assign counter = counter | plus: 1 -%}
+  {%- endfor -%}
+
+
+
+
+  <section class="c-faq" data-faq>
+
+    <div class="c-faq__inner">
+      {%- comment -%} Title {%- endcomment -%}
+      {% if title != blank %}
+        <p class="c-faq__title o-heading--6">
+          {{- title -}}
+        </p>
+      {% endif %}
+
+      {%- comment -%} Subtitle {%- endcomment -%}
+      {%- if subtitle != blank -%}
+        <h1 class="c-faq__subtitle">
+          {{- subtitle -}}
+        </h1>
+      {%- endif -%}
+
+      <div class="c-faq__inner-content">
+        <div class="c-faq__categories">
+          {%- comment -%} Description {%- endcomment -%}
+          {%- if description != blank -%}
+            <p class="c-faq__description o-heading--6">
+              {{- description -}}
+            </p>
+          {% endif %}
+
+          {%- comment -%} Categories {%- endcomment -%}
+          {%- if categoriesNavDefault != blank and categoriesNavBody != blank -%}
+            <div class="c-faq__categories-nav" data-faq-category-nav>
+              {{- categoriesNavDefault -}}
+
+              {%- comment -%} Start Outer Loop {%- endcomment -%}
+              <div class="c-faq__categories-body" data-faq-category-body>
+                {{- categoriesNavBody -}}
+              </div>
+            </div>
+          {%- endif -%}
+        </div>
+
+        <div class="c-faq-accordion" data-questions-container>
+          {{- accordions -}}
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  {%- comment -%} Bottom Wave {%- endcomment -%}
+  {%- if bottomWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:bottomWave
+      color1: bottomColor1
+      color2: bottomColor2,
+      isFlipped: isFlippedBottom
+    } -%}
+  {%- endif -%}
+  
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "FAQ with Categories",
+  "class": "c-section c-section__faq-template",
+  "presets": [
+    {
+      "category": "Content",
+      "name": "FAQ with Categories"
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "FAQ Page Title",
+      "default": "FAQ"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "We’re help to help"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description",
+      "default": "What do you need help with?"
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Category Title",
+          "info": "This will be used to match to the corresponding FAQ question blocks."
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "FAQ Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Category",
+          "info": "Please make sure that this matches its respective category name exactly. If this does not match a category it will not show."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

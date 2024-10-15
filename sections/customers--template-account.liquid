@@ -1,0 +1,163 @@
+{%- comment -%}
+  Account Template
+    Template section for the account page.
+
+  Version:
+    1.0.0 - 2020/03/25
+{%- endcomment -%}
+
+{{ 'sections.account.css' | asset_url | stylesheet_tag }}
+
+<div class="p-customer c-account" data-account-page>
+
+  <div class="c-account__container">
+
+    <div class="c-account__content">
+      {%- comment -%} Title {%- endcomment -%}
+      <h2 class="o-heading__inner o-heading--3">
+       {{- 'customer.account.title' | t -}}
+      </h2>
+
+      <aside class="p-customer__sidebar c-account__sidebar">
+
+        {%- comment -%} Account Page Navigation {%- endcomment -%}
+        {%- render 'customers.account-navigation' -%}
+
+        {%  include 'smile-balance' %}
+
+      </aside>
+
+      <div class="p-customer__main c-account__main">
+        {%- comment -%} Account Details {%- endcomment -%}
+        <section class="c-account__details" data-detail-section>
+
+          
+
+          {%- comment -%} Title {%- endcomment -%}
+          <h2 class="c-account__details-title o-heading--4">
+            {{- 'customer.account.details' | t -}}
+          </h2>
+
+          <div class="c-account__details-inner">
+            <div class="c-account__detail">
+              <p class="c-account__detail-title">
+                {{- 'customer.account.name' | t -}}
+              </p>
+              <p>{{- customer.name -}}</p>
+              {%- comment -%} Points Balance {%- endcomment -%}
+      
+      
+      
+            </div>
+            
+            <div class="c-account__detail">
+              <p class="c-account__detail-title">
+                {{- 'customer.account.email' | t -}}
+              </p>
+              <p>{{- customer.email -}}</p>
+            </div>
+            {%- if customer.phone -%}
+              <div class="c-account__detail">
+                <p class="c-account__detail-title">
+                  {{- 'customer.account.phone' | t -}}
+                </p>
+                <p>{{- customer.phone -}}</p>
+              </div>
+            {%- endif -%}
+          </div>
+          {%- if customer.default_address != blank -%}
+            <div class="c-account__default-address">
+              <div class="c-account__detail is-address">
+                <p class="c-account__detail-title">
+                  {{- 'customer.addresses.default' | t }}
+                </p>
+              </div>
+              <p>{{- customer.default_address | format_address -}}</p>
+            </div>
+          {%- endif -%}
+          {%- if customer.tags != blank -%}
+
+            {% for tag in customer.tags %}
+              {% if tag contains 'Birthday__' %}
+                <div class="c-account__detail is-birthday">
+                  <p class="c-account__detail-title">
+                    {{'customer.account.birthday_label' | t }}                  
+                  </p>
+                  {% assign date_of_birth = tag | replace: 'Birthday__', '' %}
+                  {% if date_of_birth contains '/' %}
+                    <p>{{ date_of_birth | date: '%d/%m/%Y' }}</p>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+
+            {% for tag in customer.tags %}
+              {% if tag contains 'MemberSince__' %}
+                <div class="c-account__detail is-member-since">
+                  <p class="c-account__detail-title">
+                    {{'customer.account.member_since_label' | t }}                  
+                  </p>
+                  {% assign member_since = tag | replace: 'MemberSince__', '' %}
+                  <p>{{ member_since }}</p>
+                </div>
+              {% endif %} 
+            {% endfor %}
+
+          {%- endif -%}
+
+          <input type="hidden" id="customer_tags" name="customer[tags]" value="some-tag"/>
+        </section>
+
+        {%- comment -%} Orders {%- endcomment -%}
+        <section id="account-orders" class="c-account__orders">
+
+          {%- comment -%} Title {%- endcomment -%}
+          <h2 class="o-heading__inner o-heading--4">
+           {{ 'customer.orders.title' | t }}
+          </h2>
+
+          {%- paginate customer.orders by 50 -%}
+            {%- if customer.orders.size > 0 -%}
+              <div class="c-account__orders-container">
+                <table class="c-account__orders-table">
+                  <thead>
+                    <tr>
+                      <th>{{ 'customer.orders.order_number' | t }}</th>
+                      <th>{{ 'customer.orders.date' | t }}</th>
+                      <th>{{ 'customer.orders.payment_status' | t }}</th>
+                      <th>{{ 'customer.orders.fulfillment_status' | t }}</th>
+                      <th>{{ 'customer.orders.total' | t }}</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {%- for order in customer.orders -%}
+                      <tr>
+                        <td>{{ order.name | link_to: order.customer_url }}</td>
+                        <td>{{ order.created_at | date: "%B %d, %Y %I:%M%p" }}</td>
+                        <td>{{ order.financial_status_label }}</td>
+                        <td>{{ order.fulfillment_status_label }}</td>
+                        <td>{{ order.total_price | money_with_currency }}</td>
+                      </tr>
+                    {%- endfor -%}
+                  </tbody>
+                </table>
+
+                {%- if paginate.pages > 1 -%}
+                  {%- render 'object.pagination' -%}
+                {%- endif -%}
+
+              </div>
+            {%- else -%}
+              <p>{{ 'customer.orders.none' | t }}</p>
+            {%- endif -%}
+
+          {%- endpaginate -%}
+        </section>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

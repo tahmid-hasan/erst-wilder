@@ -1,0 +1,83 @@
+{{ '_gift-card-form.css' | asset_url | stylesheet_tag }}
+{% liquid 
+  assign variant = product.selected_or_first_available_variant
+  assign product_form_id = 'product-form-' | append: product.id
+%}
+
+{%- form 'product', product, is: 'product-form', id: product_form_id -%}
+  {% if form.errors %}
+    {{ form.errors | json }}
+  {% endif %}
+  {%- render 'object.product-template-swatches' -%}
+  <gift-card-recipient class="gift-card-recipient sc-gcr"
+    x-data="{ send_as_gift: false }">
+    <div class="input input--checkbox">
+      <div class="checkbox-container">
+        <input type="checkbox" class="checkbox" name="properties[__shopify_send_gift_card_to_recipient]" id="product-{{ section.id }}-{{ product.id }}-send-gift-card-to-recipient"
+          x-model="send_as_gift">
+        <label for="product-{{ section.id }}-{{ product.id }}-send-gift-card-to-recipient" class="text--subdued">Send as Gift?</label>
+      </div>
+    </div>
+
+    <template x-if="send_as_gift">
+      <div class="gift-form-wrap">
+        <div class="input">
+          <label for="product-{{ section.id }}-{{ product.id }}-send-on" class="input__label">Send Card on</label>
+          <input class="o-input" type="hidden" name="properties[__shopify_offset]" value="" disabled>
+            <div x-data="GiftFormDatePicker">
+              <input id="product-{{ section.id }}-{{ product.id }}-send-on" type="hidden" 
+                class="input__field input__field--text" 
+                pattern="\d{2}/\d{2}/\d{4}" 
+                name="properties[Send on]" 
+                autocomplete="off"
+                :value="date">
+
+              <input class="o-input" type="text" id="datepicker" 
+                autocomplete="off"
+                placeholder="DD/MM/YYYY"
+                x-model="display_date"
+                @change="e_UpdateDate" />
+            </div>
+        </div>
+    
+        <div class="gift-card-recipient__fields js:hidden">
+          <div class="input">
+            <label for="product-{{ section.id }}-{{ product.id }}-recipient-email" class="input__label">Recipient Email address</label>
+            <input class="o-input" id="product-{{ section.id }}-{{ product.id }}-recipient-email" type="email" class="input__field input__field--text" name="properties[Recipient email]" required value="{{ form.email }}">
+          </div>
+    
+          <div class="input">
+            <label for="product-{{ section.id }}-{{ product.id }}-recipient-name" class="input__label">Recipient Name</label>
+            <input class="o-input" id="product-{{ section.id }}-{{ product.id }}-recipient-name" type="text" class="input__field input__field--text" name="properties[Recipient name]" value="{{ form.name }}">
+          </div>
+    
+          <div class="input">
+            <label for="product-{{ section.id }}-{{ product.id }}-recipient-message" class="input__label">Gift Message</label>
+            <textarea id="product-{{ section.id }}-{{ product.id }}-recipient-message" rows="4" class="input__field input__field--textarea o-input" name="properties[Message]">{{ form.message }}</textarea>
+          </div>
+        </div>    
+      </div>  
+    </template>
+
+    <div class="c-product__purchase-wrapper">
+      <product-payment-container form-id="{{ product_form_id }}" 
+        {% if update_url %}id="MainPaymentContainer"{% endif %} class="product-form__payment-container" {{ block.shopify_attributes }}>
+          <button
+            type="submit"
+            class="c-product__add-btn o-btn {% if variant.available != true %}is-disabled{% endif %}
+            {% if inCart %} is-added{% endif %}"
+            {% if variant.available != true %}disabled{% endif %}
+            data-add-to-cart-button
+          >
+          {%- if variant.available -%}
+            {{- 'products.product.add_to_cart_template' | t -}}
+          {%- else -%}
+            {{- 'products.product.sold_out' | t -}}
+          {%- endif -%}
+        </button>
+      </product-payment-container>
+    </div>
+  </gift-card-recipient>
+
+  <input type="hidden" disabled name="id" value="{{ product.selected_or_first_available_variant.id }}">
+{%- endform -%}

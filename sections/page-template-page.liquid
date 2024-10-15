@@ -1,0 +1,72 @@
+{%- comment -%}
+  Product Template
+
+  Version:
+    1.0.0 - 2021/09/27
+{%- endcomment -%}
+
+{{ 'sections.page.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%} Assign Variables {%- endcomment -%}
+{%- assign imageDesktop = page.metafields.generic_fields.desktop_image -%}
+
+<section class="c-generic">
+  {%- if imageDesktop != blank -%}
+    {%- assign imageMobile = page.metafields.generic_fields.mobile_image -%}
+
+    <div class="c-generic__banner">
+      {%- comment -%} Banner Image {%- endcomment -%}
+      <div class="c-generic__banner-image-container o-responsive-image-container">
+        {%- comment -%} Desktop Image {%- endcomment -%}
+        {%- capture pictureClass -%}
+          c-generic__banner-image
+          o-responsive-image
+          is-desktop
+          {% if imageMobile != blank %}has-mobile{%- endif -%}
+        {%- endcapture -%}
+
+        {%- render 'tool.picture' with {
+          image: imageDesktop,
+          class: pictureClass,
+          width: 2560,
+          sizes: '320,375,500,750,1100,1650,2000'
+        } -%}
+
+        {%- comment -%} Mobile Image {%- endcomment -%}
+        {%- if imageMobile != blank -%}
+          {%- assign pictureClass = 'c-generic__banner-image o-responsive-image is-mobile' -%}
+          {%- render 'tool.picture' with {
+            image: imageMobile,
+            class: pictureClass,
+            width: 750,
+            sizes: '320,375,450'
+          } -%}
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Header {%- endcomment -%}
+      <div class="c-generic__header">
+        <h1 class="c-generic__title">
+          {{- page.title | escape -}}
+        </h1>
+      </div>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} Main Page Content {%- endcomment -%}
+  <div class="c-generic__content o-wysiwyg">
+    {%- if imageDesktop == blank -%}
+      <h1>{{- page.title | escape -}}</h1>
+    {%- endif -%}
+
+    {{- page.content -}}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Generic Body",
+  "settings": [
+  ]
+}
+{% endschema %}

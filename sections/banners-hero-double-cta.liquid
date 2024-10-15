@@ -1,0 +1,219 @@
+{%- comment -%}
+  Hero Double CTA
+    Section to display hero banner with full width image and 2 CTAs
+
+    Only visible if customer is logged out
+
+  Version:
+    1.0.0 - 2021/10/25
+{%- endcomment -%}
+
+
+{%- comment -%} Logged In Customer {%- endcomment -%}
+{%- unless customer -%}
+
+  {{ 'sections.hero-double-cta.css' | asset_url | stylesheet_tag }}
+
+  {%- liquid 
+    assign pretitle = section.settings.pretitle | default: page.title | escape
+    assign title = section.settings.title | escape 
+    assign subtitle = section.settings.subtitle | escape
+    assign ctaLabel1 = section.settings.cta-label-1 | escape
+    assign ctaLink1 = section.settings.cta-link-1 
+    assign ctaLabel2 = section.settings.cta-label-2 | escape
+    assign ctaLink2 = section.settings.cta-link-2
+    assign mobileImage = section.settings.mobile-image
+    assign desktopImage = section.settings.image
+  -%}
+
+  {% capture style_vars %}
+    --hero--bottom-text-bg-color: {{ section.settings.hero--bottom-text-bg-color }};
+    --hero--bottom-text-color: {{ section.settings.hero--bottom-text-color }};
+  {% endcapture %}
+
+  {%- if desktopImage != blank -%}
+    <div class="c-hero-double-cta"
+      style="{{ style_vars }}">
+      <div class="c-hero-double-cta__inner">
+
+        {%- comment -%} Banner Image {%- endcomment -%}
+        <div class="o-responsive-image-container c-hero-double-cta__image-container">
+          {%- comment -%} Desktop Image {%- endcomment -%}
+          {%- capture pictureClass -%}
+            c-hero-double-cta__image
+            o-responsive-image
+            is-desktop
+            {% if mobileImage != blank %}has-mobile{%- endif -%}
+          {%- endcapture -%}
+
+          {%- render 'tool.picture' with {
+            image: desktopImage,
+            class: pictureClass,
+            width: 2560,
+            sizes: '320,375,500,750,1100,1650,2000'
+          } -%}
+
+          {%- comment -%} Mobile Image {%- endcomment -%}
+          {%- if mobileImage != blank -%}
+            {%- assign pictureClass = 'c-hero-double-cta__image o-responsive-image is-mobile' -%}
+
+            {%- render 'tool.picture' with {
+              image: mobileImage,
+              class: pictureClass,
+              width: 750,
+              sizes: '320,375,500'
+            } -%}
+          {%- endif -%}
+        </div>
+
+        {%- comment -%} Content {%- endcomment -%}
+        <div class="c-hero-double-cta__content">
+          {%- comment -%} Pretitle {%- endcomment -%}
+          <h1 class="o-paragraph--2 c-hero-double-cta__pretitle">
+            {{- pretitle -}}
+          </h1>
+
+          {%- comment -%} Title {%- endcomment -%}
+          {%- if title != blank -%}
+            <h2 class="o-heading--1 c-hero-double-cta__title">
+              {{- title -}}
+            </h2>
+          {%- endif -%}
+
+          {%- comment -%} Subtitle {%- endcomment -%}
+          {%- if subtitle != blank -%}
+            <p class="o-paragraph--2 c-hero-double-cta__subtitle">
+              {{- subtitle -}}
+            </p>
+          {%- endif -%}
+
+          {%- comment -%} CTAs {%- endcomment -%}
+          {%- if ctaLabel1 != blank or ctaLabel2 != blank -%}
+            <div class="c-hero-double-cta__cta-wrapper">
+              {%- if ctaLabel1 != blank and ctaLink1 != blank -%}
+                <a href="{{ctaLink1}}" class="o-btn c-hero-double-cta__cta-btn">
+                  {{- ctaLabel1 -}}
+                </a>
+              {%- endif -%}
+              {%- if ctaLabel2 != blank and ctaLink2 != blank -%}
+                <a href="{{ctaLink2}}" class="o-btn c-hero-double-cta__cta-btn is-alternative">
+                  {{- ctaLabel2 -}}
+                </a>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+
+      </div>
+
+      {% if section.settings.banner_bottom_text != blank %}
+      <div class="hero--bottom-text">
+        {{ section.settings.banner_bottom_text }}
+      </div>
+      {% endif %}  
+    </div>
+  {%- endif -%}
+{%- endunless -%}
+
+
+{% schema %}
+{
+  "name": "LoggedOut-Hero-Double CTA",
+  "class": "c-section c-section__hero-double-cta",
+  "presets": [
+    {
+      "category": "Banners",
+      "name": "Hero Banner - Double CTA"
+    }
+  ],
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "This section will only display if customers are not logged in"
+    },
+    {
+      "type": "header",
+      "content": "Banner Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile-image",
+      "label": "Mobile Image",
+      "info": "Dimensions: 1500px X 960px"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Desktop Image",
+      "info": "Dimensions: 5120px X 2356px"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "pretitle",
+      "label": "Pretitle",
+      "default": "Rewards"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default":"Join the Club!"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "And get rewarded"
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "text",
+      "id": "cta-label-1",
+      "label": "CTA 1 Label",
+      "default":"Sign up"
+    },
+    {
+      "type": "url",
+      "id": "cta-link-1",
+      "label": "CTA 1 Url"
+    },
+    {
+      "type": "text",
+      "id": "cta-label-2",
+      "label": "CTA 2 Label",
+      "default":"Login"
+    },
+    {
+      "type": "url",
+      "id": "cta-link-2",
+      "label": "CTA 2 Url"
+    },
+    {
+      "type": "header",
+      "content": "Banner Bottom Text"
+    },
+    {
+      "type": "richtext",
+      "id": "banner_bottom_text",
+      "label": "Bottom Text"
+    },
+    {
+      "type": "color",
+      "label": "Background Color",
+      "id": "hero--bottom-text-bg-color"
+    },
+    {
+      "type": "color",
+      "label": "Text Color",
+      "id": "hero--bottom-text-color"
+    }
+  ]
+}
+{% endschema %}

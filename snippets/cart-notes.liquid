@@ -1,0 +1,99 @@
+{%- comment -%}
+  Cart notes
+   
+  Params:
+    giftTitle: string - accordion label
+    giftMessage: string - info above textarea
+    noteTitle: string - accordion label
+    noteMessage: string - info above textarea
+    environmentalTitle: string - accordion label
+    environmentalMessage: string - info above checkbox
+    environmentalFootnote: string - disclaimer below checkbox
+  Version:
+    1.0.0 - 2021/12/20
+{%- endcomment -%}
+
+{%- assign placeholder = 'general.cart.placeholder' | t -%}
+
+<div class="c-cart-notes" data-cart-notes>  
+
+  {%- comment -%} Gift Note {%- endcomment -%}
+  <details class="c-cart-notes__accordion" data-accordion-slide>
+    <summary class="c-cart-notes__accordion-heading" data-accordion-title>
+      {%- comment -%} Accordion Label {%- endcomment -%}
+      <span class="c-cart-notes__accordion-label">{{- giftTitle -}}</span>
+    </summary>
+
+    <div class="c-cart-notes__accordion-content" data-accordion-content>
+      {%- comment -%} Message Info {%- endcomment -%}
+      <p class="c-cart-notes__accordion-message o-paragraph--2">
+        {{- giftMessage -}}
+      </p>
+      {%- comment -%} Textarea Input {%- endcomment -%}
+      <textarea 
+        type="text" 
+        maxlength="150"
+        class="c-cart-notes__accordion-input"
+        name="attributes[gift-note]" 
+        data-gift-note
+        placeholder="{{- placeholder -}}"
+      >{{- cart.attributes.gift-note | escape -}}</textarea>
+    </div>
+  </details>
+
+
+  {%- comment -%} Order Note {%- endcomment -%}
+  <details class="c-cart-notes__accordion" data-accordion-slide>
+    <summary class="c-cart-notes__accordion-heading" data-accordion-title>
+      {%- comment -%} Accordion Label {%- endcomment -%}
+      <span class="c-cart-notes__accordion-label">{{- noteTitle -}}</span>
+    </summary>
+  
+    <div class="c-cart-notes__accordion-content" data-accordion-content>
+      {%- comment -%} Message Info {%- endcomment -%}
+      <p class="c-cart-notes__accordion-message o-paragraph--2">
+        {{- noteMessage -}}
+      </p>
+      {%- comment -%} Textarea Input {%- endcomment -%}
+      <textarea 
+        type="text" 
+        class="c-cart-notes__accordion-input"
+        name="attributes[order-note]"
+        data-order-note
+        placeholder="{{- placeholder -}}"
+      >{{- cart.attributes.order-note | escape -}}</textarea>
+    </div>
+  </details>
+
+
+  {%- comment -%} Environmental Packaging Checkbox {%- endcomment -%}
+  <details class="c-cart-notes__accordion" data-accordion-slide>
+    <summary class="c-cart-notes__accordion-heading" data-accordion-title>
+      {%- comment -%} Accordion Label {%- endcomment -%}
+      <span class="c-cart-notes__accordion-label">{{- environmentTitle -}}</span>
+    </summary>
+  
+    <div class="c-cart-notes__accordion-content" data-accordion-content>
+      {%- comment -%} Checkbox {%- endcomment -%}
+      <input type="checkbox" 
+        class="c-cart-notes__accordion-checkbox" 
+        name="attributes[environmental]"
+        data-environment-checkbox
+        id="environmental-packaging"
+        {% if cart.attributes.environmental == 'true' %}
+          checked
+        {% endif %}
+      />
+      {%- comment -%} Checkbox Info {%- endcomment -%}
+      <label class="c-cart-notes__accordion-message o-paragraph--2" for="environmental-packaging">
+        {{- environmentMessage -}}
+      </label>
+      {%- comment -%} Footnote {%- endcomment -%}
+      <p class="c-cart-notes__accordion-footnote">
+        {{- environmentFootnote -}}
+      </p>
+    </div>
+  </details>
+ 
+</div>
+

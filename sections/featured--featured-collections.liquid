@@ -1,0 +1,455 @@
+{%- comment -%}
+  Featured collections
+    Section to display featured collection links and connected images / illustrations
+
+  Version:
+    1.0.0 - 2021/09/11
+{%- endcomment -%}
+
+{{ 'sections.featured-collections.css' | asset_url | stylesheet_tag }}
+{{ 'sections.featured-collections.js' | asset_url | script_tag }}
+
+{%- liquid
+  assign featuredCollectionBlocks =   section.blocks | where: 'type', 'collection-block'
+
+  assign topWave = section.settings.top-wave
+  assign topColor1 = section.settings.top-color-1
+  assign topColor2 = section.settings.top-color-2
+  assign isFlippedTop = section.settings.flip-top-wave
+
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+-%}
+
+{%- if featuredCollectionBlocks.size > 0 -%}
+  {%- comment -%} Top Wave {%- endcomment -%}
+  {%- if topWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:topWave
+      color1: topColor1
+      color2: topColor2,
+      isFlipped: isFlippedTop
+    } -%}
+  {%- endif -%}
+
+  <section
+    class="c-featured-collections {% if section.settings.alt-background %}is-alt-bg{% endif %}"
+    data-featured-collections-container
+  >
+    <div class="c-featured-collections__inner">
+      {%- comment -%} Collections List {%- endcomment -%}
+      <ul class="c-featured-collections__list" data-featured-collections-list>
+        {%- for collectionBlock in featuredCollectionBlocks -%}
+          {%- assign collectionObject = collections[collectionBlock.settings.featured-collection] -%}
+          {%- assign imageClass = 'c-featured-collections__image o-responsive-image' -%}
+          {%- assign illustrationClass = 'c-featured-collections__illustration' -%}
+
+          {%- comment -%} Set the first collections images as visible by default {%- endcomment -%}
+          {%- if forloop.index == 1 -%}
+            {%- assign imageClass = imageClass | append: ' is-visible' -%}
+          {%- endif -%}
+
+          {%- comment -%} Set the first collections illustrations as visible by default {%- endcomment -%}
+          {%- if forloop.index == 1 -%}
+            {%- assign illustrationClass = illustrationClass | append: ' is-visible' -%}
+          {%- endif -%}
+
+          {%- comment -%} We want a collection before moving forward {%- endcomment -%}
+          {%- unless collectionObject != blank -%}
+            {%- continue -%}
+          {%- endunless -%}
+
+          {%- comment -%} Assign image variables {%- endcomment -%}
+          {%- assign image1 = collectionBlock.settings.image-1 -%}
+          {%- assign image2 = collectionBlock.settings.image-2 -%}
+          {%- assign image3 = collectionBlock.settings.image-3 -%}
+          {%- assign illustration1 = collectionBlock.settings.illustration-1 | default: section.settings.illustration-1 -%}
+          {%- assign illustration2 = collectionBlock.settings.illustration-2 | default: section.settings.illustration-2-%}
+          {%- assign illustration3 = collectionBlock.settings.illustration-3 | default: section.settings.illustration-3 -%}
+          {%- capture imageAttribute -%}
+            data-featured-collections-image data-collection-handle="{{- collectionObject.handle -}}"
+          {%- endcapture -%}
+
+          {%- comment -%} We'll capture the image groups for later {%- endcomment -%}
+          {%- if image1 != blank -%}
+            {%- capture imageGroup1 -%}
+              {{- imageGroup1 -}}
+              {%- render 'tool.picture' with {
+                image: image1,
+                class: imageClass,
+                width: 818,
+                sizes: '320,375,500,750',
+                lazy: true,
+                attributes: imageAttribute
+              } -%}
+            {%- endcapture -%}
+          {%- endif -%}
+
+          {%- if image2 != blank -%}
+            {%- capture imageGroup2 -%}
+              {{- imageGroup2 -}}
+              {%- render 'tool.picture' with {
+                image: image2,
+                class: imageClass,
+                width: 518,
+                sizes: '320,375,500',
+                lazy: true,
+                attributes: imageAttribute
+              } -%}
+            {%- endcapture -%}
+          {%- endif -%}
+
+          {%- if image3 != blank -%}
+            {%- capture imageGroup3 -%}
+              {{- imageGroup3 -}}
+              {%- render 'tool.picture' with {
+                image: image3,
+                class: imageClass,
+                width: 600,
+                sizes: '320,375,500',
+                lazy: true,
+                attributes: imageAttribute
+              } -%}
+            {%- endcapture -%}
+          {%- endif -%}
+
+
+          {%- if illustration1 != blank -%}
+            {%- capture illustrationGroup1 -%}
+              {{- illustrationGroup1 -}}
+              {%- render 'tool.picture' with {
+                image: illustration1,
+                class: illustrationClass,
+                width: 245,
+                sizes: '1100',
+                imageSizes: '65',
+                lazy: true,
+                attributes: imageAttribute
+              } -%}
+            {%- endcapture -%}
+          {%- endif -%}
+
+          {%- if illustration2 != blank -%}
+            {%- capture illustrationGroup2 -%}
+              {{- illustrationGroup2 -}}
+              {%- render 'tool.picture' with {
+                image: illustration2,
+                class: illustrationClass,
+                width: 288,
+                sizes: '1100,1650',
+                imageSizes: '86,187',
+                lazy: true,
+                attributes: imageAttribute
+              } -%}
+            {%- endcapture -%}
+          {%- endif -%}
+
+          {%- if illustration3 != blank -%}
+            {%- capture illustrationGroup3 -%}
+              {{- illustrationGroup3 -}}
+              {%- render 'tool.picture' with {
+                image: illustration3,
+                class: illustrationClass,
+                width: 452,
+                sizes: '1100,1650',
+                imageSizes: '127,290',
+                lazy: true,
+                attributes: imageAttribute
+              } -%}
+            {%- endcapture -%}
+          {%- endif -%}
+
+          {%- comment -%} Assign block variables {%- endcomment -%}
+          {%- assign collectionLabel = collectionBlock.settings.collection-name | default: collectionObject.title | escape -%}
+
+          {%- comment -%} Now render the collection items {%- endcomment -%}
+          {%- if collectionBlock.settings.featured-collection -%}
+            <li class="c-featured-collections__item">
+              <a
+                href="{{- collectionObject.url -}}"
+                class="c-featured-collections__link o-heading--1"
+                data-featured-collections-link
+                data-collection-handle="{{- collectionObject.handle -}}"
+              >
+                {{- collectionLabel -}}
+              </a>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+
+      {%- comment -%} CTA {%- endcomment -%}
+      {%- if section.settings.cta-label != blank and section.settings.cta-url != blank -%}
+        <div class="c-featured-collections__cta-container">
+          <a href="{{- section.settings.cta-url -}}" class="c-featured-collections__cta o-link">
+            {{- section.settings.cta-label | escape -}}
+          </a>
+        </div>
+      {%- endif -%}
+
+      {%- comment -%} Now we'll display our image groups {%- endcomment -%}
+      {%- if imageGroup1 != blank -%}
+        {%- comment -%} This group has three layers: svg shape, then photo, then illustration image {%- endcomment -%}
+        <div class="c-featured-collections__feature-1">
+          {{- illustrationGroup2 -}}
+
+          <div class="c-featured-collections__image-wrapper">
+            <div class="c-featured-collections__image-container o-responsive-image-container">
+              {{- imageGroup1 -}}
+            </div>
+          </div>
+          {{- illustrationGroup3 -}}
+          
+        </div>
+      {%- endif -%}
+
+      {%- if imageGroup2 != blank -%}
+        <div class="c-featured-collections__feature-2">
+          <div class="c-featured-collections__image-wrapper">
+            <div class="c-featured-collections__image-container o-responsive-image-container">
+              {{- imageGroup2 -}}
+            </div>
+          </div>
+          {{- illustrationGroup1 -}}
+         
+        </div>
+      {%- endif -%}
+
+      {%- if imageGroup3 != blank -%}
+        <div class="c-featured-collections__feature-3">
+          <div class="c-featured-collections__image-wrapper">
+            <div class="c-featured-collections__image-container o-responsive-image-container">
+              {{- imageGroup3 -}}
+            </div>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </section>
+
+  {%- comment -%} Bottom Wave {%- endcomment -%}
+  {%- if bottomWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:bottomWave
+      color1: bottomColor1
+      color2: bottomColor2,
+      isFlipped: isFlippedBottom
+    } -%}
+  {%- endif -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Featured Collections",
+
+  "class": "c-section c-section__featured-collections",
+  "presets": [
+    {
+      "category": "Featured",
+      "name":"Featured Collections"
+    }
+  ],
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "alt-background",
+      "label": "Alternative Background",
+      "default": false,
+      "info": "Check this to use the alternative background colour for this section"
+    },
+    {
+      "type": "header",
+      "content": "Illustrations",
+      "info":"Default illustrations if no illustrations are entered in the Featured Collection block"
+    },
+    {
+      "type": "image_picker",
+      "id": "illustration-1",
+      "label": "Illustration 1",
+      "info": "Must be a png. Dimensions: 490px X 458px"
+    },
+    {
+      "type": "image_picker",
+      "id": "illustration-2",
+      "label": "Illustration 2",
+      "info": "Must be a png. Dimensions: 576px X 576px. This is the background for illustration 3."
+    },
+    {
+      "type": "image_picker",
+      "id": "illustration-3",
+      "label": "Illustration 3",
+      "info": "Must be a png. Dimensions: 904px X 784px"
+    },
+    {
+      "type": "header",
+      "content": "Call to action"
+    },
+    {
+      "type": "text",
+      "id": "cta-label",
+      "label": "Label",
+      "default": "View all"
+    },
+    {
+      "type": "url",
+      "id": "cta-url",
+      "label": "Url"
+    },
+    {
+      "type": "header",
+      "content": "Top Wave"
+    },
+    {
+      "type": "select",
+      "id": "top-wave",
+      "label": "Top Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "top-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "top-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-top-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ],
+  "max_blocks": 10,
+  "blocks": [
+    {
+      "type": "collection-block",
+      "name": "Featured Collection",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Collection Information"
+        },
+        {
+          "type": "collection",
+          "id": "featured-collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "collection-name",
+          "label": "Collection Name",
+          "info": "If left empty, will fallback to collections name by default."
+        },
+        {
+          "type": "header",
+          "content": "Images",
+          "info": "These will change as the user hovers over the different collection links."
+        },
+        {
+          "type": "image_picker",
+          "id": "image-1",
+          "label": "Image 1",
+          "info": "Dimensions: 818px X 1132px. Appears as the first image on the right."
+        },
+        {
+          "type": "image_picker",
+          "id": "image-2",
+          "label": "Image 2",
+          "info": "Dimensions: 518px X 608px. Appears as the first image on the left."
+        },
+        {
+          "type": "image_picker",
+          "id": "image-3",
+          "label": "Image 3",
+          "info": "Dimensions: 600px X 704px. Appears as the second image on the left."
+        },
+        {
+          "type": "image_picker",
+          "id": "illustration-1",
+          "label": "Illustration 1",
+          "info": "Must be a png. Dimensions: 490px X 458px"
+        },
+        {
+          "type": "image_picker",
+          "id": "illustration-2",
+          "label": "Illustration 2",
+          "info": "Must be a png. Dimensions: 576px X 576px. This is the background for illustration 3."
+        },
+        {
+          "type": "image_picker",
+          "id": "illustration-3",
+          "label": "Illustration 3",
+          "info": "Must be a png. Dimensions: 904px X 784px"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

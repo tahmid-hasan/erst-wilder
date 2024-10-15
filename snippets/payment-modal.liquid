@@ -1,0 +1,40 @@
+<div class="c-payment-modal" data-payment-modal>
+  <div class="c-payment-modal__inner">
+    <div class="c-payment-modal__close" data-payment-modal-close>
+      {%- render 'object.icon' with {
+        icon: 'close',
+        class: 'c-payment-modal__close-icon'
+      } -%}
+    </div>
+
+    <div class="c-payment-modal__tabs-container">
+        <div class="c-payment-modal__tabs">
+          {%- for i in (1..5) -%}
+            {%- assign nameField  = 'payment-name-' | append: i -%}
+            {%- assign paymentName = settings[nameField] | escape -%}
+
+            <button
+              class="c-payment-modal__tab {% if forloop.first %} is-active{% endif %}"
+              data-payment-tab data-tab-index="{{forloop.index0}}"
+              data-payment-icon-type="{{paymentTypes[i]}}"
+            >
+              {{- paymentName -}}
+            </button>
+          {%- endfor -%}
+        </div>
+    </div>
+
+    <div class="c-payment-modal__contents">
+      {%- for j in (1..5) -%}
+        {%- assign contentField  = 'payment-content-' | append: j -%}
+        {%- assign paymentContent = settings[contentField] -%}
+        <div
+          class="c-payment-modal__content {% if forloop.first %} is-visible{% endif %}"
+          data-tab-index="{{forloop.index0}}" data-payment-content
+        >
+          {{- paymentContent -}}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>

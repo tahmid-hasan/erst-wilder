@@ -1,0 +1,260 @@
+{%- comment -%}
+  Hero banner
+    Section to display hero banner with full width image
+
+  Version:
+    1.0.0 - 2021/10/25
+{%- endcomment -%}
+
+{{ 'sections.hero-full.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%} Initial variables needed to check section {%- endcomment -%}
+
+{% capture style_vars %}
+  --hero--bottom-text-bg-color: {{ section.settings.hero--bottom-text-bg-color }};
+  --hero--bottom-text-color: {{ section.settings.hero--bottom-text-color }};
+{% endcapture %}
+
+<section class="c-hero-full is-split {% if ctaUrl == blank or clickableImage == false  %} no-pointer{% endif %}"
+  style="{{ style_vars }}"
+  x-data="HeroFullBannerCarousel"
+  data-carousel_autoplay_delay="{{ section.settings.carousel_autoplay_delay }}"
+  x-init="$dispatch('init-HeroFullBannerCarousel')">
+
+  {% if section.settings.enable_carousel %}
+  <div class="swiper mySwiper"><div class="swiper-wrapper">
+  {% endif %}
+  
+  {% for block in section.blocks %}
+    {%- comment -%} Assign variables {%- endcomment -%}
+    {%- liquid
+      assign imageMobile = block.settings.mobile-image
+      assign imageDesktop = block.settings.desktop-image
+      assign title = block.settings.title | escape
+      assign content = block.settings.content
+      assign ctaLabel = block.settings.cta-label | escape
+      assign ctaUrl = block.settings.cta-url | escape
+      assign content_bg_color = block.settings.content_bg_color
+      assign content_text_color = block.settings.content_text_color
+
+      assign content_bg_wave = block.settings.content_bg_wave
+    -%}
+
+    {% capture block_style_vars %}
+      --content_bg_color: {{ content_bg_color }}; 
+      --content_text_color: {{ content_text_color }};
+    {% endcapture %}    
+    
+    <div class="c-hero-full__inner wave-{{ block.settings.content_position }} {% if section.settings.enable_carousel %} swiper-slide{% endif %}">
+      {%- comment -%} Banner Image {%- endcomment -%}
+      <div class="o-responsive-image-container c-hero-full__image-container">
+        {%- comment -%} Desktop Image {%- endcomment -%}
+        {%- capture pictureClass -%}
+          c-hero-full__image
+          o-responsive-image
+          is-desktop
+          {% if imageMobile != blank %}has-mobile{%- endif -%}
+        {%- endcapture -%}
+
+        {%- render 'tool.picture' with {
+          image: imageDesktop,
+          class: pictureClass,
+          width: 2560,
+          sizes: '320,375,500,750,1100,1650,2000'
+        } -%}
+
+        {%- comment -%} Mobile Image {%- endcomment -%}
+        {%- if imageMobile != blank -%}
+          {%- assign pictureClass = 'c-hero-full__image o-responsive-image is-mobile' -%}
+
+          {%- render 'tool.picture' with {
+            image: imageMobile,
+            class: pictureClass,
+            width: 750,
+            sizes: '320,375,500'
+          } -%}
+        {%- endif -%}
+
+        {% if content_bg_wave %}
+          {% assign wave_img_file = 'svg.wave-' | append: block.settings.content_position | append: '.svg' %}
+          <img class="desktop wave" src="{{ wave_img_file | asset_url }}" />
+          <img class="mobile wave wave-mobile" src="{{ 'svg.wave-bottom-mobile.svg' | asset_url }}" />
+        {% endif %}
+      </div>
+
+      {%- comment -%} Content {%- endcomment -%}
+      {%- if title != blank or description != blank or ctaLabel != blank -%}
+        <div class="c-hero-full__content is-position-{{ block.settings.content_position }}">
+          <div class="content-wrap" style="{{ block_style_vars }}">
+            {%- comment -%} Title {%- endcomment -%}
+            {%- if title != blank -%}
+              <h2 class="c-hero-full__title o-heading--3">
+                {{- title -}}
+              </h2>
+            {%- endif -%}
+
+            {%- comment -%} Subtitle {%- endcomment -%}
+            {%- if content != blank -%}
+              <p class="o-paragraph">
+                {{- content -}}
+              </p>
+            {%- endif -%}
+
+            {%- comment -%} Call to action {%- endcomment -%}
+            {%- if ctaLabel != blank and ctaUrl != blank -%}
+              <div class="c-hero-full__cta-wrapper">
+                <a
+                  href="{{- ctaUrl -}}"
+                  class="c-hero-full__cta o-btn"
+                >
+                  {{- ctaLabel -}}
+                </a>
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endif -%}
+
+      {% if section.settings.banner_bottom_text != blank %}
+      <div class="hero--bottom-text">
+        {{ section.settings.banner_bottom_text }}
+      </div>
+      {% endif %}
+    </div>
+  {% endfor %}
+
+  {% if section.settings.enable_carousel %}
+  </div>
+  {% if section.blocks.size > 1 %}
+    <div class="swiper-button swiper-button-next">
+      <img class="icon-arrow-right" src="{{ 'icon-arrow-right.svg' | asset_url }}" />
+    </div>
+    <div class="swiper-button swiper-button-prev">
+      <img class="icon-arrow-left" src="{{ 'icon-arrow-right.svg' | asset_url }}" />
+    </div>
+  {% endif %}
+  </div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Hero Banner - Full WAVE",
+  "class": "c-section c-section__hero-full c-section__hero-full-wave",
+  "presets": [
+    {
+      "category": "Banners",
+      "name": "Hero Banner - Full WAVE"
+    }
+  ],
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_carousel",
+      "label": "Enable Carousel?",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "carousel_autoplay_delay",
+      "label": "Carousel Autoslide after X seconds",
+      "min": 0,
+      "max": 10,
+      "default": 3,
+      "info": "0 represents - No automatic sliding"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Banner",
+      "type": "banner",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Banner Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile-image",
+          "label": "Mobile Image",
+          "info": "Dimensions: 1500px X 960px"
+        },
+        {
+          "type": "image_picker",
+          "id": "desktop-image",
+          "label": "Desktop Image",
+          "info": "Dimensions: 5120px X 2356px"
+        },
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Banner Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi corporis maxime quo reiciendis perspiciatis nemo.</p>" 
+        },
+        {
+          "type": "header",
+          "content": "Content - Position/Background"
+        },
+        {
+          "type": "select",
+          "label": "Content Position (Desktop)",
+          "id": "content_position",
+          "options": [
+            {
+              "label": "Bottom Left",
+              "value": "bottom-left"
+            },
+            {
+              "label": "Bottom Right",
+              "value": "bottom-right"
+            }
+          ],
+          "default": "bottom-left"
+        },
+        {
+          "type": "checkbox",
+          "label": "Content - Background Wave?",
+          "id": "content_bg_wave",
+          "default": true
+        },
+        {
+          "type": "color",
+          "label": "Content - Background Color",
+          "id": "content_bg_color",
+          "default": "#f4e9d2"
+        },
+        {
+          "type": "color",
+          "label": "Content - Text Color",
+          "id": "content_text_color",
+          "default": "#000000"
+        },
+        {
+          "type": "header",
+          "content": "Call to Action"
+        },
+        {
+          "type": "text",
+          "id": "cta-label",
+          "label": "CTA Label"
+        },
+        {
+          "type": "url",
+          "id": "cta-url",
+          "label": "CTA Url"
+        }
+      ]
+    }    
+  ]
+}
+{% endschema %}

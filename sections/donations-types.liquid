@@ -1,0 +1,206 @@
+{{ 'sections.donations-types.css' | asset_url | stylesheet_tag }}
+
+
+{%- liquid 
+  assign donationTypes = section.blocks | where: 'type', 'donation_type' 
+  assign title =  section.settings.title | escape 
+
+  assign topWave = section.settings.top-wave
+  assign topColor1 = section.settings.top-color-1
+  assign topColor2 = section.settings.top-color-2
+  assign isFlippedTop = section.settings.flip-top-wave
+
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+-%}
+
+
+
+{%- if donationTypes.size > 0 -%}
+
+  {%- comment -%} Top Wave {%- endcomment -%}
+  {%- if topWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:topWave
+      color1: topColor1
+      color2: topColor2,
+      isFlipped: isFlippedTop
+    } -%}       
+  {%- endif -%}
+
+  <div class="c-donation-types">
+    <div class="c-donations-types__inner">
+
+      {%- comment -%} Title {%- endcomment -%}
+      {%- if title != blank -%}
+        <h3 class="c-donations-types__title o-heading--3">
+          {{- title -}}
+        </h3>
+      {%- endif -%}
+
+        <div class="c-donations-types__types-wrapper">
+
+          {%- comment -%} Donation icons {%- endcomment -%}
+          {%- for donationType in donationTypes -%}
+
+            <div class="c-donations-types__type-container">
+
+              {%- comment -%} Icon {%- endcomment -%}
+              {%- if donationType.settings.icon != blank -%}
+                <div class="c-donations-types__icon-container">
+                  {%- render 'svg.small-blob-1' with {
+                    class: 'c-donations-types__blob'
+                  } -%}
+                  {{- donationType.settings.icon -}}
+                </div>
+              {%- endif -%}
+
+              {%- comment -%} Icon Label {%- endcomment -%}
+              {%- if donationType.settings.title != blank -%}
+                <p class="c-donations-types__label o-heading--6">{{- donationType.settings.title | escape -}}</p>
+              {%- endif -%}
+            </div>
+
+          {%- endfor -%}
+        </div>
+
+    </div>
+  </div>
+
+  {%- comment -%} Bottom Wave {%- endcomment -%}
+  {%- if bottomWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:bottomWave
+      color1: bottomColor1
+      color2: bottomColor2,
+      isFlipped: isFlippedBottom
+    } -%} 
+    
+  {%- endif -%}  
+
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Organization Types",
+  "class": "c-section c-section__donations-types",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Title",
+      "default": "We have and continue to proudly supported organisations working across....."
+    },
+    {
+      "type": "header",
+      "content": "Top Wave"
+    },
+    {
+      "type": "select",
+      "id": "top-wave",
+      "label": "Top Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "top-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "top-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-top-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "donation_type",
+      "name": "Organization Types",
+      "limit": 7,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Label"
+        },
+        {
+          "type": "textarea",
+          "id": "icon",
+          "label": "Icon SVG Code",
+          "info":"Paste SVG code here"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

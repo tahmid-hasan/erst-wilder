@@ -1,0 +1,216 @@
+{%- comment -%}
+  USP's
+    Section to show usps with some content
+
+  Version:
+    1.0.0 - 2021/10/15
+{%- endcomment -%}
+
+{%- comment -%} Assign variables {%- endcomment -%}
+{%- liquid
+  assign preTitle = section.settings.pre-title | escape
+  assign title = section.settings.title | escape
+  assign ctaLabel = section.settings.cta-label | escape
+  assign ctaUrl = section.settings.cta-url
+  assign uspBlocks = section.blocks | where: 'type', 'usp-block'
+
+  assign topWave = section.settings.top-wave
+  assign topColor1 = section.settings.top-color-1
+  assign topColor2 = section.settings.top-color-2
+  assign isFlippedTop = section.settings.flip-top-wave
+
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+-%}
+
+{%- if title != blank or uspBlocks.size > 0 -%}
+  {{ 'sections.usps.css' | asset_url | stylesheet_tag }}
+
+  {%- comment -%} Top Wave {%- endcomment -%}
+  {%- if topWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:topWave
+      color1: topColor1
+      color2: topColor2,
+      isFlipped: isFlippedTop
+    } -%}       
+  {%- endif -%}  
+
+  <section class="c-usps">
+    <div class="c-usps__inner">
+      {%- comment -%}
+        We're using a snippet to render the usps. This way it can be reused in
+        other sections.
+      {%- endcomment -%}
+      {%- render 'object.usps' with {
+        class: 'c-usps__usps',
+        preTitle: preTitle,
+        title: title,
+        ctaLabel: ctaLabel,
+        ctaUrl: ctaUrl,
+        uspBlocks: uspBlocks
+      } -%}
+    </div>
+  </section>
+
+  {%- comment -%} Bottom Wave {%- endcomment -%}
+  {%- if bottomWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:bottomWave
+      color1: bottomColor1
+      color2: bottomColor2,
+      isFlipped: isFlippedBottom
+    } -%}
+  {%- endif -%}   
+
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "USPs",
+  "class": "c-section c-section__usps",
+  "presets": [
+    {
+      "category": "Content",
+      "name":"USPs"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "pre-title",
+      "label": "Pre Title"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "cta-label",
+      "label": "CTA Label"
+    },
+    {
+      "type": "url",
+      "id": "cta-url",
+      "label": "CTA Url"
+    },
+    {
+      "type": "header",
+      "content": "Top Wave"
+    },
+    {
+      "type": "select",
+      "id": "top-wave",
+      "label": "Top Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "top-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "top-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-top-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ],
+  "max_blocks": 3,
+  "blocks": [
+    {
+      "type": "usp-block",
+      "name": "USP Block",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "svg-code",
+          "label": "SVG code",
+          "info": "Ensure that the svg has been optimised and that it uses viewbox rather then width & height. This browser tool can be used to do this: https://jakearchibald.github.io/svgomg/."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Line 1"
+        },
+        {
+          "type": "text",
+          "id": "line-2",
+          "label": "Line 2"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

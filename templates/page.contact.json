@@ -1,0 +1,77 @@
+{
+  "sections": {
+    "contact-template-contact": {
+      "type": "contact-template-contact",
+      "blocks": {
+        "803f30a5-2246-4832-8693-86d06bd6fbb6": {
+          "type": "dropdown-option",
+          "settings": {
+            "title": "Delivery"
+          }
+        },
+        "4795f2fe-8742-4f3b-b86d-639a68d5cc16": {
+          "type": "dropdown-option",
+          "settings": {
+            "title": "Product"
+          }
+        },
+        "571e9c0a-258b-4959-9900-d419a0214cc2": {
+          "type": "dropdown-option",
+          "settings": {
+            "title": "General Enquiry"
+          }
+        },
+        "6f35a2b7-464d-44bc-a2dd-443f140da11c": {
+          "type": "text",
+          "settings": {
+            "title": "Our Community",
+            "text-block-content": "<p>Follow @erstwilder on <a href=\"http:\/\/www.facebook.com\/erstwilder\" target=\"_blank\" title=\"Erstwilder Facebook Page\">Facebook<\/a> and <a href=\"http:\/\/www.instagram.com\/erstwilder\/\" target=\"_blank\" title=\"http:\/\/www.instagram.com\/erstwilder\/\">Instagram<\/a> for all the latest updates, and <a href=\"http:\/\/www.tiktok.com\/@erstwilder\" target=\"_blank\" title=\"http:\/\/www.tiktok.com\/@erstwilder\">TikTok<\/a> for fun content too. Plus, make sure you join us and other like-minded accessory lovers in the <a href=\"http:\/\/www.facebook.com\/groups\/erstwilderofficial\" target=\"_blank\" title=\"http:\/\/www.facebook.com\/groups\/erstwilderofficial\">Official Erstwilder Community Group<\/a>, where thousands of Erstwildians are sharing their special moments, unboxing experiences, design suggestions, storage solutions and much more!<\/p>"
+          }
+        },
+        "1e9d587e-3767-4f8a-82f2-ec5d0993508c": {
+          "type": "text",
+          "settings": {
+            "title": "Facebook Messenger",
+            "text-block-content": "<p>Another easy way to get in touch with us is via Facebook Messenger. We love a good chat and we’ll be hanging out there during standard business hours, 9:00am – 5:00pm, Monday to Friday (Melbourne Australia time). We’ll do our best to check any messages outside of those times too.<\/p>"
+          }
+        },
+        "bb1999e2-6279-4c9f-9125-ceb91cbf313c": {
+          "type": "text",
+          "settings": {
+            "title": "Press \/ PR \/ Media",
+            "text-block-content": "<p>Are you an artist, brand or influencer who wants to collaborate? Have a media request? Email us at <a href=\"mailto:press@erstwilder.com\" target=\"_blank\" title=\"mailto:press@erstwilder.com\">press@erstwilder.com<\/a><\/p>"
+          }
+        },
+        "7974c3d8-e321-4466-8ce1-a7f84581f284": {
+          "type": "text",
+          "settings": {
+            "title": "Wholesale",
+            "text-block-content": "<p>Interested in becoming an official Erstwilder stockist? Please get in touch via our <a href=\"\/pages\/wholesale\" title=\"Wholesale\">wholesale contact page<\/a> for a response with priority or email us at <a href=\"mailto:wholesale@erstwilder.com\" target=\"_blank\" title=\"mailto:wholesale@erstwilder.com\">wholesale@erstwilder.com<\/a><br\/><br\/>*Alden Howard & Co. are the official agency representing Erstwilder in the USA & Canada.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "803f30a5-2246-4832-8693-86d06bd6fbb6",
+        "4795f2fe-8742-4f3b-b86d-639a68d5cc16",
+        "571e9c0a-258b-4959-9900-d419a0214cc2",
+        "6f35a2b7-464d-44bc-a2dd-443f140da11c",
+        "1e9d587e-3767-4f8a-82f2-ec5d0993508c",
+        "bb1999e2-6279-4c9f-9125-ceb91cbf313c",
+        "7974c3d8-e321-4466-8ce1-a7f84581f284"
+      ],
+      "settings": {
+        "title": "Contact",
+        "subtitle": "We’re here to talk",
+        "cta-label": "Check out our FAQs",
+        "cta-url": "shopify:\/\/pages\/faq",
+        "bottom-wave": "2",
+        "bottom-color-1": "#f8f3ec",
+        "bottom-color-2": "#f4e9d2",
+        "flip-bottom-wave": false
+      }
+    }
+  },
+  "order": [
+    "contact-template-contact"
+  ]
+}

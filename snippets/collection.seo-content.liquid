@@ -1,0 +1,74 @@
+{%- comment -%}
+  SEO Content
+    Text with show more/less
+
+  Parameters:
+    - class: a string to be used as an additional class
+
+  Version:
+    3.0.0 - 2021/11/15
+{%- endcomment -%}
+
+{%- assign content = collection.description -%}
+
+{%- if content != blank -%}
+  {%- capture truncContentCompare -%}
+    {{- content | strip_html -}}
+  {%- endcapture -%}
+
+  {%- capture truncContent -%}
+    {{- content | strip_html | truncatewords: 50, '... ' -}}
+  {%- endcapture -%}
+
+  {%- comment -%}
+    Only do truncation if < 50 words
+  {%- endcomment -%}
+  {%- if truncContent != truncContentCompare -%}
+    {%- capture readMore -%}
+      <div class="c-seo-content__btn-row has-js">
+        <button
+          type="button"
+          class="c-seo-content__btn o-link is-more"
+          data-read-more-toggle
+        >
+          {{- 'general.controls.read_more' | t -}}
+        </button>
+        <button
+          type="button"
+          class="c-seo-content__btn o-link is-less"
+          data-read-more-toggle
+        >
+          {{- 'general.controls.read_less' | t -}}
+        </button>
+      </div>
+    {%- endcapture -%}
+
+    <div class="c-seo-content {{ class }}" data-read-more-container>
+      <div class="c-seo-content__content is-full">
+        {{- content -}}
+        {{- readMore -}}
+      </div>
+
+      <div class="c-seo-content__content is-less">
+        <div class="is-mobile">
+          {{- content | truncatewords: 25, '... ' -}}
+        </div>
+
+        <div class="is-desktop">
+          {{- content | truncatewords: 50, '... ' -}}
+        </div>
+
+        {{- readMore -}}
+      </div>
+    </div>
+
+  {%- else -%}
+
+    <div class="c-seo-content {{ class }}">
+      <div class="c-seo-content__content">
+        {{- content -}}
+      </div>
+    </div>
+
+  {%- endif -%}
+{%- endif -%}

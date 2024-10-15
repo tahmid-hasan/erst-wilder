@@ -1,0 +1,113 @@
+{
+  "sections": {
+    "404-template-404": {
+      "type": "404-template-404",
+      "disabled": true,
+      "settings": {
+        "title": "Oh gosh, it seems we can’t find the page you’re looking for!",
+        "description": "While the page isn’t available, we certainly are, so from here you can choose your own adventure; head home and start again or contact us if you need any help."
+      }
+    },
+    "1635744967fe6571af": {
+      "type": "featured--featured-collections",
+      "blocks": {
+        "1a6e718e-6e34-42a3-bebf-c6e53acb1b40": {
+          "type": "collection-block",
+          "settings": {
+            "featured-collection": "new-arrivals",
+            "collection-name": "New Arrivals"
+          }
+        },
+        "1ec0a68e-90f9-40d4-af7f-4a1c717631bf": {
+          "type": "collection-block",
+          "settings": {
+            "featured-collection": "birds",
+            "collection-name": ""
+          }
+        },
+        "f7c3de2f-b4c1-4955-b5cf-4ce6912d58bb": {
+          "type": "collection-block",
+          "settings": {
+            "featured-collection": "flowers-plants",
+            "collection-name": ""
+          }
+        },
+        "57946566-90da-4039-96ae-79c22549a97c": {
+          "type": "collection-block",
+          "settings": {
+            "featured-collection": "food-drink",
+            "collection-name": ""
+          }
+        },
+        "1aa88699-9a1f-497c-9df0-95efb404e4f3": {
+          "type": "collection-block",
+          "settings": {
+            "featured-collection": "erstwilder-x-alice-in-wonderland",
+            "collection-name": ""
+          }
+        },
+        "a597eaa0-febe-4ab6-a9f8-65a5acff2bfb": {
+          "type": "collection-block",
+          "settings": {
+            "featured-collection": "dogs-cats",
+            "collection-name": ""
+          }
+        },
+        "cb770b2b-79b2-4925-8a1d-a4dff4e2dbc3": {
+          "type": "collection-block",
+          "settings": {
+            "featured-collection": "misfits",
+            "collection-name": ""
+          }
+        }
+      },
+      "block_order": [
+        "1a6e718e-6e34-42a3-bebf-c6e53acb1b40",
+        "1ec0a68e-90f9-40d4-af7f-4a1c717631bf",
+        "f7c3de2f-b4c1-4955-b5cf-4ce6912d58bb",
+        "57946566-90da-4039-96ae-79c22549a97c",
+        "1aa88699-9a1f-497c-9df0-95efb404e4f3",
+        "a597eaa0-febe-4ab6-a9f8-65a5acff2bfb",
+        "cb770b2b-79b2-4925-8a1d-a4dff4e2dbc3"
+      ],
+      "disabled": true,
+      "settings": {
+        "alt-background": true,
+        "cta-label": "View all",
+        "cta-url": "#",
+        "top-wave": "0",
+        "top-color-1": "",
+        "top-color-2": "",
+        "flip-top-wave": false,
+        "bottom-wave": "1",
+        "bottom-color-1": "#ffffff",
+        "bottom-color-2": "#f4e9d2",
+        "flip-bottom-wave": false
+      }
+    },
+    "16569900148733eef9": {
+      "type": "anyone-content-heading-double-cta",
+      "settings": {
+        "title": "Oh gosh, it seems we can’t find the page you’re looking for!",
+        "subtitle": "While the page isn’t available, we certainly are, so from here you can choose your own adventure; head home and start again or contact us if you need any help.",
+        "cta-label-1": "Head Home",
+        "cta-link-1": "https:\/\/www.erstwilder.com\/",
+        "cta-label-2": "Contact Us",
+        "cta-link-2": "shopify:\/\/pages\/contact",
+        "top-wave": "0",
+        "top-color-1": "",
+        "top-color-2": "",
+        "flip-top-wave": false,
+        "bottom-wave": "0",
+        "bottom-color-1": "#ffffff",
+        "bottom-color-2": "#ffffff",
+        "flip-bottom-wave": false
+      }
+    }
+  },
+  "order": [
+    "404-template-404",
+    "1635744967fe6571af",
+    "16569900148733eef9"
+  ]
+}

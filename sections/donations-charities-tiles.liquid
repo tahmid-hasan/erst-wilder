@@ -1,0 +1,231 @@
+{%- liquid
+  assign charityBlocks = section.blocks | where: "type", "charity"
+  assign title =  section.settings.title  | escaoe
+
+  assign topWave = section.settings.top-wave
+  assign topColor1 = section.settings.top-color-1
+  assign topColor2 = section.settings.top-color-2
+  assign isFlippedTop = section.settings.flip-top-wave
+
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+-%}
+
+{{ 'sections.donations-charities-tiles.css' | asset_url | stylesheet_tag }}
+
+
+{%- if charityBlocks.size > 0 -%}
+
+  {%- comment -%} Top Wave {%- endcomment -%}
+  {%- if topWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:topWave
+      color1: topColor1
+      color2: topColor2,
+      isFlipped: isFlippedTop
+    } -%}
+  {%- endif -%}
+
+  <div class="c-charities-tiles">
+
+    <div class="c-charities-tiles__outer">
+
+      <div class="c-charities-tiles__inner">
+
+        {%- comment -%} Title {%- endcomment -%}
+        {%- if title != blank -%}
+          <h2 class="c-charities-tiles__title">
+            {{- title -}}
+          </h2>
+        {%- endif -%}
+
+        <div class="c-charities-tiles__tiles {% if charityBlocks.size > 8 %} has-{{- charityBlocks.size -}}{% endif %}">
+
+          {%- for charity in charityBlocks -%}
+
+            {%- comment -%} Tiles {%- endcomment -%}
+            <div class="c-charities-tiles__tile">
+
+              <div class="c-charities-tiles__tile-inner">
+
+                {%- comment -%} Tile Blob {%- endcomment -%}
+                {%- render 'svg.donation-tile-blob' -%}
+
+                <div class="c-charities-tiles__content">
+                  {%- comment -%} Title {%- endcomment -%}
+                  {%- if charity.settings.title != blank -%}
+                    <h5 class="c-charities-tiles__charity o-heading--3">
+                      {{- charity.settings.title | escape -}}
+                    </h5>
+                  {%- endif -%}
+
+                  {%- comment -%} Total {%- endcomment -%}
+                  {%- if charity.settings.total != blank -%}
+                    {%- assign totalNumber = charity.settings.total | replace: '$', '' | replace: ',', '' -%}
+                    <p
+                      class="c-charities-tiles__total o-heading--2"
+                      data-donation-unit="{{- totalNumber -}}"
+                    >
+                      {{- charity.settings.total | escape -}}
+                    </p>
+                  {%- endif -%}
+
+                </div>
+
+                {%- comment -%} Description {%- endcomment -%}
+                {%- if charity.settings.description != blank -%}
+                  <p class="c-charities-tiles__description">
+                    {{- charity.settings.description | escape -}}
+                  </p>
+                {%- endif -%}
+
+              </div>
+
+            </div>
+          {%- endfor -%}
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%} Bottom Wave {%- endcomment -%}
+  {%- if bottomWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:bottomWave
+      color1: bottomColor1
+      color2: bottomColor2,
+      isFlipped: isFlippedBottom
+    } -%}
+  {%- endif -%}
+
+{%- endif -%}
+
+
+{% schema %}
+{
+  "name": "Charities Tiles",
+  "class": "c-section c-section__charities-tiles",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default":"And A Few More"
+    },
+    {
+      "type": "header",
+      "content": "Top Wave"
+    },
+    {
+      "type": "select",
+      "id": "top-wave",
+      "label": "Top Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "top-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "top-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-top-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "charity",
+      "name": "Organization Types",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Charity Name"
+        },
+        {
+          "type": "text",
+          "id": "total",
+          "label": "Amount Donated"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

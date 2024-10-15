@@ -1,0 +1,263 @@
+{%- comment -%}
+  Hero banner
+    Section to display hero banner with full width image
+
+  Version:
+    1.0.0 - 2021/10/25
+{%- endcomment -%}
+
+{{ 'sections.hero-full.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%} Initial variables needed to check section {%- endcomment -%}
+{%- assign imageDesktop = section.settings.desktop-image -%}
+
+{%- if imageDesktop != blank -%}
+  {%- comment -%} Assign variables {%- endcomment -%}
+  {%- liquid
+    assign imageMobile = section.settings.mobile-image
+    assign featuredImage = section.settings.featured-image | default: featuredProduct.image
+    assign title = section.settings.title | escape
+    assign subtitle = section.settings.subtitle | escape
+    assign ctaLabel = section.settings.cta-label | escape
+    assign ctaUrl = section.settings.cta-url | escape
+    assign clickableImage = section.settings.clickable-image
+    assign bg_shape_type = section.settings.bg-shape-type
+    assign bg_shape_color = section.settings.bg-shape-color
+    assign content_text_color = section.settings.content-text-color
+  -%}
+
+  {% capture style_vars %}
+    --hero--bottom-text-bg-color: {{ section.settings.hero--bottom-text-bg-color }};
+    --hero--bottom-text-color: {{ section.settings.hero--bottom-text-color }};
+    --content_text_color: {{ content_text_color }};
+  {% endcapture %}
+
+  <section class="c-hero-full {% if bg_shape_type != 'none'%} c-hero-full-with-blob{% endif %} is-split {% if ctaUrl == blank or clickableImage == false  %} no-pointer{% endif %}"
+    style="{{ style_vars }}">
+    <a 
+      href="{%- if ctaUrl != blank and clickableImage == true -%}{{ctaUrl}}{%- else -%}javascript:;{%- endif -%}"
+      class="c-hero-full__inner"
+    >
+      {%- comment -%} Banner Image {%- endcomment -%}
+      <div class="o-responsive-image-container c-hero-full__image-container">
+        {%- comment -%} Desktop Image {%- endcomment -%}
+        {%- capture pictureClass -%}
+          c-hero-full__image
+          o-responsive-image
+          is-desktop
+          {% if imageMobile != blank %}has-mobile{%- endif -%}
+        {%- endcapture -%}
+
+        {%- render 'tool.picture' with {
+          image: imageDesktop,
+          class: pictureClass,
+          width: 2560,
+          sizes: '320,375,500,750,1100,1650,2000'
+        } -%}
+
+        {%- comment -%} Mobile Image {%- endcomment -%}
+        {%- if imageMobile != blank -%}
+          {%- assign pictureClass = 'c-hero-full__image o-responsive-image is-mobile' -%}
+
+          {%- render 'tool.picture' with {
+            image: imageMobile,
+            class: pictureClass,
+            width: 750,
+            sizes: '320,375,500'
+          } -%}
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Content {%- endcomment -%}
+      {%- if title != blank or description != blank or ctaLabel != blank -%}
+        <div class="c-hero-full__content{% if bg_shape_type != 'none'%} c-hero-full__content-with-bg{% endif %} is-position-{{- section.settings.cta-position -}}">
+          {%- comment -%} Title {%- endcomment -%}
+          {%- if title != blank -%}
+            <h2 class="c-hero-full__title o-heading--1">
+              {{- title -}}
+            </h2>
+          {%- endif -%}
+
+          {%- comment -%} Subtitle {%- endcomment -%}
+          {%- if subtitle != blank -%}
+            <p class="c-hero-full__subtitle o-heading--4">
+              {{- subtitle -}}
+            </p>
+          {%- endif -%}
+
+          {%- comment -%} Call to action {%- endcomment -%}
+          {%- if ctaLabel != blank and ctaUrl != blank -%}
+            <div class="c-hero-full__cta-wrapper">
+             {%- if clickableImage != true -%}
+              <a
+                href="{{- ctaUrl -}}"
+                class="c-hero-full__cta o-btn"
+              >
+                {{- ctaLabel -}}
+              </a>
+            {%- else -%}
+              <span
+                class="c-hero-full__cta o-btn"
+              >
+                {{- ctaLabel -}}
+              </span> 
+             {%- endif -%}
+
+            </div>
+          {%- endif -%}
+
+          {% case bg_shape_type %}
+            {% when 'shape-1' %}
+              <svg class="bg-desktop" id="b" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 894.72 575.73"><g id="c"><path d="m104.62,69.42C.28,149.53-65.31,354.27,102.68,485.02c191.11,148.75,629.71,92.69,718.89-12.11,89.18-104.8,108.29-322.8-7.73-396.86C697.82,1.99,255.75-46.61,104.62,69.42Z" fill="{{ bg_shape_color }}"/></g></svg>
+              <svg class="bg-mobile" id="b" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 598.6 638.79"><g id="c"><path d="m82.26,575.23c82.76,65.95,367.01,111.39,450.92-25.07,82.1-133.53,90.85-392.41,3.79-473.95C445.04-9.91,164.35-41.86,63.18,81.6-40.3,207.88-4.28,506.28,82.26,575.23Z" fill="{{ bg_shape_color }}"/></g></svg>      
+          {% endcase %}
+        </div>
+      {%- endif -%}
+    </a>
+
+    {% if section.settings.banner_bottom_text != blank %}
+    <div class="hero--bottom-text">
+      {{ section.settings.banner_bottom_text }}
+    </div>
+    {% endif %}
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Hero Banner - Full",
+  "class": "c-section c-section__hero-full",
+  "presets": [
+    {
+      "category": "Banners",
+      "name": "Hero Banner - Full"
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Banner Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "clickable-image",
+      "label": "Clickable Hero Image",
+      "default": true,
+      "info": "Check this box to have the entire image click to the CTA url"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile-image",
+      "label": "Mobile Image",
+      "info": "Dimensions: 1500px X 960px"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop-image",
+      "label": "Desktop Image",
+      "info": "Dimensions: 5120px X 2356px"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Section Title"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "text",
+      "id": "cta-label",
+      "label": "CTA Label",
+      "default": "Button"
+    },
+    {
+      "type": "url",
+      "id": "cta-url",
+      "label": "CTA Url"
+    },
+    {
+      "type": "header",
+      "content": "Nine Point Grid",
+      "info": "You can align the call to action in 9 unique points across the banner."
+    },
+    {
+      "type": "select",
+      "id": "cta-position",
+      "label": "CTA Position",
+      "info": "Where would you like the cta to be positioned? (desktop only)",
+      "options": [
+        {"value": "top-left", "label": "Top Left"},
+        {"value": "top-center", "label": "Top Centre"},
+        {"value": "top-right", "label": "Top Right"},
+        {"value": "middle-left", "label": "Middle Left"},
+        {"value": "middle-center", "label": "Middle Centre"},
+        {"value": "middle-right", "label": "Middle Right"},
+        {"value": "bottom-left", "label": "Bottom Left"},
+        {"value": "bottom-center", "label": "Bottom Centre"},
+        {"value": "bottom-right", "label": "Bottom Right"}
+      ],
+      "default": "middle-center"
+    },
+    {
+      "type": "select",
+      "id": "bg-shape-type",
+      "label": "Use Shape background?",
+      "options": [
+        {
+          "label": "NONE",
+          "value": "none"
+        },
+        {
+          "label": "Shape 1",
+          "value": "shape-1"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "color",
+      "id": "bg-shape-color",
+      "label": "Shape Background Color",
+      "default": "#eee4cd"
+    },
+    {
+      "type": "color",
+      "id": "content-text-color",
+      "label": "Content Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Banner Bottom Text"
+    },
+    {
+      "type": "richtext",
+      "id": "banner_bottom_text",
+      "label": "Bottom Text"
+    },
+    {
+      "type": "color",
+      "label": "Background Color",
+      "id": "hero--bottom-text-bg-color"
+    },
+    {
+      "type": "color",
+      "label": "Text Color",
+      "id": "hero--bottom-text-color"
+    }
+  ]
+}
+{% endschema %}

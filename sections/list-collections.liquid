@@ -1,0 +1,71 @@
+{%- comment -%}
+  List Collections Template
+
+  Version:
+    1.0.0 - 2021/12/02
+{%- endcomment -%}
+
+
+{{ 'sections.list-collections.css' | asset_url | stylesheet_tag }}
+
+<div class="c-collection-list">
+  <h1 class="c-collection-list__title o-heading--2">{{ page_title }}</h1>
+
+  {%- comment -%} List of Collections {%- endcomment -%}
+  <div class="c-collection-list__container">
+
+    {% for collection in collections %}
+      {% unless collection.handle == 'frontpage' or collection.title contains 'test' or collection.handle contains 'blacklisted' %}
+        <div class="c-collection-list__item">
+          <a href="{{ collection.url }}" title="{{- collection.title -}}"
+            class="c-collection-list__image-container">
+
+            {% if collection.image != blank %}
+              {{ collection | img_url: '600x600' | img_tag: collection.title }}
+
+            {% elsif collection.products.first != blank %}
+              {{ collection.products.first | img_url: '600x600' | img_tag: collection.title }}
+
+            {%- comment -%} Customizable placeholder image {%- endcomment -%}
+            {% elsif section.settings.default_image != blank %}
+              {{ section.settings.default_image | img_url: '600x600' | img_tag: collection.title }}
+
+            {%- comment -%} Placeholder SVG{%- endcomment -%}
+            {% else %}
+              {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+              {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+
+            {% endif %}
+          </a>
+          <p>
+            <a href="{{ collection.url }}" class="c-collection-list__item-title"
+              title="{{- collection.title -}}"
+            >
+              {{- collection.title -}}
+            </a>
+          </p>
+        </div>
+      {% endunless %}
+    {% endfor %}
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection Placeholder",
+  "class": "c-section c-section__collections-list",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Placeholder Collection Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "default_image",
+        "label": "Placeholder Collection Image",
+        "info": "Dimensions: 600px X 600px"
+      }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,218 @@
+{%- comment -%}
+  Hero banner
+    Section to display hero banner with full width image
+
+  Version:
+    1.0.0 - 2021/10/25
+{%- endcomment -%}
+
+{%- if customer -%}
+  
+
+  {{ 'sections.full-image-banner.css' | asset_url | stylesheet_tag }}
+
+  {%- comment -%} Assign variables {%- endcomment -%}
+  {%- liquid
+    assign imageDesktop = section.settings.image
+    assign imageMobile = section.settings.mobile-image
+    assign content = section.settings.title | escape
+    
+    assign topWave = section.settings.top-wave
+    assign topColor1 = section.settings.top-color-1
+    assign topColor2 = section.settings.top-color-2
+    assign isFlippedTop = section.settings.flip-top-wave
+
+    assign bottomWave = section.settings.bottom-wave
+    assign bottomColor1 = section.settings.bottom-color-1
+    assign bottomColor2 = section.settings.bottom-color-2
+    assign isFlippedBottom = section.settings.flip-bottom-wave
+  -%}
+
+  {%- if imageDesktop != blank -%}
+    <div class="c-full-image-banner">
+      
+      {%- comment -%} Top Wave {%- endcomment -%}
+      {%- if topWave != "0" -%}
+        {%- render 'object.wave' with {
+          waveNumber:topWave
+          color1: topColor1
+          color2: topColor2,
+          isFlipped: isFlippedTop
+        } -%}
+      {%- endif -%}
+
+      {%- comment -%} Banner Image {%- endcomment -%}
+      <div class="o-responsive-image-container c-full-image-banner__image-container">
+        {%- comment -%} Desktop Image {%- endcomment -%}
+        {%- capture pictureClass -%}
+          c-full-image-banner__image
+          o-responsive-image
+          is-desktop
+          {% if imageMobile != blank %}has-mobile{%- endif -%}
+        {%- endcapture -%}
+
+        {%- render 'tool.picture' with {
+          image: imageDesktop,
+          class: pictureClass,
+          width: 2560,
+          sizes: '320,375,500,750,1100,1650,2000'
+        } -%}
+
+        {%- comment -%} Mobile Image {%- endcomment -%}
+        {%- if imageMobile != blank -%}
+          {%- assign pictureClass = 'c-full-image-banner__image o-responsive-image is-mobile' -%}
+
+          {%- render 'tool.picture' with {
+            image: imageMobile,
+            class: pictureClass,
+            width: 750,
+            sizes: '320,375,500'
+          } -%}
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Content {%- endcomment -%}
+      {%- if content != blank -%}      
+        <h2 class="c-full-image-banner__content">
+          {{- content -}}
+        </h2>
+      {%- endif -%}
+
+      {%- comment -%} Bottom Wave {%- endcomment -%}
+      {%- if bottomWave != "0" -%}
+      {%- render 'object.wave' with {
+        waveNumber:bottomWave
+        color1: bottomColor1
+        color2: bottomColor2,
+        isFlipped: isFlippedBottom
+      } -%}
+      {%- endif -%}  
+
+    </div>
+  {%- endif -%}
+
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Customer - Image Banner",
+  "class": "c-section c-section__full-image-banner",
+  "presets": [
+    {
+      "category": "Banners",
+      "name": "Full Image Banner"
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Banner Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Content"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile-image",
+      "label": "Mobile Image",
+      "info": "Dimensions: 750px X 1200px"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Desktop Image",
+      "info": "Dimensions: 5120px X 2356px"
+    },
+    {
+      "type": "header",
+      "content": "Top Wave"
+    },
+    {
+      "type": "select",
+      "id": "top-wave",
+      "label": "Top Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "top-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "top-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-top-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

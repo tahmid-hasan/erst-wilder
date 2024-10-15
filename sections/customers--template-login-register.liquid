@@ -1,0 +1,78 @@
+{% comment %}
+  Login/Register Template Section
+    Section shared between both the login and register templates.
+
+  Version:
+    1.0.0 - 2020/03/25
+{% endcomment %}
+
+{{ 'sections.account.css' | asset_url | stylesheet_tag }}
+{{ 'sections.account-page.js' | asset_url | script_tag }}
+
+<div class="p-customer c-login-register" data-login-register>
+  {%- comment -%}
+    Form Hack - Error Message Form
+    - Is a fake form to capture the error messages. Because by default Shopify
+      will give both forms error messages regardless of which form was actually
+      submmited.
+
+    Thanks Shopify
+  {%- endcomment -%}
+
+  <section class="c-login-register__form-container is-error-form">
+    {%- form 'customer_login' -%}
+      {%- assign hasErrors = false -%}
+      {%- capture errors -%}
+        {%- if form.errors -%}
+          {%- assign hasErrors = true -%}
+          <div class="o-form__errors c-login-register__errors">
+            {{- form.errors | default_errors -}}
+          </div>
+        {%- endif -%}
+      {%- endcapture -%}
+    {%- endform -%}
+  </section>
+
+  {%- comment -%} Toggle login/register (mobile-only) {%- endcomment -%}
+  <div class="c-login-register__toggle-wrapper">
+    <a class="c-login-register__register-toggle is-visible" href="#" data-account-toggle-register>
+      {{'customer.account.new_customer' | t -}}
+    </a>
+    <a class="c-login-register__login-toggle" href="#" data-account-toggle-login>
+      {{'customer.account.returning_customer' | t -}}
+    </a>
+  </div>
+
+  {%- comment -%} Login Section {%- endcomment -%}
+  <section class="c-login-register__form-container is-login is-visible"
+    data-login-form-wrapper
+  >
+    {%- if hasErrors -%}
+      <div class="c-login-register__errors" data-login-register-errors>
+        <div class="">{{ errors }}</div>
+      </div>
+    {%- endif -%}
+    
+    {%- render 'form.login', class: 'c-login-register__form' -%}
+
+    {%- comment %} Reset Password Form {%- endcomment -%}
+    {%- render 'form.reset-password', class: 'c-login-register__form' -%}
+  </section>
+
+  {%- comment -%} Register Section {%- endcomment -%}
+  <section class="c-login-register__form-container is-register"
+    data-register-form-wrapper
+  >
+    {%- render 'form.register', class: 'c-login-register__form' -%}
+  </section>
+
+</div>
+
+{% schema %}
+  {
+    "name": "Login/Register Page",
+    "class": "c-section__login-register",
+    "settings": [
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,286 @@
+{%- liquid
+  assign charityBlocks = section.blocks | where: "type", "charity"
+  assign title =  section.settings.title | escape
+
+  assign topWave = section.settings.top-wave
+  assign topColor1 = section.settings.top-color-1
+  assign topColor2 = section.settings.top-color-2
+  assign isFlippedTop = section.settings.flip-top-wave
+
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+-%}
+
+
+
+{{ 'sections.donations-charities-carousel.css' | asset_url | stylesheet_tag }}
+{{ 'sections.donations-charity-carousel.js' | asset_url | script_tag }}
+
+
+{%- if charityBlocks.size > 4 -%}
+
+  {%- comment -%} Top Wave {%- endcomment -%}
+  {%- if topWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:topWave
+      color1: topColor1
+      color2: topColor2,
+      isFlipped: isFlippedTop
+    } -%}
+  {%- endif -%}
+
+  <div class="c-charities-carousel" data-charity-carousel-container>
+    <div class="c-charities-carousel__inner">
+
+      {%- comment -%} Title {%- endcomment -%}
+      {%- if title != blank -%}
+        <h3 class="c-charities-carousel__title o-heading--2">
+          {{- title -}}
+        </h3>
+      {%- endif -%}
+
+      {%- comment -%} Slider {%- endcomment -%}
+      <div class="c-charities-carousel__slider" data-charity-carousel>
+
+        {%- for charity in charityBlocks -%}
+
+          {%- liquid
+            assign iconBGColor = charity.settings.icon-color | default: '#393939'
+            assign iconPNG = charity.settings.icon-png
+            assign charityTitle = charity.settings.title | escape
+            assign charityTotal = charity.settings.total | escape
+            assign totalNumber = charityTotal | replace: '$', '' | replace: ',', ''
+            assign charityDescription = charity.settings.description | escape
+          -%}
+
+          {%- comment -%} Begin Slide {%- endcomment -%}
+          <div class="c-charities-carousel__slide" data-charity-carousel-slide>
+
+            <div class="c-charities-carousel__slide-inner">
+
+              {%- comment -%} Blob SVG {%- endcomment -%}
+              <div class="c-charities-carousel__icon-wrapper">
+                {%- render 'svg.active-blob' with {
+                  fill:iconBGColor
+                  class:'c-charities-carousel__charity-blob'
+                } -%}
+
+                {%- comment -%} Charity Icon {%- endcomment -%}
+                {%- if iconPNG != blank -%}
+                  {%- render 'tool.picture' with {
+                    image: iconPNG,
+                    alt: charityTitle,
+                    class:'c-charities-carousel__charity-icon'
+                    width: 171,
+                    sizes: '375',
+                    imageSizes: '134'
+                  } -%}
+                {%- endif -%}
+              </div>
+
+              {%- comment -%} Content {%- endcomment -%}
+              {%- if charityTotal != blank and charityTitle != blank -%}
+                <div class="c-charities-carousel__content">
+
+                  {%- comment -%} Total {%- endcomment -%}
+                  <h6
+                    class="c-charities-carousel__total o-heading--2"
+                    data-donation-unit="{{- totalNumber -}}"
+                  >
+                    {{- charityTotal -}}
+                  </h6>
+
+                  {%- comment -%} Title {%- endcomment -%}
+                  <h5 class="c-charities-carousel__slide-title">
+                    {{- charityTitle -}}
+                  </h5>
+
+                  {%- comment -%} Description {%- endcomment -%}
+                  {%- if charityDescription != blank -%}
+                    <p class="c-charities-carousel__description o-paragraph--2">
+                      {{- charityDescription -}}
+                    </p>
+                  {%- endif -%}
+
+                </div>
+
+              {%- endif -%}
+            </div>
+
+          </div>
+          {%- comment -%} End Slide {%- endcomment -%}
+        {%- endfor -%}
+      </div>
+
+      {%- comment -%} Carousel Nav {%- endcomment -%}
+      <div class="c-charities-carousel__nav" data-charity-carousel-nav>
+        {%- render 'object.icon' with {
+          icon: 'chevron-left',
+          class: 'c-charities-carousel__nav-arrow',
+          attributes: 'data-carousel-previous'
+        } -%}
+         {%- render 'object.icon' with {
+          icon: 'chevron-right',
+          class: 'c-charities-carousel__nav-arrow',
+          attributes: 'data-carousel-next'
+        } -%}
+      </div>
+
+    </div>
+
+  </div>
+
+  {%- comment -%} Bottom Wave {%- endcomment -%}
+  {%- if bottomWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:bottomWave
+      color1: bottomColor1
+      color2: bottomColor2,
+      isFlipped: isFlippedBottom
+    } -%}
+  {%- endif -%}
+{%- endif -%}
+
+
+{% schema %}
+{
+  "name": "Charities Carousel",
+  "class": "c-section c-section__charities-carousel",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Include at least 5 charity blocks in this section"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default":"A Few Charities We’ve Supported"
+    },
+    {
+      "type": "header",
+      "content": "Top Wave"
+    },
+    {
+      "type": "select",
+      "id": "top-wave",
+      "label": "Top Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "top-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "top-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-top-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "charity",
+      "name": "Charities",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon-png",
+          "label": "Icon (PNG)"
+        },
+        {
+          "type": "color",
+          "id": "icon-color",
+          "label": "Icon background color",
+          "default": "#fff"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Charity Name"
+        },
+        {
+          "type": "text",
+          "id": "total",
+          "label": "Amount Donated"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

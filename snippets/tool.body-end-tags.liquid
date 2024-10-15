@@ -1,0 +1,14 @@
+{%- comment -%} Layout JavaScript {%- endcomment -%}
+{{ 'vendor.js' | asset_url | script_tag }}
+{{ 'layout.theme.js' | asset_url | script_tag }}
+
+{%- comment -%} Conditionally load template section scripts {%- endcomment -%}
+{%- if template.name == 'index' -%}
+  {{ 'sections.utilities-index.js' | asset_url | script_tag }}
+{%- endif -%}
+
+{%- render 'tool.tracking-scripts' -%}
+
+{%- if template.name == 'index' -%}
+  {% render 'gorgias-chat' %}
+{%- endif -%}

@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "stockists": {
+      "type": "stockists",
+      "settings": {
+        "title": "Stockists",
+        "subtitle": "Where to find us",
+        "content": "<p>Searching for a stockist near you? Check out our global list of recommended Erstwilder retailers! Another great resource to ask and connect with stockists directly is our dedicated Facebook group Erstwilder Shop Local. Otherwise, feel free to email us at hello@erstwilder.com if you need help finding a particular design in a store near you.<\/p>",
+        "store-label": "In Store",
+        "online-label": "Online",
+        "bottom-wave": "1",
+        "bottom-color-1": "#f8f3ec",
+        "bottom-color-2": "#f4e9d2",
+        "flip-bottom-wave": false
+      }
+    }
+  },
+  "order": [
+    "stockists"
+  ]
+}

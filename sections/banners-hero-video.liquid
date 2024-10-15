@@ -1,0 +1,198 @@
+{%- comment -%}
+  Hero banner
+    Section to display hero banner with video
+
+  Version:
+    1.0.0 - 2021/11/12
+{%- endcomment -%}
+
+{{ 'sections.hero-video.css' | asset_url | stylesheet_tag }}
+{{ 'sections.hero-video.js' | asset_url | script_tag }}
+
+{%- liquid
+  assign urlWebm = section.settings.video-webm | escape
+  assign urlMp4 = section.settings.video-mp4 | escape
+  assign poster = section.settings.image | img_url: '1720X1156'
+  assign preheading = section.settings.preheading | escape
+  assign description =  section.settings.description | newline_to_br
+  assign title = section.settings.title | escape
+  if title == blank
+    assign title = page.title | escape
+  endif
+
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+-%}
+
+{%- if title != blank and section.settings.image != blank -%}
+
+  <div class="c-hero-video">
+    <div class="c-hero-video__outer">
+      <div class="c-hero-video__inner">
+
+        {%- comment -%} Content {%- endcomment -%}
+        <div class="c-hero-video__content">
+
+          {%- comment -%} Preheading {%- endcomment -%}
+          {%- if preheading != blank -%}
+            <h1 class="c-hero-video__preheading o-heading--6">
+              {{- preheading -}}
+            </h1>
+          {%- endif -%}
+
+          {%- comment -%} Title {%- endcomment -%}
+          <h2 class="c-hero-video__title o-heading--2">
+            {{- title -}}
+          </h2>
+
+          {%- comment -%} Description {%- endcomment -%}
+          {%- if description != blank -%}
+            <p class="c-hero-video__description">
+              {{- description -}}
+            </p>
+          {%- endif -%}
+        </div>
+
+
+        {%- if urlMp4 != blank or urlWebm != blank -%}
+          {%- comment -%} Video {%- endcomment -%}
+          <div class="c-hero-video__video-container" data-featured-video-container>
+            {%- render 'object.featured-video' with {
+              poster:poster,
+              videoMp4:urlMp4,
+              videoWebm:urlWebm,
+              class:'c-hero-video__video',
+              attributes: 'playsinline preload="none"'
+            }-%}
+          </div>
+
+        {%- else -%}
+          {%- comment -%} Image (if no video) {%- endcomment -%}
+          <div class="c-hero-video__image-container o-responsive-image-container">
+            {%- render 'tool.picture' with {
+              class: 'c-heero-video__image o-responsive-image',
+              image: poster,
+              width: 860,
+              sizes: '375,500,750',
+              imageSizes: '335,460,710'
+            } -%}
+          </div>
+        {%- endif -%}
+
+      </div>
+    </div>
+  </div>
+
+{%- comment -%} Bottom Wave {%- endcomment -%}
+{%- if bottomWave != "0" -%}
+  {%- render 'object.wave' with {
+    waveNumber:bottomWave
+    color1: bottomColor1
+    color2: bottomColor2,
+    isFlipped: isFlippedBottom
+  } -%}
+{%- endif -%}  
+
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Hero Banner - Video",
+  "class": "c-section c-section__hero-video",
+  "presets": [
+    {
+      "category": "Media",
+      "name":"Video"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "preheading",
+      "label": "Preheading",
+      "default": "Our Story"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Title",
+      "default":"Fashioned to keep your outfits extraordinary and your days dandy",
+      "info":"Title will default to page title if left blank"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Video Poster",
+      "info": "Dimensions: 1720px X 1156px. The poster specifies an image to be shown while the video is downloading, or until the user hits the play button. If this is not included, the first frame of the video will be used instead."
+    },
+    {
+      "type": "header",
+      "content": "Video Formats",
+      "info": "For the video ideally you should upload a video in both webm and mp4 format. We will then serve the best format depending on the device and browser. If you're not able to provide both formats, then you should try and aim to at least provide the video in an mp4 format."
+    },
+    {
+      "type": "url",
+      "id": "video-webm",
+      "label": "Video Url (webm)",
+      "info": "The url of the video in webm format. This can be uploaded into the Shopify via settings->files."
+    },
+    {
+      "type": "url",
+      "id": "video-mp4",
+      "label": "Video Url (mp4)",
+      "info": "The url of the video in mp4 format. This can be uploaded into the Shopify via settings->files."
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

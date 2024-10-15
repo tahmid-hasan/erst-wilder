@@ -1,0 +1,127 @@
+{% comment %}
+  Contact Form
+
+  Params:
+    - selectBlocks: An array of blocks for the select field
+  Version:
+    1.0.0 - 2021/09/02
+{% endcomment %}
+
+{%- form 'contact', class: 'c-contact__form', id:'contact' -%}
+  {% if form.posted_successfully? %}
+    <h4 class="c-contact__success o-heading--4">
+      {{- 'form.contact.successful_submit' | t | escape -}}
+    </h4>
+
+    <a href="{{- routes.root_url -}}" class="c-contact__button-top o-btn">
+      {{- 'form.contact.home_button' | t | escape -}}
+    </a>
+  {%- else -%}
+    {%- if form.errors != blank -%}
+      <h5 class="c-contact__errors o-heading--5">
+        {{ form.errors | default_errors }}
+      </h5>
+    {%- endif -%}
+
+    {% comment%} Options section {% endcomment %}
+    {%- if selectBlocks.size > 0 -%}
+      <div class="c-contact__select-wrapper">
+        <select
+          class="c-contact__select"
+          name="contact[enquiry_type]"
+          id="c-contact__select"
+        >
+          <option class="o-paragraph" selected disabled>
+            {{-'form.contact.contact_help_select' | t | escape  -}}
+          </option>
+
+          {%- for selectBlock in selectBlocks -%}
+            <option value="{{- selectBlock.settings.title | escape | handlize -}}">
+              {{- selectBlock.settings.title | escape -}}
+            </option>
+          {%- endfor -%}
+        </select>
+
+        <label class="c-contact__label u-visually-hidden" for="c-contact__select">
+          {{- 'form.contact.label_select' | t | escape -}}
+        </label>
+      </div>
+    {%- endif -%}
+
+    {% comment %} Form Input {%- endcomment -%}
+    <div class="c-contact__form-inner-wrapper">
+      <div class="c-contact__form-input-wrapper">
+        <div class="c-contact__input-group">
+          <input
+            class="o-input is-primary c-contact__input"
+            name="contact[first_name]"
+            placeholder="{{- 'form.contact.first' | t | escape -}}"
+            required
+            type="text"
+            value="{%- if form[first] -%}{{- form[first] -}}{%- endif-%}"
+          >
+
+          <input
+            class="o-input is-primary c-contact__input"
+            name="contact[last_name]"
+            placeholder="{{- 'form.contact.last' | t | escape -}}"
+            type="text"
+            value="{%- if form[last] -%}{{- form[last] -}}{%- endif-%}"
+          >
+        </div>
+
+        <div class="c-contact__input-group">
+          <input
+            class="o-input is-primary c-contact__input {% if form.errors contains 'email' -%}has-error{%- endif -%}"
+            name="contact[email]"
+            placeholder="{{- 'form.contact.email' | t | escape -}}"
+            required
+            type="email"
+            value="{%- if form[email] -%}{{- form[email] -}}{%- endif-%}"
+          >
+
+          <input
+            class="o-input is-primary c-contact__input"
+            name="contact[phone]"
+            placeholder="{{- 'form.contact.phone' | t | escape -}}"
+            type="tel"
+            value="{%- if form[phone] -%}{{- form[phone] -}}{%- endif-%}"
+          >
+        </div>
+
+        <div class="c-contact__optional-wrapper">
+          <input
+            id="c-contact__input-ref"
+            class="o-input is-primary c-contact__input"
+            name="contact[ref]"
+            placeholder="{{- 'form.contact.order_ref' | t | escape -}}"
+            type="text"
+            value="{%- if form[ref] -%}{{- form[ref] -}}{%- endif-%}"
+          >
+          <label
+            for="c-contact__input-ref"
+            class="c-contact__optional-tag is-visible o-paragraph"
+          >
+            {{- 'form.contact.optional' | t | escape -}}
+          </label>
+        </div>
+
+        <textarea
+          class="o-input is-primary c-contact__input c-contact__input--textarea"
+          name="contact[body]"
+          placeholder="{{- 'form.contact.message' | t | escape -}}"
+          type=" textarea"
+          value="{%- if form[message] -%}{{- form[message] -}}{%- endif-%}"
+        ></textarea>
+
+        <p class="fileupload-helper" style="margin: 25px 0;">
+          Have a file or photo to attach? Please email us at <a style="text-decoration:underline; text-underline-offset:3px;" href="mailto:hello@erstwilder.com">hello@erstwilder.com</a> instead of using this form.
+        </p>
+
+        <button class="c-contact__button o-btn">
+          {{- 'form.contact.contact_us' | t | escape -}}
+        </button>
+      </div>
+    </div>
+  {% endif %}
+{%- endform -%}

@@ -1,0 +1,448 @@
+{%- comment -%}
+  Header Template
+
+  Version:
+    1.0.0 - 2021/01/27
+{%- endcomment -%}
+
+{{ 'sections.header.css' | asset_url | stylesheet_tag }}
+{{ 'sections.header.js' | asset_url | script_tag }}
+
+{%- comment -%} Assign variables {%- endcomment -%}
+{%- liquid
+  assign promotionBlocks = section.blocks | where: 'type', 'promo-message'
+  assign desktopMenu = section.settings.main-menu-desktop
+  assign mobileMenu1 = section.settings.mobile-menu-1
+  assign mobileMenu2 = section.settings.mobile-menu-2
+  assign mobileMenu3 = section.settings.mobile-menu-3
+  assign autoplay = section.settings.autoplayEnabled
+  assign speed = section.settings.autoplaySpeed
+-%}
+
+<header class="c-header" data-header-container>
+  {%- comment -%} Promo Bar {%- endcomment -%}
+  {%- if promotionBlocks.size > 0 -%}
+    <div class="c-header__promobar" data-promobar data-autoplay="{{ autoplay }}" data-autoplay-speed="{{ speed }}">
+      <div class="header__promobar-wrap">
+        {% liquid 
+          assign header_link_text_left = section.settings.header_link_text_left
+          assign header_link_url_left = section.settings.header_link_url_left
+
+          assign header_link_text_right = section.settings.header_link_text_right
+          assign header_link_url_right = section.settings.header_link_url_right
+        %}
+        {% if header_link_text_left != '' and header_link_url_left != blank %}
+          <div class="header-link hl-left">
+            <a href="{{ header_link_url_left }}">
+              {{ header_link_text_left }}
+            </a>
+          </div>
+        {% endif %}
+
+        <div class="c-header__promobar-inner">
+
+          <div class="c-header__promobar-navs" data-carousel-navigation>
+            {%- comment -%} Previous {%- endcomment -%}
+            <button class="c-header__promobar-nav is-prev" data-carousel-previous>
+              {%- render 'icon.chevron-left' with {
+                class: 'c-header__promobar-icon'
+              } -%}
+            </button>
+            
+            {%- comment -%} Next {%- endcomment -%}
+            <button class="c-header__promobar-nav is-next" data-carousel-next>
+              {%- render 'icon.chevron-right' with {
+                class: 'c-header__promobar-icon'
+              } -%}
+            </button>
+          </div>
+
+          {%- comment -%} Carousel {%- endcomment -%}
+          <div class="c-header__promobar-carousel" data-promobar-carousel>
+            {%- for promoBlock in promotionBlocks -%}
+              {%- comment -%} Check that we have some content to display {%- endcomment -%}
+              {%- assign promoText = promoBlock.settings.title | escape -%}
+              {%- unless promoText != blank -%}{%- continue -%}{%- endunless -%}
+
+              {%- assign promoUrl = promoBlock.settings.url | escape -%}
+              {%- assign promoLocation = promoBlock.settings.message-location | default: 'all' -%}
+
+              <promo-bar-slide
+                class="c-header__promobar-slide"
+                data-promobar-slide
+                data-promobar-slide-location="{{- promoLocation -}}"
+                {% if promoBlock.settings.mobile_only %}data-is-mobile-only="true"{% endif %}
+              >
+                {%- comment -%}
+                  If a url is provided use an anchor tag, otherwise default to using a paragraph
+                {%- endcomment -%}
+                {%- if promoUrl != blank -%}
+                  <a href="{{- promoUrl -}}" class="c-header__promobar-text o-paragraph">
+                    {{- promoText -}}
+                  </a>
+                {%- else -%}
+                  <p class="c-header__promobar-text">
+                    {{- promoText -}}
+                  </p>
+                {%- endif -%}
+              </promo-bar-slide>
+            {%- endfor -%}
+          </div>
+
+        </div>
+
+        {% if header_link_text_right != '' and header_link_url_right != blank %}
+          <div class="header-link hl-right">
+            <a href="{{ header_link_url_right }}">
+              {{ header_link_text_right }}
+            </a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} Header Inner {%- endcomment -%}
+  <div class="c-header__inner" data-header>
+    <div class="c-header__left">
+      {%- comment -%} Mobile Actions {%- endcomment -%}
+      <div class="c-header__actions is-mobile">
+        {%- comment -%} Mobile Nav Trigger {%- endcomment -%}
+        <button
+          class="c-header__action is-mobile-trigger"
+          data-mobile-menu-toggle
+          title="Open Menu"
+        >
+          {%- render 'icon.hamburger' with {
+            class: 'c-header__icon is-hamburger'
+          } %}
+
+          {%- render 'icon.close' with {
+            class: 'c-header__icon is-close'
+          } %}
+        </button>
+
+        {%- comment -%} Search {%- endcomment -%}
+        <a
+          href="{{ routes.search_url }}"
+          title="{{ 'general.controls.search_title_tag' | t  }}"
+          class="c-header__action is-search is-mobile"
+          data-search-toggle
+        >
+          {%- render 'icon.search' with {
+            class: 'c-header__icon'
+          } %}
+        </a>
+      </div>
+
+      {%- comment -%} Desktop Menu {%- endcomment -%}
+      {%- if desktopMenu != blank -%}
+        {%- render 'header.navigation-desktop' with {
+          menu: linklists[desktopMenu],
+          class: 'c-header__menu is-desktop'
+        } -%}
+      {%- endif -%}
+    </div>
+
+    <div class="c-header__center">
+      {%- comment -%} Logo {%- endcomment -%}
+      <a
+        href="{{- routes.root_url -}}"
+        class="c-header__logo"
+        title="{{- 'general.header.logo_title' | t -}}"
+      >
+        {%- render 'svg.logo' with {
+          class: 'c-header__logo-svg'
+        } -%}
+
+        {%- if template.name == 'index' -%}
+          <h1 class="u-visually-hidden">
+            {{- shop.name | escape -}}
+          </h1>
+        {%- endif -%}
+      </a>
+    </div>
+
+    <div class="c-header__right">
+      {%- comment -%} Multi Currency Selector {%- endcomment -%}
+      {%- render 'object.currency-switcher' with {
+        class: 'c-header__currency'
+      } -%}
+
+      {%- comment -%} Actions {%- endcomment -%}
+      <div class="c-header__actions">
+        {%- comment -%} Search {%- endcomment -%}
+        <a
+          href="{{ routes.search_url }}"
+          title="{{ 'general.controls.search_title_tag' | t }}"
+          class="c-header__action is-search is-desktop"
+          data-search-toggle
+        >
+          {%- render 'icon.search' with {
+            class: 'c-header__icon'
+          } %}
+        </a>
+
+        {%- comment -%} Account {%- endcomment -%}
+        <a
+          href="{{ routes.account_url }}"
+          title="{{ 'general.controls.account_title_tag' | t }}"
+          class="c-header__action is-account"
+        >
+          {%- render 'icon.account' with {
+            class: 'c-header__icon'
+          } %}
+        </a>
+
+        {%- comment -%} Wishlist {%- endcomment -%}
+        <a
+          href="/a/wishlist"
+          class="c-header__action is-wishlist is-desktop"
+          title="{{ 'general.controls.wishlist_title_tag' | t }}"
+        >
+          {%- render 'icon.heart' with {
+            class: 'c-header__icon'
+          } %}
+        </a>
+
+        {%- comment -%} Cart {%- endcomment -%}
+        <div class="c-header__cart-container">
+          {%- comment -%} Desktop Search {%- endcomment -%}
+          {%- render 'object.search-form' with {
+            class: 'c-header__search-form is-desktop'
+          } -%}
+
+          <a
+            href="{{ routes.cart_url }}"
+            title="{{ 'general.controls.cart_title_tag' | t }}"
+            class="c-header__action is-cart"
+            data-header-cart
+            {% unless template.name contains 'cart' %}
+              data-cart-drawer-toggle
+            {% endunless %}
+          >
+            {%- render 'icon.cart' with {
+              class: 'c-header__icon'
+            } -%}
+
+            <span
+              class="c-header__count {% if cart.item_count > 0 %}is-visible{% endif %}"
+              data-cart-count
+            >
+              {{- cart.item_count -}}
+            </span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    {%- comment -%} Mobile Menu {%- endcomment -%}
+    {%- if mobileMenu1 != blank -%}
+      {%- render 'header.navigation-mobile' with {
+        menu1: linklists[mobileMenu1],
+        menu2: linklists[mobileMenu2],
+        menu3: linklists[mobileMenu3],
+        class: 'c-header__menu is-mobile'
+      } -%}
+    {%- endif -%}
+  </div>
+</header>
+
+<script>
+class PromoBarSlide extends HTMLElement {
+  constructor() {
+    super();
+    this.Init();
+  }
+  Init() {
+    let _this = this;
+    let isMobile_message = _this.dataset.isMobileOnly == 'true';
+    let isDesktop = window.matchMedia("(min-width: 750px)").matches;
+    // console.log({isDesktop, isMobile_message});
+
+    if (isDesktop && isMobile_message) {
+      _this.remove();
+    }
+  }
+};
+customElements.define('promo-bar-slide', PromoBarSlide);  
+</script>
+
+<style>
+  .header__promobar-wrap {
+    height: 100%;
+  }
+  @media only screen and (max-width: 1099px) {
+    .header-link {
+      display: none !important;
+    }
+  }
+  @media only screen and (min-width: 1100px) {
+    .header__promobar-wrap {
+      margin: 0 clamp(1.25rem,6%,7.5rem);
+      position: relative;
+    }
+    .c-header__promobar-inner {
+      padding: 0 calc(50vw - 500px);
+    }
+
+    .header-link {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+    .header-link a {
+      text-decoration: underline;
+    }
+    .header-link.hl-left {
+      left: 0;
+    }
+    .header-link.hl-right {
+      right: 0;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Header",
+  "class": "c-section c-section__header",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Promotion Bar"
+    },
+    {
+      "type": "paragraph",
+      "content": "Set promotion messages & links via the Promo Message blocks."
+    },
+    {
+      "type": "header",
+      "content": "Promobar Settings"
+    },
+    {
+      "id": "autoplayEnabled",
+      "type": "checkbox",
+      "label": "Autoplay",
+      "default": true
+    },
+    {
+      "id": "autoplaySpeed",
+      "type": "range",
+      "min": 1,
+      "max": 20,
+      "label": "Autoplay Speed",
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "link_list",
+      "id": "main-menu-desktop",
+      "label": "Main Menu (Desktop)",
+      "info": "Pick the menu you would like to use for desktop."
+    },
+    {
+      "type": "text",
+      "id": "desktop-cta-label",
+      "label": "Desktop CTA Label",
+      "info": "This will appear under the first submenu of the desktop submenu."
+    },
+   {
+     "type": "url",
+     "id": "desktop-cta-url",
+     "label": "Desktop CTA URL",
+     "info": "This will appear under the first submenu of the desktop submenu."
+   },
+    {
+      "type": "link_list",
+      "id": "mobile-menu-1",
+      "label": "Mobile Menu 1",
+      "info": "Pick the menu you would like to use for the first mobile menu."
+    },
+    {
+      "type": "link_list",
+      "id": "mobile-menu-2",
+      "label": "Mobile Menu 2",
+      "info": "Pick the menu you would like to use for the second mobile menu."
+    },
+    {
+      "type": "link_list",
+      "id": "mobile-menu-3",
+      "label": "Mobile Menu 3",
+      "info": "Pick the menu you would like to use for the third mobile menu."
+    },
+    {
+      "type": "header",
+      "content": "Header Links"
+    },
+    {
+      "type": "text",
+      "id": "header_link_text_left",
+      "label": "Header Link text (LEFT)"
+    },
+    {
+      "type": "url",
+      "id": "header_link_url_left",
+      "label": "Header Link (LEFT)"
+    },
+    {
+      "type": "text",
+      "id": "header_link_text_right",
+      "label": "Header Link text (RIGHT)"
+    },
+    {
+      "type": "url",
+      "id": "header_link_url_right",
+      "label": "Header Link (RIGHT)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "promo-message",
+      "name": "Promo Message",
+      "settings": [
+        {
+          "type": "select",
+          "id": "message-location",
+          "label": "Message Location",
+          "options": [
+            {
+              "value": "all",
+              "label": "All Locations"
+            },
+            {
+              "value": "au",
+              "label": "Australia"
+            },
+            {
+              "value": "int",
+              "label": "International"
+            }
+          ]
+        },
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Text"
+        },
+        {
+          "id": "url",
+          "type": "url",
+          "label": "Link",
+          "info": "Leave blank for no link."
+        },
+        {
+          "id": "mobile_only",
+          "type": "checkbox",
+          "label": "Display on Mobile only?"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

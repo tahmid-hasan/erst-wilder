@@ -1,0 +1,68 @@
+{% comment %}
+  Stockists Store Locations -- Australia
+    Snippet to loop through store locations in metafields
+    and and create accordions of states
+
+  Version:
+    1.0.0 - 2021/11/25
+{% endcomment %}
+
+{%- liquid   
+  assign mf = page.metafields.stockists
+  assign stateNames = mf.states | uniq
+  assign addresses = mf.address_and_links 
+  assign states = mf.states
+  assign countries = mf.country 
+-%}
+
+<div 
+  class="c-stockists__country-wrapper is-visible" 
+  data-stockists-country-wrapper 
+  data-accordion-container 
+  data-country-handle="australia"
+>
+
+  {%- for stateName in stateNames -%}
+
+    {%- comment -%} Skip blank states {%- endcomment -%}
+    {%- if stateName == '' -%}{% continue %}{%- endif -%}
+    
+    <details class="o-accordion c-stockists__state-wrapper" data-accordion-slide>
+      <summary class="o-accordion__heading o-heading--6 c-stockists__state" data-accordion-title>
+        <span class="o-accordion__label c-stockists__state-name">{{- stateName -}}</span>
+
+        {%- render 'svg.plus' with { 
+          class: 'o-accordion__plus' 
+          color:'#393939'
+        } -%}
+        {%- render 'svg.minus' with { 
+          class: 'o-accordion__minus' 
+          color:'#393939'
+        } -%}
+
+      </summary>
+
+      <div class="o-accordion__content c-stockists__accordion-content" data-accordion-content>
+
+        {%- assign innerCounter = 0 -%}
+        
+        {%- for state in states -%}
+
+          {%- assign country = countries[innerCounter]  -%}
+
+          {%- if country == 'Australia' and state == stateName -%}
+
+              <div class="c-stockists__store-info">
+                {{addresses[innerCounter]}}
+              </div>
+          
+          {%- endif -%}
+
+        {%- assign innerCounter = innerCounter | plus: 1 -%}
+
+        {%- endfor -%}
+      </div>
+    </details>
+  {%- endfor -%}
+
+</div>

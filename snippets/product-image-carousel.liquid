@@ -1,0 +1,133 @@
+{% comment %}
+  Product image Carousel
+    Snippet to display carousel for currently selected variant image +
+    product images/videos on product template
+
+    Params:
+    - Class: A string to be used as an additional class
+
+  Version:
+    1.0.0 - 2021/11/01
+{% endcomment %}
+
+{%- if product.media.size > 0 -%}
+  {%- comment -%}
+    Capture Media Data
+      - Capture all carousel media in one loop instead of running multiple loops
+  {%- endcomment -%}
+  {%- for media in product.media -%}
+
+    {%- assign imgSrc = media | img_url -%} 
+
+    {%- comment -%} Carousel Slides {%- endcomment -%}
+    {%- capture carouselSlides -%}
+      {{- carouselSlides -}}
+
+      <div
+        class="c-product-image-carousel__slide"
+        data-product-image-carousel-slide
+        data-index="{{- forloop.index0 -}}"
+        data-image-id="{{- media.id -}}"
+      >
+
+        {% if media.media_type == 'image' %}
+          <div class="c-product-image-carousel__slide-image-container">
+            {%- assign attr = '' -%}
+            {%- if forloop.first -%}{%- assign attr = 'itemprop="image"' -%}{%- endif -%}
+            {%- render 'tool.picture' with {
+              image: media,
+              class: 'c-product-image-carousel__slide-image',
+              width: 850,
+              sizes: '320,350,500,750',
+              attributes: attr
+            } -%}
+          </div>
+        
+        {% elsif media.media_type == 'video' %}
+          {%- comment -%} Find the largest MP4 from media.sources {%- endcomment -%}
+          {%- liquid
+            assign videoSrc = ''
+            for source in media.sources reversed
+              if source.format == 'mp4'
+                assign videoSrc = source.url
+                break
+              endif
+            endfor
+
+            if videoSrc == blank
+              continue
+            endif
+          -%}
+
+          {% comment %} Only video needs a responsive container {% endcomment %}
+          <div class="c-product-image-carousel__slide-image-container o-responsive-image-container">
+            {%- render 'tool.video' with {
+              src: videoSrc,
+              poster: media.preview_image,
+              class: 'c-product-image-carousel__slide-image o-responsive-image',
+              posterWidth: 850,
+              lazy: false
+            } -%}
+          </div>
+        {% endif %}
+      </div>
+    {%- endcapture -%}
+
+    {%- comment -%} Carousel Dots {%- endcomment -%}
+    {%- capture carouselDots -%}
+      {{- carouselDots -}}
+      {%- if forloop.first -%}
+        {%- assign dotClass = 'is-active' -%}
+      {%- else -%}
+        {%- assign dotClass = '' -%}
+      {%- endif -%}
+
+      {%- render 'product-carousel-dot' with {
+        image: imgSrc,
+        class: dotClass
+        index:forloop.index0
+      }-%}
+    {%- endcapture -%}
+
+  {%- endfor -%}
+
+  {%- comment -%} Display captured data {%- endcomment -%}
+  <div class="c-product-image-carousel {{ class }}" data-product-image-carousel>
+
+    {%- comment -%} Carousel Slides {%- endcomment -%}
+    <div class="c-product-image-carousel__slides {% if product.images.size < 2 %}has-one-image {% endif %}" data-product-image-carousel-slides>
+      {{- carouselSlides -}}
+    </div>
+
+    {%- if product.images.size > 1 -%}
+      {%- comment -%} Carousel Dots {%- endcomment -%}
+      <div class="c-product-image-carousel__dots" data-carousel-dots>
+        {{- carouselDots -}}
+      </div>
+    {%- endif -%}
+
+    {%- if product.images.size > 1 -%}
+      <div class="c-product-image-carousel__nav-container" data-carousel-navigation>
+        <button
+          class="c-product-image-carousel__arrow is-prev"
+          data-carousel-previous
+        >
+          {%- render 'object.icon' with {
+            icon:'chevron-left-orange',
+            class: 'c-product-image-carousel__arrow-icon'
+          } -%}
+        </button>
+        <button
+          class="c-product-image-carousel__arrow is-next"
+          data-carousel-next
+        >
+          {%- render 'object.icon' with {
+            icon:'chevron-right-orange',
+            class: 'c-product-image-carousel__arrow-icon'
+          } -%}
+        </button>
+      </div>
+    {%- endif -%}
+  </div>
+
+{%- endif -%}

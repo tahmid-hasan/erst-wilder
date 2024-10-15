@@ -1,0 +1,370 @@
+{
+  "general": {
+    "accessibility": {
+      "skip_to_content": "Skip to content."
+    },
+    "meta": {
+      "tags": "Tagged \"{{ tags }}\"",
+      "page": "Page {{ page }}"
+    },
+    "password_page": {
+      "opening_soon": "Opening Soon",
+      "spread_the_word": "Spread the word",
+      "login_form_heading": "Erstwilder staff member? Enter password here and hit \"Enter\" below.",
+      "login_form_password_label": "Password",
+      "login_form_password_placeholder": "Your password",
+      "login_form_submit": "Enter",
+      "signup_form_heading": "Find out when we open",
+      "signup_form_subheading": "Enter your email below and we'll let you know when we go live",
+      "signup_form_email_label": "Email",
+      "signup_form_email_placeholder": "Your email",
+      "signup_form_submit": "Submit",
+      "signup_form_success": "We will let you know when we open",
+      "admin_link_html": "Are you the store owner? <a href=\"\/admin\">Log in here<\/a>",
+      "password_link": "Enter using password",
+      "powered_by_shopify_html": "This shop will be powered by {{ shopify }}",
+      "heading": "Something new is coming!",
+      "subheading": "Hold tight, we'll be back soon..."
+    },
+    "cart": {
+      "title": "Your Cart",
+      "cart_count_message": "Item",
+      "checkout": "Checkout",
+      "gift_card_message": "*Not valid with gift-card only orders",
+      "go_to_cart": "Go To Cart",
+      "subtotal": "Subtotal",
+      "empty_message": "Your cart is currently empty.",
+      "remove": "Remove",
+      "cart_upsell_title": "You may also love",
+      "remaining": "You are %remaining% away from free shipping",
+      "progress_complete": "Congrats! You have free shipping",
+      "add": "Add",
+      "adding": "Adding!",
+      "placeholder": "Write your message here",
+      "continue_shopping": "Continue Shopping"
+    },
+    "search": {
+      "placeholder": "Search here",
+      "btn_label": "Search",
+      "close_label": "Close",
+      "results_for": "Results for",
+      "no_results": "There were no results matching",
+      "title": "Search",
+      "no_results_html": "Your search for ‘{{ terms }}’ did not yield any results.",
+      "results_for_html": "Search results for ‘{{ terms }}’"
+    },
+    "header": {
+      "logo_title": "Home"
+    },
+    "currency": {
+      "region_currency_selector": "Region &amp; Currency",
+      "select_currency": "Select Currency"
+    },
+    "controls": {
+      "wishlist_title_tag": "Wishlist",
+      "account_title_tag": "Account",
+      "cart_title_tag": "Your cart",
+      "search_title_tag": "Search",
+      "read_more": "read more",
+      "read_less": "read less"
+    },
+    "newsletter_form": {
+      "email_placeholder": "Email address",
+      "button_label": "Submit",
+      "success_message": "Amazing, you’re all signed up. We’ll see you in your inbox!"
+    },
+    "charity_form": {
+      "first": "First Name*",
+      "last": "Last Name",
+      "charity": "Charity",
+      "email": "Email*",
+      "button_label": "Submit",
+      "message": "Why you think we should donate to them...",
+      "success_message": "Amazing! We'll be in touch soon",
+      "error_message": "Oops! Looks like something's missing."
+    },
+    "footer": {
+      "store_name_html": "© Erstwilder {{ date }}"
+    }
+  },
+  "breadcrumbs": {
+    "home": "Home"
+  },
+  "product": {
+    "main": {
+      "wishlist": "Add to Wishlist",
+      "pay_later": "Or buy now and pay later with"
+    },
+    "details": {
+      "design_story": "Info",
+      "care": "Care",
+      "returns": "Returns",
+      "shipping": "Shipping"
+    }
+  },
+  "gift_cards": {
+    "issued": {
+      "title": "Here's your {{ value }} gift card for {{ shop }}!",
+      "subtext": "Here's your gift card!",
+      "disabled": "Disabled",
+      "expired": "Expired on {{ expiry }}",
+      "active": "Expires on {{ expiry }}",
+      "redeem": "Use this code at checkout to redeem your gift card",
+      "remaining": "Remaining:",
+      "value": "Value:",
+      "shop_link": "Start shopping",
+      "print": "Print",
+      "remaining_html": "{{ balance }} left",
+      "add_to_apple_wallet": "Add to Apple Wallet",
+      "initial_value": "Gift card value: {{ value }}"
+    }
+  },
+  "customer": {
+    "account": {
+      "title": "My Account",
+      "profile": "Profile",
+      "details": "My Profile",
+      "addresses": "Addresses",
+      "orders": "Orders",
+      "return": "Return to Account Details",
+      "name": "Name",
+      "email": "Email",
+      "password": "Password",
+      "phone": "Phone",
+      "logout": "Log Out",
+      "new_customer": "Don't have an account yet? Sign up",
+      "returning_customer": "Already have an account? Sign in",
+      "birthday_label": "Birthday",
+      "member_since_label": "Member Since",
+      "rewards_label": "Rewards"
+    },
+    "activate_account": {
+      "title": "Activate Account",
+      "subtext": "Create your password to activate your account.",
+      "password": "Password",
+      "password_confirm": "Confirm Password",
+      "submit": "Activate Account",
+      "cancel": "Decline Invitation"
+    },
+    "addresses": {
+      "title": "Your Addresses",
+      "default": "Default Address",
+      "address": "Address",
+      "add_new": "Add an address",
+      "edit_address": "Edit address",
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "company": "Company",
+      "address1": "Address Line 1",
+      "address2": "Address Line 2",
+      "city": "City",
+      "country": "Country",
+      "province": "State",
+      "zip": "Postal\/Zip Code",
+      "phone": "Phone",
+      "set_default": "Set as default address",
+      "add": "Add address",
+      "update": "Update Address",
+      "cancel": "Cancel",
+      "edit": "Edit",
+      "delete": "Delete",
+      "delete_confirm": "Are you sure you wish to delete this address?"
+    },
+    "login": {
+      "title": "Login",
+      "email": "Email address",
+      "password": "Password",
+      "forgot_password": "Forgotten password?",
+      "sign_in": "Log In",
+      "cancel": "Return to Store",
+      "guest_title": "Continue as a guest",
+      "guest_continue": "Continue"
+    },
+    "orders": {
+      "title": "Order History",
+      "order_number": "Order",
+      "date": "Date",
+      "payment_status": "Payment Status",
+      "fulfillment_status": "Fulfillment Status",
+      "total": "Total",
+      "none": "You haven't placed any orders yet."
+    },
+    "order": {
+      "title": "Order {{ name }}",
+      "date": "Placed on {{ date }}",
+      "cancelled": "Order Cancelled on {{ date }}",
+      "cancelled_reason": "Reason: {{ reason }}",
+      "billing_address": "Billing Address",
+      "payment_status": "Payment Status",
+      "shipping_address": "Shipping Address",
+      "fulfillment_status": "Fulfillment Status",
+      "discount": "Discount",
+      "shipping": "Shipping",
+      "tax": "Tax",
+      "product": "Product",
+      "sku": "SKU",
+      "price": "Price",
+      "quantity": "Quantity",
+      "total": "Total",
+      "fulfilled_at": "Date fulfilled",
+      "track_shipment": "Track shipment",
+      "tracking_url": "Tracking link",
+      "tracking_company": "Carrier",
+      "tracking_number": "Tracking number",
+      "subtotal": "Subtotal"
+    },
+    "recover_password": {
+      "title": "Reset your password",
+      "email": "Email",
+      "email_placeholder": "Email",
+      "submit": "Submit",
+      "cancel": "Cancel",
+      "subtext": "We will send you an email to reset your password.",
+      "success": "We've sent you an email with a link to update your password."
+    },
+    "reset_password": {
+      "title": "Reset account password",
+      "subtext": "Enter a new password for {{ email }}",
+      "password": "Password",
+      "password_confirm": "Confirm Password",
+      "submit": "Reset Password"
+    },
+    "register": {
+      "title": "Register",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "email": "Email address",
+      "password": "Password",
+      "confirm-password": "Confirm password",
+      "submit": "Register",
+      "cancel": "Return to Store",
+      "password_mismatch": "*passwords do not match",
+      "country": "Country (optional)",
+      "birthday": "Birthday DD\/MM (optional)",
+      "phone": "Phone (optional)",
+      "birth_day": "Day",
+      "birth_month": "Month",
+      "birth_year": "Year",
+      "birthday_label": "Birthday",
+      "optional": "(Optional):"
+    }
+  },
+  "collections": {
+    "collection": {
+      "no_results": "Sorry, lovely. We couldn’t find anything to match your search. Care to try again?",
+      "filter_button": "Filter & Sort",
+      "filters_close": "Close",
+      "filter_colour": "Colour",
+      "filter_shape": "Shape",
+      "filter_style": "Style",
+      "filter_availability": "Availability",
+      "filter_product": "Product",
+      "load_more_btn": "Load a few more",
+      "product_count": "Currently showing {{ count }} out of {{ total }}",
+      "sort_label": "Sort",
+      "apply_button": "Apply filters",
+      "reset": "Reset"
+    }
+  },
+  "products": {
+    "product": {
+      "view_product": "View",
+      "free": "Free",
+      "add_to_cart": "Add",
+      "add_to_cart_template": "Add to bag",
+      "all_in_cart": "All in Bag",
+      "cart_pending": "Adding...",
+      "added_to_cart": "Added",
+      "in_stock": "In Stock",
+      "sold_out": "Sold out",
+      "error": "Unable to add product to bag",
+      "badge_new": "New!",
+      "badge_pick_mix": "Pick and Mix",
+      "badge_staff_picks": "Staff Picks"
+    }
+  },
+  "faq": {
+    "faq": {
+      "hide": "Hide answer",
+      "show": "View answer"
+    }
+  },
+  "donations": {
+    "donations": {
+      "total": "Total Donations"
+    }
+  },
+  "form": {
+    "contact": {
+      "first": "First Name*",
+      "last": "Last Name",
+      "email": "Email*",
+      "phone": "Phone",
+      "order_ref": "Order Reference",
+      "message": "Write your message...",
+      "contact_us": "Contact us",
+      "contact_help_select": "How can we help?",
+      "successful_submit": "Thank you for your submission, we’ll be in touch soon.",
+      "home_button": "Go back home",
+      "label_select": "Select the required category",
+      "optional": "Optional"
+    }
+  },
+  "articles": {
+    "article": {
+      "read_time_postfix": " minute read",
+      "read_time_postfix_next": " min read",
+      "next_article": "Next Article",
+      "previous_article": "Previous Article",
+      "back_to_blog_button": "Back to blog",
+      "all_categories": "Everything"
+    }
+  },
+  "meet-the-team": {
+    "team": {
+      "designers": "Past Designers",
+      "collaborations": "Collaborations"
+    }
+  },
+  "search": {
+    "close": "Search",
+    "button": "Search",
+    "placeholder": "Enter Search Term",
+    "knowledge_placeholder": "Help me with...",
+    "results_for": "Results for",
+    "no_results": "There were no results matching",
+    "title": "Search",
+    "no_results_html": "No results found for ",
+    "try_different": "Try a different or more general search.",
+    "results_for_html": "Search results for ‘{{ terms }}’"
+  },
+  "rewards": {
+    "greeting": "Hi, {{customer}}!",
+    "points_count": "You have {{points}} points",
+    "copy_code": "Tap or click to copy",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "unlock": "Unlock",
+    "reveal": "Claim",
+    "redeemed": "Redeemed",
+    "activity": "Points spent on {{reward}}",
+    "spent": "{{points}} Points",
+    "congrats": "You've earned all the rewards!",
+    "no_activity": "No activity found, keep working towards your next reward!",
+    "activity_message": "Finding your activty..."
+  },
+  "shopify": {
+    "checkout": {
+      "order_summary": {
+        "expand_order_summary": "Show Order Summary \/ Rewards",
+        "collapse_order_summary": "Hide Order Summary \/ Rewards"
+      },
+      "processing": {
+        "you_will_receive_confirmation": "Thanks for your order!  Our system is a little overwhelmed with orders right now, causing some delays in payments and order confirmations, but you can rest assured that your order is safe, it is in the queue to be processed, and the designs purchased on your order are secure. You should receive your order confirmation within the next 60 minutes, but if for any reason you don’t, please reach out to us and we’ll help resolve the issue."
+      },
+      "shipping": {
+        "no_rates_for_country_notice": "Sorry! We are unable to ship to you due to shipping restrictions to your country or region. "
+      }
+    }
+  }
+}

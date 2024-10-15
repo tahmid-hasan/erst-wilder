@@ -1,0 +1,18 @@
+{%- liquid
+  assign mf = page.metafields.stockists
+  assign countryNames = mf.country | uniq 
+-%}
+
+{%- for country in countryNames -%}
+    
+    {% assign countryHandle  = country | handleize %}
+
+    <span 
+      class="c-stockists__country {% if forloop.first %}is-active{% endif %}" 
+      data-country-handle="{{- countryHandle -}}"
+      data-country-category
+    >
+      {{- country -}}
+    </span>
+
+{%- endfor -%}

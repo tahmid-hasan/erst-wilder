@@ -1,0 +1,118 @@
+{%- comment -%}
+  Product Thumbnail
+    Simple object to display a thumbnail with product information
+    - If JS is enabled it has ajax add to cart functionality available for
+    default or single variant products. Products with more then one variant will
+    instead get a link to the product page.
+    - If JS is disabled it will allow users to add to cart via a product form.
+
+    Params:
+    - class: String that can be passed to be used as a class
+    - thumbnailProduct: Product object to be used for thumbnail information
+  Version:
+    1.0.0 - 2021/10/09
+{%- endcomment -%}
+
+{%- if thumbnailProduct != blank -%}
+  {%- comment -%} Assign Variables {%- endcomment -%}
+  {%- liquid
+    assign thumbnailVariant = thumbnailProduct.selected_or_first_available_variant
+    assign mf = thumbnailProduct.metafields['additional-information']
+    assign image = thumbnailProduct.featured_image
+    assign hasHoverImage = false
+    if thumbnailProduct.media.size > 1
+      assign hasHoverImage = true
+      assign hoverMedia = thumbnailProduct.media[1]
+    endif
+  -%}
+
+  <div
+    class="o-product-thumbnail {{ class }} {% if hasHoverImage %} has-hover-image{% endif %}"
+    data-product-thumbnail
+    data-handle="{{- thumbnailProduct.handle -}}"
+    data-variant-id="{{- thumbnailVariant.id -}}"
+  >
+    {%- comment -%} Product JSON {%- endcomment -%}
+    <script type="application/json" data-product-json>
+      {%- render 'json.product' with { jsonProduct: thumbnailProduct, dumpImages: true } -%}
+    </script>
+
+    <div class="o-product-thumbnail__inner">
+      {%- comment -%} Image {%- endcomment -%}
+      <div class="o-product-thumbnail__image-wrapper">
+
+        <a href="{{- thumbnailProduct.url -}}" class="o-product-thumbnail__image-container o-responsive-image-container">
+          {%- render 'tool.picture' with {
+            image: image,
+            class: 'o-product-thumbnail__image o-responsive-image',
+            width: 410,
+            sizes: '375,500',
+            imageSizes: '280,350',
+            lazy: true
+          } -%}
+          {%- if hoverMedia != blank and hoverMedia.media_type == 'image' -%}
+            {%- render 'tool.picture' with {
+              image: hoverMedia,
+              class: 'o-product-thumbnail__hover-image o-responsive-image',
+              width: 410,
+              sizes: '375,500',
+              imageSizes: '280,350',
+              lazy: true
+            } -%}        
+          {%- elsif hoverMedia != blank and hoverMedia.media_type == 'video' -%}
+            {%- render 'object.html5-video' with {
+              media:hoverMedia,
+              videoUrlMp4:hoverMedia.sources[0].url,
+              class:'o-product-thumbnail__hover-image o-responsive-image',
+              attributes:'muted autoplay loop playsinline preload="metadata"'
+            } -%}
+          {%- endif -%}
+        </a>
+
+        {%- comment -%} Desktop ATC {%- endcomment -%}
+        {%- render 'object.thumbnail-atc-button' with {
+          thumbnailProduct: thumbnailProduct,
+          thumbnailVariant: thumbnailVariant,
+          class: 'is-desktop'
+        } -%}
+
+        {%- comment -%} Badge {%- endcomment -%}
+        {%- render 'object.product-badge' with {
+          product: thumbnailProduct,
+          class: 'o-product-thumbnail'
+        }-%}
+
+      </div>
+
+      {%- comment -%} Title {%- endcomment -%}
+      <a href="{{- thumbnailProduct.url -}}" class="o-product-thumbnail__title-container">
+        <h3 class="o-product-thumbnail__title o-heading--6">
+          {{- thumbnailProduct.title | escape -}}
+        </h3>
+      </a>
+
+      {%- comment -%} Price {%- endcomment -%}
+      <a href="{{- thumbnailProduct.url -}}" class="o-product-thumbnail__pricing-container">
+        {%- render 'object.product-pricing' with {
+          class: 'o-product-thumbnail__pricing'
+          price: thumbnailVariant.price,
+          comparePrice: thumbnailVariant.compare_at_price
+        } -%}
+      </a>
+
+       <!-- Start of Judge.me code -->
+      <div style='{{ jm_style }}; text-align: center;' class='jdgm-widget jdgm-preview-badge' data-id='{{ thumbnailProduct.id }}' data-auto-install='false'>
+        {{ thumbnailProduct.metafields.judgeme.badge }}
+      </div>
+      <!-- End of Judge.me code -->
+      
+    </div>
+
+    {%- comment -%} Mobile ATC {%- endcomment -%}
+    {%- render 'object.thumbnail-atc-button' with {
+      thumbnailProduct: thumbnailProduct,
+      thumbnailVariant: thumbnailVariant,
+      class: 'is-mobile'
+    } -%}
+  </div>
+{%- endif -%}

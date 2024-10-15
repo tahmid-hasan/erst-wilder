@@ -1,0 +1,83 @@
+{%- comment -%}
+  Faceted Nav
+    - Displays the faceted nav for the collection section
+
+  Params:
+    - class: a string to be used as an additional class
+
+  Version:
+    1.0.0 - 2021/11/15
+{%- endcomment -%}
+
+{%- assign filters = 'color,shape,style,availability,type' | split: ',' -%}
+{%- assign filtersMf = collection.metafields.hide_filter -%}
+
+<div class="c-collection-faceted-nav {{ class }} has-js" data-filters>
+  <header class="c-collection-faceted-nav__header">
+    <button
+      class="c-collection-faceted-nav__drawer-trigger"
+      data-filter-toggle
+    >
+      <span class="u-visually-hidden">
+        {{- 'collections.collection.filters_close' | t | escape -}}
+      </span>
+
+      {%- render 'object.icon' with {
+        icon: 'close',
+        width: 24,
+        height: 24
+      } -%}
+    </button>
+  </header>
+
+  {%- comment -%} Filters Body {%- endcomment -%}
+  <div class="c-collection-faceted-nav__body">
+    <div class="c-collection-faceted-nav__container">
+      {%- comment -%} Sort {%- endcomment -%}
+      <div
+        class="c-collection-faceted-nav__group is-sort is-closed"
+        data-sort-custom data-collection-accordion-slide
+      >
+        <div
+          class="c-collection-faceted-nav__title o-heading--6"
+          data-sort-custom-header data-collection-accordion-title
+        ></div>
+        <div class="c-collection-faceted-nav__check-body" data-collection-accordion-content>
+          <ul
+            class="c-collection-faceted-nav__check-group"
+            data-sort-custom-inner
+          ></ul>
+        </div>
+      </div>
+
+      {%- comment -%} Filters (facets) {%- endcomment -%}
+      {%- for filterName in filters -%}
+        {%- if filtersMf[filterName] -%}
+          {%- continue -%}
+        {%- endif -%}
+          
+        {%- assign filterClass = 'c-collection-faceted-nav__group is-closed is-' | append: filterName -%}
+        
+        <div
+          class="{{- filterClass -}}"
+          data-faceted-nav-facet-prefix="{{filterName}}"
+          data-faceted-nav-group data-faceted-nav-{{- filterName }}
+          data-collection-accordion-slide
+          id="FilterOptions-{{ filterName }}"
+          {% if filterName contains 'color' %}x-init="$dispatch('init-FilterOptionsColor')"{% endif %}
+        >
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+
+  {%- comment -%} Mobile Apply/Footer {%- endcomment -%}
+  <footer class="c-collection-faceted-nav__footer">
+    <button
+      class="c-collection-faceted-nav__apply-btn o-btn"
+      data-filter-toggle
+    >
+      {{- 'collections.collection.apply_button' | t -}}
+    </button>
+  </footer>
+</div>

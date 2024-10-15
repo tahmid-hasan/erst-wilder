@@ -1,0 +1,91 @@
+{% comment %}
+  Swatch Theme Editor
+    Simple theme editor section for color swatches, make this a static section.
+
+  Version:
+    1.1.0 - 2018/10/17
+{% endcomment %}
+
+{%- comment -%} We'll limit what templates load these styles/js {%- endcomment -%}
+{%- if template contains 'collection' -%}
+  <script type="text/javascript">
+    window.Swatches = window.Swatches || [
+      {%- for block in section.blocks -%}
+        {%- assign colorsSplit = block.settings.s-colors | replace: ', ', ',' | split: ',' -%}
+        {
+          "name": {{ block.settings.title | json }},
+          "color": {{ block.settings.s-color | json }},
+          "handles": [
+            {%- for color in colorsSplit -%}
+              {{- color | strip_newlines | handle | json -}}
+              {%- unless forloop.last -%},{%- endunless -%}
+            {%- endfor -%}
+          ]
+        }
+        {%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ];
+  </script>
+{%- endif -%}
+
+<style>
+  {% for block in section.blocks %}
+    {% liquid  
+      assign color_img = block.settings.s-color-img 
+      assign colors = block.settings.s-colors | split: ','
+    %}
+    {% if color_img %}
+      {% for color in colors %}
+        button[data-option="{{ color }}"] {
+          background-image: url({{ color_img | img_url: 'x600' }});
+          background-repeat: no-repeat;
+          background-size: cover;          
+        }
+        button[data-option="{{ color }}"] svg {
+          opacity: 0;
+        }
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+</style>
+
+{% schema %}
+  {
+    "name": "Color Swatches",
+    "settings": [
+      {
+         "type": "paragraph",
+         "content": "This editor is used to link colors to particular tag names. Create a color from the Add color button, enter in a readable name for the color group, pick a color then enter in the tag names that this color will apply to."
+      }
+    ],
+    "blocks": [
+      {
+        "type": "color",
+        "name": "Color",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Name"
+          },
+          {
+            "type": "color",
+            "id": "s-color",
+            "label": "Swatch Color"
+          },
+          {
+            "type": "image_picker",
+            "id": "s-color-img",
+            "label": "Swatch Color Image"
+          },
+          {
+            "type": "textarea",
+            "id": "s-colors",
+            "label": "Colors",
+            "info": "Must match the name of the product tag this color applies to, separated by a comma."
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

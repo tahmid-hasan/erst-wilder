@@ -1,0 +1,113 @@
+{%- comment -%}
+  Cart Products
+    Loop of cart products for the cart drawer and cart page.
+
+  Version:
+    1.0.0 2021/09/30
+{%- endcomment -%}
+
+{%- for item in cart.items -%}
+  {%- assign i = forloop.index -%}
+
+  <div
+    class="c-cart-product"
+    data-cart-product="{{ item.variant_id }}"
+    data-index="{{ forloop.index }}"
+    data-product-type="{{ item.product.type }}"
+  >
+    <script type="application/json" data-cart-item-json>
+      {{- item | json -}}
+    </script>
+
+    {%- liquid
+      assign className = ''
+      if item.title contains "Bonus" or item.discounted_price == 0
+        assign className = 'non-clickable'
+      endif
+    -%}
+
+    {%- comment -%} Product Image {%- endcomment -%}
+    {%- if item.image != blank -%}
+      <a href="{{ item.url }}" class="c-cart-product__image-container o-responsive-image-container {{className}}">
+        {%- render 'tool.picture' with {
+          image: item.image,
+          class: 'c-cart-product__image o-responsive-image',
+          width: 160,
+          sizes: '374,800,1600',
+          imageSizes: '80,120,160'
+        } -%}
+      </a>
+    {%- endif -%}
+
+    <div class="c-cart-product__details">
+
+      {%- comment -%} Title and Promos {%- endcomment -%}
+      <div class="c-cart-product__title-container">
+        <p class="c-cart-product__title">
+          {{- item.product.title | escape -}}
+        </p>
+
+        {%- for option in item.product.options_with_values -%}
+          {%- assign option_handle = option.name | handle -%}
+          {%- if option_handle == 'size' -%}
+            <p class="c-cart-product__variant o-paragraph--2">
+              <span>{{- option_handle | capitalize -}}: </span>
+              {{- item.variant.title | escape -}}
+            </p>
+          {% endif %}
+        {%- endfor -%}
+      </div>
+
+      {%- comment -%} Quantity Selector {%- endcomment -%}
+      {%- if item.properties['_free-gift'] == blank -%}
+      <span 
+        x-data
+        @click="$dispatch('quantity-updated', {lineIndex: {{i}}})"
+        data-product-type="{{ item.product.type }}">
+        {%- render 'object.quantity-selector' with {
+          class: 'c-cart-product__qty',
+          min: 0,
+          max: item.variant.inventory_quantity,
+          quantity: item.quantity,
+          lineIndex: i
+        } -%}
+      {%- endif -%}
+      </span>
+    </div>
+
+    {%- comment -%} Remove Button {%- endcomment -%}
+    <div
+      class="c-cart-product__remove"
+      line="{{ i }}"
+    >
+      <a
+        href="/cart/change?line={{ i }}&amp;quantity=0"
+        class="c-cart-product__remove-link"
+        data-cart-remove="{{ i }}"
+        data-cart-remove-btn
+        x-data
+        @click="$dispatch('quantity-updated', {lineIndex: {{i}}})"        
+      >
+      <span class="c-cart-product__remove-text is-cart-page">{{'general.cart.remove' | t | escape }}</span>
+        {%- render 'object.icon' with {
+          icon: 'close',
+          class: 'c-cart-product__remove-icon'
+        } -%}
+      </a>
+    </div>
+
+    {%- comment -%} Pricing {%- endcomment -%}
+    <p class="c-cart-product__price-container o-pricing">
+      {%- comment -%} Line Total {%- endcomment -%}
+      {%- if item.original_line_price > item.final_line_price -%}
+        <span class="c-cart-product__compare-price">
+          {{- item.original_line_price | money -}}
+        </span>
+      {%- endif -%}
+      <span class="c-cart-product__price" data-currency data-money="{{ item.final_line_price }}">
+        {{- item.final_line_price | money -}}
+      </span>
+    </p>
+
+  </div>
+{%- endfor -%}

@@ -1,0 +1,113 @@
+{%- comment -%}
+  Desktop Navigation Submenu - Level 2
+    - Displays navigation submenu that is used in the header navigation.
+
+    Params:
+    - parentLink: The parent link object - used for the submenu links
+
+  Version:
+    1.0.0 - 2021/08/24
+{%- endcomment -%}
+
+{%- if parentLink.links.size > 0 -%}
+  <div class="c-navigation-desktop__lvl2">
+    <div class="c-navigation-desktop__lvl2-inner" data-lvl2-container>
+      {%- comment -%}
+        The shop menu shows the columns layout, all other items show the
+        rows layout
+      {%- endcomment -%}
+      {%- assign parentTitleLC = parentLink.title | escape | handleize -%}
+      {%- if parentTitleLC == 'shop' -%}
+        {%- assign ctaLabel = section.settings.desktop-cta-label | escape -%}
+        {%- assign ctaUrl = section.settings.desktop-cta-url -%}
+
+        {%- comment -%} Columns Layout {%- endcomment -%}
+        <div class="c-navigation-desktop__columns-container">
+          {%- comment -%} CTA {%- endcomment -%}
+          {%- if ctaLabel != blank and ctaUrl != blank -%}
+            <div class="c-navigation-desktop__cta-container">
+              <a href="{{- ctaUrl -}}" class="c-navigation-desktop__cta o-heading--4">
+                {{- ctaLabel -}}
+              </a>
+            </div>
+          {%- endif -%}
+
+          {%- comment -%} Columns {%- endcomment -%}
+          <div class="c-navigation-desktop__columns">
+            {%- for link in parentLink.links -%}
+              <div class="c-navigation-desktop__column">
+                <p class="c-navigation-desktop__column-heading o-heading--6">
+                  {{- link.title | escape | link_to: link.url, link.title -}}
+                </p>
+
+                {%- if link.links.size > 0 -%}
+                  {%- comment -%}
+                    Only the accessories submenu uses the illustrations layout
+                  {%- endcomment -%}
+                  {%- assign linkTitleLC = link.title | escape | handleize -%}
+                  {%- if linkTitleLC == 'accessories' -%}
+                    <ul class="c-navigation-desktop__illustration-links">
+                      {%- for sublink in link.links -%}
+                        {%- assign illustration = sublink.object.metafields.navigation.illustration[0].media_inline -%}
+                        {%- unless illustration != blank -%}{%- continue -%}{%- endunless -%}
+                        {%- assign illustration = illustration | replace: '<svg', '<svg class="c-navigation-desktop__illustration"' -%}
+
+                        <li class="c-navigation-desktop__illustration-item">
+                          <a title="{{- sublink.title -}}" href="{{- sublink.url -}}" class="c-navigation-desktop__illustration-link">
+                            <span class="c-navigation-desktop__illustration-container">
+                              {{- illustration -}}
+                            </span>
+
+                            <span class="c-navigation-desktop__illustration-label o-paragraph--2">
+                              {{- sublink.title | escape -}}
+                            </span>
+                          </a>
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- else -%}
+                    <ul class="c-navigation-desktop__column-links">
+                      {%- for sublink in link.links -%}
+                        <li class="c-navigation-desktop__column-item">
+                          <a title="{{- sublink.title -}}" href="{{- sublink.url -}}" class="c-navigation-desktop__column-link o-paragraph--2">
+                            {{- sublink.title | escape -}}
+                          </a>
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- endif -%}
+                {%- endif -%}
+              </div>
+
+              {%- unless forloop.last -%}
+                <span class="c-navigation-desktop__column-seperator"></span>
+              {%- endunless -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- else -%}
+        {%- comment -%} Rows Layout {%- endcomment -%}
+        <div class="c-navigation-desktop__row">
+          <ul class="c-navigation-desktop__row-links">
+            {%- for link in parentLink.links -%}
+              <li class="c-navigation-desktop__row-item">
+                <a
+                  title="{{- link.title -}}"
+                  href="{{- link.url -}}"
+                  class="c-navigation-desktop__row-link o-paragraph--2"
+                >
+                  {{- link.title | escape -}}
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} Curve {%- endcomment -%}
+    {%- render 'svg.header-curve-desktop' with {
+      class: 'c-navigation-desktop__curve'
+    } -%}
+  </div>
+{%- endif -%}

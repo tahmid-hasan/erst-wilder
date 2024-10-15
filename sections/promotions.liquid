@@ -1,0 +1,118 @@
+<script type="applications/json" data-promotion-promotions>
+  [
+    {%- liquid
+      for block in section.blocks
+        echo block.settings | json
+        unless forloop.last
+          echo ','
+        endunless
+      endfor
+    -%}
+  ]
+</script>
+
+<script type="applications/json" data-promotion-products>
+  [
+    {%- for block in section.blocks -%}
+      {%- assign p = block.settings.product -%}
+      {
+        "handle": {{ p.handle | json }},
+        "variants": {{ p.variants | json }}
+      }
+      {%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+  ]
+</script>
+
+<script type="applications/json" data-promotion-settings>
+  {{ section.settings | json }}
+</script>
+
+{{ 'sections.promotions.js' | asset_url | script_tag }}
+
+{% schema %}
+  {
+    "name": "Promotion Settings",
+    "class": "c-promotion-settings",
+    "settings": [
+    ],
+    "blocks": [
+      {
+        "type": "promotion",
+        "name": "Promotion",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Promotion Settings"
+          },
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Free Gift Product"
+          },
+          {
+            "type": "text",
+            "id": "sku",
+            "label": "Specific SKU",
+            "info": "Enter a specific SKU to use, leave blank to use the first stocked SKU"
+          },
+          {
+            "type": "select",
+            "id": "type",
+            "label": "Promotion Type",
+            "options": [
+              {"value": "quantity", "label": "Buy Num | Get X"},
+              {"value": "dollar", "label": "Spend $ | Get X"}
+            ],
+            "info": "What type of promotion is this for?"
+          },
+          {
+            "type": "header",
+            "content": "Inclusions and Exclusions"
+          },
+          {
+            "type": "paragraph",
+            "content": "If the Include Tags field is left blank, all products will be counted towards the promotion. If the Exclude Tags field is left blank, no products will be used to exclude the user from a promotion."
+          },
+          {
+            "type": "text",
+            "id": "inclusions",
+            "label": "Include Tags",
+            "info": "List of product tags to include. Tags should be seperated by a comma(,)"
+          },
+          {
+            "type": "text",
+            "id": "exclusions",
+            "label": "Exclude Tags",
+            "info": "List of product tags to exclude. Tags should be seperated by a comma(,)"
+          },
+          {
+            "type": "header",
+            "content": "Tier Thresholds"
+          },
+          {
+            "type": "paragraph",
+            "content": "Depending on which promotion type is chosen, the min and max threshold values can be related to dollars or amount of products."
+          },
+          {
+            "type": "number",
+            "id": "min_threshold",
+            "label": "Minimum Amount",
+            "default": 1,
+            "info": "The minimum threshold to trigger the promotion"
+          },
+          {
+            "type": "number",
+            "id": "max_threshold",
+            "label": "Maximum Amount",
+            "info": "The maximum threshold to cancel the promotion."
+          },
+          {
+            "type": "paragraph",
+            "content": "These values are inclusive, e.g. if max threshold is 200 then it will still be eligible at exactly $200 but not at a $200.01"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,210 @@
+{%- comment -%}
+  Article products carousel
+    Section to show products for selected from a articles metafields in a carousel
+
+  Version:
+    1.0.0 - 2021/11/04
+{%- endcomment -%}
+{{ 'sections.products-carousel.css' | asset_url | stylesheet_tag }}
+{{ 'sections.products-carousel.js' | asset_url | script_tag }}
+
+{%- comment -%} Assign variables {%- endcomment -%}
+{%- liquid 
+  assign title = section.settings.title | escape 
+  assign productHandles = article.metafields.article_carousel.article_products | split: '|'
+
+  assign topWave = section.settings.top-wave
+  assign topColor1 = section.settings.top-color-1
+  assign topColor2 = section.settings.top-color-2
+  assign isFlippedTop = section.settings.flip-top-wave
+
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+-%}
+
+{%- if productHandles.size > 0 -%}
+
+  {%- comment -%} Top Wave {%- endcomment -%}
+  {%- if topWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:topWave
+      color1: topColor1
+      color2: topColor2,
+      isFlipped: isFlippedTop
+    } -%}
+  {%- endif -%}
+  <section class="c-products-carousel" data-products-carousel-section>
+    <div class="c-products-carousel__inner">
+      {%- comment -%} Title {%- endcomment -%}
+      {%- if title != blank -%}
+        <h2 class="c-products-carousel__title o-heading--2">
+          {{- title -}}
+        </h2>
+      {%- endif -%}
+
+      {%- comment -%} Carousel {%- endcomment -%}
+      <div class="c-products-carousel__carousel-container">
+        <div class="c-products-carousel__carousel" data-products-carousel>
+          {%- for productHandle in productHandles -%}
+            {%- assign selectedProduct = all_products[productHandle] -%}
+            {%- unless selectedProduct != blank -%}{%- continue -%}{%- endunless -%}
+            <div class="c-products-carousel__slide" data-products-carousel-slide>
+              {%- render 'object.product-thumbnail' with {
+                class: 'c-products-carousel__thumbnail',
+                thumbnailProduct: selectedProduct
+              } -%}
+            </div>
+          {%- endfor -%}
+        </div>
+
+        {%- comment -%} Navigation {%- endcomment -%}
+        {%- if productHandles.size > 1 -%}
+          <div class="c-products-carousel__navigation" data-carousel-navigation>
+            <button
+              data-carousel-previous
+              class="c-products-carousel__button is-previous"
+            >
+              {%- render 'icon.chevron-left' with {
+                class: 'c-products-carousel__icon'
+              } -%}
+            </button>
+
+            <button
+              data-carousel-next
+              class="c-products-carousel__button is-next"
+            >
+              {%- render 'icon.chevron-right' with {
+                class: 'c-products-carousel__icon'
+              } -%}
+            </button>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} Bottom Wave {%- endcomment -%}
+  {%- if bottomWave != "0" -%}
+    {%- render 'object.wave' with {
+      waveNumber:bottomWave
+      color1: bottomColor1
+      color2: bottomColor2,
+      isFlipped: isFlippedBottom
+    } -%}
+  {%- endif -%}
+
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Article Products Carousel",
+  "class": "c-section c-section__article-products-carousel",
+  "presets": [
+    {
+      "category": "Carousel",
+      "name":"Article Products Carousel"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "paragraph",
+      "content": "The products for this carousel will be selected from the articles metafields in Accentuate Custom Fields."
+    },
+    {
+      "type": "header",
+      "content": "Top Wave"
+    },
+    {
+      "type": "select",
+      "id": "top-wave",
+      "label": "Top Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "top-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "top-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-top-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom-wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom-color-2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip-bottom-wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

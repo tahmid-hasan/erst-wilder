@@ -1,0 +1,21 @@
+{%- comment -%}
+  Product Swatches
+    Swatches specific for the product template.
+
+    Params:
+      class: Takes an optional class to be used on the top level element
+
+  Version:
+    1.0.0 - 2022/01/05
+{% endcomment %}
+
+<div class="o-swatches {{ class }}" data-swatches>
+  {%- comment -%} Basic Variant Selector {%- endcomment -%}
+  <div class="o-swatches__swatch">
+    {%- render 'object.variant-selector' with {
+      class: 'o-swatches__variant-selector',
+      printJson: true,
+      selectorProduct: product
+    } -%}
+  </div>
+</div>

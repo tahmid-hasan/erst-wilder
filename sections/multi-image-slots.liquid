@@ -1,0 +1,124 @@
+{% capture style_vars %}
+  --bg-color: {{ section.settings.bg_color }};
+{% endcapture %}
+
+<section class="section-multi-slots"
+  style="{{ style_vars }}">
+  <div class="section-wrap">
+    <ul>
+      {% for block in section.blocks %}
+      <li {{ block.shopify_attributes }}>
+        <a href="{{ block.settings.card_url }}">
+          <div class="card-slot">
+            {% if block.settings.card_img %}
+              <img src="{{ block.settings.card_img | img_url: 'x600' }}" />
+            {% else %}
+              <img src="https://placehold.co/100x150" />
+            {% endif %}
+            <div class="card-title">{{ block.settings.title }}</div>
+          </div>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .section-multi-slots .section-wrap {
+    padding: 2rem 1rem;
+    background-color: var(--bg-color);
+  }
+
+  .section-multi-slots ul {
+    max-width: 1200px;
+    margin: 0 auto;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .section-multi-slots ul li { 
+    max-width: calc(33.33% - 10px);
+  }
+
+  .section-multi-slots .card-slot {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 5px;
+    height: 100%;
+  }
+
+  .section-multi-slots .card-slot img {
+    flex: 1;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-multi-slots .section-wrap {
+      padding: 5rem;
+    }
+
+    .section-multi-slots ul { 
+      gap: 1rem;
+    }
+    .section-multi-slots ul li {
+      max-width: calc(16.67% - 1rem);
+    }
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Multi Column Slots",
+    "presets": [
+      {
+        "name": "Multi Column Slots",
+        "blocks": [
+          { "type": "column" },
+          { "type": "column" },
+          { "type": "column" },
+          { "type": "column" },
+          { "type": "column" },
+          { "type": "column" }          
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "limit": 6,
+        "name": "Card",
+        "type": "column",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "card_img",
+            "label": "Card Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Card Title",
+            "default": "Card Title"
+          },
+          {
+            "type": "url",
+            "id": "card_url",
+            "label": "Card URL"
+          }
+        ]
+      }
+    ],
+    "settings": [
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Section Background Color",
+        "default": "#f4e9d2"
+      }
+    ]
+  }
+{% endschema %}

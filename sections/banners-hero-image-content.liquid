@@ -1,0 +1,115 @@
+{%- comment -%}
+  Hero banner
+    Section to display hero banner with image and text content
+
+  Version:
+    1.0.0 - 2021/11/18
+{%- endcomment -%}
+
+{{ 'sections.hero-image-content.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%} Assign variables {%- endcomment -%}
+{%- liquid
+  assign title = section.settings.title | escape 
+  assign image = section.settings.image 
+  assign textContent = section.settings.text | escape | newline_to_br
+-%}
+
+{% capture style_vars %}
+  --hero--bottom-text-bg-color: {{ section.settings.hero--bottom-text-bg-color }};
+  --hero--bottom-text-color: {{ section.settings.hero--bottom-text-color }};
+{% endcapture %}
+
+{%- if title != blank and image != blank -%}
+  <section class="c-hero-image-content"
+    style="{{ style_vars }}">
+    <div class="c-hero-image-content__inner">
+
+      {%- comment -%} Image {%- endcomment -%}
+      <div class="c-hero-image-content__image-container o-responsive-image-container">
+        {%- render 'tool.picture' with {
+          image: image,
+          class: 'c-hero-image-content__image o-responsive-image',
+          width: 1000,
+          sizes: '320,375,500,750,1100,1650',
+          imageSizes: '320,375,500,750,550,825'
+        } -%}
+      </div>
+
+      {%- comment -%} Content {%- endcomment -%}
+      <div class="c-hero-image-content__content">
+
+        {%- comment -%} Title {%- endcomment -%}
+        <h1 class="c-hero-image-content__title">
+          {{- title -}}
+        </h1>
+
+        {%- comment -%} Paragraph {%- endcomment -%}
+        {%- if textContent != blank -%}
+          <p class="c-hero-image-content__text">
+            {{- textContent -}}
+          </p>
+        {%- endif -%}
+       
+      </div>
+      
+    </div>
+
+    {% if section.settings.banner_bottom_text != blank %}
+    <div class="hero--bottom-text">
+      {{ section.settings.banner_bottom_text }}
+    </div>
+    {% endif %}
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Hero - Image/Content",
+  "class": "c-section c-section__hero-split",
+  "presets": [
+    {
+      "category": "Banners",
+      "name": "Hero Banner - Image/Content"
+    }
+  ],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "Dimensions: 2000px X 1816px"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default":"Meet the team!"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text Content"
+    },
+    {
+      "type": "header",
+      "content": "Banner Bottom Text"
+    },
+    {
+      "type": "richtext",
+      "id": "banner_bottom_text",
+      "label": "Bottom Text"
+    },
+    {
+      "type": "color",
+      "label": "Background Color",
+      "id": "hero--bottom-text-bg-color"
+    },
+    {
+      "type": "color",
+      "label": "Text Color",
+      "id": "hero--bottom-text-color"
+    }
+  ]
+}
+{% endschema %}
