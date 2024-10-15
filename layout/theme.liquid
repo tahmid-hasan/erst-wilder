@@ -9,12 +9,11 @@
     {% comment %}
 
     {% endcomment %}
-    
-</head>
+  </head>
 
   <body class="c-page c-page--{{ template.name | handle }} is-menu-open" data-domain={{shop.permanent_domain}}>
-  {% render 'elevar-body-end' %}
-  <script>window.KlarnaThemeGlobals={};{%case template.name%} {%when"product"%} {% if product.first_available_variant.price %}window.KlarnaThemeGlobals.data_purchase_amount = {{ product.first_available_variant.price }};{% endif %}window.KlarnaThemeGlobals.productVariants={{product.variants|json}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%when"cart"%} window.KlarnaThemeGlobals.data_purchase_amount={{cart.total_price}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%endcase%}</script>
+    {% render 'elevar-body-end' %}
+    <script>window.KlarnaThemeGlobals={};{%case template.name%} {%when"product"%} {% if product.first_available_variant.price %}window.KlarnaThemeGlobals.data_purchase_amount = {{ product.first_available_variant.price }};{% endif %}window.KlarnaThemeGlobals.productVariants={{product.variants|json}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%when"cart"%} window.KlarnaThemeGlobals.data_purchase_amount={{cart.total_price}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%endcase%}</script>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-574FC44" height="0" width="0"
         style="display:none;visibility:hidden"></iframe></noscript>
@@ -92,17 +91,15 @@
     {%- render 'tool.body-end-tags' -%}
 
     <div id="overlay"></div>
-   {% include 'smile-initializer' %}
+    {% include 'smile-initializer' %}
+    {% render 'spurit_sct_theme_snippet' %}
 
-{% render 'spurit_sct_theme_snippet' %}
-
-<script src="{{ 'swiper@8.1.5.min.js' | asset_url }}" defer></script>
-<script src="{{ 'alpinejs@3.12.0.min.js' | asset_url }}" defer></script>
-<script src="{{ 'ajaxinate.min.js' | asset_url }}" defer></script>
-<script src="{{ '_pikaday@1.8.2.min.js' | asset_url }}" defer></script>
-<script src="{{ 'custom.js' | asset_url }}" defer></script>
-<script src="{{ 'collection.infinitescroll.js' | asset_url }}" defer></script>
-
+    <script src="{{ 'swiper@8.1.5.min.js' | asset_url }}" defer></script>
+    <script src="{{ 'alpinejs@3.12.0.min.js' | asset_url }}" defer></script>
+    <script src="{{ 'ajaxinate.min.js' | asset_url }}" defer></script>
+    <script src="{{ '_pikaday@1.8.2.min.js' | asset_url }}" defer></script>
+    <script src="{{ 'custom.js' | asset_url }}" defer></script>
+    <script src="{{ 'collection.infinitescroll.js' | asset_url }}" defer></script>
 
     {% comment %}
     {% if template contains 'product' %}

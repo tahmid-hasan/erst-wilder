@@ -4,7 +4,7 @@
     "social_link_facebook": "https:\/\/www.facebook.com\/erstwilder",
     "count_facebook": "215K",
     "social_link_instagram": "https:\/\/www.instagram.com\/erstwilder\/",
-    "count_instagram": "126K",
+    "count_instagram": "129K",
     "social_link_tiktok": "https:\/\/www.tiktok.com\/@erstwilder",
     "count_tiktok": "13K",
     "social_link_pinterest": "",
@@ -141,19 +141,19 @@
         "type": "banners--hero-split",
         "settings": {
           "clickable-image": true,
-          "mobile-image": "shopify:\/\/shop_images\/HALLOWEEN_EXTENDED_SPLIT_BANNER_1-MOBILE_735ea7e8-d0cb-422d-985a-3baa0aee2873.jpg",
-          "desktop-image": "shopify:\/\/shop_images\/HALLOWEEN_EXTENDED_SPLIT_BANNER_1-DESKTOP_f78e8883-b8a4-4978-991b-868c0d4babd2.jpg",
+          "mobile-image": "shopify:\/\/shop_images\/AUSTRALIANA_SPLIT_BANNER_1-MOBILE.jpg",
+          "desktop-image": "shopify:\/\/shop_images\/AUSTRALIANA_SPLIT_BANNER_1-DESKTOP.jpg",
           "image_position": "left",
           "link-type": "collection",
           "featured-product": "",
-          "featured-collection": "halloween-1",
-          "featured-image": "shopify:\/\/shop_images\/PUMPKIN_33b81a2f-ee66-4314-b33d-a587e8d10e97.gif",
-          "title": "It's Spooky Season!",
-          "subtitle": "<p>All-new Simplified Mini Brooches and Essential Earrings are here, inspired by All Hallows Eve.<\/p>",
+          "featured-collection": "new",
+          "featured-image": "shopify:\/\/shop_images\/KOALA_ca26d58c-da9b-4107-868d-9a86544586ca.gif",
+          "title": "A Celebration of Australiana",
+          "subtitle": "<p>Discover the brand-new collection of wearable art, inspired by iconic native Australian flora and fauna.<\/p>",
           "cta-label": "Shop Now",
-          "cta-background": "#f6a898",
+          "cta-background": "#FDCF5E",
           "banner_bottom_text": "<p>Our limited-run designs can sell out fast! Seeking something sold out? Find a stockist <a href=\"https:\/\/www.erstwilder.com\/pages\/erstwilder-stockists\" target=\"_blank\" title=\"Erstwilder Stockists\"><span style=\"text-decoration:underline\">here<\/span><\/a>.<\/p>",
-          "hero--bottom-text-bg-color": "#e4987f",
+          "hero--bottom-text-bg-color": "#fdcf5e",
           "hero--bottom-text-color": "#ffffff"
         }
       },
@@ -179,9 +179,21 @@
             "settings": {
               "featured-collection": "new",
               "collection-name": "New Arrivals",
-              "image-1": "shopify:\/\/shop_images\/NEW_ARRIVALS_HOVER-3_52244cdb-a0da-438d-aa7e-7e40fd4a0bd6.jpg",
+              "image-1": "shopify:\/\/shop_images\/AUSTRALIANA_HOVERS_HIGHLIGHTS_HIGHLIGHT-3.jpg",
               "image-2": "shopify:\/\/shop_images\/ARTS_CRAFTS_HOVER-2_15dc69bd-a271-46e7-a895-8d637a86c67e.jpg",
-              "image-3": "shopify:\/\/shop_images\/BEST_OF_HALLOWEEN_HOVERS_AND_HIGHLIGHTS__HOVER-3_1117c4ba-964b-4190-9eff-02fc793b0bb7.jpg"
+              "image-3": "shopify:\/\/shop_images\/BEST_OF_HALLOWEEN_HOVERS_AND_HIGHLIGHTS_HIGHLIGHT-1.jpg"
+            }
+          },
+          "4f341b36-37e3-4de2-9edc-821d15fc8c99": {
+            "type": "collection-block",
+            "settings": {
+              "featured-collection": "australiana-2024",
+              "collection-name": "Australiana",
+              "image-1": "shopify:\/\/shop_images\/Kookaburra-03_1c215043-43f8-4e8f-bd9c-2266b2af7636.jpg",
+              "image-2": "shopify:\/\/shop_images\/WOMBAT_HANDHELD.jpg",
+              "image-3": "shopify:\/\/shop_images\/AUSTRALIANA_HOVERS_HIGHLIGHTS_HIGHLIGHT-1.jpg",
+              "illustration-1": "shopify:\/\/shop_images\/AUSTRALIANA_HOMEPAGE_GIF_1.gif",
+              "illustration-3": "shopify:\/\/shop_images\/AUSTRALIANA_HOMEPAGE_GIF_3.gif"
             }
           },
           "collection_block_VtjdmK": {
@@ -245,18 +257,6 @@
               "illustration-3": "shopify:\/\/shop_images\/ATOMIC_ABODE_HOMEPAGE_3.gif"
             }
           },
-          "4f341b36-37e3-4de2-9edc-821d15fc8c99": {
-            "type": "collection-block",
-            "settings": {
-              "featured-collection": "erstwilder-x-lauren-rogers",
-              "collection-name": "Lauren Rogers",
-              "image-1": "shopify:\/\/shop_images\/LAUREN_ROGERS_HOVER-2.jpg",
-              "image-2": "shopify:\/\/shop_images\/LAUREN_ROGERS_HOVER-2_1.jpg",
-              "image-3": "shopify:\/\/shop_images\/LAUREN_ROGERS_HOVER-3.jpg",
-              "illustration-1": "shopify:\/\/shop_images\/LAUREN_ROGERS_HOMEPAGE_GIF_1.gif",
-              "illustration-3": "shopify:\/\/shop_images\/LAUREN_ROGERS_HOMEPAGE_GIF_3.gif"
-            }
-          },
           "df8fa453-35d5-4259-b015-6acd21d8ab5d": {
             "type": "collection-block",
             "settings": {
@@ -297,12 +297,12 @@
         },
         "block_order": [
           "79f86543-b845-4e1c-9ef7-fb391c18ea8d",
+          "4f341b36-37e3-4de2-9edc-821d15fc8c99",
           "collection_block_VtjdmK",
           "5083497a-3633-4031-9121-5079db13ad65",
           "9e1845ac-aab9-4c2a-a4d5-51b02dc27b41",
           "419195f9-fb9f-476b-9332-f18d17448aff",
           "a9148b38-fb4a-498f-9899-093afe5959d0",
-          "4f341b36-37e3-4de2-9edc-821d15fc8c99",
           "df8fa453-35d5-4259-b015-6acd21d8ab5d",
           "77aa2585-52ab-4058-b9c6-093f9e832547",
           "65cf065f-d4d5-4b10-a0a6-10b725b9f108"
@@ -330,7 +330,7 @@
           "title": "Best Sellers",
           "cta-label": "Shop all",
           "cta-url": "shopify:\/\/collections\/all",
-          "featured-collection": "during-launchpad-best-sellers",
+          "featured-collection": "launch-pad-best-sellers",
           "top-wave": "0",
           "top-color-1": "",
           "top-color-2": "",
@@ -593,7 +593,7 @@
         ],
         "settings": {
           "title": "Reviews",
-          "cta-label": "Read what over 32,000 people think of us!",
+          "cta-label": "Read what over 34,000 people think of us!",
           "cta-url": "shopify:\/\/pages\/reviews",
           "top-wave": "0",
           "top-color-1": "",
@@ -889,15 +889,15 @@
           "df7b9ac8-0c52-4abf-826b-4e9bb48501f3": {
             "type": "banner",
             "settings": {
-              "image": "shopify:\/\/shop_images\/ARTS_CRAFTS_SPLIT_BANNER_1-DESKTOP_6a065f22-b006-40e4-9fa9-d1475c252fdf.jpg",
-              "title": "Arts & Crafts",
+              "image": "shopify:\/\/shop_images\/HALLOWEEN_EXTENDED_SPLIT_BANNER_1-DESKTOP.jpg",
+              "title": "Halloween",
               "content": "",
               "content-position": "middle-center",
               "content_bg_color": "#302e2e",
-              "content_bg_opacity": 10,
+              "content_bg_opacity": 21,
               "content_text_color": "#ffffff",
               "cta-label": "",
-              "cta-url": "shopify:\/\/collections\/arts-crafts",
+              "cta-url": "shopify:\/\/collections\/halloween-1",
               "full_block_url": true
             }
           },
@@ -919,15 +919,15 @@
           "abc12d3a-fe0a-4f42-be69-61af2807ac0a": {
             "type": "banner",
             "settings": {
-              "image": "shopify:\/\/shop_images\/3_banners_fleur-1.jpg",
-              "title": "Fleur Harris",
+              "image": "shopify:\/\/shop_images\/ARTS_CRAFTS_SPLIT_BANNER_1-DESKTOP_6a065f22-b006-40e4-9fa9-d1475c252fdf.jpg",
+              "title": "Arts & Crafts",
               "content": "",
               "content-position": "middle-center",
               "content_bg_color": "#000000",
-              "content_bg_opacity": 18,
+              "content_bg_opacity": 19,
               "content_text_color": "#ffffff",
               "cta-label": "",
-              "cta-url": "shopify:\/\/collections\/erstwilder-x-fleur-harris",
+              "cta-url": "shopify:\/\/collections\/arts-crafts",
               "full_block_url": true
             }
           }
