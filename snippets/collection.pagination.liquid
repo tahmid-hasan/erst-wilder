@@ -27,29 +27,49 @@
 
 {%- comment -%} JS pagination {%- endcomment -%}
 <div class="c-collection-pagination has-js {{ class }}" data-collection-template-pagination>
-  <p class="c-collection-pagination__count" data-collection-count-selector></p>
+  {%- liquid
+    assign current_page = paginate.current_page
+    assign page_size = paginate.page_size
+    assign currently_showing = current_page | times: page_size
 
-  <button
-    type="button"
-    class="c-collection-pagination__btn"
-    data-collection-template-load-more
-  >
-    <span class="c-collection-pagination__btn-label o-heading--6">
-      {{- 'collections.collection.load_more_btn' | t -}}
-    </span>
+    if currently_showing >= collection.products_count
+      assign currently_showing = collection.products_count
+    endif
+  -%}
+  <p class="c-collection-pagination__count">Currently showing {{ currently_showing }} out of {{ collection.products_count }}</p>
 
-    {%- comment -%} Image {%- endcomment -%}
-    <div class="c-collection-pagination__illustration-wrapper">
-      <div class="c-collection-pagination__illustration-container o-responsive-image-container">
-        <img
-          src="{{ 'svg.shape-16.svg' | asset_url }}"
-          alt=""
-          width="215"
-          height="139"
-          lazy="true"
-          class="c-collection-pagination__illustration o-responsive-image"
-        >
+  <div id="c-collection-pagination__wrapper">
+    
+    {% if paginate.next %}
+    <button
+      type="button"
+      class="c-collection-pagination__btn"
+      {% comment %}
+      data-collection-template-load-more
+      {% endcomment %}
+      data-collection-load-more
+      data-next-url="{{ paginate.next.url }}"
+    >
+      <span class="c-collection-pagination__btn-label o-heading--6">
+        {{- 'collections.collection.load_more_btn' | t -}}
+        <span class="c-collection-loader"></span>
+      </span>
+      
+
+      {%- comment -%} Image {%- endcomment -%}
+      <div class="c-collection-pagination__illustration-wrapper">
+        <div class="c-collection-pagination__illustration-container o-responsive-image-container">
+          <img
+            src="{{ 'svg.shape-16.svg' | asset_url }}"
+            alt=""
+            width="215"
+            height="139"
+            lazy="true"
+            class="c-collection-pagination__illustration o-responsive-image"
+          >
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+    {% endif %}
+  </div>
 </div>

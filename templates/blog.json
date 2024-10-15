@@ -9,10 +9,10 @@
             "title": "Collection Reveals"
           }
         },
-        "blog_filter_6XdBTf": {
+        "e4253173-65fe-48cf-8458-d8eb50aed7e2": {
           "type": "blog-filter",
           "settings": {
-            "title": "Launch Tips"
+            "title": "Interviews"
           }
         },
         "bf80ada3-15d7-4f08-b57f-efa42c26e28e": {
@@ -21,10 +21,10 @@
             "title": "Charity"
           }
         },
-        "e4253173-65fe-48cf-8458-d8eb50aed7e2": {
+        "2c4c001d-66ed-418f-b3f2-f7a6b3bad6e4": {
           "type": "blog-filter",
           "settings": {
-            "title": "Interviews"
+            "title": "Competitions"
           }
         },
         "0a32dfdb-bdb0-4124-a4a5-9084e70dfd6c": {
@@ -33,36 +33,21 @@
             "title": "Offers"
           }
         },
-        "2c4c001d-66ed-418f-b3f2-f7a6b3bad6e4": {
-          "type": "blog-filter",
-          "settings": {
-            "title": "Competitions"
-          }
-        },
         "b951ad98-592b-431a-b666-f524cfd6d8aa": {
           "type": "blog-filter",
           "disabled": true,
           "settings": {
             "title": "Events"
           }
-        },
-        "blog_filter_gP6PFm": {
-          "type": "blog-filter",
-          "disabled": true,
-          "settings": {
-            "title": "Helpful Info"
-          }
         }
       },
       "block_order": [
         "cb41782f-330f-4136-81d9-660dbe4ffbe3",
-        "blog_filter_6XdBTf",
-        "bf80ada3-15d7-4f08-b57f-efa42c26e28e",
         "e4253173-65fe-48cf-8458-d8eb50aed7e2",
-        "0a32dfdb-bdb0-4124-a4a5-9084e70dfd6c",
+        "bf80ada3-15d7-4f08-b57f-efa42c26e28e",
         "2c4c001d-66ed-418f-b3f2-f7a6b3bad6e4",
-        "b951ad98-592b-431a-b666-f524cfd6d8aa",
-        "blog_filter_gP6PFm"
+        "0a32dfdb-bdb0-4124-a4a5-9084e70dfd6c",
+        "b951ad98-592b-431a-b666-f524cfd6d8aa"
       ],
       "settings": {
         "hide-filters": false,

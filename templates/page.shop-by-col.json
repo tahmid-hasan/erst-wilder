@@ -3,14 +3,6 @@
     "shop-by-collection": {
       "type": "shop-by-collection",
       "blocks": {
-        "collection_block_LeMULL": {
-          "type": "collection_block",
-          "settings": {
-            "block_title": "Australiana 2024",
-            "block_image": "shopify:\/\/shop_images\/AUSTRALIANA_SHOP_BY_COLLECTION.jpg",
-            "link_to": "australiana-2024"
-          }
-        },
         "collection_block_RMCdGW": {
           "type": "collection_block",
           "settings": {
@@ -181,7 +173,6 @@
         }
       },
       "block_order": [
-        "collection_block_LeMULL",
         "collection_block_RMCdGW",
         "collection_block_E84UE9",
         "f4a84ec6-853d-40cf-adb8-882250e41e54",

@@ -8,7 +8,6 @@
     },
     "16516276666c236341": {
       "type": "featured--featured-collections",
-      "disabled": true,
       "blocks": {
         "f0cc95a9-84f7-4d7e-a21e-bfd8c046bc19": {
           "type": "collection-block",
@@ -50,6 +49,7 @@
         "e72cfcf4-5bf2-430b-98e7-924123eb8f7b",
         "6bfbfd7c-43ac-42c6-abb8-26984252d28f"
       ],
+      "disabled": true,
       "settings": {
         "alt-background": false,
         "cta-label": "View all",
@@ -66,7 +66,6 @@
     },
     "16516282161a389bba": {
       "type": "media--logos",
-      "disabled": true,
       "blocks": {
         "ec2cb30c-33b7-4761-ba68-7313426f3426": {
           "type": "logo-block",
@@ -79,6 +78,7 @@
       "block_order": [
         "ec2cb30c-33b7-4761-ba68-7313426f3426"
       ],
+      "disabled": true,
       "settings": {
         "title": ""
       }
