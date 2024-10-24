@@ -111,16 +111,22 @@
     
 
 <script>
-scrollLoad = function(){setTimeout( function(){
+  scrollLoad = function(){setTimeout( function(){
     jdgm.customizeBadges();
   }, 500);}
-const loadMore = document.querySelector('span.c-collection-pagination__btn-label.o-heading--6');
+  const loadMore = document.querySelector('span.c-collection-pagination__btn-label.o-heading--6');
 
-loadMore.addEventListener("click", scrollLoad);
+
+  if(loadMore) {
+    loadMore.addEventListener("click", scrollLoad);
+  }
 
 
   document.addEventListener('DOMContentLoaded', function () {
-    document.querySelector('.c-collection-pagination__btn').addEventListener('click', () => {
+    const paginationBtn = document.querySelector('.c-collection-pagination__btn')
+
+    if(paginationBtn) {
+      paginationBtn.addEventListener('click', () => {
         setTimeout(function () {
             document.querySelectorAll(".o-product-thumbnail").forEach(item => {
                 if (!item.querySelector('.jdgm-widget.jdgm-preview-badge')) {
@@ -144,9 +150,9 @@ loadMore.addEventListener("click", scrollLoad);
                 jdgm.batchRenderBadges(data);
             }, 500);
         });
-    }, 100);
-
-})
+      }, 100);
+    }
+  })
 
 </script>
 

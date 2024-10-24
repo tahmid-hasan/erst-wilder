@@ -37,7 +37,9 @@
     if tag contains 'Badge_'
       assign tSplit = tag | split: 'Badge_'
       assign badge = tSplit.last
-      assign badges = badges | append: '|' | append: badge
+      unless badge == 'Imperfect' or badge == 'imperfect' or badge == 'IMPERFECT'
+        assign badges = badges | append: '|' | append: badge
+      endunless
     endif
   endfor
 -%}

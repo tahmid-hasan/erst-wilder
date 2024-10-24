@@ -50,6 +50,11 @@
             <label for="product-{{ section.id }}-{{ product.id }}-recipient-name" class="input__label">Recipient Name</label>
             <input class="o-input" id="product-{{ section.id }}-{{ product.id }}-recipient-name" type="text" class="input__field input__field--text" name="properties[Recipient name]" value="{{ form.name }}">
           </div>
+
+          <div class="input">
+            <label for="product-{{ section.id }}-{{ product.id }}-sender-name" class="input__label">Sender Name</label>
+            <input class="o-input" id="product-{{ section.id }}-{{ product.id }}-sender-name" type="text" class="input__field input__field--text" name="properties[Sender name]" value="{{ form.sender_name }}">
+          </div>
     
           <div class="input">
             <label for="product-{{ section.id }}-{{ product.id }}-recipient-message" class="input__label">Gift Message</label>
