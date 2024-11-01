@@ -88,16 +88,19 @@
             </a>
 
             {%- comment -%} Call to action {%- endcomment -%}
+            {%- assign cta_style = section.settings.cta-btn-shape -%}
             {%- if ctaLabel != blank -%}
               <div class="c-hero-split__cta-wrapper">
                 <a
                   href="{{- featuredUrl -}}"
-                  class="c-hero-split__cta"
+                  class="{% unless cta_style == 'rounded_edges' %}c-hero-split__cta{% else %}c-hero-split__cta--rounded{% endunless %}"
                 >
-                  {%- render 'svg.shape-1' with {
-                    fill: section.settings.cta-background,
-                    class: "c-hero-split__cta-bg"
-                  } -%}
+                  {% unless cta_style == 'rounded_edges' %}
+                    {%- render 'svg.shape-1' with {
+                      fill: section.settings.cta-background,
+                      class: "c-hero-split__cta-bg"
+                    } -%}
+                  {% endunless %}
                   <span class="c-hero-split__cta-label">
                     {{- ctaLabel -}}
                   </span>
@@ -255,6 +258,22 @@
     {
       "type": "header",
       "content": "Call to Action"
+    },
+    {
+      "type": "select",
+      "id": "cta-btn-shape",
+      "label": "CTA button shape",
+      "options": [
+        {
+          "label": "Standard button",
+          "value": "std_btn"
+        },
+        {
+          "label": "Rounded edges",
+          "value": "rounded_edges"
+        }
+      ],
+      "default": "std_btn"
     },
     {
       "type": "text",

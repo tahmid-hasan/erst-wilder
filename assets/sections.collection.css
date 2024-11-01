@@ -21,9 +21,9 @@
   display: inline-block;
 }
 @keyframes l7 {
-    33%{background-size:calc(100%/3) 0%  ,calc(100%/3) 100%,calc(100%/3) 100%}
-    50%{background-size:calc(100%/3) 100%,calc(100%/3) 0%  ,calc(100%/3) 100%}
-    66%{background-size:calc(100%/3) 100%,calc(100%/3) 100%,calc(100%/3) 0%  }
+  33%{background-size:calc(100%/3) 0%  ,calc(100%/3) 100%,calc(100%/3) 100%}
+  50%{background-size:calc(100%/3) 100%,calc(100%/3) 0%  ,calc(100%/3) 100%}
+  66%{background-size:calc(100%/3) 100%,calc(100%/3) 100%,calc(100%/3) 0%  }
 }
 .o-product-thumbnail__imperfect-badge {
   display: flex;
@@ -36,7 +36,7 @@
 .o-product-thumbnail__imperfect-badge .badge__content {
   margin: 0;
   padding: 2px 6px;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 700;
   color: #e4987f;
   background-color: #f4e9d2;
@@ -57,4 +57,10 @@
   display: flex;
   margin-top: -1px;
   fill: currentColor;
+}
+
+@media only screen and (min-width: 450px) {
+  .o-product-thumbnail__imperfect-badge .badge__content {
+    font-size: 18px;
+  }
 }
