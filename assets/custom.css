@@ -758,7 +758,7 @@ button.c-filter-banner__drawer-trigger {
     padding: 5px 16px;
     border: 1px solid var(--hero--bottom-text-color);
     border-radius: 8px;
-    background: var(--hero--bottom-text-bg-color);
+    background: var(--hero--rounded-edge-btn-background);
 }
 
 .c-hero-split__cta--rounded .c-hero-split__cta-label {
