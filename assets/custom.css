@@ -755,10 +755,14 @@ button.c-filter-banner__drawer-trigger {
 }
 
 .c-hero-split__cta--rounded {
-    padding: 5px 16px;
+    padding: .75rem 2.5rem;
     border: 1px solid var(--hero--bottom-text-color);
-    border-radius: 8px;
+    border-radius: 3.125rem;
     background: var(--hero--rounded-edge-btn-background);
+}
+
+.c-hero-split__cta-wrapper:has(.c-hero-split__cta--rounded) {
+    width: 10.375rem;
 }
 
 .c-hero-split__cta--rounded .c-hero-split__cta-label {
@@ -879,7 +883,7 @@ button.c-filter-banner__drawer-trigger {
 
 /* Single-image product page fix */
 img.c-product-image-carousel__slide-image {
-    max-height: 500px;
+    /* max-height: 500px; */
     object-fit: cover;
 }
 
