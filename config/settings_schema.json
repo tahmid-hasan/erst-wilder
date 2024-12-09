@@ -61,6 +61,16 @@
         "type": "text",
         "id": "count_pinterest",
         "label": "Pinterest Followers Count"
+      },
+      {
+        "type": "text",
+        "id": "social_link_shop",
+        "label": "Shop link"
+      },
+      {
+        "type": "text",
+        "id": "count_shop",
+        "label": "Shop Followers Count"
       }
     ]
   },

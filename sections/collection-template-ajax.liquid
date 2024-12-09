@@ -1,0 +1,15 @@
+{%- capture perPage -%}
+  {%- render 'tool.collection-per-page' -%}
+{%- endcapture -%}
+
+{% paginate collection.products by perPage %}
+  <div class="c-collection__loop">
+    {%- comment -%} Products loop {%- endcomment -%}
+    {%- for productObject in collection.products -%}
+      {%- render 'object.product-thumbnail' with {
+        class: 'c-collection__thumbnail',
+        thumbnailProduct: productObject
+      } -%}
+    {%- endfor -%}
+  </div>
+{% endpaginate %}

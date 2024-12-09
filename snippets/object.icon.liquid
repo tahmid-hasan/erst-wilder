@@ -34,7 +34,7 @@
   src="{{ filename | asset_url }}"
   alt="{{ alt | escape }}"
   {% if attributes %}{{ attributes }}{% endif %}
-  {% if width %}width="{{ width }}"{% endif %}
-  {% if height %}height="{{ height }}"{% endif %}
+  width="{{ width | default: 'auto' }}"
+  height="{{ height | default: 'auto' }}"
   class="{{ classes }}"
 />

@@ -994,6 +994,12 @@ a.c-footer__social-link.is-tiktok {
     margin-left: 0.9rem;
 }
 
+a.c-footer__social-link.is-shop {
+    width: 2.5rem;
+    height: 1.5rem;
+    margin-left: 1.2rem;
+}
+
 .is-tiktok .c-footer__social_item {
     gap: .1rem;
 }
