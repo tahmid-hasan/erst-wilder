@@ -1,0 +1,149 @@
+{%- liquid
+  assign sort_by = results.sort_by | default: results.default_sort_by
+  assign total_active_values = 0
+  assign default_presentation = 'text'
+  if results.url
+    assign results_url = results.url
+  else
+    assign terms = results.terms | escape
+    assign results_url = '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
+  endif
+
+  assign availability_settings = results.metafields.settings.available_filters.value
+  assign available_filters = ""
+  for available_filter in availability_settings
+    capture available_filters
+      echo available_filters
+      echo available_filter | handleize
+      unless forloop.last
+        echo ','
+      endunless
+    endcapture
+  endfor
+-%}
+<facet-filters-form class="facets" data-change-on-submit="true">
+  <form
+    id="FacetFiltersFormMobile"
+    class="{% if filter_type == 'horizontal' %}facets__form{% else %}facets__form-vertical{% endif %}"
+    data-drawer="[data-filters-drawer]"
+  >
+    {%- if results.terms -%}
+      <input type="hidden" name="q" value="{{ results.terms | escape }}">
+      <input name="options[prefix]" type="hidden" value="last">
+    {%- endif -%}
+    <div class="accordion" id="facets-filter--mobile">
+      {%- for filter in results.filters -%}
+        {%- case filter.type -%}
+          {%- when 'boolean', 'list' -%}
+            {%- assign is_availability = false -%}
+            {%- if filter.param_name == 'filter.v.availability' -%}
+              {%- assign is_availability = true -%}
+            {%- endif -%}
+            {%- assign handlize_label = filter.label | handleize -%}
+            {%- unless available_filters contains handlize_label %}
+              {%- continue -%}
+            {%- endunless -%}
+            {%- assign available_options_count = filter.values.size -%}
+            {%- assign is_color = false -%}
+            {%- if handlize_label contains 'color' or handlize_label contains 'colour' -%}
+              {%- assign is_color = true -%}
+            {%- endif -%}
+            {%- if available_options_count > 1 -%}
+              <div class="accordion-item">
+                <div class="accordion-header" id="Summary-{{ filter.param_name | escape | handle }}-{{ section.id }}-desktop">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Details-{{ filter.param_name | escape | handle }}-{{ section.id }}-desktop" aria-expanded="true" aria-controls="Details-{{ filter.param_name | escape | handle }}-{{ section.id }}-desktop">
+                    {{- filter.label | escape }}
+                  </button>
+                </div>
+                <div id="Details-{{ filter.param_name | escape | handle }}-{{ section.id }}-desktop" class="accordion-collapse collapse" aria-labelledby="Summary-{{ filter.param_name | escape | handle }}-{{ section.id }}-desktop" data-bs-parent="#facets-filter--mobile">
+                  <div class="accordion-body">
+                    <fieldset class="facets-wrap parent-wrap">
+                      <legend class="visually-hidden">{{ filter.label | escape }}</legend>
+                      {%- liquid
+                        assign sorted_values = filter.values
+                        # Keep the selected values grouped together when operator is AND
+                        if filter.operator == 'AND'
+                          assign active_filter_values = filter.values | where: 'active', true
+                          assign inactive_filter_values = filter.values | where: 'active', false
+                          assign sorted_values = active_filter_values | concat: inactive_filter_values
+                        endif
+                      -%}
+                      <ul
+                        class="{{ visual_layout_class }}{% if filter_type == 'vertical' %} facets__list--vertical{% else %} facets__list{% endif %} list-unstyled"
+                        role="list"
+                      >
+                        {%- for value in sorted_values -%}
+                          {% liquid
+                            assign input_id = 'Filter-mobile-' | append: filter.param_name | escape | append: '-' | append: forloop.index
+                            assign is_disabled = false
+                            if value.count == 0 and value.active == false
+                              assign is_disabled = true
+                            endif
+                          %}
+                          {%- capture label_class -%}
+                          facets__label facet-checkbox{% if is_disabled %} disabled{% endif %}{% if value.active %} active{% endif %}{% if is_color %} facets__color{% endif %}{% if is_availability %} facets__availability{% endif %}
+                          {%- endcapture -%}
+      
+                          {%- assign label_text = value.label | escape -%}
+                          {%- if is_availability -%}
+                            {%- assign label_text = value.label | escape | append: ' only' -%}
+                          {%- endif -%}
+                          {%- capture text_value -%}
+                            <span class="facet-checkbox__text" aria-hidden="true">
+                              <span class="facet-checkbox__text-label">{{- label_text }}</span>
+                              <span class="value-count{% if is_availability %} visually-hidden{% endif %}" data-value-count>({{- value.count -}})</span>
+                            </span>
+                            <span class="visually-hidden" data-value-count>
+                              {{- value.label | escape }} (
+                              {%- if value.count == 1 -%}
+                                {{- 'products.facets.product_count_simple.one' | t: count: value.count -}}
+                              {%- else -%}
+                                {{- 'products.facets.product_count_simple.other' | t: count: value.count -}}
+                              {%- endif -%}
+                              )
+                            </span>
+                          {%- endcapture -%}
+                          {% if is_availability and value.value == "0" %}{% continue %}{% endif %}
+                          <li class="list-menu__item facets__item{% if forloop.index > show_more_number and filter_type == 'vertical' %} show-more-item hidden{% endif %}">
+                            <label for="{{ input_id }}" class="{{ label_class }}">
+                              <input
+                                type="checkbox"
+                                name="{{ value.param_name }}"
+                                value="{{ value.value }}"
+                                class="u-visually-hidden facets__input"
+                                id="{{ input_id }}"
+                                {% if value.active %}
+                                  checked
+                                {% endif %}
+                                {% if is_disabled %}
+                                  disabled
+                                {% endif %}
+                              >
+                              {%- if is_color == true -%}
+                                {%- assign color_var = value.value | handleize | prepend: '--swatch-' -%}
+                                <span class="color-swatch--wrapper">
+                                  <svg class="c-collection-faceted-nav__btn-svg-outline" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 46 44">
+                                    <path d="M32.501 3.501c-8.8-4-18.001-3.345-25.5 3-13 11-2.5 32.5 9 35.5s24.05-3.121 27-12.5c3.499-11.121.5-21-10.5-26Z" stroke="#393939" stroke-width="2"></path>
+                                  </svg>
+                                  <svg class="c-collection-faceted-nav__btn-svg-fill" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 40" style="--fill: var({{ color_var }})">
+                                    <path d="M29.898 1.559C14.78-3.862 2.17 5.772.319 16.382-.914 26.31 1.176 31.648 11 36.712c17.255 8.895 25.882-2.118 28.757-11.012 4.157-12.857-2.875-21.637-9.86-24.141Z" fill="var(--fill)"></path>
+                                  </svg>
+                                </span>
+                                <span>{{ text_value }}</span>
+                              {%- else -%}
+                                {{ text_value }}
+                              {%- endif -%}
+                            </label>
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+            {%- endif -%}
+        {%- endcase -%}
+      {%- endfor-%}
+    </div>
+  </form>
+</facet-filters-form>

@@ -1,7 +1,7 @@
 {
   "sections": {
     "collection-template-collection": {
-      "type": "collection-template",
+      "type": "collection-template-collection",
       "blocks": {
         "723816c5-940a-49dd-b4e7-2a7892ccef98": {
           "type": "content-block",

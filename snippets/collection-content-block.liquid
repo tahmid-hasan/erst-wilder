@@ -1,0 +1,48 @@
+{%- comment -%}
+  Necessary Inputs:
+  1. `image`: The image object for the content block, passed to the 'tool.picture' snippet.
+  2. `content`: The text content to display inside the block.
+  3. `position`: The position identifier for the content block.
+  4. `is_primary_block`: Boolean to toggle between primary and secondary styles for the block.
+{%- endcomment -%}
+<div
+  class="o-content-block c-collection__content-block{% if is_primary_block %} is-primary{% else %} is-secondary{% endif %}"
+  data-content-block
+  data-content-block-position="{{- position -}}"
+>
+  <div class="o-content-block__inner">
+    {%- comment -%} Image {%- endcomment -%}
+    <div class="o-content-block__image-container o-responsive-image-container">
+      {%- render 'tool.picture' with {
+        image: image,
+        class: "o-content-block__image o-responsive-image",
+        width: 711,
+        sizes: '375,550,750',
+        imageSizes: '265,440,640'
+      } -%}
+    </div>
+
+    <div class="o-content-block__content-container">
+      {%- comment -%} Content {%- endcomment -%}
+      <p class="o-content-block__content o-heading--4">
+        {{- content -}}
+      </p>
+
+      {%- comment -%} Illustration {%- endcomment -%}
+      {%- if is_primary_block -%}
+        <div class="o-content-block__illustration-wrapper">
+          <div class="o-content-block__illustration-container o-responsive-image-container">
+            <img
+              src="{{ 'svg.bird.svg' | asset_url }}"
+              alt=""
+              width="160"
+              height="139"
+              lazy="true"
+              class="o-content-block__illustration o-responsive-image"
+            >
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>

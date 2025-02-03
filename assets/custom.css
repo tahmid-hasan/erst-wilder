@@ -434,10 +434,10 @@ button.c-filter-banner__drawer-trigger {
         text-transform: capitalize;
     }
 
-    .c-collection-faceted-nav__btn-svg-outline {
+    /* .c-collection-faceted-nav__btn-svg-outline {
         top: 0 !important;
         left: 0 !important;
-    }
+    } */
 }
 /* Home page Sections */
 .c-section__hero-full .c-hero-full__content {

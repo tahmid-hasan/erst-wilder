@@ -1,0 +1,329 @@
+{{ 'custom.v2.css' | asset_url | stylesheet_tag }}
+{{ 'sections.collection.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'custom.v2.js' | asset_url }}" defer></script>
+
+{%- liquid 
+  assign bottomWave = section.settings.bottom-wave
+  assign bottomColor1 = section.settings.bottom-color-1
+  assign bottomColor2 = section.settings.bottom-color-2
+  assign isFlippedBottom = section.settings.flip-bottom-wave
+  assign collectionHandles = section.settings.collections | escape | split: ','
+-%}
+
+{%- capture languageKeys -%}
+  collections.collection.product_count;
+  collections.collection.filter_colour;
+  collections.collection.filter_shape;
+  collections.collection.filter_style;
+  collections.collection.filter_availability;
+  collections.collection.filter_product;
+  collections.collection.sort_label;
+  collections.collection.reset;
+{%- endcapture -%}
+
+{%- capture filterClass -%}
+  c-collection__filter-banner
+  {%- for collectionHandle in collectionHandles -%}
+    {% if collectionHandle == collection.handle %}
+      is-filters-hidden
+    {% endif %}
+  {%- endfor -%}
+{%- endcapture -%}
+
+{%- render 'tool.language-strings' with { keys: languageKeys } -%}
+{%- liquid
+  assign is_filter_hidden = collection.metafields.settings.hide_filter | default: false
+  assign content_block = collection.metafields.meta.content_block.value
+
+  assign content_block_position = content_block.position
+  assign content_block_image = content_block.image.value
+  assign content_block_text = content_block.text.value
+  assign is_primary_block = false
+
+  assign mod = content_block_position | modulo: 2
+  if mod == 0
+    assign is_primary_block = true
+  endif
+-%}
+<section
+  class="c-collection"
+  data-collection-template
+  data-collection-handle="{{- collection.handle | escape -}}"
+  data-collection-per-page="{{- perPage -}}"
+  data-filter-hidden="{{ is_filter_hidden }}"
+>
+  {%- render 'collection.banner' with {
+    class: filterClass
+  } -%}
+  <div class="c-collection__container">
+    {% paginate collection.products by 48 %}
+      {%- unless is_filter_hidden -%}
+      <div class="c-collection-toolbar">
+        <div class="c-collection__button-group--left">
+          <div data-drawer-toggle="[data-filters-drawer]">
+            <button class="button" type="button" role="button">Filter <span class="icon-dropdown"></span></button>
+          </div>
+        </div>
+        {% comment %} <div class="c-collection__product-count">{{ collection.products_count }}</div> {% endcomment %}
+        <div class="c-collection__button-group--right">
+          <custom-select>
+            {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+            <button data-toggle class="button" type="button" role="button">Sort by <span class="icon-dropdown"></span></button>
+            <div class="select-menu" data-container>
+              <ul class="options">
+                {%- for option in collection.sort_options -%}
+                  <li class="option" data-option
+                    data-value="{{ option.value | escape }}"
+                    {% if option.value == sort_by %}
+                      data-selected="selected"
+                    {% endif %}
+                  >
+                    <span class="option-text">{{ option.name | escape }}</span>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+            <select
+              name="sort_by"
+              class="facet-filters__sort select__select caption-large visually-hidden"
+              id="SortBy"
+              form="FacetFiltersForm"
+              aria-describedby="a11y-refresh-page-message"
+              data-select
+            >
+              {%- for option in collection.sort_options -%}
+                <option
+                  value="{{ option.value | escape }}"
+                  {% if option.value == sort_by %}
+                    selected="selected"
+                  {% endif %}
+                >
+                  {{ option.name | escape }}
+                </option>
+              {%- endfor -%}
+            </select>
+          </custom-select>
+        </div>
+      </div>
+      {%- endunless -%}
+      <div class="c-collection__wrapper">
+        {%- unless is_filter_hidden -%}
+          <div class="c-collection__facets-form small-hide">
+            {%- render 'facets-filter', results: collection, section: section, enable_filtering: true, enable_sorting: true, filter_type: 'vertical', paginate: paginate -%}
+          </div>
+          
+          <div class="c-collection-faceted-nav {{ class }} has-js" data-filters-drawer>
+            <header class="c-collection-faceted-nav__header">
+              <div class="c-collection__drawer-header">
+                <p>Filter</p>
+              </div>
+              <button
+                class="c-collection-faceted-nav__drawer-trigger"
+                data-drawer-toggle="[data-filters-drawer]"
+              >
+                <span class="u-visually-hidden">
+                  {{- 'collections.collection.filters_close' | t | escape -}}
+                </span>
+
+                {%- render 'object.icon' with {
+                  icon: 'close',
+                  width: 24,
+                  height: 24
+                } -%}
+              </button>
+            </header>
+
+            {%- comment -%} Filters Body {%- endcomment -%}
+            <div class="c-collection-faceted-nav__body">
+              <div class="c-collection-faceted-nav__container">
+                {%- comment -%} Sort {%- endcomment -%}
+                <div class="c-collection__facets-form--mobile">
+                  {%- render 'facets-filter-mobile', results: collection, section: section, enable_filtering: true, enable_sorting: true, filter_type: 'vertical', paginate: paginate -%}
+                </div>
+              </div>
+            </div>
+
+            {%- comment -%} Mobile Apply/Footer {%- endcomment -%}
+            <footer class="c-collection-faceted-nav__footer">
+              <button
+                type="submit"
+                class="c-collection-faceted-nav__apply-btn o-btn"
+                data-filter-toggle
+                form="FacetFiltersFormMobile"
+              >
+                {{- 'collections.collection.apply_button' | t -}}
+              </button>
+            </footer>
+          </div>
+        {%- endunless -%}
+        <div class="c-collection__main">
+          <div class="active-facets">
+            {%- assign active_value_count = 0 -%}
+            {%- for filter in collection.filters -%}
+              {%- for value in filter.active_values -%}
+                <facet-remove>
+                  <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
+                    <span class="active-facets__button-inner button button--tertiary">
+                      {% comment %}
+                        {{ filter.label | escape }}: 
+                      {% endcomment %}
+                      {{ value.label | escape }}
+                      <span class="svg-wrapper">
+                        <svg aria-hidden="true" focusable="false" fill="none" width="10" class="icon icon-close" viewBox="0 0 16 16">
+                          <path d="m1 1 14 14M1 15 15 1" stroke="currentColor" stroke-width="1.5"></path>
+                        </svg>
+                      </span>
+                      <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
+                    </span>
+                  </a>
+                </facet-remove>
+                {%- assign active_value_count = active_value_count | plus: 1 -%}
+              {%- endfor -%}
+            {%- endfor -%}
+            {%- if active_value_count > 1 -%}
+              <facet-remove>
+                <a href="{{ request.path }}" class="active-facets__button active-facets__button--light active-facets__clear-all">
+                  <span class="active-facets__button-inner button button--tertiary">
+                    {% comment %}
+                      {{ filter.label | escape }}: 
+                    {% endcomment %}
+                    {{ 'products.facets.clear_all' | t }}
+                    <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
+                  </span>
+                </a>
+              </facet-remove>
+            {%- endif -%}
+          </div>
+          <div class="c-collection__grid{%- if collection.products_count == 0 -%} visually-hidden{%- endif -%}">
+            {%- for productObject in collection.products -%}
+              {%- render 'object.product-thumbnail' with {
+                class: 'c-collection__thumbnail',
+                thumbnailProduct: productObject
+              } -%}
+
+              {%- if paginate.current_page == 1 -%}
+                {%- if content_block and forloop.index == content_block_position -%}
+                  {%- render 'collection-content-block', image: content_block_image, content: content_block_text, position: content_block_position, is_primary_block: is_primary_block -%}
+                {%- endif-%}
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+
+          {%- if collection.products_count == 0 -%}
+            <p class="c-collection__no-results is-visible" data-collection-no-results>
+              {{- 'collections.collection.no_results' | t -}}
+            </p>
+          {%- endif -%}
+
+          <div class="c-collection__pagination--wrapper">
+            {%- render 'collection-pagination', class: 'c-collection__pagination', paginate: paginate -%}
+          </div>
+        </div>
+      </div>
+    {% endpaginate %}
+  </div>
+</section>
+
+{%- if bottomWave != "0" -%}
+  {%- render 'object.wave' with {
+    waveNumber:bottomWave
+    color1: bottomColor1
+    color2: bottomColor2,
+    isFlipped: isFlippedBottom
+  } -%}
+{%- endif -%}
+
+{% schema %}
+  {
+    "name": "Collection Template",
+    "class": "c-section c-section__collection-template",
+    "settings": [
+      {
+        "type": "text",
+        "id": "collections",
+        "label": "Collections to hide filters",
+        "info": "List the collection handles you want to hide filters on in a comma seperated list. e.g. collection-1,collection-2,collection-3. Leave this blank to display filters on every collection."
+      },
+      {
+        "type": "paragraph",
+        "content": "Content blocks are set via blocks. Blocks will need to match up to their corresponding collections."
+      },
+      {
+        "type": "select",
+        "id": "bottom-wave",
+        "label": "Bottom Wave",
+        "default": "0",
+        "options": [
+          {
+            "value": "0",
+            "label": "No Wave"
+          },
+          {
+            "value": "1",
+            "label": "Wave 1"
+          },
+          {
+            "value": "2",
+            "label": "Wave 2"
+          },
+          {
+            "value": "3",
+            "label": "Wave 3"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "bottom-color-1",
+        "label": "Color 1"
+      },
+      {
+        "type": "color",
+        "id": "bottom-color-2",
+        "label": "Color 2"
+      },
+      {
+        "type": "checkbox",
+        "id": "flip-bottom-wave",
+        "label": "Flip wave vertically",
+        "default": false
+      }
+    ],
+    "blocks": [
+      {
+        "type": "content-block",
+        "name": "Content Block",
+        "settings": [
+          {
+            "type": "text",
+            "id": "collections",
+            "label": "Collections",
+            "info": "List the collection handles you want this block to display for in a comma seperated list. e.g. collection-1,collection-2,collection-3. Leave this blank to display content block on every collection."
+          },
+          {
+            "type": "range",
+            "id": "position",
+            "label": "Block Position",
+            "min": 0,
+            "max": 48,
+            "default": 5,
+            "info": "The number of products that this collection block will appear after. Set to 0 to show the block at the end of the product listing."
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "Dimensions: 1422px X 1840px"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Content",
+            "info": "Keep to 4 - 6 words. More than that will cause words to flow outside shape."
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
