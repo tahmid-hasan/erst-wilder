@@ -10,11 +10,11 @@
   endif
 
   assign availability_settings = results.metafields.settings.available_filters.value
-  assign available_filters = ""
-  for available_filter in availability_settings
-    capture available_filters
-      echo available_filters
-      echo available_filter | handleize
+  assign hidden_filters = ""
+  for hidden_filter in availability_settings
+    capture hidden_filters
+      echo hidden_filters
+      echo hidden_filter | handleize
       unless forloop.last
         echo ','
       endunless
@@ -40,9 +40,9 @@
               {%- assign is_availability = true -%}
             {%- endif -%}
             {%- assign handlize_label = filter.label | handleize -%}
-            {%- unless available_filters contains handlize_label %}
+            {%- if hidden_filters contains handlize_label %}
               {%- continue -%}
-            {%- endunless -%}
+            {%- endif -%}
             {%- assign available_options_count = filter.values.size -%}
             {%- assign is_color = false -%}
             {%- if handlize_label contains 'color' or handlize_label contains 'colour' -%}
