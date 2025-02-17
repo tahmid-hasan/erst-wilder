@@ -1,0 +1,227 @@
+{%- comment -%}
+  Featured products carousel
+    Section to show products for a selected collection in a carousel
+
+  Version:
+    1.0.0 - 2021/09/21
+{%- endcomment -%}
+
+{{ 'sections.products-carousel.css' | asset_url | stylesheet_tag }}
+{{ 'sections.products-carousel.js' | asset_url | script_tag }}
+
+{%- comment -%} Assign variables {%- endcomment -%}
+{%- liquid
+  assign cross_promotions = collection.metafields.settings.cross_promotion.value
+  assign cross_promoted_content = ""
+  assign cross_promoted_items_count = 0
+
+  assign title = section.settings.title | escape
+  assign cta_label = section.settings.cta_label | escape
+  assign cta_url = section.settings.cta_url
+
+  assign top_wave = section.settings.top_wave
+  assign top_color_1 = section.settings.top_color_1
+  assign top_color_2 = section.settings.top_color_2
+  assign is_flipped_top = section.settings.flip_top_wave
+
+  assign bottom_wave = section.settings.bottom_wave
+  assign bottom_color_1 = section.settings.bottom_color_1
+  assign bottom_color_2 = section.settings.bottom_color_2
+  assign is_flipped_bottom = section.settings.flip_bottom_wave
+-%}
+{%- if cross_promotions -%}
+  {%- for promoted_collection in cross_promotions -%}
+    {%- for product in promoted_collection.products -%}
+      {%- if product.tags contains 'cross-promoted-item' -%}
+        {%- capture cross_promoted_content %}
+          {{ cross_promoted_content }}
+          <div class="c-products-carousel__slide" data-products-carousel-slide>
+            {%- render 'object.product-thumbnail', class: 'c-products-carousel__thumbnail', thumbnailProduct: product -%}
+          </div>
+        {% endcapture %}
+        {%- assign cross_promoted_items_count = cross_promoted_items_count | plus: 1 -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endfor -%}
+{%- endif -%}
+
+{%- if cross_promoted_items_count > 0 -%}
+
+  {%- comment -%} Top Wave {%- endcomment -%}
+  {%- if top_wave != "0" -%}
+    {%- render 'object.wave', waveNumber:top_wave, color1: top_color_1, color2: top_color_2, isFlipped: is_flipped_top -%}
+  {%- endif -%}
+
+  <section class="c-products-carousel" data-products-carousel-section>
+    <div class="c-products-carousel__inner">
+      {%- comment -%} Title {%- endcomment -%}
+      {%- if title != blank -%}
+        <h2 class="c-products-carousel__title o-heading--2">
+          {{- title -}}
+        </h2>
+
+        {%- comment -%} CTA {%- endcomment -%}
+        {%- if cta_label != blank and cta_url != blank -%}
+          <div class="c-products-carousel__cta-container">
+            <a href="{{- cta_url -}}" class="c-products-carousel__cta o-link">
+              {{- cta_label -}}
+            </a>
+          </div>
+        {%- endif -%}
+
+        {%- comment -%} Carousel {%- endcomment -%}
+        <div class="c-products-carousel__carousel-container">
+          <div class="c-products-carousel__carousel" data-products-carousel>
+            {{ cross_promoted_content }}
+          </div>
+
+          {%- comment -%} Navigation {%- endcomment -%}
+          {%- if cross_promoted_items_count > 1 -%}
+            <div class="c-products-carousel__navigation" data-carousel-navigation>
+              <button
+                data-carousel-previous
+                class="c-products-carousel__button is-previous"
+              >
+                {%- render 'icon.chevron-left' with {
+                  class: 'c-products-carousel__icon'
+                } -%}
+              </button>
+
+              <button
+                data-carousel-next
+                class="c-products-carousel__button is-next"
+              >
+                {%- render 'icon.chevron-right' with {
+                  class: 'c-products-carousel__icon'
+                } -%}
+              </button>
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </section>
+
+  {%- comment -%} Bottom Wave {%- endcomment -%}
+  {%- if bottom_wave != "0" -%}
+    {%- render 'object.wave', waveNumber: bottom_wave, color1: bottom_color_1, color2: bottom_color_2, isFlipped: is_flipped_bottom -%}
+  {%- endif -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "You might also like",
+  "class": "c-section c-section__featured-products-carousel",
+  "presets": [
+    {
+      "name":"You might also like"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA Label"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA Url"
+    },
+    {
+      "type": "header",
+      "content": "Top Wave"
+    },
+    {
+      "type": "select",
+      "id": "top_wave",
+      "label": "Top Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "top_color_1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "top_color_2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip_top_wave",
+      "label": "Flip wave vertically",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Bottom Wave"
+    },
+    {
+      "type": "select",
+      "id": "bottom_wave",
+      "label": "Bottom Wave",
+      "default": "0",
+      "options": [
+        {
+          "value": "0",
+          "label": "No Wave"
+        },
+        {
+          "value": "1",
+          "label": "Wave 1"
+        },
+        {
+          "value": "2",
+          "label": "Wave 2"
+        },
+        {
+          "value": "3",
+          "label": "Wave 3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bottom_color_1",
+      "label": "Color 1"
+    },
+    {
+      "type": "color",
+      "id": "bottom_color_2",
+      "label": "Color 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip_bottom_wave",
+      "label": "Flip wave vertically",
+      "default": false
+    }
+  ],
+  "templates": ["collection"]
+}
+{% endschema %}

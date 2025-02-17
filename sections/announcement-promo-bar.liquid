@@ -1,0 +1,158 @@
+{%- liquid
+  assign background = section.settings.background
+
+  assign text = section.settings.text
+  assign text_color = section.settings.color_text
+
+  assign cta_text = section.settings.cta_text
+  assign cta_url = section.settings.cta_url
+
+  assign cta_style = section.settings.cta_style
+  assign cta_color = section.settings.cta_color
+  assign cta_background = section.settings.cta_background
+-%}
+{%- style -%}
+  .page-width {
+    padding: 0 20px;
+  }
+  .announcement--container {
+    min-height: 52.8px;
+    background: {{ background }};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .announcement--inner {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5rem 0;
+  }
+  .announcement--inner:has(.cta__button) {
+    padding: .5rem 0;
+  }
+  .announcement--content p {
+    margin: 0;
+    text-align: center;
+    color: {{ text_color }};
+  }
+  .announcement--cta {
+    font-size: 16px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: {{ cta_color }};
+    gap: 2px;
+  }
+  .cta__link {
+    margin-left: 5px;
+    position: relative;
+  }
+  .cta__link .cta__text {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    text-decoration-thickness: 2px;
+  }
+  .cta__link span.cta__icon {
+    text-decoration: none;
+  }
+  .cta__button {
+    margin-left: .5em;
+    padding: .4rem 2.125rem;
+    background: {{ cta_background }};
+    border-radius: 20px;
+  }
+{%- endstyle -%}
+{%- if text != blank or text != "" -%}
+  <div class="announcement--container">
+    <div class="page-width">
+      <div class="announcement--inner">
+        <div class="announcement--content">
+          <p>{{- text -}}{%- if cta_text and cta_url -%}&nbsp;<a class="announcement--cta{% if cta_style == 'button' %} cta__button{% else %} cta__link{% endif %}" href="{{ cta_url }}"><span class="cta__text">{{ cta_text }}</span>{%- if cta_style == 'link' -%}<span class="cta__icon">&gt;</span>{%- endif -%}</a>{%- endif -%}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+{% schema %}
+  {
+    "name": "Promo bar",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "color_background",
+        "id": "background",
+        "label": "Background",
+        "default": "#81ADC6"
+      },
+      {
+        "type": "header",
+        "content": "Text settings"
+      },
+      {
+        "type": "inline_richtext",
+        "id": "text",
+        "label": "Text",
+        "default": "Special Edition Sale Now On! Shop Now"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text color",
+        "default": "#000000"
+      },
+      {
+        "type": "header",
+        "content": "CTA settings"
+      },
+      {
+        "type": "inline_richtext",
+        "id": "cta_text",
+        "label": "CTA text",
+        "default": "Shop now"
+      },
+      {
+        "type": "url",
+        "id": "cta_url",
+        "label": "CTA url"
+      },
+      {
+        "type": "select",
+        "id": "cta_style",
+        "label": "CTA Style",
+        "options": [
+          {
+            "label": "Button",
+            "value": "button"
+          },
+          {
+            "label": "Link",
+            "value": "link"
+          }
+        ],
+        "default": "link"
+      },
+      {
+        "type": "color",
+        "id": "cta_color",
+        "label": "CTA color",
+        "default": "#000000"
+      },
+      {
+        "type": "color_background",
+        "id": "cta_background",
+        "label": "CTA background",
+        "default": "#F4E9D2"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Promo bar"
+      }
+    ],
+    "enabled_on": {
+      "groups": ["header"]
+    }
+  }
+{% endschema %}
