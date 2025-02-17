@@ -1,0 +1,48 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Announcement",
+  "sections": {
+    "announcement_countdown_Yg4fMB": {
+      "type": "announcement-countdown",
+      "settings": {
+        "background": "#81ADC6",
+        "background_image": "shopify://shop_images/2beced53-33ee-4404-b467-971f8e6fd785.jpg",
+        "text": "Special Edition Sale Now On!",
+        "color_text": "#000000",
+        "cta_text": "Shop now",
+        "cta_url": "shopify://collections/all",
+        "cta_style": "link",
+        "cta_color": "#000000",
+        "cta_background": "#F4E9D2",
+        "expiration_date": "2025-04-30 23:59",
+        "expiration_behavior": "leave"
+      }
+    },
+    "announcement-bar_Yg4fMB": {
+      "type": "announcement-promo-bar",
+      "settings": {
+        "background": "#81ADC6",
+        "text": "Special Edition Sale Now On!",
+        "color_text": "#000000",
+        "cta_text": "Shop now",
+        "cta_url": "shopify://collections/all",
+        "cta_style": "button",
+        "cta_color": "#000000",
+        "cta_background": "#F4E9D2"
+      }
+    }
+  },
+  "order": [
+    "announcement_countdown_Yg4fMB",
+    "announcement-bar_Yg4fMB"
+  ]
+}

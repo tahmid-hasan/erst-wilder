@@ -1,0 +1,223 @@
+{{ 'announcement-countdown.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'announcement-countdown.js' | asset_url }}" defer></script>
+{%- liquid
+  assign background_color = section.settings.background
+  assign background_image = section.settings.background_image
+
+  assign text = section.settings.text
+  assign text_color = section.settings.color_text
+
+  assign cta_text = section.settings.cta_text
+  assign cta_url = section.settings.cta_url
+
+  assign cta_style = section.settings.cta_style
+  assign cta_color = section.settings.cta_color
+  assign cta_background = section.settings.cta_background
+
+  assign countdown_text = section.settings.countdown_text_color
+  assign countdown_background = section.settings.countdown_background_color
+-%}
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    position: relative;
+  }
+  #shopify-section-{{ section.id }} .cta__button {
+    color: {{ cta_color }};
+    background: {{ cta_background }}
+  }
+  #shopify-section-{{ section.id }} .content-left {
+    color: {{ text_color }};
+  }
+  #shopify-section-{{ section.id }}::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("{{ background_image | image_url: width: 2000 }}") no-repeat;
+    background-size: contain;
+    z-index: 1;
+  }
+  #shopify-section-{{ section.id }}::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: {{ background_color  }};
+    z-index: 2;
+  }
+  #shopify-section-{{ section.id }} .page-width {
+    position: relative;
+    z-index: 3;
+  }
+  #shopify-section-{{ section.id }} .cta__button {
+    background: {{ cta_background }};
+  }
+  #shopify-section-{{ section.id }} .cta__link {
+    color: {{ cta_color }}
+  }
+  #shopify-section-{{ section.id }} .time-unit {
+    color: {{ countdown_text }};
+    background: {{ countdown_background }}
+  }
+  #shopify-section-{{ section.id }} .time-part-item .label, #shopify-section-{{ section.id }} .content-left .countdown-cta {
+    color: {{ text_color }}
+  }
+{%- endstyle -%}
+
+<div class="page-width">
+  <div class="content content-container">
+    <div class="content-left">
+      {%- unless text == blank %}
+        <p class="rte">
+          {{ text }}{%- if cta_text and cta_url -%}
+          <a class="countdown-cta md-hidden cta__link" href="{{ cta_url }}"><span class="cta__text">{{ cta_text }}</span></a>
+        {%- endif -%}
+        </p>
+      {% endunless %}
+    </div>
+    <div class="countdown-wrapper">
+      <countdown-timer class="countdown-timer" expires-at="{{ section.settings.expiration_date | date: '%FT%T%:z' | escape }}" expiration-behavior="{{ section.settings.expiration_behavior }}">
+        <div class="hours--wrapper time-part-item">
+          <span class="hours time-unit">0</span>
+          <span class="label">Hours</span>
+        </div>
+        <div class="minutes--wrapper time-part-item">
+          <span class="minutes time-unit">0</span>
+          <span class="label">Minutes</span>
+        </div>
+        <div class="seconds--wrapper time-part-item">
+          <span class="seconds time-unit">0</span>
+          <span class="label">Seconds</span>
+        </div>
+      </countdown-timer>
+    </div>
+    <div class="content-right">
+      {%- if cta_text and cta_url -%}
+        <div class="sm-hidden">
+          <a class="countdown-cta{% if cta_style == 'button' %} cta__button{% else %} cta__link{% endif %}" href="{{ cta_url }}"><span class="cta__text">{{ cta_text }}</span></a>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Countdown bar",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "color_background",
+        "id": "background",
+        "label": "Background",
+        "default": "#81ADC6"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Background image"
+      },
+      {
+        "type": "header",
+        "content": "Text settings"
+      },
+      {
+        "type": "inline_richtext",
+        "id": "text",
+        "label": "Text",
+        "default": "Special Edition Sale Now On! Shop Now"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text color",
+        "default": "#000000"
+      },
+      {
+        "type": "header",
+        "content": "CTA settings"
+      },
+      {
+        "type": "inline_richtext",
+        "id": "cta_text",
+        "label": "CTA text",
+        "default": "Shop now"
+      },
+      {
+        "type": "url",
+        "id": "cta_url",
+        "label": "CTA url"
+      },
+      {
+        "type": "select",
+        "id": "cta_style",
+        "label": "CTA Style",
+        "options": [
+          {
+            "label": "Button",
+            "value": "button"
+          },
+          {
+            "label": "Link",
+            "value": "link"
+          }
+        ],
+        "default": "link"
+      },
+      {
+        "type": "color",
+        "id": "cta_color",
+        "label": "CTA color",
+        "default": "#000000"
+      },
+      {
+        "type": "color_background",
+        "id": "cta_background",
+        "label": "CTA background",
+        "default": "#F4E9D2"
+      },
+      {
+        "type": "header",
+        "content": "Timer settings"
+      },
+      {
+        "type": "text",
+        "id": "expiration_date",
+        "label": "Expiration date",
+        "placeholder": "Eg. 2025-12-25 12:00",
+        "info": "Use the format YYYY-MM-DD HH:MM (hours and minutes are optional). Do not use a date farther than 99 days."
+      },
+      {
+        "type": "select",
+        "id": "expiration_behavior",
+        "label": "When timer expires...",
+        "options": [
+          {
+            "value": "hide",
+            "label": "Hide section"
+          },
+          {
+            "value": "leave",
+            "label": "Leave timer at zero"
+          }
+        ],
+        "default": "leave"
+      },
+      {
+        "type": "color",
+        "id": "countdown_text_color",
+        "label": "Countdown text"
+      },
+      {
+        "type": "color_background",
+        "id": "countdown_background_color",
+        "label": "Countdown background"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Countdown bar"
+      }
+    ],
+    "enabled_on": {
+      "groups": ["header"]
+    }
+  }
+{% endschema %}
