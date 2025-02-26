@@ -3,6 +3,7 @@
 {%- liquid
   assign background_color = section.settings.background
   assign background_image = section.settings.background_image
+  assign background_position = section.settings.background_position
 
   assign text = section.settings.text
   assign text_color = section.settings.color_text
@@ -33,7 +34,8 @@
     position: absolute;
     inset: 0;
     background: url("{{ background_image | image_url: width: 2000 }}") no-repeat;
-    background-size: contain;
+    background-size: cover;
+    background-position: {{ background_position }};
     z-index: 1;
   }
   #shopify-section-{{ section.id }}::after {
@@ -75,6 +77,10 @@
     </div>
     <div class="countdown-wrapper">
       <countdown-timer class="countdown-timer" expires-at="{{ section.settings.expiration_date | date: '%FT%T%:z' | escape }}" expiration-behavior="{{ section.settings.expiration_behavior }}">
+        <div class="days--wrapper time-part-item">
+          <span class="days time-unit">0</span>
+          <span class="label">Days</span>
+        </div>
         <div class="hours--wrapper time-part-item">
           <span class="hours time-unit">0</span>
           <span class="label">Hours</span>
@@ -113,6 +119,27 @@
         "type": "image_picker",
         "id": "background_image",
         "label": "Background image"
+      },
+      {
+        "type": "select",
+        "id": "background_position",
+        "label": "Background position",
+        "info": "Control how the background image will appear",
+        "options": [
+          {
+            "label": "Top",
+            "value": "top"
+          },
+          {
+            "label": "Center",
+            "value": "center"
+          },
+          {
+            "label": "Bottom",
+            "value": "bottom"
+          }
+        ],
+        "default": "top"
       },
       {
         "type": "header",

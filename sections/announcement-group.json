@@ -14,8 +14,9 @@
     "announcement_countdown_Yg4fMB": {
       "type": "announcement-countdown",
       "settings": {
-        "background": "#81ADC6",
-        "background_image": "shopify://shop_images/2beced53-33ee-4404-b467-971f8e6fd785.jpg",
+        "background": "rgba(129,173,198,0.6)",
+        "background_image": "shopify://shop_images/WIDE_Image_Test.png",
+        "background_position": "center",
         "text": "Special Edition Sale Now On!",
         "color_text": "#000000",
         "cta_text": "Shop now",
@@ -24,7 +25,9 @@
         "cta_color": "#000000",
         "cta_background": "#F4E9D2",
         "expiration_date": "2025-04-30 23:59",
-        "expiration_behavior": "leave"
+        "expiration_behavior": "leave",
+        "countdown_text_color": "",
+        "countdown_background_color": ""
       }
     },
     "announcement-bar_Yg4fMB": {

@@ -4,14 +4,38 @@
 <script src="{{ 'custom.v2.js' | asset_url }}" defer></script>
 
 {%- liquid 
-  assign bottomWave = section.settings.bottom-wave
-  assign bottomColor1 = section.settings.bottom-color-1
-  assign bottomColor2 = section.settings.bottom-color-2
-  assign isFlippedBottom = section.settings.flip-bottom-wave
-  assign collectionHandles = section.settings.collections | escape | split: ','
+  assign bottom_wave = section.settings.bottom_wave
+  assign bottom_color_1 = section.settings.bottom_color_1
+  assign bottom_color_2 = section.settings.bottom_color_2
+  assign is_flipped_bottom = section.settings.flip_bottom_wave
+  assign collection_handles = section.settings.collections | escape | split: ','
+
+  assign customer_eligibility_settings = collection.metafields.settings.customer_eligibility
+  assign customer_eligibility = true
+
+  if customer_eligibility_settings != blank
+    assign customer_eligibility = false
+    if customer.id
+      if customer_eligibility_settings.value.tags == blank
+        assign customer_eligibility = true
+      else
+        assign customer_eligibility = false
+        capture tags_string
+          echo customer_eligibility_settings.value.tags
+        endcapture
+        assign allowed_tags = tags_string | remove: '[' | remove: ']' | remove: '"' | strip | split: ','
+        for tag in allowed_tags
+          assign trimmed_tag = tag | strip
+          if customer.tags contains trimmed_tag
+            assign customer_eligibility = true
+          endif
+        endfor
+      endif
+    endif
+  endif
 -%}
 
-{%- capture languageKeys -%}
+{%- capture language_keys -%}
   collections.collection.product_count;
   collections.collection.filter_colour;
   collections.collection.filter_shape;
@@ -22,16 +46,16 @@
   collections.collection.reset;
 {%- endcapture -%}
 
-{%- capture filterClass -%}
+{%- capture filter_class -%}
   c-collection__filter-banner
-  {%- for collectionHandle in collectionHandles -%}
-    {% if collectionHandle == collection.handle %}
+  {%- for collection_handle in collection_handles -%}
+    {% if collection_handle == collection.handle %}
       is-filters-hidden
     {% endif %}
   {%- endfor -%}
 {%- endcapture -%}
 
-{%- render 'tool.language-strings' with { keys: languageKeys } -%}
+{%- render 'tool.language-strings', keys: language_keys -%}
 {%- liquid
   assign is_filter_hidden = collection.metafields.settings.hide_filter | default: false
   assign content_block = collection.metafields.meta.content_block.value
@@ -46,6 +70,7 @@
     assign is_primary_block = true
   endif
 -%}
+
 <section
   class="c-collection"
   data-collection-template
@@ -53,185 +78,191 @@
   data-collection-per-page="{{- perPage -}}"
   data-filter-hidden="{{ is_filter_hidden }}"
 >
-  {%- render 'collection.banner' with {
-    class: filterClass
-  } -%}
+  {%- render 'collection.banner', class: filter_class -%}
   <div class="c-collection__container">
-    {% paginate collection.products by 48 %}
-      {%- unless is_filter_hidden -%}
-      <div class="c-collection-toolbar">
-        <div class="c-collection__button-group--left">
-          <div data-drawer-toggle="[data-filters-drawer]">
-            <button class="button" type="button" role="button">Filter <span class="icon-dropdown"></span></button>
-          </div>
-        </div>
-        {% comment %} <div class="c-collection__product-count">{{ collection.products_count }}</div> {% endcomment %}
-        <div class="c-collection__button-group--right">
-          <custom-select>
-            {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
-            <button data-toggle class="button" type="button" role="button">Sort by <span class="icon-dropdown"></span></button>
-            <div class="select-menu" data-container>
-              <ul class="options">
-                {%- for option in collection.sort_options -%}
-                  <li class="option" data-option
-                    data-value="{{ option.value | escape }}"
-                    {% if option.value == sort_by %}
-                      data-selected="selected"
-                    {% endif %}
-                  >
-                    <span class="option-text">{{ option.name | escape }}</span>
-                  </li>
-                {%- endfor -%}
-              </ul>
-            </div>
-            <select
-              name="sort_by"
-              class="facet-filters__sort select__select caption-large visually-hidden"
-              id="SortBy"
-              form="FacetFiltersForm"
-              aria-describedby="a11y-refresh-page-message"
-              data-select
-            >
-              {%- for option in collection.sort_options -%}
-                <option
-                  value="{{ option.value | escape }}"
-                  {% if option.value == sort_by %}
-                    selected="selected"
-                  {% endif %}
-                >
-                  {{ option.name | escape }}
-                </option>
-              {%- endfor -%}
-            </select>
-          </custom-select>
-        </div>
-      </div>
-      {%- endunless -%}
-      <div class="c-collection__wrapper">
+    {%- if customer_eligibility -%}
+      {% paginate collection.products by 48 %}
         {%- unless is_filter_hidden -%}
-          <div class="c-collection__facets-form small-hide">
-            {%- render 'facets-filter', results: collection, section: section, enable_filtering: true, enable_sorting: true, filter_type: 'vertical', paginate: paginate -%}
-          </div>
-          
-          <div class="c-collection-faceted-nav {{ class }} has-js" data-filters-drawer>
-            <header class="c-collection-faceted-nav__header">
-              <div class="c-collection__drawer-header">
-                <p>Filter</p>
-              </div>
-              <button
-                class="c-collection-faceted-nav__drawer-trigger"
-                data-drawer-toggle="[data-filters-drawer]"
-              >
-                <span class="u-visually-hidden">
-                  {{- 'collections.collection.filters_close' | t | escape -}}
-                </span>
-
-                {%- render 'object.icon' with {
-                  icon: 'close',
-                  width: 24,
-                  height: 24
-                } -%}
-              </button>
-            </header>
-
-            {%- comment -%} Filters Body {%- endcomment -%}
-            <div class="c-collection-faceted-nav__body">
-              <div class="c-collection-faceted-nav__container">
-                {%- comment -%} Sort {%- endcomment -%}
-                <div class="c-collection__facets-form--mobile">
-                  {%- render 'facets-filter-mobile', results: collection, section: section, enable_filtering: true, enable_sorting: true, filter_type: 'vertical', paginate: paginate -%}
-                </div>
+          <div class="c-collection-toolbar">
+            <div class="c-collection__button-group--left">
+              <div data-drawer-toggle="[data-filters-drawer]">
+                <button class="button" type="button" role="button">Filter <span class="icon-dropdown"></span></button>
               </div>
             </div>
-
-            {%- comment -%} Mobile Apply/Footer {%- endcomment -%}
-            <footer class="c-collection-faceted-nav__footer">
-              <button
-                type="submit"
-                class="c-collection-faceted-nav__apply-btn o-btn"
-                data-filter-toggle
-                form="FacetFiltersFormMobile"
-              >
-                {{- 'collections.collection.apply_button' | t -}}
-              </button>
-            </footer>
+            {% comment %} <div class="c-collection__product-count">{{ collection.products_count }}</div> {% endcomment %}
+            <div class="c-collection__button-group--right">
+              <custom-select>
+                {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+                <button data-toggle class="button" type="button" role="button">Sort by <span class="icon-dropdown"></span></button>
+                <div class="select-menu" data-container>
+                  <ul class="options">
+                    {%- for option in collection.sort_options -%}
+                      <li class="option" data-option
+                        data-value="{{ option.value | escape }}"
+                        {% if option.value == sort_by %}
+                          data-selected="selected"
+                        {% endif %}
+                      >
+                        <span class="option-text">{{ option.name | escape }}</span>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                </div>
+                <select
+                  name="sort_by"
+                  class="facet-filters__sort select__select caption-large visually-hidden"
+                  id="SortBy"
+                  form="FacetFiltersForm"
+                  aria-describedby="a11y-refresh-page-message"
+                  data-select
+                >
+                  {%- for option in collection.sort_options -%}
+                    <option
+                      value="{{ option.value | escape }}"
+                      {% if option.value == sort_by %}
+                        selected="selected"
+                      {% endif %}
+                    >
+                      {{ option.name | escape }}
+                    </option>
+                  {%- endfor -%}
+                </select>
+              </custom-select>
+            </div>
           </div>
         {%- endunless -%}
-        <div class="c-collection__main">
-          <div class="active-facets">
-            {%- assign active_value_count = 0 -%}
-            {%- for filter in collection.filters -%}
-              {%- for value in filter.active_values -%}
+        <div class="c-collection__wrapper">
+          {%- unless is_filter_hidden -%}
+            <div class="c-collection__facets-form small-hide">
+              {%- render 'facets-filter', results: collection, section: section, enable_filtering: true, enable_sorting: true, filter_type: 'vertical', paginate: paginate -%}
+            </div>
+            
+            <div class="c-collection-faceted-nav {{ class }} has-js" data-filters-drawer>
+              <header class="c-collection-faceted-nav__header">
+                <div class="c-collection__drawer-header">
+                  <p>Filter</p>
+                </div>
+                <button
+                  class="c-collection-faceted-nav__drawer-trigger"
+                  data-drawer-toggle="[data-filters-drawer]"
+                >
+                  <span class="u-visually-hidden">
+                    {{- 'collections.collection.filters_close' | t | escape -}}
+                  </span>
+
+                  {%- render 'object.icon' with {
+                    icon: 'close',
+                    width: 24,
+                    height: 24
+                  } -%}
+                </button>
+              </header>
+
+              {%- comment -%} Filters Body {%- endcomment -%}
+              <div class="c-collection-faceted-nav__body">
+                <div class="c-collection-faceted-nav__container">
+                  {%- comment -%} Sort {%- endcomment -%}
+                  <div class="c-collection__facets-form--mobile">
+                    {%- render 'facets-filter-mobile', results: collection, section: section, enable_filtering: true, enable_sorting: true, filter_type: 'vertical', paginate: paginate -%}
+                  </div>
+                </div>
+              </div>
+
+              {%- comment -%} Mobile Apply/Footer {%- endcomment -%}
+              <footer class="c-collection-faceted-nav__footer">
+                <button
+                  type="submit"
+                  class="c-collection-faceted-nav__apply-btn o-btn"
+                  data-filter-toggle
+                  form="FacetFiltersFormMobile"
+                >
+                  {{- 'collections.collection.apply_button' | t -}}
+                </button>
+              </footer>
+            </div>
+          {%- endunless -%}
+          <div class="c-collection__main">
+            <div class="customer-eligibility__message--container message-after-login">
+              <div class="rte">
+                {{- section.settings.eligibility_message_after_login -}}
+              </div>
+            </div>
+            <div class="active-facets">
+              {%- assign active_value_count = 0 -%}
+              {%- for filter in collection.filters -%}
+                {%- for value in filter.active_values -%}
+                  <facet-remove>
+                    <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
+                      <span class="active-facets__button-inner button button--tertiary">
+                        {% comment %}
+                          {{ filter.label | escape }}: 
+                        {% endcomment %}
+                        {{ value.label | escape }}
+                        <span class="svg-wrapper">
+                          <svg aria-hidden="true" focusable="false" fill="none" width="10" class="icon icon-close" viewBox="0 0 16 16">
+                            <path d="m1 1 14 14M1 15 15 1" stroke="currentColor" stroke-width="1.5"></path>
+                          </svg>
+                        </span>
+                        <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
+                      </span>
+                    </a>
+                  </facet-remove>
+                  {%- assign active_value_count = active_value_count | plus: 1 -%}
+                {%- endfor -%}
+              {%- endfor -%}
+              {%- if active_value_count > 1 -%}
                 <facet-remove>
-                  <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
+                  <a href="{{ request.path }}" class="active-facets__button active-facets__button--light active-facets__clear-all">
                     <span class="active-facets__button-inner button button--tertiary">
                       {% comment %}
                         {{ filter.label | escape }}: 
                       {% endcomment %}
-                      {{ value.label | escape }}
-                      <span class="svg-wrapper">
-                        <svg aria-hidden="true" focusable="false" fill="none" width="10" class="icon icon-close" viewBox="0 0 16 16">
-                          <path d="m1 1 14 14M1 15 15 1" stroke="currentColor" stroke-width="1.5"></path>
-                        </svg>
-                      </span>
+                      {{ 'products.facets.clear_all' | t }}
                       <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
                     </span>
                   </a>
                 </facet-remove>
-                {%- assign active_value_count = active_value_count | plus: 1 -%}
-              {%- endfor -%}
-            {%- endfor -%}
-            {%- if active_value_count > 1 -%}
-              <facet-remove>
-                <a href="{{ request.path }}" class="active-facets__button active-facets__button--light active-facets__clear-all">
-                  <span class="active-facets__button-inner button button--tertiary">
-                    {% comment %}
-                      {{ filter.label | escape }}: 
-                    {% endcomment %}
-                    {{ 'products.facets.clear_all' | t }}
-                    <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
-                  </span>
-                </a>
-              </facet-remove>
-            {%- endif -%}
-          </div>
-          <div class="c-collection__grid{%- if collection.products_count == 0 -%} visually-hidden{%- endif -%}">
-            {%- for productObject in collection.products -%}
-              {%- render 'object.product-thumbnail' with {
-                class: 'c-collection__thumbnail',
-                thumbnailProduct: productObject
-              } -%}
-
-              {%- if paginate.current_page == 1 -%}
-                {%- if content_block and forloop.index == content_block_position -%}
-                  {%- render 'collection-content-block', image: content_block_image, content: content_block_text, position: content_block_position, is_primary_block: is_primary_block -%}
-                {%- endif-%}
               {%- endif -%}
-            {%- endfor -%}
-          </div>
+            </div>
+            <div class="c-collection__grid{%- if collection.products_count == 0 -%} visually-hidden{%- endif -%}">
+              {%- for productObject in collection.products -%}
+                {%- render 'object.product-thumbnail' with {
+                  class: 'c-collection__thumbnail',
+                  thumbnailProduct: productObject
+                } -%}
 
-          {%- if collection.products_count == 0 -%}
-            <p class="c-collection__no-results is-visible" data-collection-no-results>
-              {{- 'collections.collection.no_results' | t -}}
-            </p>
-          {%- endif -%}
+                {%- if paginate.current_page == 1 -%}
+                  {%- if content_block and forloop.index == content_block_position -%}
+                    {%- render 'collection-content-block', image: content_block_image, content: content_block_text, position: content_block_position, is_primary_block: is_primary_block -%}
+                  {%- endif-%}
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
 
-          <div class="c-collection__pagination--wrapper">
-            {%- render 'collection-pagination', class: 'c-collection__pagination', paginate: paginate -%}
+            {%- if collection.products_count == 0 -%}
+              <p class="c-collection__no-results is-visible" data-collection-no-results>
+                {{- 'collections.collection.no_results' | t -}}
+              </p>
+            {%- endif -%}
+
+            <div class="c-collection__pagination--wrapper">
+              {%- render 'collection-pagination', class: 'c-collection__pagination', paginate: paginate -%}
+            </div>
           </div>
         </div>
+      {%- endpaginate -%}
+    {%- else -%}
+      <div class="customer-eligibility__message--container">
+        <div class="rte">
+          {{- section.settings.eligibility_message -}}
+        </div>
       </div>
-    {% endpaginate %}
+    {%- endif -%}
   </div>
 </section>
 
-{%- if bottomWave != "0" -%}
-  {%- render 'object.wave' with {
-    waveNumber:bottomWave
-    color1: bottomColor1
-    color2: bottomColor2,
-    isFlipped: isFlippedBottom
-  } -%}
+{%- if bottom_wave != "0" -%}
+  {%- render 'object.wave' waveNumber: bottom_wave, color1: bottom_color_1, color2: bottom_color_2, isFlipped: is_flipped_bottom -%}
 {%- endif -%}
 
 {% schema %}
@@ -240,18 +271,8 @@
     "class": "c-section c-section__collection-template",
     "settings": [
       {
-        "type": "text",
-        "id": "collections",
-        "label": "Collections to hide filters",
-        "info": "List the collection handles you want to hide filters on in a comma seperated list. e.g. collection-1,collection-2,collection-3. Leave this blank to display filters on every collection."
-      },
-      {
-        "type": "paragraph",
-        "content": "Content blocks are set via blocks. Blocks will need to match up to their corresponding collections."
-      },
-      {
         "type": "select",
-        "id": "bottom-wave",
+        "id": "bottom_wave",
         "label": "Bottom Wave",
         "default": "0",
         "options": [
@@ -275,19 +296,35 @@
       },
       {
         "type": "color",
-        "id": "bottom-color-1",
+        "id": "bottom_color_1",
         "label": "Color 1"
       },
       {
         "type": "color",
-        "id": "bottom-color-2",
+        "id": "bottom_color_2",
         "label": "Color 2"
       },
       {
         "type": "checkbox",
-        "id": "flip-bottom-wave",
+        "id": "flip_bottom_wave",
         "label": "Flip wave vertically",
         "default": false
+      },
+      {
+        "type": "header",
+        "content": "Customer eligibility settings"
+      },
+      {
+        "type": "richtext",
+        "id": "eligibility_message",
+        "label": "Message",
+        "info": "Customer will see this message if they don't logged in"
+      },
+      {
+        "type": "richtext",
+        "id": "eligibility_message_after_login",
+        "label": "Message (after login)",
+        "info": "Customer will see this message if they logged in"
       }
     ],
     "blocks": [

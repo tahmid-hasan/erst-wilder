@@ -37,11 +37,12 @@ class CountdownTimer extends HTMLElement {
         }
 
         // Calculate remaining time
-        const hours = Math.floor(timeDiff / (1000 * 60 * 60));
+        const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
         
-        this.timeLeft = { hours, minutes, seconds };
+        this.timeLeft = { days, hours, minutes, seconds };
         this.updateDisplay();
         
         this.dispatchEvent(new CustomEvent('timerTick', { 
@@ -53,7 +54,9 @@ class CountdownTimer extends HTMLElement {
   }
 
   updateDisplay() {
-    this.querySelector('.hours').textContent = this.timeLeft.hours >= 1000 ? 99 : this.timeLeft.hours.toString().padStart(2, '0');
+    const daysDisplay = this.timeLeft.days > 99 ? '99+' : this.timeLeft.days.toString().padStart(2, '0');
+    this.querySelector('.days').textContent = daysDisplay;
+    this.querySelector('.hours').textContent = this.timeLeft.hours.toString().padStart(2, '0');
     this.querySelector('.minutes').textContent = this.timeLeft.minutes.toString().padStart(2, '0');
     this.querySelector('.seconds').textContent = this.timeLeft.seconds.toString().padStart(2, '0');
   }
