@@ -302,6 +302,12 @@ body:has(.is-sticky.is-visible) .c-collection-toolbar, body:has(.is-sticky.is-vi
   display: grid;
   gap: 3rem;
 }
+.customer-eligibility__message--container {
+  text-align: center;
+}
+.customer-eligibility__message--container:not(.message-after-login) {
+  padding: 3.5rem 1.25rem;
+}
 [data-filter-hidden="true"] .c-collection__container {
   padding-top: 4.3125rem;
 }
@@ -325,7 +331,7 @@ body:has(.is-sticky.is-visible) .c-collection-toolbar, body:has(.is-sticky.is-vi
   padding: 0 1.25rem 0;
   --collection-gap: 2rem;
   --collection-grid-template: minmax(0, 1fr);
-  --collection-sidebar-width: 15rem;
+  --collection-sidebar-width: 13rem;
   --collection-toolbar-height: 48px;
   grid-template-columns: var(--collection-grid-template);
   align-items: start;
@@ -343,7 +349,7 @@ body:has(.is-sticky.is-visible) .c-collection-toolbar, body:has(.is-sticky.is-vi
 .c-collection__facets-form {
   --sticky-area-height: 0px;
   --sticky-toolbar-height: 53px;
-  --collection-sidebar-width: 15rem;
+  --collection-sidebar-width: 13rem;
   width: var(--collection-sidebar-width);
   min-height: 10rem;
   display: block;
@@ -447,12 +453,18 @@ body:has(.is-sticky.is-visible) .c-collection-toolbar, body:has(.is-sticky.is-vi
   flex-direction: column;
   width: 90%;
   height: 100vh;
+  max-height: 100dvh;
   text-align: left;
   background-color: #f8f3ec;
   z-index: 999998;
 }
 .c-collection-faceted-nav__footer .o-btn {
   width: 100%
+}
+#FacetFiltersFormMobile.facets__form-vertical .accordion-body {
+  max-height: 250px;
+  overflow: auto;
+  scroll-behavior: smooth;
 }
 @media only screen and (min-width: 750px) {
   .c-collection__wrapper {
@@ -473,18 +485,18 @@ body:has(.is-sticky.is-visible) .c-collection-toolbar, body:has(.is-sticky.is-vi
   .c-collection__button-group--right {
     flex: 0 0 auto;
     justify-content: unset;
-    border-left: 1px solid rgb(var(--border-color));
   }
   .c-collection__button-group--left {
     flex: 0 0 auto;
     justify-content: unset;
-    border-right: 1px solid rgb(var(--border-color));
   }
   .c-collection__button-group--right .button {
     margin-left: 2.875rem;
+    padding-right: 0;
   }
   .c-collection__button-group--left .button {
     padding-right: 2.875rem;
+    padding-left: 0;
   }
   .c-collection__button-group--left .button .icon-dropdown {
     display: none;
@@ -501,6 +513,29 @@ body:has(.is-sticky.is-visible) .c-collection-toolbar, body:has(.is-sticky.is-vi
   .c-collection__main {
     scroll-margin: 200px;
   }
+  #FacetFiltersForm .accordion-button {
+    padding-left: 0;
+  }
+  #FacetFiltersForm .accordion-body {
+    padding-left: 0;
+    padding-left: 0;
+    max-height: 500px;
+    overflow: auto;
+    scroll-behavior: smooth;
+  }
+
+  #FacetFiltersForm .accordion-body::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  #FacetFiltersForm .accordion-body::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+  }
+  
+  #FacetFiltersForm .accordion-body::-webkit-scrollbar-track {
+    background: transparent;
+  }
 }
 @media only screen and (min-width: 1100px) {
   body:has(.is-sticky.is-visible) .c-collection-toolbar, body:has(.is-sticky.is-visible) .c-collection__facets-form {
@@ -515,6 +550,9 @@ body:has(.is-sticky.is-visible) .c-collection-toolbar, body:has(.is-sticky.is-vi
   .c-collection-toolbar .button {
     font-size: 16px;
   }
+  .c-collection__wrapper {
+    padding: 0 clamp(1.25rem,6%,7.5rem);
+  }
 }
 @media only screen and (min-width: 1650px) {
   body:has(.is-sticky.is-visible) .c-collection-toolbar, body:has(.is-sticky.is-visible) .c-collection__facets-form {
@@ -523,7 +561,7 @@ body:has(.is-sticky.is-visible) .c-collection-toolbar, body:has(.is-sticky.is-vi
   .c-collection__wrapper {
     /* padding: 4.3125rem min(6%,7.5rem); */
     padding: 0 min(6%,7.5rem);
-    max-width: 125rem;
+    /* max-width: 125rem; */
     gap: 6.875rem 2.625rem
   }
   .c-collection__facets-form {
@@ -558,6 +596,7 @@ custom-select button {
   align-items: center;
   gap: .75rem;
   justify-content: center;
+  color: #000;
 }
 
 custom-select button {

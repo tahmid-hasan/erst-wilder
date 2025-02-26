@@ -18,7 +18,7 @@
   display: flex;
   justify-content: right;
   align-items: center;
-  gap: 1.2rem;
+  gap: .3rem;
 }
 
 .time-part-item {
@@ -40,7 +40,7 @@
 }
 
 .time-part-item .label {
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .countdown-cta {
@@ -73,6 +73,15 @@
 .sm-hidden {
   display: none;
 }
+@media only screen and (min-width: 390px) {
+  .countdown-timer {
+    gap: .6rem;
+  }
+
+  .time-part-item .label {
+    font-size: 11px;
+  }
+}
 @media only screen and (min-width: 750px) {
   .content-container {
     gap: 2rem;
@@ -85,6 +94,9 @@
   }
   .countdown-wrapper {
     flex: 0 1 auto;
+  }
+  .countdown-timer {
+    gap: 1.2rem;
   }
   .time-unit {
     width: 32px;

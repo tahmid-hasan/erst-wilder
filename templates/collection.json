@@ -261,17 +261,28 @@
         "94b0b6a1-c85e-4b95-934d-606774c682a5"
       ],
       "settings": {
-        "collections": "lucky-dips,components",
-        "bottom-wave": "2",
-        "bottom-color-1": "#ffffff",
-        "bottom-color-2": "#f4e9d2",
-        "flip-bottom-wave": false
+        "bottom_wave": "2",
+        "bottom_color_1": "#ffffff",
+        "bottom_color_2": "#f4e9d2",
+        "flip_bottom_wave": false,
+        "eligibility_message": "<p>{{ collection.metafields.settings.customer_eligibility.value.message | metafield_tag }}</p>",
+        "eligibility_message_after_login": "{{ collection.metafields.settings.customer_eligibility.value.message_after_logged_in | metafield_tag }}"
       }
     },
     "carousel_featured_products_collection_qwMaAH": {
       "type": "carousel--featured-products-collection",
       "settings": {
-        "title": "Best Sellers"
+        "title": "Best Sellers",
+        "cta_label": "",
+        "cta_url": "",
+        "top_wave": "0",
+        "top_color_1": "",
+        "top_color_2": "",
+        "flip_top_wave": false,
+        "bottom_wave": "0",
+        "bottom_color_1": "",
+        "bottom_color_2": "",
+        "flip_bottom_wave": false
       }
     }
   },
