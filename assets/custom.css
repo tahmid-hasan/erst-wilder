@@ -1,6 +1,8 @@
 
 /* Shop by Collection and Shop by Theme pages */
-
+.hidden {
+    display: none !important;
+}
 img.one-quarter-shop-by-image {		
     max-height: 200px;		
 }		

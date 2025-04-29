@@ -87,7 +87,9 @@
     </div>
 
     {%- comment -%} Global Swatches {%- endcomment -%}
+    {% comment %}
     {%- section 'swatch-theme-editor' -%}
+    {% endcomment %}
 
     {%- render 'tool.body-end-tags' -%}
 
@@ -95,7 +97,7 @@
     {% include 'smile-initializer' %}
     {% render 'spurit_sct_theme_snippet' %}
 
-    <script src="{{ 'swiper@8.1.5.min.js' | asset_url }}" defer></script>
+    <script src="{{ 'swiper@8.1.5.min.js' | asset_url }}" async></script>
     <script src="{{ 'alpinejs@3.12.0.min.js' | asset_url }}" defer></script>
     <script src="{{ 'ajaxinate.min.js' | asset_url }}" defer></script>
     <script src="{{ '_pikaday@1.8.2.min.js' | asset_url }}" defer></script>
@@ -178,22 +180,6 @@
   } */
 </style>
 
-<script src='https://widget.sezzle.com/v1/javascript/price-widget?uuid=a73869bb-0bb2-4cc5-9dc5-3302a542d051'></script>
-
-<script src='https://widget.sezzle.com/v1/javascript/price-widget?uuid=a73869bb-0bb2-4cc5-9dc5-3302a542d051'></script>
-
-<script src='https://widget.sezzle.com/v1/javascript/price-widget?uuid=a73869bb-0bb2-4cc5-9dc5-3302a542d051'></script>
-
 {% section 'sezzle-widget' %}
 
-<script src='https://widget.sezzle.com/v1/javascript/price-widget?uuid=a73869bb-0bb2-4cc5-9dc5-3302a542d051'></script>
-
-<script src='https://widget.sezzle.com/v1/javascript/price-widget?uuid=a73869bb-0bb2-4cc5-9dc5-3302a542d051'></script>
-
-<script src='https://widget.sezzle.com/v1/javascript/price-widget?uuid=a73869bb-0bb2-4cc5-9dc5-3302a542d051'></script>
-
-<script src='https://widget.sezzle.com/v1/javascript/price-widget?uuid=a73869bb-0bb2-4cc5-9dc5-3302a542d051'></script>
-
-<script src='https://widget.sezzle.com/v1/javascript/price-widget?uuid=a73869bb-0bb2-4cc5-9dc5-3302a542d051'></script>
-
-<script src='https://widget.sezzle.com/v1/javascript/price-widget?uuid=a73869bb-0bb2-4cc5-9dc5-3302a542d051'></script>
+<script src='https://widget.sezzle.com/v1/javascript/price-widget?uuid=a73869bb-0bb2-4cc5-9dc5-3302a542d051' defer></script>

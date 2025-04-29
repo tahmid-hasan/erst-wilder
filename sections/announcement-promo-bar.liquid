@@ -64,16 +64,31 @@
     border-radius: 20px;
   }
 {%- endstyle -%}
-{%- if text != blank or text != "" -%}
-  <div class="announcement--container">
-    <div class="page-width">
-      <div class="announcement--inner">
-        <div class="announcement--content">
-          <p>{{- text -}}{%- if cta_text and cta_url -%}&nbsp;<a class="announcement--cta{% if cta_style == 'button' %} cta__button{% else %} cta__link{% endif %}" href="{{ cta_url }}"><span class="cta__text">{{ cta_text }}</span></a>{%- endif -%}</p>
+{%- assign is_available = false -%}
+{%- assign start_date = section.settings.start_date | date: "%s" -%}
+{%- assign expiration_date = section.settings.expiration_date | date: "%s" -%}
+{%- assign expiration_behavior = section.settings.expiration_behavior -%}
+{% assign current_time = "now" | date: "%s" %}
+{%- if current_time >= start_date -%}
+  {%- assign is_available = true -%}
+{%- endif -%}
+{%- if expiration_behavior == 'make_hidden' -%}
+  {%- if current_time >= expiration_date -%}
+    {%- assign is_available = false -%}
+  {%- endif -%}
+{%- endif -%}
+{%- if is_available -%}
+  {%- if text != blank or text != "" -%}
+    <div class="announcement--container">
+      <div class="page-width">
+        <div class="announcement--inner">
+          <div class="announcement--content">
+            <p>{{- text -}}{%- if cta_text and cta_url -%}&nbsp;<a class="announcement--cta{% if cta_style == 'button' %} cta__button{% else %} cta__link{% endif %}" href="{{ cta_url }}"><span class="cta__text">{{ cta_text }}</span></a>{%- endif -%}</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  {%- endif -%}
 {%- endif -%}
 {% schema %}
   {
@@ -144,6 +159,40 @@
         "id": "cta_background",
         "label": "CTA background",
         "default": "#F4E9D2"
+      },
+      {
+        "type": "header",
+        "content": "Timer settings"
+      },
+      {
+        "type": "text",
+        "id": "start_date",
+        "label": "Start date",
+        "placeholder": "Eg. 2025-12-25 12:00",
+        "info": "Use the format YYYY-MM-DD HH:MM (hours and minutes are optional). Do not use a date farther than 99 days."
+      },
+      {
+        "type": "text",
+        "id": "expiration_date",
+        "label": "Expiration date",
+        "placeholder": "Eg. 2025-12-25 12:00",
+        "info": "Use the format YYYY-MM-DD HH:MM (hours and minutes are optional). Do not use a date farther than 99 days."
+      },
+      {
+        "type": "select",
+        "id": "expiration_behavior",
+        "label": "Expiration behavior",
+        "options": [
+          {
+            "label": "Keep visible",
+            "value": "keep_visible"
+          },
+          {
+            "label": "Make hidden",
+            "value": "make_hidden"
+          }
+        ],
+        "default": "make_hidden"
       }
     ],
     "presets": [

@@ -161,6 +161,7 @@
           "featured-image": "shopify://shop_images/KOALA_ca26d58c-da9b-4107-868d-9a86544586ca.gif",
           "title": "A Celebration of Australiana",
           "subtitle": "<p>Discover the brand-new collection of wearable art, inspired by iconic native Australian flora and fauna.</p>",
+          "cta-btn-shape": "std_btn",
           "cta-label": "Shop Now",
           "cta-background": "#FDCF5E",
           "banner_bottom_text": "<p>Our limited-run designs can sell out fast! Seeking something sold out? Find a stockist <a href=\"https://www.erstwilder.com/pages/erstwilder-stockists\" target=\"_blank\" title=\"Erstwilder Stockists\"><span style=\"text-decoration:underline\">here</span></a>.</p>",
@@ -692,107 +693,80 @@
           "f4608a68-f7a9-434c-81b6-19ca362e7db0": {
             "type": "color",
             "settings": {
-              "title": "Black",
-              "s-color": "#302e2e",
-              "s-colors": "color-black"
+              "title": "Black"
             }
           },
           "8cdc25c9-5f7f-4d9b-944a-d8b3f8300193": {
             "type": "color",
             "settings": {
-              "title": "Brown",
-              "s-color": "#b37251",
-              "s-colors": "color-brown"
+              "title": "Brown"
             }
           },
           "c9301547-7f30-4749-b29e-58e90c0abb9b": {
             "type": "color",
             "settings": {
-              "title": "Red",
-              "s-color": "#d95b4f",
-              "s-colors": "color-red"
+              "title": "Red"
             }
           },
           "e964e7ee-d909-4857-8efe-0caec6a60e15": {
             "type": "color",
             "settings": {
-              "title": "Orange",
-              "s-color": "#da8356",
-              "s-colors": "color-orange"
+              "title": "Orange"
             }
           },
           "3f282021-d9d9-4d5b-b285-da5e9c7cba1c": {
             "type": "color",
             "settings": {
-              "title": "Yellow",
-              "s-color": "#ffcc66",
-              "s-colors": "color-yellow"
+              "title": "Yellow"
             }
           },
           "8025558e-9388-4ae1-963f-347630dd2b4e": {
             "type": "color",
             "settings": {
-              "title": "Pink",
-              "s-color": "#e09694",
-              "s-colors": "color-pink"
+              "title": "Pink"
             }
           },
           "0c958bd7-e47c-49f2-8b57-caaf9aa29a4c": {
             "type": "color",
             "settings": {
-              "title": "Purple",
-              "s-color": "#be7aad",
-              "s-colors": "color-purple"
+              "title": "Purple"
             }
           },
           "6e6f35ff-774b-40a7-b4d4-f79ae8b32c2a": {
             "type": "color",
             "settings": {
-              "title": "Blue",
-              "s-color": "#6299b8",
-              "s-colors": "color-blue"
+              "title": "Blue"
             }
           },
           "65df0a9d-ea23-4db8-aab7-02ba3ab90687": {
             "type": "color",
             "settings": {
-              "title": "Green",
-              "s-color": "#88aa92",
-              "s-colors": "color-green"
+              "title": "Green"
             }
           },
           "59e5c04d-2017-4ee3-aa05-44246b475acf": {
             "type": "color",
             "settings": {
-              "title": "White",
-              "s-color": "#ffffff",
-              "s-colors": "color-white"
+              "title": "White"
             }
           },
           "e52fbbbd-5676-4734-a190-f53503d2f973": {
             "type": "color",
             "settings": {
-              "title": "Silver",
-              "s-color": "#c5c8c9",
-              "s-colors": "color-silver"
+              "title": "Silver"
             }
           },
           "398f7dfc-e2b1-4bcd-8f4f-556998379ed2": {
             "type": "color",
             "settings": {
-              "title": "Gold",
-              "s-color": "#bf9235",
-              "s-colors": "color-gold"
+              "title": "Gold"
             }
           },
           "87b684bf-24e6-48cc-946b-cc0f88c541d5": {
             "type": "color",
             "disabled": true,
             "settings": {
-              "title": "Peacock Multi",
-              "s-color": "#b86262",
-              "s-color-img": "shopify://shop_images/peackock.png",
-              "s-colors": "color-peacock"
+              "title": "Peacock Multi"
             }
           }
         },
@@ -835,7 +809,7 @@
             "type": "promotion",
             "disabled": true,
             "settings": {
-              "product": "bag-of-bones-brooch",
+              "product": "100-huggable-necklace",
               "sku": "",
               "type": "dollar",
               "inclusions": "",
@@ -1008,6 +982,57 @@
           "hero--bottom-text-bg-color": "#7446c5",
           "hero--bottom-text-color": "#ffffff"
         }
+      },
+      "carousel_featured_promotion_FrtQ6f": {
+        "type": "carousel--featured-promotion",
+        "blocks": {
+          "promo_card_MmNRpm": {
+            "type": "promo-card",
+            "settings": {
+              "image": "shopify://shop_images/ERSTWILDER_x_KATHERINE_SABBATH_1_93c3291c-551d-424f-b8db-14e76b23b3ce.jpg"
+            }
+          },
+          "promo_card_KYJh3p": {
+            "type": "promo-card",
+            "settings": {
+              "image": "shopify://shop_images/LUCIA_BLOG_MOBILE_HEADER.jpg"
+            }
+          },
+          "promo_card_V89Ltk": {
+            "type": "promo-card",
+            "settings": {
+              "image": "shopify://shop_images/2025_EASTER_TREATS__NEW_ARRIVALS_HOVER-3.jpg"
+            }
+          },
+          "promo_card_yMHMaE": {
+            "type": "promo-card",
+            "settings": {
+              "image": "shopify://shop_images/ERSTWILDER_x_KATHERINE_SABBATH_2_24218b18-b8b6-47a1-9676-b3ff452ec891.jpg"
+            }
+          }
+        },
+        "block_order": [
+          "promo_card_MmNRpm",
+          "promo_card_KYJh3p",
+          "promo_card_V89Ltk",
+          "promo_card_yMHMaE"
+        ],
+        "settings": {
+          "pre_heading": "Pre heading",
+          "heading": "Heading",
+          "cta_label": "Shop Now",
+          "cta_url": "shopify://collections/all",
+          "slides_per_view": 2.3,
+          "aspect_ratio": "portrait",
+          "top_wave": "0",
+          "top_wave_color_primary": "",
+          "top_wave_color_secondary": "",
+          "is_top_wave_flipped": false,
+          "bottom_wave": "0",
+          "bottom_wave_color_primary": "",
+          "bottom_wave_color_secondary": "",
+          "is_bottom_wave_flipped": false
+        }
       }
     },
     "content_for_index": [
@@ -1021,6 +1046,7 @@
       "16342637896d07773e",
       "16342713339cf3166b",
       "16345294080b82bdfc",
+      "carousel_featured_promotion_FrtQ6f",
       "163460413742a362cf",
       "1634686827b5bd1c04",
       "1634704778fd0d9799",
@@ -1052,11 +1078,6 @@
       },
       "14060646107696862457": {
         "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-        "disabled": false,
-        "settings": {}
-      },
-      "16973212098894713329": {
-        "type": "shopify://apps/urgency-all-in-one-fomo-app/blocks/app-embed/9f1fd920-d273-490f-83fe-0f8188671817",
         "disabled": false,
         "settings": {}
       },

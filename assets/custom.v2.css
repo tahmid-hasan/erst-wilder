@@ -23,7 +23,9 @@
   clip: rect(0 0 0 0);
   word-wrap: normal !important;
 }
-
+.hidden {
+  display: none !important;
+}
 @media screen and (max-width: 749px) {
   .small-hide {
     display: none !important;

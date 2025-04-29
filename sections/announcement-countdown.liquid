@@ -1,113 +1,135 @@
-{{ 'announcement-countdown.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'announcement-countdown.js' | asset_url }}" defer></script>
-{%- liquid
-  assign background_color = section.settings.background
-  assign background_image = section.settings.background_image
-  assign background_position = section.settings.background_position
+{%- if request.design_mode -%}
+  {{ 'announcement-countdown.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'announcement-countdown.js' | asset_url }}" defer></script>
+{%- endif -%}
+{%- assign is_available = false -%}
+{%- assign start_date = section.settings.start_date | date: "%s" -%}
+{%- assign current_time = "now" | date: "%s" -%}
+{%- assign expiration_date = section.settings.expiration_date | date: "%s" -%}
+{%- assign expiration_behavior = section.settings.expiration_behavior -%}
+{%- if current_time >= start_date -%}
+  {%- assign is_available = true -%}
+{%- endif -%}
+{%- if expiration_behavior == 'hide' -%}
+  {%- if current_time >= expiration_date -%}
+    {%- assign is_available = false -%}
+  {%- endif -%}
+{%- endif -%}
+{%- if is_available -%}
+  {%- unless request.design_mode -%}
+    {{ 'announcement-countdown.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'announcement-countdown.js' | asset_url }}" defer></script>
+  {%- endunless -%}
+  {%- liquid
+    assign background_color = section.settings.background
+    assign background_image = section.settings.background_image
+    assign background_position = section.settings.background_position
 
-  assign text = section.settings.text
-  assign text_color = section.settings.color_text
+    assign text = section.settings.text
+    assign text_color = section.settings.color_text
 
-  assign cta_text = section.settings.cta_text
-  assign cta_url = section.settings.cta_url
+    assign cta_text = section.settings.cta_text
+    assign cta_url = section.settings.cta_url
 
-  assign cta_style = section.settings.cta_style
-  assign cta_color = section.settings.cta_color
-  assign cta_background = section.settings.cta_background
+    assign cta_style = section.settings.cta_style
+    assign cta_color = section.settings.cta_color
+    assign cta_background = section.settings.cta_background
 
-  assign countdown_text = section.settings.countdown_text_color
-  assign countdown_background = section.settings.countdown_background_color
--%}
-{%- style -%}
-  #shopify-section-{{ section.id }} {
-    position: relative;
-  }
-  #shopify-section-{{ section.id }} .cta__button {
-    color: {{ cta_color }};
-    background: {{ cta_background }}
-  }
-  #shopify-section-{{ section.id }} .content-left {
-    color: {{ text_color }};
-  }
-  #shopify-section-{{ section.id }}::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: url("{{ background_image | image_url: width: 2000 }}") no-repeat;
-    background-size: cover;
-    background-position: {{ background_position }};
-    z-index: 1;
-  }
-  #shopify-section-{{ section.id }}::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: {{ background_color  }};
-    z-index: 2;
-  }
-  #shopify-section-{{ section.id }} .page-width {
-    position: relative;
-    z-index: 3;
-  }
-  #shopify-section-{{ section.id }} .cta__button {
-    background: {{ cta_background }};
-  }
-  #shopify-section-{{ section.id }} .cta__link {
-    color: {{ cta_color }}
-  }
-  #shopify-section-{{ section.id }} .time-unit {
-    color: {{ countdown_text }};
-    background: {{ countdown_background }}
-  }
-  #shopify-section-{{ section.id }} .time-part-item .label, #shopify-section-{{ section.id }} .content-left .countdown-cta {
-    color: {{ text_color }}
-  }
-{%- endstyle -%}
+    assign countdown_text = section.settings.countdown_text_color
+    assign countdown_background = section.settings.countdown_background_color
+  -%}
+  {%- style -%}
+    #shopify-section-{{ section.id }} {
+      position: relative;
+    }
+    #shopify-section-{{ section.id }} .cta__button {
+      color: {{ cta_color }};
+      background: {{ cta_background }}
+    }
+    #shopify-section-{{ section.id }} .content-left {
+      color: {{ text_color }};
+    }
+    #shopify-section-{{ section.id }}::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("{{ background_image | image_url: width: 2000 }}") no-repeat;
+      background-size: cover;
+      background-position: {{ background_position }};
+      z-index: 1;
+    }
+    #shopify-section-{{ section.id }}::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: {{ background_color  }};
+      z-index: 2;
+    }
+    #shopify-section-{{ section.id }} .page-width {
+      position: relative;
+      z-index: 3;
+    }
+    #shopify-section-{{ section.id }} .cta__button {
+      background: {{ cta_background }};
+    }
+    #shopify-section-{{ section.id }} .cta__link {
+      color: {{ cta_color }}
+    }
+    #shopify-section-{{ section.id }} .time-unit {
+      color: {{ countdown_text }};
+      background: {{ countdown_background }}
+    }
+    #shopify-section-{{ section.id }} .time-part-item .label, #shopify-section-{{ section.id }} .content-left .countdown-cta {
+      color: {{ text_color }}
+    }
+  {%- endstyle -%}
 
-<div class="page-width">
-  <div class="content content-container">
-    <div class="content-left">
-      {%- unless text == blank %}
-        <p class="rte">
-          {{ text }}{%- if cta_text and cta_url -%}
-          <a class="countdown-cta md-hidden cta__link" href="{{ cta_url }}"><span class="cta__text">{{ cta_text }}</span></a>
+  <div class="page-width">
+    <div class="content content-container">
+      <div class="content-left">
+        {%- unless text == blank %}
+          <p class="rte">
+            {{ text }}{%- if cta_text and cta_url -%}
+            <a class="countdown-cta md-hidden cta__link" href="{{ cta_url }}"><span class="cta__text">{{ cta_text }}</span></a>
+          {%- endif -%}
+          </p>
+        {% endunless %}
+      </div>
+      <div class="countdown-wrapper">
+        <countdown-timer class="countdown-timer" data-section-id="{{ section.id }}" starts-at="{{ section.settings.start_date | date: '%FT%T%:z' | escape }}" expires-at="{{ section.settings.expiration_date | date: '%FT%T%:z' | escape }}" expiration-behavior="{{ section.settings.expiration_behavior }}">
+          <div class="days--wrapper time-part-item">
+            <span class="days time-unit">0</span>
+            <span class="label">Days</span>
+          </div>
+          <div class="hours--wrapper time-part-item">
+            <span class="hours time-unit">0</span>
+            <span class="label">Hours</span>
+          </div>
+          <div class="minutes--wrapper time-part-item">
+            <span class="minutes time-unit">0</span>
+            <span class="label">Minutes</span>
+          </div>
+          <div class="seconds--wrapper time-part-item">
+            <span class="seconds time-unit">0</span>
+            <span class="label">Seconds</span>
+          </div>
+        </countdown-timer>
+      </div>
+      <div class="content-right">
+        {%- if cta_text and cta_url -%}
+          <div class="sm-hidden">
+            <a class="countdown-cta{% if cta_style == 'button' %} cta__button{% else %} cta__link{% endif %}" href="{{ cta_url }}"><span class="cta__text">{{ cta_text }}</span></a>
+          </div>
         {%- endif -%}
-        </p>
-      {% endunless %}
-    </div>
-    <div class="countdown-wrapper">
-      <countdown-timer class="countdown-timer" expires-at="{{ section.settings.expiration_date | date: '%FT%T%:z' | escape }}" expiration-behavior="{{ section.settings.expiration_behavior }}">
-        <div class="days--wrapper time-part-item">
-          <span class="days time-unit">0</span>
-          <span class="label">Days</span>
-        </div>
-        <div class="hours--wrapper time-part-item">
-          <span class="hours time-unit">0</span>
-          <span class="label">Hours</span>
-        </div>
-        <div class="minutes--wrapper time-part-item">
-          <span class="minutes time-unit">0</span>
-          <span class="label">Minutes</span>
-        </div>
-        <div class="seconds--wrapper time-part-item">
-          <span class="seconds time-unit">0</span>
-          <span class="label">Seconds</span>
-        </div>
-      </countdown-timer>
-    </div>
-    <div class="content-right">
-      {%- if cta_text and cta_url -%}
-        <div class="sm-hidden">
-          <a class="countdown-cta{% if cta_style == 'button' %} cta__button{% else %} cta__link{% endif %}" href="{{ cta_url }}"><span class="cta__text">{{ cta_text }}</span></a>
-        </div>
-      {%- endif -%}
+      </div>
     </div>
   </div>
-</div>
+{%- endif -%}
 {% schema %}
   {
     "name": "Countdown bar",
     "tag": "section",
+    "class": "announcement-countdown--container",
     "settings": [
       {
         "type": "color_background",
@@ -203,6 +225,13 @@
       {
         "type": "header",
         "content": "Timer settings"
+      },
+      {
+        "type": "text",
+        "id": "start_date",
+        "label": "Start date",
+        "placeholder": "Eg. 2025-12-25 12:00",
+        "info": "Use the format YYYY-MM-DD HH:MM (hours and minutes are optional). Do not use a date farther than 99 days."
       },
       {
         "type": "text",

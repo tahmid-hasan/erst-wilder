@@ -11,10 +11,10 @@
   <script type="text/javascript">
     window.Swatches = window.Swatches || [
       {%- for block in section.blocks -%}
-        {%- assign colorsSplit = block.settings.s-colors | replace: ', ', ',' | split: ',' -%}
+        {%- assign colorsSplit = block.settings.s_colors | replace: ', ', ',' | split: ',' -%}
         {
           "name": {{ block.settings.title | json }},
-          "color": {{ block.settings.s-color | json }},
+          "color": {{ block.settings.s_color | json }},
           "handles": [
             {%- for color in colorsSplit -%}
               {{- color | strip_newlines | handle | json -}}
@@ -27,12 +27,12 @@
     ];
   </script>
 {%- endif -%}
-
-<style>
-  {% for block in section.blocks %}
+{%- style -%}
+  
+  {%- for block in section.blocks -%}
     {% liquid  
-      assign color_img = block.settings.s-color-img 
-      assign colors = block.settings.s-colors | split: ','
+      assign color_img = block.settings.s_color_img 
+      assign colors = block.settings.s_colors | split: ','
     %}
     {% if color_img %}
       {% for color in colors %}
@@ -47,15 +47,15 @@
       {% endfor %}
     {% endif %}
   {% endfor %}
-</style>
+{%- endstyle -%}
 
 {% schema %}
   {
     "name": "Color Swatches",
     "settings": [
       {
-         "type": "paragraph",
-         "content": "This editor is used to link colors to particular tag names. Create a color from the Add color button, enter in a readable name for the color group, pick a color then enter in the tag names that this color will apply to."
+        "type": "paragraph",
+        "content": "This editor is used to link colors to particular tag names. Create a color from the Add color button, enter in a readable name for the color group, pick a color then enter in the tag names that this color will apply to."
       }
     ],
     "blocks": [
@@ -70,17 +70,17 @@
           },
           {
             "type": "color",
-            "id": "s-color",
+            "id": "s_color",
             "label": "Swatch Color"
           },
           {
             "type": "image_picker",
-            "id": "s-color-img",
+            "id": "s_color_img",
             "label": "Swatch Color Image"
           },
           {
             "type": "textarea",
-            "id": "s-colors",
+            "id": "s_colors",
             "label": "Colors",
             "info": "Must match the name of the product tag this color applies to, separated by a comma."
           }

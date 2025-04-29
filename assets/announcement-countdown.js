@@ -13,8 +13,12 @@ class CountdownTimer extends HTMLElement {
   }
 
   connectedCallback() {
+    this.startDate = new Date(this.getAttribute('starts-at'));
     this.targetDate = new Date(this.getAttribute('expires-at'));
     this.expirationBehavior = this.getAttribute('expiration-behavior');
+    this.sectionId = this.getAttribute('data-section-id')
+
+    this.container = document.querySelector(`#shopify-section-${this.sectionId}.announcement-countdown--container`)
 
     this.start()
   }
