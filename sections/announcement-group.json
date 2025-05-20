@@ -24,8 +24,8 @@
         "cta_style": "link",
         "cta_color": "#000000",
         "cta_background": "#F4E9D2",
-        "start_date": "2025-03-18 23:59",
-        "expiration_date": "2025-03-30 23:59",
+        "start_date": "2025-04-16 13:26",
+        "expiration_date": "2025-04-16 13:27",
         "expiration_behavior": "hide",
         "countdown_text_color": "",
         "countdown_background_color": ""
@@ -42,8 +42,8 @@
         "cta_style": "button",
         "cta_color": "#000000",
         "cta_background": "#F4E9D2",
-        "start_date": "2025-03-18 23:59",
-        "expiration_date": "2025-03-18 23:59",
+        "start_date": "2025-04-16 13:23",
+        "expiration_date": "2025-04-16 13:25",
         "expiration_behavior": "make_hidden"
       }
     }
