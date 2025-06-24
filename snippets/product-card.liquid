@@ -1,0 +1,229 @@
+{%- comment -%}
+  Product Thumbnail
+    Simple object to display a thumbnail with product information
+    - If JS is enabled it has ajax add to cart functionality available for
+    default or single variant products. Products with more then one variant will
+    instead get a link to the product page.
+    - If JS is disabled it will allow users to add to cart via a product form.
+
+    Params:
+    - class: String that can be passed to be used as a class
+    - product: Product object to be used for thumbnail information
+  Version:
+    1.0.0 - 2021/10/09
+{%- endcomment -%}
+
+{%- if product != blank -%}
+  {%- comment -%} Assign Variables {%- endcomment -%}
+  {%- liquid
+    assign selected_or_first_available_variant = product.selected_or_first_available_variant
+    assign mf = product.metafields['additional-information']
+    assign image = product.featured_image
+    assign hasHoverImage = false
+    if product.media.size > 1
+      assign hasHoverImage = true
+      assign hoverMedia = product.media[1]
+    endif
+  -%}
+
+  <div
+    class="o-product-thumbnail {{ class }} {% if hasHoverImage %} has-hover-image{% endif %}"
+    data-product-thumbnail
+    data-handle="{{- product.handle -}}"
+    data-variant-id="{{- selected_or_first_available_variant.id -}}"
+  >
+    {%- comment -%} Product JSON {%- endcomment -%}
+    <script type="application/json" data-product-json>
+      {%- render 'json.product' with { jsonProduct: product, dumpImages: true } -%}
+    </script>
+
+    <div class="o-product-thumbnail__inner">
+      {%- comment -%} Image {%- endcomment -%}
+      <div class="o-product-thumbnail__image-wrapper">
+        {%- assign all_tags = product.tags | join: ',' | downcase -%}
+        {%- assign is_imperfect = false -%}
+        {%- if all_tags contains 'perfectly imperfect' -%}
+          {%- assign is_imperfect = true -%}
+        {%- endif -%}
+
+        {%- if is_imperfect -%}
+          <a href="{{- product.url -}}">
+            <div class="o-product-thumbnail__imperfect-badge">
+              <p class="badge__content">
+                <span>
+                  <svg height="30px" width="30px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 47.94 47.94" xml:space="preserve">
+                    <path d="M26.285,2.486l5.407,10.956c0.376,0.762,1.103,1.29,1.944,1.412l12.091,1.757
+                    c2.118,0.308,2.963,2.91,1.431,4.403l-8.749,8.528c-0.608,0.593-0.886,1.448-0.742,2.285l2.065,12.042
+                    c0.362,2.109-1.852,3.717-3.746,2.722l-10.814-5.685c-0.752-0.395-1.651-0.395-2.403,0l-10.814,5.685
+                    c-1.894,0.996-4.108-0.613-3.746-2.722l2.065-12.042c0.144-0.837-0.134-1.692-0.742-2.285l-8.749-8.528
+                    c-1.532-1.494-0.687-4.096,1.431-4.403l12.091-1.757c0.841-0.122,1.568-0.65,1.944-1.412l5.407-10.956
+                    C22.602,0.567,25.338,0.567,26.285,2.486z"></path>
+                  </svg>
+                </span>
+                Imperfect
+                <span>
+                  <svg height="30px" width="30px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 47.94 47.94" xml:space="preserve">
+                    <path d="M26.285,2.486l5.407,10.956c0.376,0.762,1.103,1.29,1.944,1.412l12.091,1.757
+                    c2.118,0.308,2.963,2.91,1.431,4.403l-8.749,8.528c-0.608,0.593-0.886,1.448-0.742,2.285l2.065,12.042
+                    c0.362,2.109-1.852,3.717-3.746,2.722l-10.814-5.685c-0.752-0.395-1.651-0.395-2.403,0l-10.814,5.685
+                    c-1.894,0.996-4.108-0.613-3.746-2.722l2.065-12.042c0.144-0.837-0.134-1.692-0.742-2.285l-8.749-8.528
+                    c-1.532-1.494-0.687-4.096,1.431-4.403l12.091-1.757c0.841-0.122,1.568-0.65,1.944-1.412l5.407-10.956
+                    C22.602,0.567,25.338,0.567,26.285,2.486z"></path>
+                  </svg>
+                </span>
+              </p>
+            </div>
+          </a>
+        {%- endif -%}
+        <slider-product-card id="product-slider-{{ product.id }}--{{ section.id }}">
+          <a href="{{- product.url -}}" class="o-product-thumbnail__image-container o-responsive-image-container">
+            <div class="o-product-thumbnail__slider--container">
+              <div class="o-product-thumbnail__slider--wrapper">
+                
+                <div class="swiper product-swiper" id="product-slider-slider-{{ product.id }}--{{ section.id }}">
+                  <div class="swiper-wrapper">
+                    {%- for media in product.media -%}
+                      {%- case media.media_type -%}
+                        {%- when 'image' -%}
+                          <div class="swiper-slide">
+                            <picture class="swiper-lazy">
+                              {% if forloop.first %}
+                                <!-- Eager load the first image -->
+                                <source media="(min-width: 1200px)" srcset="{{ media | image_url: width: 600, format: 'webp' }}" type="image/webp">
+                                <source media="(min-width: 1200px)" srcset="{{ media | image_url: width: 600 }}" type="image/jpeg">
+                                <source media="(min-width: 768px)" srcset="{{ media | image_url: width: 400 }}" type="image/jpeg">
+                                <img
+                                  src="{{ media | image_url: width: 300 }}"
+                                  alt="{{ media.alt | default: product.title | escape }}"
+                                  width="300"
+                                  height="300"
+                                  loading="eager"
+                                >
+                              {% else %}
+                                <!-- Lazy load remaining images -->
+                                <source media="(min-width: 1200px)" data-srcset="{{ media | image_url: width: 600, format: 'webp' }}" type="image/webp">
+                                <source media="(min-width: 1200px)" data-srcset="{{ media | image_url: width: 600 }}" type="image/jpeg">
+                                <source media="(min-width: 768px)" data-srcset="{{ media | image_url: width: 400 }}" type="image/jpeg">
+                                <img
+                                  data-src="{{ media | image_url: width: 300 }}"
+                                  class="swiper-lazy"
+                                  alt="{{ media.alt | default: product.title | escape }}"
+                                  width="300"
+                                  height="300"
+                                  loading="lazy"
+                                >
+                              {% endif %}
+                            </picture>
+
+                            {% unless forloop.first %}
+                              <div class="swiper-lazy-preloader"></div>
+                            {% endunless %}
+                          </div>
+                        {%- when 'video' -%}
+                          <div class="swiper-slide">
+                            <div class="o-responsive-video--container">
+                              <div class="o-responsive-video--wrapper">
+                                {%- render 'object.html5-video' with {
+                                  media:media,
+                                  videoUrlMp4:media.sources[0].url,
+                                  class:'o-responsive-image swiper-lazy',
+                                  attributes:'muted autoplay loop playsinline preload="metadata"'
+                                } -%}
+                              </div>
+                            </div>
+                            <div class="swiper-lazy-preloader"></div>
+                          </div>
+                        {%- when 'external_video' -%}
+                          <div class="swiper-slide">
+                            <div class="external-video-container swiper-lazy">
+                              {{ media | external_video_tag: class: 'swiper-lazy' }}
+                            </div>
+                            <div class="swiper-lazy-preloader"></div>
+                          </div>
+                        {%- when 'model' -%}
+                          <div class="swiper-slide">
+                            <div class="model-viewer-container swiper-lazy">
+                              {{ media | model_viewer_tag: class: 'swiper-lazy' }}
+                            </div>
+                            <div class="swiper-lazy-preloader"></div>
+                          </div>
+                      {%- endcase -%}
+                    {%- endfor -%}
+                  </div>
+                  <div class="product-card-button--navigation product-card-button--next">
+                    <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 15"><path d="m1 14 6-6.5L1 1" stroke="#adadad" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <div class="product-card-button--navigation product-card-button--prev">
+                    <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 15"><path d="M7 14 1 7.5 7 1" stroke="#adadad" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+            {% comment %}
+            {%- render 'tool.picture' with {
+              image: image,
+              class: 'o-product-thumbnail__image o-responsive-image',
+              width: 410,
+              sizes: '375,500',
+              imageSizes: '280,350',
+              lazy: true
+            } -%}
+            {%- if hoverMedia != blank and hoverMedia.media_type == 'image' -%}
+              {%- render 'tool.picture' with {
+                image: hoverMedia,
+                class: 'o-product-thumbnail__hover-image o-responsive-image',
+                width: 410,
+                sizes: '375,500',
+                imageSizes: '280,350',
+                lazy: true
+              } -%}        
+            {%- elsif hoverMedia != blank and hoverMedia.media_type == 'video' -%}
+              {%- render 'object.html5-video' with {
+                media:hoverMedia,
+                videoUrlMp4:hoverMedia.sources[0].url,
+                class:'o-product-thumbnail__hover-image o-responsive-image',
+                attributes:'muted autoplay loop playsinline preload="metadata"'
+              } -%}
+            {%- endif -%}
+            {% endcomment %}
+          </a>
+          <div class="product-card-image-carousel__dots">
+                  </div>
+        </slider-product-card>
+
+        {%- comment -%} Desktop ATC {%- endcomment -%}
+        {%- render 'object.thumbnail-atc-button', thumbnailProduct: product, thumbnailVariant: selected_or_first_available_variant, class: 'is-desktop' -%}
+
+        {%- comment -%} Badge {%- endcomment -%}
+        {%- render 'object.product-badge' with {
+          product: product,
+          class: 'o-product-thumbnail'
+        }-%}
+
+      </div>
+
+      {%- comment -%} Title {%- endcomment -%}
+      <a href="{{- product.url -}}" class="o-product-thumbnail__title-container">
+        <h3 class="o-product-thumbnail__title o-heading--6">
+          {{- product.title | escape -}}
+        </h3>
+      </a>
+
+      {%- comment -%} Price {%- endcomment -%}
+      <a href="{{- product.url -}}" class="o-product-thumbnail__pricing-container">
+        {%- render 'object.product-pricing', class: 'o-product-thumbnail__pricing', price: selected_or_first_available_variant.price, comparePrice: selected_or_first_available_variant.compare_at_price -%}
+      </a>
+
+       <!-- Start of Judge.me code -->
+      <div style='{{ jm_style }}; text-align: center;' class='jdgm-widget jdgm-preview-badge' data-id='{{ product.id }}' data-auto-install='false'>
+        {{ product.metafields.judgeme.badge }}
+      </div>
+      <!-- End of Judge.me code -->
+      
+    </div>
+
+    {%- comment -%} Mobile ATC {%- endcomment -%}
+    {%- render 'object.thumbnail-atc-button', thumbnailProduct: product, thumbnailVariant: selected_or_first_available_variant, class: 'is-mobile' -%}
+  </div>
+{%- endif -%}

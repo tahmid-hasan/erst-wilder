@@ -5,6 +5,7 @@ class PromoSlideshow extends HTMLElement {
 
     this.container = this.querySelector('[data-promo-slider]');
     this.slidesPerView = parseFloat(this.getAttribute('slides-per-view'));
+    this.sliderPerViewMobile = parseFloat(this.getAttribute('slides-per-view-mobile'));
     this.slider = null;
 
     this.previous = this.querySelector('[data-carousel-previous]')
@@ -21,8 +22,18 @@ class PromoSlideshow extends HTMLElement {
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting && !this.slider) {
-          this.initSwiper();
-          observer.unobserve(this.container); // Stop observing after initialization
+          const tryInitSwiper = () => {
+            if (window.Swiper) {
+              clearInterval(this.swiperCheckInterval);
+              this.initSwiper();
+              observer.unobserve(this.container); // Stop observing after initialization
+            }
+          };
+          if (window.Swiper) {
+            tryInitSwiper();
+          } else {
+            this.swiperCheckInterval = setInterval(tryInitSwiper, 100);
+          } //Stop observing after initialization
         }
       });
     }, { rootMargin: "100px" });
@@ -31,6 +42,7 @@ class PromoSlideshow extends HTMLElement {
   }
 
   initSwiper() {
+    console.log('Slides per view: ', this.slidesPerView);
     const slideCount = this.container.querySelectorAll('.swiper-slide').length;
     const isCentered = slideCount < this.slidesPerView;
     const isMobile = window.innerWidth < 750;
@@ -39,7 +51,7 @@ class PromoSlideshow extends HTMLElement {
     }
     const initialSlide = isMobile ? slideCount - 1 : 0;
     this.slider = new Swiper(this.container, {
-      slidesPerView: 1.75,
+      slidesPerView: this.sliderPerViewMobile,
       spaceBetween: 22.5,
       navigation: {
         nextEl: this.next,

@@ -424,6 +424,7 @@
       },
       "16345294080b82bdfc": {
         "type": "content--promotion",
+        "disabled": true,
         "settings": {
           "pre-title": "In The Spotlight",
           "title": "Erstwildest Dreams",
@@ -1022,7 +1023,8 @@
           "heading": "Heading 2",
           "cta_label": "Shop Now 2",
           "cta_url": "shopify://collections/a-fuller-bloom",
-          "slides_per_view": 2.3,
+          "slides_per_view": 3,
+          "slides_per_view_mobile": 1.7,
           "aspect_ratio": "portrait",
           "background_image": "shopify://shop_images/IN_THE_SPOTLIGHT_Desktop_ccc80449-e2aa-4376-b713-3534c2a6319d.png",
           "background_image_tablet": "shopify://shop_images/IN_THE_SPOTLIGHT_Tablet.png",

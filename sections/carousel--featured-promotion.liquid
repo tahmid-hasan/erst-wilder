@@ -38,6 +38,7 @@
   assign cta_url = section.settings.cta_url
 
   assign slides_per_view = section.settings.slides_per_view | default: 4
+  assign slides_per_view_mobile = section.settings.slides_per_view_mobile | default: 1.75
 
   assign top_wave = section.settings.top_wave
   assign top_wave_color_primary = section.settings.top_wave_color_primary
@@ -50,8 +51,14 @@
   assign is_bottom_wave_flipped = section.settings.is_bottom_wave_flipped
 -%}
 {% style %}
+  #shopify-section-{{ section.id }} .c-promotion {
+    /* padding: 3.6875rem 0 12.625rem; */
+    padding: 3.6875rem 0
+  }
   .promo-image--wrapper {
     position: relative;
+    border-radius: 0.8rem;
+    overflow: hidden;
   }
   .promo-image--wrapper img {
     position: absolute;
@@ -94,8 +101,8 @@
       width: calc((100% - 67.5px) / 4);
     }
     .c-promotion__title {
-      /* margin-bottom: 1rem; */
-      margin-bottom: 3.0875rem;
+      margin-bottom: 1.7rem;
+      /* margin-bottom: 3.0875rem; */
     }
     #shopify-section-{{ section.id }} .c-promotion--bg {
       background: url({{ section.settings.background_image | image_url: width: 2400 }});
@@ -139,7 +146,8 @@
         </div>
       {%- endif -%}
 
-      <promo-slideshow slides-per-view="{{ slides_per_view }}">
+      <promo-slideshow slides-per-view="{{ slides_per_view }}" slides-per-view-mobile="{{ slides_per_view_mobile }}">
+        {%- comment -%} Background image {%- endcomment -%}
         <div class="c-promotion-carousel__container">
           <div class="c-promotion-carousel__inner">
             <div class="featured-promo-carousel swiper" data-promo-slider>
@@ -377,6 +385,15 @@
       "max": 5,
       "step": 0.1,
       "default": 4
+    },
+    {
+      "type": "range",
+      "id": "slides_per_view_mobile",
+      "label": "Slides per view mobile",
+      "min": 1,
+      "max": 3,
+      "step": 0.1,
+      "default": 1
     },
     {
       "type": "select",

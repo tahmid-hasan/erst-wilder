@@ -1,6 +1,7 @@
 (() => {
   const VideoOnHover = () => {
     $(document).on('mouseover mouseleave touchstart touchend', '.o-product-thumbnail', (e) => {
+      console.log('VideoOnHover', e.type);
       //console.log(e);
       let $target = $(e.currentTarget);
       let $video = $target.find('video');
@@ -9,9 +10,11 @@
         video.loop = true;
         video.muted = true;
         video.controls = false;
-        setTimeout(() => {
-          video[['mouseover', 'touchstart'].indexOf(e.type) !== -1 ? 'play' : 'pause']();
-        }, 0);
+        if(window.innerWidth > 900) {
+          setTimeout(() => {
+            video[['mouseover', 'touchstart'].indexOf(e.type) !== -1 ? 'play' : 'pause']();
+          }, 0);
+        }
       }
     });
   }

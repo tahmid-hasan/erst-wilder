@@ -112,19 +112,25 @@
           class="c-product-image-carousel__arrow is-prev"
           data-carousel-previous
         >
+          {{ 'icon-chevron-left-orange.svg' | inline_asset_content }}
+          {% comment %}
           {%- render 'object.icon' with {
-            icon:'chevron-left-orange',
+            icon:'chevron-left',
             class: 'c-product-image-carousel__arrow-icon'
           } -%}
+          {% endcomment %}
         </button>
         <button
           class="c-product-image-carousel__arrow is-next"
           data-carousel-next
         >
+          {{ 'icon-chevron-right-orange.svg' | inline_asset_content }}
+          {%- comment -%}
           {%- render 'object.icon' with {
-            icon:'chevron-right-orange',
+            icon:'chevron-right',
             class: 'c-product-image-carousel__arrow-icon'
           } -%}
+          {% endcomment %}
         </button>
       </div>
     {%- endif -%}

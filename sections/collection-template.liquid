@@ -226,10 +226,7 @@
             </div>
             <div class="c-collection__grid{%- if collection.products_count == 0 -%} visually-hidden{%- endif -%}">
               {%- for productObject in collection.products -%}
-                {%- render 'object.product-thumbnail' with {
-                  class: 'c-collection__thumbnail',
-                  thumbnailProduct: productObject
-                } -%}
+                {%- render 'product-card', class: 'c-collection__thumbnail', product: productObject, section: section -%}
 
                 {%- if paginate.current_page == 1 -%}
                   {%- if content_block and forloop.index == content_block_position -%}

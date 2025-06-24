@@ -1391,3 +1391,325 @@ class CustomSelect extends HTMLElement {
   }
 
   customElements.define("custom-select", CustomSelect);
+
+  class SliderProductCard extends HTMLElement {
+  constructor() {
+    super();
+    this.swiper = null;
+    this.sliderEl = null;
+    this.isInitialized = false;
+    this.videoObserver = null;
+    this.intersectionObserver = null;
+  }
+
+  connectedCallback() {
+    // Only initialize when element enters viewport
+    this.setupIntersectionObserver();
+  }
+
+  setupIntersectionObserver() {
+    this.intersectionObserver = new IntersectionObserver((entries) => {
+      const [entry] = entries;
+      if (entry.isIntersecting && !this.isInitialized) {
+        const tryInitializeSwiper = () => {
+          if (window.Swiper) {
+            clearInterval(this.swiperCheckInterval);
+            this.initializeSwiper();
+            this.isInitialized = true;
+            this.intersectionObserver.disconnect();
+          }
+        }
+        if (window.Swiper) {
+          tryInitializeSwiper();
+        } else {
+          // Poll for Swiper every 100ms until it's available
+          this.swiperCheckInterval = setInterval(tryInitializeSwiper, 100);
+        }
+      }
+    }, {
+      root: null,
+      rootMargin: '100px', // Load slightly before it comes into view
+      threshold: 0.1
+    });
+    
+    this.intersectionObserver.observe(this);
+  }
+
+  initializeSwiper() {
+    this.sliderEl = this.querySelector('.swiper');
+    this.paginationEl = this.querySelector('.product-card-image-carousel__dots');
+    this.navigationNextEl = this.querySelector('.product-card-button--next');
+    this.navigationPrevEl = this.querySelector('.product-card-button--prev');
+    if (!this.sliderEl) {
+      console.warn('Swiper element not found in SliderProductCard');
+      return;
+    }
+
+    // Set up video observer for better performance
+    this.setupVideoObserver();
+
+    try {
+      this.swiper = new Swiper(this.sliderEl, {
+        slidesPerView: 1,
+        spaceBetween: 2,
+        centeredSlides: false,
+        roundLengths: false,
+        navigation: {
+          nextEl: this.navigationNextEl,
+          prevEl: this.navigationPrevEl,
+        },
+        pagination: {
+          el: this.paginationEl,
+          type: 'bullets',
+        },
+        loop: true,
+        breakpoints: {
+          768: {
+            navigation: {
+              nextEl: this.navigationNextEl,
+              prevEl: this.navigationPrevEl,
+            }
+          }
+        },
+        lazy: {
+          loadPrevNext: true,
+          loadPrevNextAmount: 1,
+          loadOnTransitionStart: true,
+          elementClass: 'swiper-lazy',
+          loadingClass: 'swiper-lazy-loading',
+          loadedClass: 'swiper-lazy-loaded',
+          preloaderClass: 'swiper-lazy-preloader',
+        },
+        // Performance optimizations
+        observer: true,
+        observeParents: true,
+        updateOnWindowResize: true,
+        watchSlidesProgress: true,
+        a11y: {
+          enabled: true,
+          prevSlideMessage: 'Previous slide',
+          nextSlideMessage: 'Next slide',
+        },
+        on: {
+          init: (swiper) => {
+            // Load initial slide immediately
+            if (swiper && swiper.slides && swiper.activeIndex !== undefined) {
+              const activeSlide = swiper.slides[swiper.activeIndex];
+              if (activeSlide) {
+                const lazyElements = activeSlide.querySelectorAll('.swiper-lazy');
+                lazyElements.forEach(el => {
+                  if (el.dataset.src) {
+                    el.src = el.dataset.src;
+                    el.classList.add('swiper-lazy-loaded');
+                  } else if (el.dataset.background) {
+                    el.style.backgroundImage = `url(${el.dataset.background})`;
+                    el.classList.add('swiper-lazy-loaded');
+                  }
+                });
+              }
+            }
+          },
+          lazyImageReady: (swiper, slideEl, imageEl) => {
+            if (!swiper || typeof swiper.activeIndex !== 'number' || !swiper.slides) {
+              return;
+            }
+            
+            if (swiper.activeIndex === swiper.slides.indexOf(slideEl)) {
+              imageEl.classList.add('swiper-lazy-loaded');
+            }
+          },
+          slideChange: (swiper) => {
+            this.handleMediaOnSlideChange(swiper);
+
+          },
+          destroy: () => {
+            this.cleanup();
+          }
+        },
+        preloadImages: false,
+        speed: 500,
+        resistance: true,
+        resistanceRatio: 0.85,
+      });
+
+      // Add event listeners for touch devices to prevent unwanted zooming/scrolling
+      if ('ontouchstart' in window) {
+        this.sliderEl.addEventListener('touchstart', this.handleTouchStart.bind(this), { passive: true });
+      }
+    } catch (error) {
+      console.error('Error initializing Swiper:', error);
+      this.cleanup(); // Clean up any partial initialization
+    }
+  }
+
+  setupVideoObserver() {
+    // Create IntersectionObserver for videos to only play when visible
+    this.videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const video = entry.target;
+        if (entry.isIntersecting) {
+          if (video.paused && video.dataset.autoplay === 'true') {
+            video.play().catch(e => {
+              console.warn('Video autoplay prevented:', e);
+              // Add play button overlay if autoplay is blocked
+              this.addPlayButton(video);
+            });
+          }
+        } else {
+          if (!video.paused) {
+            video.pause();
+          }
+        }
+      });
+    }, { threshold: 0.5 });
+
+    // Observe all videos
+    const videos = this.querySelectorAll('video');
+    videos.forEach(video => {
+      this.videoObserver.observe(video);
+      
+      // Mark videos that should autoplay
+      if (video.hasAttribute('autoplay')) {
+        video.dataset.autoplay = 'true';
+        // Remove autoplay attribute to prevent unwanted autoplay
+        video.removeAttribute('autoplay');
+      }
+    });
+  }
+
+  addPlayButton(video) {
+    // Check if play button already exists
+    if (video.parentNode.querySelector('.video-play-button')) return;
+    
+    const playButton = document.createElement('button');
+    playButton.className = 'video-play-button';
+    playButton.setAttribute('aria-label', 'Play video');
+    playButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>';
+    
+    // Position the button
+    playButton.style.position = 'absolute';
+    playButton.style.top = '50%';
+    playButton.style.left = '50%';
+    playButton.style.transform = 'translate(-50%, -50%)';
+    playButton.style.background = 'rgba(0,0,0,0.5)';
+    playButton.style.color = 'white';
+    playButton.style.border = 'none';
+    playButton.style.borderRadius = '50%';
+    playButton.style.padding = '12px';
+    playButton.style.cursor = 'pointer';
+    
+    // Add click event
+    playButton.addEventListener('click', () => {
+      video.play().catch(e => console.warn('Video play error:', e));
+      playButton.remove();
+    });
+    
+    // Add the button
+    video.parentNode.style.position = 'relative';
+    video.parentNode.appendChild(playButton);
+  }
+
+  handleMediaOnSlideChange(swiper) {
+    if (!swiper || !swiper.slides || typeof swiper.activeIndex !== 'number') {
+      console.warn('Invalid swiper state in handleMediaOnSlideChange');
+      return;
+    }
+    
+    try {
+      const activeIndex = swiper.activeIndex;
+      const activeSlide = swiper.slides[activeIndex];
+      if (!activeSlide) {
+        console.warn('Active slide not found');
+        return;
+      }
+      
+      // Handle native videos
+      const activeVideo = activeSlide.querySelector('video');
+      if(activeVideo) {
+        const wrapperEl = activeSlide.querySelector('.swiper-lazy');
+        if(wrapperEl.classList.contains('swiper-lazy-loaded')) {
+          activeVideo.play().catch(e => {
+            this.addPlayButton(activeVideo);
+          });
+        }
+      }
+
+      // Handle external videos with postMessage safely
+      this.handleExternalVideo(activeSlide, true);
+
+      // Handle inactive slides
+      swiper.slides.forEach((slide, index) => {
+        if (index !== activeIndex) {
+          // Pause native videos
+          const inactiveVideo = slide.querySelector('video');
+          if (inactiveVideo) {
+            inactiveVideo.pause();
+          }
+          
+          // Pause external videos
+          this.handleExternalVideo(slide, false);
+        }
+      });
+    } catch (error) {
+      console.error('Error handling media on slide change:', error);
+    }
+  }
+
+  handleExternalVideo(slide, shouldPlay) {
+    const iframe = slide.querySelector('.external-video-container iframe');
+    if (!iframe || !iframe.contentWindow) return;
+    
+    try {
+      if (iframe.src.includes('youtube')) {
+        const command = shouldPlay ? 'playVideo' : 'pauseVideo';
+        iframe.contentWindow.postMessage(`{"event":"command","func":"${command}","args":""}`, '*');
+      } else if (iframe.src.includes('vimeo')) {
+        const method = shouldPlay ? 'play' : 'pause';
+        iframe.contentWindow.postMessage(`{"method":"${method}"}`, '*');
+      }
+    } catch (e) {
+      console.warn('External video interaction error:', e);
+    }
+  }
+  
+  handleTouchStart(event) {
+    // Prevent unwanted zooming/scrolling on mobile
+    if (event.touches.length > 1) {
+      event.preventDefault();
+    }
+  }
+
+  disconnectedCallback() {
+    this.cleanup();
+  }
+  
+  cleanup() {
+    // Clean up all observers and listeners
+    if (this.videoObserver) {
+      this.videoObserver.disconnect();
+      this.videoObserver = null;
+    }
+    
+    if (this.intersectionObserver) {
+      this.intersectionObserver.disconnect();
+      this.intersectionObserver = null;
+    }
+    
+    if (this.swiper) {
+      this.swiper.destroy(true, true);
+      this.swiper = null;
+    }
+    
+    if (this.sliderEl) {
+      if ('ontouchstart' in window) {
+        this.sliderEl.removeEventListener('touchstart', this.handleTouchStart);
+      }
+    }
+    
+    this.isInitialized = false;
+  }
+}
+
+// Register the custom element
+customElements.define("slider-product-card", SliderProductCard);
+  
