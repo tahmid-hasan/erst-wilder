@@ -46,3 +46,5 @@
 
   document.addEventListener('DOMContentLoaded', DOMReady);
 })();
+
+//d()(document).on("ajaxProduct:loaded",(function(){return x(g.getUserCurrency())})),

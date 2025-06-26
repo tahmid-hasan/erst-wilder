@@ -1,6 +1,9 @@
 {%- comment -%} Layout JavaScript {%- endcomment -%}
-{{ 'vendor.js' | asset_url | script_tag }}
-{{ 'layout.theme.js' | asset_url | script_tag }}
+{% comment %} {{ 'vendor.js' | asset_url | script_tag }}
+{{ 'layout.theme.js' | asset_url | script_tag }} {% endcomment %}
+
+<script src="{{ 'vendor.js' | asset_url }}" defer></script>
+<script src="{{ 'layout.theme.js' | asset_url }}" defer></script>
 
 {%- comment -%} Conditionally load template section scripts {%- endcomment -%}
 {%- if template.name == 'index' -%}

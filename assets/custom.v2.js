@@ -1028,6 +1028,7 @@ class EndlessPagination extends HTMLElement {
       }
 
       document.dispatchEvent(new CustomEvent('ajax:loaded'));
+      document.dispatchEvent(new CustomEvent('ajaxProduct:loaded'));
     }.bind(this);
 
     this.request.open("GET", this.nextPageUrl);
@@ -1073,7 +1074,6 @@ class FacetFiltersForm extends HTMLElement {
 
   onSubmitClick(e) {
     e.preventDefault();
-
     if(this.drawer) this.drawer.classList.remove('is-open');
     const formData = new FormData(this.form);
     const url = new URL(window.location);
@@ -1208,6 +1208,7 @@ class FacetFiltersForm extends HTMLElement {
 
       this.mainContent.scrollIntoView({ behavior: "smooth", block: "start" });
       document.dispatchEvent(new CustomEvent('ajax:loaded'));
+      document.dispatchEvent(new CustomEvent('ajaxProduct:loaded'));
     }.bind(this);
 
     this.request.open("GET", url.toString());
@@ -1288,6 +1289,7 @@ class FacetRemove extends HTMLElement {
       this.mainContent.scrollIntoView({ behavior: "smooth", block: "start" });
       
       document.dispatchEvent(new CustomEvent('ajax:loaded'));
+      document.dispatchEvent(new CustomEvent('ajaxProduct:loaded'));
     }.bind(this);
 
     this.request.open("GET", url.toString());
@@ -1521,9 +1523,6 @@ class CustomSelect extends HTMLElement {
           slideChange: (swiper) => {
             this.handleMediaOnSlideChange(swiper);
 
-          },
-          destroy: () => {
-            this.cleanup();
           }
         },
         preloadImages: false,

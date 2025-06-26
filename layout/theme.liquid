@@ -9,6 +9,18 @@
     {% comment %}
 
     {% endcomment %}
+    <script>
+      if (!window.Currency) window.Currency = {};
+
+      if (!window.Currency.convert) {
+        // Mock conversion (does nothing)
+        window.Currency.convert = function(amount, from, to) {
+          console.warn('Currency.convert called, but no logic defined. Returning original value.');
+          return amount;
+        };
+      }
+
+    </script>
   </head>
 
   <body class="c-page c-page--{{ template.name | handle }} is-menu-open" data-domain={{shop.permanent_domain}}>
