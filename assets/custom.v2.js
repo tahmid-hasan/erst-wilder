@@ -1061,7 +1061,6 @@ class FacetFiltersForm extends HTMLElement {
     if(!this.changeOnSubmit) {
       this.form.addEventListener('change', this.handleChange.bind(this));
     } else {
-      console.log('Change on submit')
       this.form.addEventListener('submit', this.handleSubmit.bind(this));
     }
 
@@ -1131,6 +1130,7 @@ class FacetFiltersForm extends HTMLElement {
       this.mainContent.classList.remove('is-loading');
       
       this.mainContent.scrollIntoView({ behavior: "smooth", block: "start" });
+      document.dispatchEvent(new CustomEvent('ajaxProduct:loaded'));
       document.dispatchEvent(new CustomEvent('ajax:loaded'));
     }.bind(this);
 
@@ -1154,7 +1154,7 @@ class FacetFiltersForm extends HTMLElement {
   handleChange(e) {
     const formData = new FormData(this.form);
     const url = new URL(window.location);
-
+console.log(url)
     url.searchParams.forEach((_, key) => {
       if(key !== 'sort_by') {
         url.searchParams.delete(key)
@@ -1383,6 +1383,7 @@ class CustomSelect extends HTMLElement {
         this.mainContent.innerHTML = newContent.innerHTML;
         this.mainContent.classList.remove('is-loading');
         this.mainContent.scrollIntoView({ behavior: "smooth", block: "start" });
+        document.dispatchEvent(new CustomEvent('ajaxProduct:loaded'));
         document.dispatchEvent(new CustomEvent('ajax:loaded'));
       }.bind(this);
 
